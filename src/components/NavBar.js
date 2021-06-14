@@ -87,7 +87,9 @@ const NavBar = ({ setOpenNav }) => {
 					<li>ZITTRON MICRO LEARNING</li>
 				</StyledSubList>
 				<StyledSubList>
-					<li>PRICING</li>
+					<li>
+						<Link to='/pricing'>PRICING</Link>
+					</li>
 				</StyledSubList>
 				<StyledSubList>
 					<li>COMPANY</li>
@@ -100,7 +102,9 @@ const NavBar = ({ setOpenNav }) => {
 					<li>LATEST</li>
 				</StyledSubList>
 				<StyledSubList>
-					<li>CONTACT</li>
+					<li>
+						<Link to='/contact'>C0NTACT</Link>
+					</li>
 					<li>
 						<a
 							target='_blank'

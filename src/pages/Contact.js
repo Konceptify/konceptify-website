@@ -65,7 +65,9 @@ const StyledH1 = styled.h1`
 `
 
 const StyledUl = styled.ul`
-	display: none;
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 const StyledLi = styled.li`
@@ -76,7 +78,6 @@ const StyledLi = styled.li`
 	font-size: 1rem;
 	line-height: 2rem;
 	padding: 5px;
-
 	text-align: center;
 	letter-spacing: 1px;
 	color: #fff;
@@ -148,7 +149,6 @@ const StyledBtn = styled.button`
 	background-color: ${(props) => props.theme.btnBgColor};
 	color: ${(props) => props.theme.backgroundColor};
 	border: 1px solid #212a25;
-	box-sizing: border-box;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;
 	height: 50px;
