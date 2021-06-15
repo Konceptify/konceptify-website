@@ -10,10 +10,10 @@ const Wrapper = styled.header`
 	height: 100px;
 	position: absolute;
 	z-index: 1000;
-	background: ${({ theme }) => theme.backgroundColor};
 
 	@media (max-width: 768px) {
 		height: 60px;
+		background: ${({ theme }) => theme.backgroundColor};
 	}
 `
 
