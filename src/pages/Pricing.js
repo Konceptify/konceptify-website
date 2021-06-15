@@ -17,6 +17,7 @@ const Wrapper = styled.section`
 	overflow: hidden;
 	@media (max-width: 768px) {
 		justify-content: flex-start;
+		overflow: auto;
 	}
 `
 
@@ -77,6 +78,7 @@ const StyledCardContainer = styled.div`
 	@media (max-width: 768px) {
 		flex-direction: column;
 		margin: 150px 0 0px 0;
+		padding: 0px 0 200px 0;
 		width: 100%;
 		align-items: center;
 		background: linear-gradient(
@@ -84,6 +86,7 @@ const StyledCardContainer = styled.div`
 			var(--backgroundColor) 50%,
 			var(--accent-color) 50%
 		);
+		background: var(--accent-color);
 	}
 `
 

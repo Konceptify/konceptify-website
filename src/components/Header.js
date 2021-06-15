@@ -10,12 +10,18 @@ const Wrapper = styled.header`
 	height: 100px;
 	position: absolute;
 	z-index: 1000;
+	background: ${({ theme }) => theme.backgroundColor};
+
+	@media (max-width: 768px) {
+		height: 60px;
+	}
 `
 
 const LogoText = styled.p`
 	font-weight: 700;
 	font-size: 2rem;
 	letter-spacing: 0.6rem;
+	padding: 10px 10px;
 	a {
 		text-decoration: none;
 
@@ -28,6 +34,10 @@ const LogoText = styled.p`
 			color: #000;
 			font-size: 1rem;
 			letter-spacing: 0.4rem;
+			padding: 1px 1px;
+			position: relative;
+			top: -15px;
+			left: -5px;
 		}
 	}
 `
@@ -56,7 +66,7 @@ const MenuBtn = styled(motion.button)`
 	font-weight: 100;
 
 	@media (max-width: 768px) {
-		padding: 10px 10px;
+		padding: 20px 20px;
 	}
 `
 
