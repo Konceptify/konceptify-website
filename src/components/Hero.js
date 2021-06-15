@@ -20,8 +20,8 @@ const Wrapper = styled.section`
 const StyledH1 = styled(motion.h1)`
 	font-size: 3.5vw;
 	margin-top: -13rem;
-	max-height: 2800px;
-	max-width: 700px;
+
+	width: 20ch;
 	color: ${(props) => props.theme.color};
 	@media (max-width: 768px) {
 		font-size: 2 rem;
@@ -70,12 +70,14 @@ const StyledButton = styled.button`
 		fill: ${({ theme }) => theme.btnborderColor};
 		size: 40;
 		padding-bottom: 2px;
+		transform: rotate(0deg);
+		transition-duration: 0.5s;
 	}
 
 	:hover {
 		svg {
 			transform: rotate(90deg);
-			transition: all 0.25s linear;
+			transition-duration: 0.5s;
 		}
 	}
 
@@ -115,14 +117,17 @@ const Hero = ({ myRef }) => {
 	return (
 		<Wrapper>
 			<StyledDiv>
-				<StyledH1
-					initial={'hidden'}
-					animate={'visible'}
-					variants={variants}
-					transition={{ duration: 0.5 }}
-				>
-					{data && data[1].title}
-				</StyledH1>
+				{
+					<StyledH1
+						initial={'hidden'}
+						animate={'visible'}
+						variants={variants}
+						transition={{ duration: 0.5 }}
+					>
+						{data && data[1].title}
+					</StyledH1>
+				}
+
 				{
 					<StyledH2
 						initial={'hidden'}

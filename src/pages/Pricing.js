@@ -14,16 +14,18 @@ const Wrapper = styled.section`
 	flex-direction: column;
 	position: relative;
 	z-index: 1;
+	overflow: hidden;
 	@media (max-width: 768px) {
 		justify-content: flex-start;
 	}
 `
 
-const StyledH2 = styled.h1`
+const StyledH1 = styled.h1`
 	position: absolute;
 	top: 100px;
 	left: 40px;
 	width: 50%;
+	font-size: 2.5rem;
 	color: ${({ theme }) => theme.color};
 	@media (max-width: 768px) {
 		width: 100%;
@@ -33,26 +35,31 @@ const StyledH2 = styled.h1`
 		position: relative;
 		top: 100px;
 	}
+
+	@media (max-width: 1768px) {
+		top: 80px;
+		font-size: 2rem;
+	}
 `
 
 const StyledImg = styled.img`
 	position: absolute;
-	bottom: 0;
+	bottom: -10px;
 	width: 100%;
 
 	@media (max-width: 768px) {
 		display: none;
 	}
 	@media (max-width: 1768px) {
-		height: 75%;
-		bottom: 0px;
+		height: 80%;
+		bottom: -10px;
 	}
 `
 
 const StyledPricingImg = styled.img`
 	width: 600px;
 	margin-right: 120px;
-	margin-top: 200px;
+	margin-top: 120px;
 	z-index: 1;
 	@media (max-width: 768px) {
 		display: none;
@@ -63,7 +70,7 @@ const StyledCardContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	margin-right: 10vw;
-	margin-top: 300px;
+	margin-top: 200px;
 	@media (max-width: 1768px) {
 		margin-top: 150px;
 	}
@@ -98,11 +105,11 @@ const Pricing = () => {
 			<Wrapper>
 				<StyledImg src={Background} />
 				<StyledDiv>
-					<StyledH2>
+					<StyledH1>
 						Get started today with your virtual management
 						platform to access full control from everywhere
 						{/* SANITY */}
-					</StyledH2>
+					</StyledH1>
 				</StyledDiv>
 				<StyledDiv2>
 					<StyledPricingImg

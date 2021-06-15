@@ -4,7 +4,6 @@ import GlobalStyles from './components/GlobalStyles'
 import { Switch, Route } from 'react-router-dom'
 
 import Header from './components/Header'
-import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Contact from './pages/Contact'
 import LandingPage from './components/LandingPage'
@@ -35,7 +34,7 @@ const themes = {
 	lightMode: {
 		backgroundColor: '#fff',
 		backgroundColor2: 'transparent',
-		color: '#000',
+		color: '#292928',
 		logoColor: '#2e3330',
 		btnBgColor: '#3F4F45',
 		btnborderColor: '#fff',
@@ -70,8 +69,6 @@ const App = () => {
 							<PrivacyPolicy />
 						</Route>
 					</Switch>
-
-					<Footer />
 				</Wrapper>
 			</ThemeProvider>
 		</>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Footer from './Footer'
 
 const Wrapper = styled.section`
 	height: 5000px;
@@ -8,7 +9,14 @@ const Wrapper = styled.section`
 `
 
 const LandingPage = ({ myRef }) => {
-	return <Wrapper ref={myRef}>LandingPage!</Wrapper>
+	return (
+		<>
+			<Wrapper ref={myRef}>
+				LandingPage!
+				<Footer />
+			</Wrapper>
+		</>
+	)
 }
 
 export default LandingPage

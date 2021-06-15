@@ -2,20 +2,25 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.footer`
-	width: 100%;
-	height: 100px;
+	width: 100vw;
+	height: 500px;
+	position: absolute;
+	bottom: 0%;
 
 	background-color: green;
-	display: none;
-	z-index: 2;
 
-	@media (max-width: 768px) {
-		display: block;
-	}
+	z-index: 1;
 `
 
 const Footer = () => {
-	return <Wrapper>Hello</Wrapper>
+	return (
+		<Wrapper>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nam
+			deserunt quasi quam, ab ullam harum earum asperiores id provident
+			adipisci dolore veritatis ducimus? Alias tempore nostrum rem
+			assumenda facere!
+		</Wrapper>
+	)
 }
 
 export default Footer

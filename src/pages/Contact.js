@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import apiKey from '../emailkey'
 import emailjs from 'emailjs-com'
+import { motion } from 'framer-motion'
 
 import Background from '../Rectangle 2977.png'
 
@@ -123,7 +124,7 @@ const StyledForm = styled.form`
 	}
 `
 
-const StyledInput = styled.input`
+const StyledInput = styled(motion.input)`
 	border: none;
 	border-bottom: 3px solid #c0cbc4;
 	padding: 0 0 10px 0;
@@ -133,6 +134,14 @@ const StyledInput = styled.input`
 
 	::placeholder {
 		color: ${(props) => props.theme.color};
+	}
+
+	:hover {
+		::placeholder {
+			font-size: 0.8rem;
+			transition-duration: 1s;
+			color: #ccc;
+		}
 	}
 
 	:focus::-webkit-input-placeholder {

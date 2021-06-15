@@ -52,7 +52,7 @@ const MenuBtn = styled(motion.button)`
 	top: 0;
 	z-index: 100;
 	padding: 20px 30px;
-	font-size: 3rem;
+	font-size: 1rem;
 	font-weight: 100;
 
 	@media (max-width: 768px) {
@@ -60,19 +60,7 @@ const MenuBtn = styled(motion.button)`
 	}
 `
 
-const variants = {
-	hidden: {
-		rotate: '0deg',
-	},
-	animate: {
-		rotate: '225deg',
-	},
-	transition: {
-		duration: 0.5,
-	},
-}
-
-const Header = ({ setOpenNav, openNav, theme }) => {
+const Header = ({ setOpenNav, openNav, open, theme }) => {
 	const location = useLocation()
 
 	return (
@@ -87,12 +75,8 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 				<li>
 					<MenuBtn
 						onClick={() => setOpenNav((current) => !current)}
-						initial='hidden'
-						animate={openNav ? 'animate' : 'hidden'}
-						variants={variants}
-						transition={{ duration: 0.5 }}
 					>
-						+
+						{openNav ? 'CLOSE' : 'MENU'}
 					</MenuBtn>
 				</li>
 			</StyledUl>
