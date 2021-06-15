@@ -8,14 +8,14 @@ import emailjs from 'emailjs-com'
 
 import Background from '../Rectangle 2977.png'
 
-const Wrapper = styled.div`
-	height: 100%;
-	width: 100vw;
+const Wrapper = styled.section`
+	height: 100vh;
+	width: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	position: relative;
-	z-index: 1;
+	z-index: 2;
 
 	@media (max-width: 768px) {
 		flex-direction: column;

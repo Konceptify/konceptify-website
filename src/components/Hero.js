@@ -3,30 +3,37 @@ import styled from 'styled-components'
 import heroImg from '../img/heroimg.png'
 import sanityClient from '../client'
 import { motion } from 'framer-motion'
+import { IoMdArrowRoundForward } from 'react-icons/io'
 
 const Wrapper = styled.section`
-	height: 100%;
+	height: 100vh;
 	width: 100%;
 	padding: 10px 120px;
 	display: flex;
 	align-items: center;
 	position: relative;
 	@media (max-width: 768px) {
-		padding: 30px;
+		padding: 30px 0;
 	}
 `
 
 const StyledH1 = styled(motion.h1)`
-	font-size: 5vw;
+	font-size: 3.5vw;
 	margin-top: -13rem;
+	max-height: 2800px;
+	max-width: 700px;
 	color: ${(props) => props.theme.color};
 	@media (max-width: 768px) {
-		font-size: 3rem;
+		font-size: 2 rem;
 	}
 `
+
+const StyledArrow = styled(IoMdArrowRoundForward)``
+
 const StyledH2 = styled(motion.h2)`
 	margin: 20px 5px;
 	font-weight: 500;
+
 	color: ${(props) => props.theme.color};
 `
 
@@ -52,14 +59,34 @@ const StyledButton = styled.button`
 	border-radius: 10px;
 	border: none;
 	letter-spacing: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
 	cursor: pointer;
+	padding: 15px 18px;
+	font-size: 0.7rem;
+
+	svg {
+		fill: ${({ theme }) => theme.btnborderColor};
+		size: 40;
+		padding-bottom: 2px;
+	}
+
+	:hover {
+		svg {
+			transform: rotate(90deg);
+			transition: all 0.25s linear;
+		}
+	}
+
 	@media (max-width: 768px) {
 		display: none;
 	}
 `
 
-const Hero = () => {
+const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
+	console.log(myRef)
 
 	useEffect(() => {
 		sanityClient
@@ -106,7 +133,12 @@ const Hero = () => {
 						{data && data[0].title}
 					</StyledH2>
 				}
-				<StyledButton>LEARN MORE</StyledButton>
+				<StyledButton
+					onClick={() => myRef.current.scrollIntoView()}
+				>
+					LEARN MORE
+					<StyledArrow size={20} />
+				</StyledButton>
 			</StyledDiv>
 			<StyledImg
 				initial={'hidden'}

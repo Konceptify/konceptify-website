@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const StyledDiv = styled.div`
 	width: 300px;
 	height: 400px;
-	background-color: #f0f0f0;
+	background-color: #fafafa;
 	margin: 10px;
 	position: relative;
 	display: flex;
@@ -12,11 +12,15 @@ const StyledDiv = styled.div`
 	align-items: center;
 	flex-direction: column;
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+	@media (max-width: 1768px) {
+		margin-top: 50px;
+	}
 `
 
 const StyledLegend = styled.div`
 	height: 30px;
-	background-color: yellow;
+	background-color: #ffd600;
 	border-radius: 15px;
 	position: absolute;
 
@@ -27,7 +31,7 @@ const StyledLegend = styled.div`
 	text-align: center;
 	font-weight: 700;
 	font-size: 11px;
-	padding: 0 20px;
+	padding: 0 15px;
 `
 
 const PricingCard = ({ plan }) => {

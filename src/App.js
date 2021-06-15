@@ -1,28 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from './components/GlobalStyles'
 import { Switch, Route } from 'react-router-dom'
 
 import Header from './components/Header'
+import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Contact from './pages/Contact'
+import LandingPage from './components/LandingPage'
 import Pricing from './pages/Pricing'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 /* import ThemeToggle from './components/ThemeToggle' */
 
 const Wrapper = styled.div`
-	height: 100vh;
 	width: 100vw;
 	display: flex;
 	background-color: ${(props) => props.theme.backgroundColor};
 	flex-direction: column;
 	position: absolute;
-	overflow-y: hidden;
+	overflow-x: hidden;
 	transition: all 0.25s linear;
 `
 const themes = {
 	darkMode: {
 		backgroundColor: '#2e3330',
+		backgroundColor2: 'transparent',
 		color: '#fff',
 		btnBgColor: '#fff',
 		logoColor: '#fff',
@@ -32,6 +34,7 @@ const themes = {
 	},
 	lightMode: {
 		backgroundColor: '#fff',
+		backgroundColor2: 'transparent',
 		color: '#000',
 		logoColor: '#2e3330',
 		btnBgColor: '#3F4F45',
@@ -44,6 +47,7 @@ const themes = {
 const App = () => {
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
 	const [openNav, setOpenNav] = useState(false)
+	const myRef = useRef()
 
 	return (
 		<>
@@ -53,7 +57,8 @@ const App = () => {
 					<Header openNav={openNav} setOpenNav={setOpenNav} />
 					<Switch>
 						<Route exact path='/'>
-							<Hero />
+							<Hero myRef={myRef} />
+							<LandingPage myRef={myRef} />
 						</Route>
 						<Route path='/contact'>
 							<Contact />
@@ -65,11 +70,8 @@ const App = () => {
 							<PrivacyPolicy />
 						</Route>
 					</Switch>
-					{/* <ThemeToggle
-						themes={themes}
-						theme={theme}
-						setTheme={setTheme}
-					/> */}
+
+					<Footer />
 				</Wrapper>
 			</ThemeProvider>
 		</>

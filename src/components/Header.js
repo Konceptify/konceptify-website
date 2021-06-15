@@ -27,6 +27,7 @@ const LogoText = styled.p`
 		@media (max-width: 768px) {
 			color: #000;
 			font-size: 1rem;
+			letter-spacing: 0.4rem;
 		}
 	}
 `
