@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.footer`
 	width: 100vw;
@@ -16,7 +17,12 @@ const Wrapper = styled.footer`
 `
 
 const Footer = () => {
-	return <Wrapper>ZITTRON much better then LIME</Wrapper>
+	return (
+		<Wrapper>
+			ZITTRON much better then LIME
+			<Link to='/legal'>LEGAL</Link>
+		</Wrapper>
+	)
 }
 
 export default Footer

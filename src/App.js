@@ -8,7 +8,7 @@ import Hero from './components/Hero'
 import Contact from './pages/Contact'
 import LandingPage from './components/LandingPage'
 import Pricing from './pages/Pricing'
-import PrivacyPolicy from './pages/PrivacyPolicy'
+import Legal from './pages/Legal'
 /* import ThemeToggle from './components/ThemeToggle' */
 
 const Wrapper = styled.div`
@@ -65,8 +65,8 @@ const App = () => {
 						<Route path='/pricing'>
 							<Pricing />
 						</Route>
-						<Route path='/privacypolicy'>
-							<PrivacyPolicy />
+						<Route path='/legal'>
+							<Legal />
 						</Route>
 					</Switch>
 				</Wrapper>

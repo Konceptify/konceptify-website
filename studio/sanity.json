@@ -5,7 +5,7 @@
     "dataset": "production"
   },
   "project": {
-    "name": "My Sanity Blog"
+    "name": "ZITTRON CMS"
   },
   "plugins": [
     "@sanity/base",
