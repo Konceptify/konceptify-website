@@ -13,18 +13,18 @@ const Wrapper = styled.section`
 	align-items: center;
 	position: relative;
 	@media (max-width: 768px) {
-		padding: 30px 0;
+		padding: 20px;
 	}
 `
 
 const StyledH1 = styled(motion.h1)`
 	font-size: 3.5vw;
 	margin-top: -13rem;
-
 	width: 20ch;
 	color: ${(props) => props.theme.color};
 	@media (max-width: 768px) {
-		font-size: 2 rem;
+		width: 90vw;
+		font-size: 2rem;
 	}
 `
 

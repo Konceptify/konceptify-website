@@ -6,21 +6,17 @@ const Wrapper = styled.footer`
 	height: 500px;
 	position: absolute;
 	bottom: 0%;
-
-	background-color: green;
+	color: ${({ theme }) => theme.backgroundColor};
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: ${({ theme }) => theme.btnBgColor};
 
 	z-index: 1;
 `
 
 const Footer = () => {
-	return (
-		<Wrapper>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nam
-			deserunt quasi quam, ab ullam harum earum asperiores id provident
-			adipisci dolore veritatis ducimus? Alias tempore nostrum rem
-			assumenda facere!
-		</Wrapper>
-	)
+	return <Wrapper>ZITTRON much better then LIME</Wrapper>
 }
 
 export default Footer

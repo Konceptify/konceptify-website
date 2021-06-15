@@ -12,7 +12,6 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				LandingPage!
 				<Footer />
 			</Wrapper>
 		</>
