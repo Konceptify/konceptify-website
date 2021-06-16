@@ -14,7 +14,7 @@ import Legal from './pages/Legal'
 const Wrapper = styled.div`
 	width: 100vw;
 	display: flex;
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${(props) => props.theme.white};
 	flex-direction: column;
 	position: absolute;
 	overflow-x: hidden;
@@ -22,21 +22,31 @@ const Wrapper = styled.div`
 `
 const themes = {
 	darkMode: {
-		backgroundColor: '#2e3330',
+		white: '#2e3330',
 		backgroundColor2: 'transparent',
 		color: '#fff',
-		btnBgColor: '#fff',
+		primary: '#fff',
+		primary90: '#fff',
+		primary80: '#fff',
+		primary70: '#fff',
+		primary60: '#fff',
+		primary50: '#fff',
 		logoColor: '#fff',
 		btnborderColor: '#3F4F45',
 		name: 'flex-end',
 		gradient: 'linear-gradient(#091236, #1E215D)',
 	},
 	lightMode: {
-		backgroundColor: '#fff',
+		white: '#fff',
 		backgroundColor2: 'transparent',
 		color: '#292928',
 		logoColor: '#2e3330',
-		btnBgColor: '#3F4F45',
+		primary: '#3F4F45',
+		primary90: '#566c5e',
+		primary80: '#6d8877',
+		primary70: '#88a091',
+		primary60: '#a4b6ab',
+		primary50: '#c1cdc5',
 		btnborderColor: '#fff',
 		name: 'flex-start',
 		gradient: 'linear-gradient(#39598A, #79D7ED)',

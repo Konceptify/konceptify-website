@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const StyledNav = styled(motion.nav)`
 	width: 100%;
 	height: 100vh;
-	background-color: ${({ theme }) => theme.backgroundColor};
+	background-color: ${({ theme }) => theme.white};
 	position: relative;
 	z-index: 3;
 	* {

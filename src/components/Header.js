@@ -13,7 +13,7 @@ const Wrapper = styled.header`
 
 	@media (max-width: 768px) {
 		height: 60px;
-		background: ${({ theme }) => theme.backgroundColor};
+		background: ${({ theme }) => theme.white};
 	}
 `
 

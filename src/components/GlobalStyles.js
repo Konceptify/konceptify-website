@@ -4,8 +4,8 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
 
 :root {
-		--accent-color: ${({ theme }) => theme.btnBgColor};
-        --backgroundColor: ${({ theme }) => theme.backgroundColor2}
+		--accent-color: ${({ theme }) => theme.primary};
+        --white: ${({ theme }) => theme.backgroundColor2}
 	}
  
 * {

@@ -104,7 +104,7 @@ const StyledDivFormHeader = styled.div`
 	justify-content: center;
 	color: ${(props) => props.theme.color};
 	align-items: center;
-	background-color: ${({ theme }) => theme.backgroundColor};
+	background-color: ${({ theme }) => theme.white};
 
 	@media (max-width: 768px) {
 		display: none;
@@ -128,7 +128,7 @@ const StyledInput = styled(motion.input)`
 	border: none;
 	border-bottom: 3px solid #c0cbc4;
 	padding: 0 0 10px 0;
-	background-color: ${(props) => props.theme.backgroundColor};
+	background-color: ${(props) => props.theme.white};
 	margin-top: 90px;
 	outline: none;
 
@@ -155,8 +155,8 @@ const StyledInput = styled(motion.input)`
 
 const StyledBtn = styled.button`
 	border: none;
-	background-color: ${(props) => props.theme.btnBgColor};
-	color: ${(props) => props.theme.backgroundColor};
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.white};
 	border: 1px solid #212a25;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 	border-radius: 10px;

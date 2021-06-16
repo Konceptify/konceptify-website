@@ -7,11 +7,11 @@ const Wrapper = styled.footer`
 	height: 500px;
 	position: absolute;
 	bottom: 0%;
-	color: ${({ theme }) => theme.backgroundColor};
+	color: ${({ theme }) => theme.white};
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: ${({ theme }) => theme.btnBgColor};
+	background-color: ${({ theme }) => theme.primary};
 
 	z-index: 1;
 `

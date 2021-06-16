@@ -53,7 +53,7 @@ const StyledDiv = styled.div`
 const StyledButton = styled.button`
 	width: 150px;
 	height: 42.29px;
-	background-color: ${(props) => props.theme.btnBgColor};
+	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.btnborderColor};
 	border: 1px solid ${(props) => props.theme.btnborderColor};
 	border-radius: 10px;

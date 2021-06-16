@@ -1,21 +1,19 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
+import sanityClient from '../client'
 
 const StyledDiv = styled.div`
 	width: 300px;
 	height: 400px;
 	background-color: #fafafa;
-	margin: 10px;
+	margin: 0 10px;
 	position: relative;
 	display: flex;
-	justify-content: center;
+	padding-top: 50px;
 	align-items: center;
 	flex-direction: column;
+	border-radius: 3px;
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-
-	@media (max-width: 1768px) {
-		margin-top: 50px;
-	}
 `
 
 const StyledLegend = styled.div`
@@ -34,23 +32,110 @@ const StyledLegend = styled.div`
 	padding: 0 15px;
 `
 
-const PricingCard = ({ plan }) => {
-	return (
-		<StyledDiv>
-			<StyledLegend>{plan}</StyledLegend>
-			<h3>Concept</h3>
-			<h4>€ Price</h4>
-			<p>per unit monthly</p>
+const StyledH3 = styled.h3`
+	font-size: 1.5rem;
+	padding: 10px 20px;
+	text-align: center;
+	height: 60px;
+	width: 100%;
+	color: ${({ theme }) => theme.color};
+`
 
-			<ul>
-				<li>Benefit</li>
-				<li>Benefit</li>
-				<li>Benefit</li>
-				<li>Benefit</li>
-				<li>Benefit</li>
-				<li>Benefit</li>
-			</ul>
-		</StyledDiv>
+const StyledPriceContainer = styled.div`
+	width: 100%;
+`
+
+const StyledH4 = styled.h4`
+	font-size: 2rem;
+	color: ${({ theme }) => theme.color};
+
+	text-align: center;
+	text-decoration: none;
+`
+
+const StyledH42 = styled.span`
+	text-decoration: ${({ monthly }) => (monthly ? 'none' : 'line-through')};
+`
+
+const StyledUl = styled.ul`
+	position: absolute;
+	bottom: 20px;
+	height: 200px;
+`
+
+const StyledLi = styled.li`
+	width: 30ch;
+	padding-left: 20px;
+	padding-top: 9px;
+	font-size: 0.9rem;
+	list-style: none;
+	color: ${({ theme }) => theme.color};
+
+	:before {
+		content: '\f00c'; /* FontAwesome Unicode */
+		font-family: FontAwesome;
+		display: inline-block;
+		padding-right: 10px;
+	}
+`
+
+const PricingCard = ({ monthly }) => {
+	const [subscriptions, setSubscriptions] = useState([])
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "pricingBenefits"] {
+                header,
+				legend,
+				names,
+				price
+				
+            }`
+			)
+			.then((data) => setSubscriptions(data.reverse()))
+			.catch((error) => console.log(error))
+	}, [])
+
+	console.log(subscriptions)
+
+	return (
+		<>
+			{subscriptions &&
+				subscriptions.map((item, index) => {
+					return (
+						<StyledDiv key={index}>
+							<StyledLegend>{item.legend}</StyledLegend>
+							<StyledH42>
+								{!monthly && `€ ${item.price * 12}`}
+							</StyledH42>
+							<StyledPriceContainer>
+								<StyledH4 monthly={monthly}>
+									{monthly
+										? `€ ${item.price}`
+										: `€ ${
+												Math.floor(
+													(item.price *
+														12) /
+														100
+												) * 100
+										  }`}
+								</StyledH4>
+							</StyledPriceContainer>
+							<StyledH3>{item.header}</StyledH3>
+
+							<StyledUl>
+								{item.names.map((name) => {
+									return (
+										<StyledLi key={name}>
+											{name}
+										</StyledLi>
+									)
+								})}
+							</StyledUl>
+						</StyledDiv>
+					)
+				})}
+		</>
 	)
 }
 
