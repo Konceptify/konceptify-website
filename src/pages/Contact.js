@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import Snackbar from '@material-ui/core/Snackbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -6,6 +6,9 @@ import CloseIcon from '@material-ui/icons/Close'
 import apiKey from '../emailkey'
 import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
+import { IoMdArrowRoundForward } from 'react-icons/io'
+import MobileFooter from '../components/MobileFooter'
+import sanityClient from '../client'
 
 import Background from '../Rectangle 2977.png'
 
@@ -159,15 +162,39 @@ const StyledBtn = styled.button`
 	color: ${(props) => props.theme.white};
 	border: 1px solid #212a25;
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 10px;
-	height: 50px;
+	border-radius: 20px;
+	height: 48px;
 	margin-top: 80px;
 	cursor: pointer;
+	font-size: 1.2rem;
+	padding: 20px 0px;
+	width: 55%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	svg {
+		padding-top: 3px;
+	}
 `
 
 const Contact = () => {
 	const [open, setOpen] = useState(false)
 	const [snackbarMessage, setSnackbarMessage] = useState('')
+	const [data, setData] = useState(null)
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "contactHeader"] {
+                title
+            }`
+			)
+			.then((data) => setData(data[0]))
+			.catch((error) => console.log(error))
+	}, [])
+
+	console.log(data)
 
 	const emailRef = useRef()
 	const nameRef = useRef()
@@ -223,7 +250,7 @@ const Contact = () => {
 
 			<Wrapper>
 				<StyledDiv>
-					<StyledH1>Dont hesitate to reach out</StyledH1>
+					<StyledH1>{data && data.title}</StyledH1>
 					<StyledUl>
 						<StyledLi>GREV TUREGATAN 3</StyledLi>
 						<StyledLi>+46 8 124 104 68</StyledLi>
@@ -256,7 +283,10 @@ const Contact = () => {
 							placeholder='Telephone'
 							ref={telephoneRef}
 						/>
-						<StyledBtn>SEND</StyledBtn>
+						<StyledBtn>
+							Get back to me{' '}
+							<IoMdArrowRoundForward size={30} />
+						</StyledBtn>
 					</StyledForm>
 				</StyledDiv>
 				<Snackbar
@@ -282,6 +312,7 @@ const Contact = () => {
 					}
 				/>
 			</Wrapper>
+			<MobileFooter />
 		</>
 	)
 }

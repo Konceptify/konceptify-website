@@ -22,6 +22,7 @@ const LogoText = styled.p`
 	font-size: 2rem;
 	letter-spacing: 0.6rem;
 	padding: 10px 10px;
+
 	a {
 		text-decoration: none;
 
@@ -34,10 +35,13 @@ const LogoText = styled.p`
 			color: #000;
 			font-size: 1rem;
 			letter-spacing: 0.4rem;
-			padding: 1px 1px;
-			position: relative;
-			top: -15px;
-			left: -5px;
+			padding: 15px 15px;
+
+			position: absolute;
+			top: 0;
+
+			left: 0;
+			z-index: 200;
 		}
 	}
 `
@@ -67,15 +71,22 @@ const MenuBtn = styled(motion.button)`
 
 	@media (max-width: 768px) {
 		padding: 20px 20px;
+		font-size: 0.5rem;
 	}
 `
 
-const Header = ({ setOpenNav, openNav, open, theme }) => {
+const Header = ({ setOpenNav, openNav, theme }) => {
 	const location = useLocation()
 
 	return (
 		<Wrapper>
-			{openNav && <NavBar theme={theme} setOpenNav={setOpenNav} />}
+			{openNav && (
+				<NavBar
+					openNav={openNav}
+					theme={theme}
+					setOpenNav={setOpenNav}
+				/>
+			)}
 			<StyledUl>
 				<li>
 					<LogoText location={location}>

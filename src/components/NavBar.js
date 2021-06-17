@@ -12,6 +12,7 @@ const StyledNav = styled(motion.nav)`
 	z-index: 3;
 	* {
 		color: ${(props) => props.theme.color};
+		font-size: 1rem;
 	}
 
 	@media (max-width: 768px) {
@@ -27,15 +28,15 @@ const StyledMainList = styled.ul`
 	justify-content: space-around;
 	list-style: none;
 	align-items: flex-start;
-	padding: 50px 0 0 0;
+	padding: 80px 0 0 0;
 `
 
 const StyledSubList = styled.ul`
 	list-style: none;
 
 	li:first-child {
-		margin: 20px 0;
-		font-size: 2rem;
+		margin: 20px 0 0 0;
+		font-size: 1.5rem;
 	}
 	a {
 		text-decoration: none;
@@ -46,7 +47,7 @@ const StyledSubList = styled.ul`
 `
 
 const StyledIconsContainer = styled.div`
-	position: absolute;
+	position: fixed;
 	bottom: 60px;
 	right: 60px;
 	display: flex;
@@ -79,7 +80,7 @@ const variantsIcon = {
 	},
 }
 
-const NavBar = ({ setOpenNav }) => {
+const NavBar = ({ setOpenNav, openNav }) => {
 	return (
 		<StyledNav
 			initial='hidden'
@@ -89,18 +90,13 @@ const NavBar = ({ setOpenNav }) => {
 		>
 			<StyledMainList onClick={() => setOpenNav(false)}>
 				<StyledSubList>
-					<li>
-						<Link to='/'>HOME</Link>
-					</li>
-				</StyledSubList>
-				<StyledSubList>
 					<li>ZML</li>
 					<li>ZITTRON MICRO LEARNING</li>
 				</StyledSubList>
 				<StyledSubList>
-					<li>
-						<Link to='/pricing'>PRICING</Link>
-					</li>
+					<Link to='/pricing'>
+						<li>PRICING</li>
+					</Link>
 				</StyledSubList>
 				<StyledSubList>
 					<li>COMPANY</li>
@@ -113,13 +109,9 @@ const NavBar = ({ setOpenNav }) => {
 					<li>LATEST</li>
 				</StyledSubList>
 				<StyledSubList>
-					<li>
-						<Link to='/contact'>C0NTACT</Link>
-					</li>
-
-					<li>
-						<Link to='/contact'>C0NTACT US</Link>
-					</li>
+					<Link to='/contact'>
+						<li>C0NTACT</li>
+					</Link>
 				</StyledSubList>
 			</StyledMainList>
 			<StyledIconsContainer>
