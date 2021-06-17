@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
 import Background from '../img/pricingbackground.png'
 import PricingImg from '../img/pricing.png'
 
-const Wrapper = styled.section`
+const Wrapper = styled(motion.section)`
 	background-color: ${({ theme }) => theme.white};
 	width: 100vw;
 	height: 100vh;
@@ -18,22 +19,82 @@ const Wrapper = styled.section`
 	overflow: hidden;
 	@media (max-width: 768px) {
 		justify-content: flex-start;
-		overflow: auto;
+
+		flex-direction: column;
+		height: 1500px;
+	}
+	@media (max-width: 1768px) {
 	}
 `
 
+const StyledDiv = styled.div`
+	display: flex;
+	width: 30%;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+	z-index: 1;
+	padding: 0 30px;
+	height: 80vh;
+	margin-right: 10px;
+	border-radius: 4px;
+	background-color: ${({ theme }) => theme.primary90};
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	justify-content: space-between;
+	@media (max-width: 768px) {
+		flex-direction: column;
+		width: 100%;
+		justify-content: flex-start;
+		margin-right: 0px;
+		margin-top: 50px;
+		height: auto;
+		background-color: ${({ theme }) => theme.primary50};
+	}
+`
+
+const StyledDiv2 = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 580px;
+	align-items: center;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+`
 const StyledH1 = styled.h1`
 	width: 100%;
 	padding: 30px 20px;
 	font-size: 1.5rem;
 	color: ${({ theme }) => theme.white};
+
+	@media (max-width: 768px) {
+		color: ${({ theme }) => theme.primary90};
+		text-align: center;
+		font-size: 1.3rem;
+	}
 `
 
 const StyledH3 = styled.h3`
 	margin-top: 20px;
 	padding-left: 20px;
-	font-size: 2rem;
+	font-size: 1.5rem;
+	width: 40vw;
 	color: ${({ theme }) => theme.color};
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+`
+const StyledSwitchDiv = styled.div`
+	padding-left: 20px;
+	padding-top: 20px;
+
+	@media (max-width: 768px) {
+		padding: 0;
+		margin: 20px 0;
+	}
 `
 
 const StyledPriceSelect = styled.div`
@@ -45,6 +106,10 @@ const StyledPriceSelect = styled.div`
 	align-items: center;
 	transition-duration: 1s;
 	justify-content: ${(props) => (props.monthly ? 'flex-start' : 'flex-end')};
+
+	@media (max-width: 768px) {
+		margin: 0;
+	}
 `
 
 const StyledToggle = styled.div`
@@ -74,6 +139,10 @@ const StyledAside = styled.div`
 	:hover {
 		transform: scale(1.1);
 	}
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 const StyledLink = styled(Link)`
@@ -83,6 +152,10 @@ const StyledLink = styled(Link)`
 	font-size: 0.8rem;
 	color: ${({ theme }) => theme.white};
 	font-weight: 700;
+
+	span {
+		font-size: 0.9rem;
+	}
 `
 
 const StyledImg = styled.img`
@@ -111,14 +184,11 @@ const StyledCardContainer = styled.div`
 	display: flex;
 	justify-content: center;
 	@media (max-width: 768px) {
-		flex-direction: column;
 		align-items: center;
-		background: linear-gradient(
-			to bottom,
-			var(--white) 50%,
-			var(--accent-color) 50%
-		);
+		justify-content: flex-start;
 		background: var(--accent-color);
+		width: 100%;
+		flex-direction: column;
 	}
 `
 
@@ -126,38 +196,16 @@ const StyledSpan = styled.span`
 	margin: 0 0 0 5px;
 `
 
-const StyledDiv = styled.div`
-	display: flex;
-	width: 30%;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	z-index: 1;
-	padding: 0 30px;
-	height: 80vh;
-	margin-right: 10px;
-	border-radius: 4px;
-	background-color: ${({ theme }) => theme.primary90};
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-	justify-content: space-between;
-	@media (max-width: 768px) {
-		flex-direction: column;
-		justify-content: flex-start;
-	}
-`
-
-const StyledDiv2 = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	height: 580px;
-`
-
 const Pricing = () => {
-	const [monthly, setMonthly] = useState(false)
+	const [monthly, setMonthly] = useState(true)
 	return (
 		<>
-			<Wrapper>
+			<Wrapper
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 0.5 }}
+			>
 				<StyledImg src={Background} />
 				<StyledDiv>
 					<StyledH1>
@@ -172,12 +220,7 @@ const Pricing = () => {
 				</StyledDiv>
 				<StyledDiv2>
 					<StyledH3>Choose between good and great</StyledH3>
-					<div
-						style={{
-							paddingLeft: '20px',
-							paddingTop: '20px',
-						}}
-					>
+					<StyledSwitchDiv>
 						<StyledPriceSelect
 							monthly={monthly}
 							onClick={() =>
@@ -189,11 +232,11 @@ const Pricing = () => {
 							</StyledToggle>
 						</StyledPriceSelect>
 						<StyledSpan>/ unit</StyledSpan>
-					</div>
+					</StyledSwitchDiv>
 
 					<StyledAside>
 						<StyledLink to='/contact'>
-							Curious to know more? Contact us
+							Curious to know more? <span>Contact us</span>
 						</StyledLink>
 					</StyledAside>
 					<StyledCardContainer>

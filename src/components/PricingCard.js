@@ -14,6 +14,10 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 	border-radius: 3px;
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+
+	@media (max-width: 768px) {
+		margin: 20px;
+	}
 `
 
 const StyledLegend = styled.div`
@@ -51,16 +55,25 @@ const StyledH4 = styled.h4`
 
 	text-align: center;
 	text-decoration: none;
-`
 
-const StyledH42 = styled.span`
-	text-decoration: ${({ monthly }) => (monthly ? 'none' : 'line-through')};
+	span {
+		margin-right: 10px;
+		text-decoration: line-through;
+		color: ${({ theme }) => theme.color};
+		opacity: 0.4;
+	}
 `
 
 const StyledUl = styled.ul`
 	position: absolute;
-	bottom: 20px;
+	padding-top: 10px;
+	bottom: 40px;
 	height: 200px;
+
+	@media (max-width: 768px) {
+		bottom: 60px;
+		padding-top: 30px;
+	}
 `
 
 const StyledLi = styled.li`
@@ -88,15 +101,14 @@ const PricingCard = ({ monthly }) => {
                 header,
 				legend,
 				names,
-				price
+				priceMonth,
+				priceAnual
 				
             }`
 			)
 			.then((data) => setSubscriptions(data.reverse()))
 			.catch((error) => console.log(error))
 	}, [])
-
-	console.log(subscriptions)
 
 	return (
 		<>
@@ -105,20 +117,21 @@ const PricingCard = ({ monthly }) => {
 					return (
 						<StyledDiv key={index}>
 							<StyledLegend>{item.legend}</StyledLegend>
-							<StyledH42>
-								{!monthly && `€ ${item.price * 12}`}
-							</StyledH42>
+
 							<StyledPriceContainer>
 								<StyledH4 monthly={monthly}>
-									{monthly
-										? `€ ${item.price}`
-										: `€ ${
-												Math.floor(
-													(item.price *
-														12) /
-														100
-												) * 100
-										  }`}
+									{monthly ? (
+										`€${item.priceMonth}`
+									) : (
+										<>
+											<span>
+												€
+												{item.priceMonth *
+													12}
+											</span>
+											€{item.priceAnual}
+										</>
+									)}
 								</StyledH4>
 							</StyledPriceContainer>
 							<StyledH3>{item.header}</StyledH3>

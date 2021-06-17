@@ -14,8 +14,13 @@ export default {
 			type: 'string',
 		},
 		{
-			title: 'Price',
-			name: 'price',
+			title: 'Price Month',
+			name: 'priceMonth',
+			type: 'number',
+		},
+		{
+			title: 'Price Anual',
+			name: 'priceAnual',
 			type: 'number',
 		},
 		{

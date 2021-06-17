@@ -5,7 +5,7 @@ import sanityClient from '../client'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 
-const Wrapper = styled.section`
+const Wrapper = styled(motion.section)`
 	height: 100vh;
 	width: 100%;
 	padding: 10px 120px;
@@ -88,7 +88,6 @@ const StyledButton = styled.button`
 
 const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
-	console.log(myRef)
 
 	useEffect(() => {
 		sanityClient
@@ -115,7 +114,12 @@ const Hero = ({ myRef }) => {
 	}
 
 	return (
-		<Wrapper>
+		<Wrapper
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 1.2 }}
+		>
 			<StyledDiv>
 				{
 					<StyledH1

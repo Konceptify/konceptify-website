@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from './components/GlobalStyles'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -57,30 +58,40 @@ const App = () => {
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
 	const [openNav, setOpenNav] = useState(false)
 	const myRef = useRef()
+	const location = useLocation()
 
 	return (
 		<>
-			<ThemeProvider theme={themes.lightMode}>
-				<GlobalStyles />
-				<Wrapper>
-					<Header openNav={openNav} setOpenNav={setOpenNav} />
-					<Switch>
-						<Route exact path='/'>
-							<Hero myRef={myRef} />
-							<LandingPage myRef={myRef} />
-						</Route>
-						<Route path='/contact'>
-							<Contact />
-						</Route>
-						<Route path='/pricing'>
-							<Pricing />
-						</Route>
-						<Route path='/legal'>
-							<Legal />
-						</Route>
-					</Switch>
-				</Wrapper>
-			</ThemeProvider>
+			{' '}
+			<AnimatePresence exitBeforeEnter initial={true}>
+				<ThemeProvider theme={themes.lightMode}>
+					<GlobalStyles />
+					<Wrapper>
+						<Header
+							openNav={openNav}
+							setOpenNav={setOpenNav}
+						/>
+						<Switch
+							location={location}
+							key={location.pathname}
+						>
+							<Route exact path='/'>
+								<Hero myRef={myRef} />
+								<LandingPage myRef={myRef} />
+							</Route>
+							<Route path='/contact'>
+								<Contact />
+							</Route>
+							<Route path='/pricing'>
+								<Pricing />
+							</Route>
+							<Route path='/legal'>
+								<Legal />
+							</Route>
+						</Switch>
+					</Wrapper>
+				</ThemeProvider>
+			</AnimatePresence>
 		</>
 	)
 }
