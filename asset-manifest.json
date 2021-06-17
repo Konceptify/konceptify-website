@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/zittron-website/static/js/main.029e1352.chunk.js",
+    "main.js.map": "/zittron-website/static/js/main.029e1352.chunk.js.map",
+    "runtime-main.js": "/zittron-website/static/js/runtime-main.99e080f4.js",
+    "runtime-main.js.map": "/zittron-website/static/js/runtime-main.99e080f4.js.map",
+    "static/js/2.33ea1e10.chunk.js": "/zittron-website/static/js/2.33ea1e10.chunk.js",
+    "static/js/2.33ea1e10.chunk.js.map": "/zittron-website/static/js/2.33ea1e10.chunk.js.map",
+    "index.html": "/zittron-website/index.html",
+    "precache-manifest.f6ba1d131c4c23b408f1f33ceab6e004.js": "/zittron-website/precache-manifest.f6ba1d131c4c23b408f1f33ceab6e004.js",
+    "service-worker.js": "/zittron-website/service-worker.js",
+    "static/js/2.33ea1e10.chunk.js.LICENSE.txt": "/zittron-website/static/js/2.33ea1e10.chunk.js.LICENSE.txt",
+    "static/media/heroimg.png": "/zittron-website/static/media/heroimg.c67cfa28.png",
+    "static/media/pricing.png": "/zittron-website/static/media/pricing.4ea2f243.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.99e080f4.js",
+    "static/js/2.33ea1e10.chunk.js",
+    "static/js/main.029e1352.chunk.js"
+  ]
+}
