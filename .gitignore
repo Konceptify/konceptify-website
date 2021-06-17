@@ -11,6 +11,7 @@ src/emailkey.js
 
 # production
 /build
+/studio
 
 # misc
 .DS_Store
