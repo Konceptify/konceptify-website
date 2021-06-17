@@ -41,13 +41,18 @@ const StyledImg = styled(motion.img)`
 	max-width: 70vw;
 	margin-left: 40%;
 	@media (max-width: 768px) {
-		display: none;
+		position: absolute;
+		top: 0;
+		right: -50px;
+		max-width: 100%;
+		opacity: 0.5;
 	}
 `
 
 const StyledDiv = styled.div`
 	width: 50%;
 	position: absolute;
+	z-index: 1;
 `
 
 const StyledButton = styled.button`
@@ -82,12 +87,23 @@ const StyledButton = styled.button`
 	}
 
 	@media (max-width: 768px) {
-		display: none;
 	}
 `
 
 const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
+
+	const variantsBtn = {
+		initial: {
+			rotate: '0deg',
+		},
+		animate: {
+			rotate: '45deg',
+		},
+		transition: {
+			duration: 1,
+		},
+	}
 
 	useEffect(() => {
 		sanityClient
@@ -137,13 +153,22 @@ const Hero = ({ myRef }) => {
 						initial={'hidden'}
 						animate={'visible'}
 						variants={variants2}
-						transition={{ duration: 1 }}
+						transition={'{ duration: 1 }'}
 					>
 						{data && data[0].title}
 					</StyledH2>
 				}
 				<StyledButton
-					onClick={() => myRef.current.scrollIntoView()}
+					initial={'initial'}
+					whileTap={'animate'}
+					variants={variantsBtn}
+					transition={'transition'}
+					onClick={() =>
+						setTimeout(
+							() => myRef.current.scrollIntoView(),
+							500
+						)
+					}
 				>
 					LEARN MORE
 					<StyledArrow size={20} />
