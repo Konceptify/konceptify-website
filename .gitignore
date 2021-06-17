@@ -13,6 +13,8 @@ src/emailkey.js
 /build
 /studio
 
+
+
 # misc
 .DS_Store
 .env.local
