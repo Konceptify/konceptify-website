@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
 
 const StyledNav = styled(motion.nav)`
 	width: 100%;
@@ -44,17 +45,16 @@ const StyledSubList = styled.ul`
 	}
 `
 
-/* const CloseBtn = styled.button`
-	display: inline;
-	background-color: transparent;
-	border: none;
-	display: inline-block;
+const StyledIconsContainer = styled.div`
 	position: absolute;
-	right: 0;
-	top: 0;
-	padding: 30px 40px;
-	font-size: 4rem;
-` */
+	bottom: 60px;
+	right: 60px;
+	display: flex;
+	flex-direction: column;
+	* {
+		margin-top: 10px;
+	}
+`
 
 const variants = {
 	hidden: {
@@ -65,6 +65,17 @@ const variants = {
 	},
 	transition: {
 		duration: 1,
+	},
+}
+const variantsIcon = {
+	hidden: {
+		scale: 1,
+	},
+	visible: {
+		scale: [1, 1.2, 1],
+	},
+	transition: {
+		duration: 0.5,
 	},
 }
 
@@ -105,29 +116,45 @@ const NavBar = ({ setOpenNav }) => {
 					<li>
 						<Link to='/contact'>C0NTACT</Link>
 					</li>
-					<li>
-						<a
-							target='_blank'
-							rel='noopener noreferrer'
-							href='https://www.linkedin.com/company/zittron'
-						>
-							LINKEDIN
-						</a>
-					</li>
-					<li>
-						<a
-							target='_blank'
-							rel='noopener noreferrer'
-							href='https://www.instagram.com/zittron/'
-						>
-							INSTAGRAM
-						</a>
-					</li>
+
 					<li>
 						<Link to='/contact'>C0NTACT US</Link>
 					</li>
 				</StyledSubList>
 			</StyledMainList>
+			<StyledIconsContainer>
+				<a
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://www.linkedin.com/company/zittron'
+				>
+					<motion.div
+						initial='hidden'
+						whileTap='visible'
+						whileHover='visible'
+						transition='transition'
+						variants={variantsIcon}
+					>
+						<RiLinkedinFill size='40' />
+					</motion.div>
+				</a>
+
+				<a
+					target='_blank'
+					rel='noopener noreferrer'
+					href='https://www.instagram.com/zittron/'
+				>
+					<motion.div
+						initial='hidden'
+						whileTap='visible'
+						whileHover='visible'
+						transition='transition'
+						variants={variantsIcon}
+					>
+						<RiInstagramLine size='40' />
+					</motion.div>
+				</a>
+			</StyledIconsContainer>
 		</StyledNav>
 	)
 }
