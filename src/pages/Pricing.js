@@ -139,8 +139,11 @@ const StyledAside = styled.div`
 	align-items: center;
 	background-color: ${({ theme }) => theme.primary70};
 	padding: 10px;
+	transition: 0.5s linear;
+	transform: scale(1);
 	:hover {
 		transform: scale(1.1);
+		transition: 0.5s linear;
 	}
 
 	@media (max-width: 768px) {
@@ -152,36 +155,27 @@ const StyledLink = styled(Link)`
 	color: ${({ theme }) => theme.color};
 	text-decoration: none;
 	text-align: center;
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 	color: ${({ theme }) => theme.white};
 	font-weight: 700;
 
 	span {
-		font-size: 0.9rem;
+		font-size: 0.8rem;
 	}
 `
-
-/* const StyledImg = styled.img`
-	position: absolute;
-	bottom: -10px;
-	width: 100%;
-	height: 50%;
-
-	@media (max-width: 768px) {
-		display: none;
-	}
-	@media (max-width: 1768px) {
-		height: 60%;
-		bottom: -10px;
-	}
-` */
 
 const BackgroundDiv = styled.div`
 	position: absolute;
 	bottom: 0;
 	width: 100vw;
-	height: 50vh;
+	height: 50%;
 	z-index: -1;
+`
+
+const StyledWave = styled(Wave)`
+	position: absolute;
+	top: 0px;
+	z-index: ${(props) => props.index};
 `
 
 const StyledPricingImg = styled.img`
@@ -207,12 +201,6 @@ const StyledSpan = styled.span`
 	margin: 0 0 0 5px;
 `
 
-const StyledWave = styled(Wave)`
-	position: absolute;
-	top: 0;
-	z-index: ${(props) => props.index};
-`
-
 const Pricing = () => {
 	const [monthly, setMonthly] = useState(true)
 	return (
@@ -231,8 +219,8 @@ const Pricing = () => {
 						options={{
 							height: 20,
 							amplitude: 20,
-							speed: 0.25,
-							points: 3,
+							speed: 0.15,
+							points: 4,
 						}}
 					/>
 					<StyledWave
@@ -240,10 +228,10 @@ const Pricing = () => {
 						paused={false}
 						index='0'
 						options={{
-							height: 4,
-							amplitude: 30,
-							speed: 0.25,
-							points: 5,
+							height: 20,
+							amplitude: 20,
+							speed: 0.15,
+							points: 3,
 						}}
 					/>
 				</BackgroundDiv>
