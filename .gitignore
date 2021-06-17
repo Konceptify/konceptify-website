@@ -4,8 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-src/client.js
-src/emailkey.js
+
 # testing
 /coverage
 
