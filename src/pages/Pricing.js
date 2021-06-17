@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
-import Background from '../img/pricingbackground.png'
+/* import Background from '../img/pricingbackground.png' */
 import PricingImg from '../img/pricing.png'
+import Wave from 'react-wavify'
 
 const Wrapper = styled(motion.section)`
-	background-color: ${({ theme }) => theme.white};
+	background: linear-gradient(to bottom, #fff 60%, #3f4f45 50%);
 	width: 100vw;
 	height: 100vh;
 	display: flex;
@@ -130,6 +131,8 @@ const StyledAside = styled.div`
 	bottom: 80%;
 	width: 100px;
 	height: 100px;
+	min-width: 100px;
+	min-height: 100px;
 	border-radius: 50%;
 	display: flex;
 	justify-content: center;
@@ -158,7 +161,7 @@ const StyledLink = styled(Link)`
 	}
 `
 
-const StyledImg = styled.img`
+/* const StyledImg = styled.img`
 	position: absolute;
 	bottom: -10px;
 	width: 100%;
@@ -171,6 +174,14 @@ const StyledImg = styled.img`
 		height: 60%;
 		bottom: -10px;
 	}
+` */
+
+const BackgroundDiv = styled.div`
+	position: absolute;
+	bottom: 0;
+	width: 100vw;
+	height: 50vh;
+	z-index: -1;
 `
 
 const StyledPricingImg = styled.img`
@@ -196,6 +207,12 @@ const StyledSpan = styled.span`
 	margin: 0 0 0 5px;
 `
 
+const StyledWave = styled(Wave)`
+	position: absolute;
+	top: 0;
+	z-index: ${(props) => props.index};
+`
+
 const Pricing = () => {
 	const [monthly, setMonthly] = useState(true)
 	return (
@@ -206,7 +223,30 @@ const Pricing = () => {
 				exit={{ opacity: 0 }}
 				transition={{ duration: 0.5 }}
 			>
-				<StyledImg src={Background} />
+				<BackgroundDiv>
+					<StyledWave
+						fill='#3F4F45'
+						paused={false}
+						index='1'
+						options={{
+							height: 20,
+							amplitude: 20,
+							speed: 0.25,
+							points: 3,
+						}}
+					/>
+					<StyledWave
+						fill='#a4b6ab'
+						paused={false}
+						index='0'
+						options={{
+							height: 4,
+							amplitude: 30,
+							speed: 0.25,
+							points: 5,
+						}}
+					/>
+				</BackgroundDiv>
 				<StyledDiv>
 					<StyledH1>
 						Get started today with your virtual management
