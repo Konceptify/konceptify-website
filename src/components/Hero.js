@@ -93,10 +93,6 @@ const StyledButton = styled.button`
 
 const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
-	const [language] = useState(
-		window.navigator.language === 'sv-SE' ? true : false
-	)
-	console.log(language)
 
 	const variantsBtn = {
 		initial: {
@@ -114,10 +110,17 @@ const Hero = ({ myRef }) => {
 		sanityClient
 			.fetch(
 				`*[_type == "heroHeadline"] {
-                title
+                title,
+				mainTitle,
             }`
 			)
-			.then((data) => setData(data))
+			.then((data) =>
+				setData(
+					window.navigator.language === 'sv-SE' || 'sv'
+						? data[0]
+						: data[1]
+				)
+			)
 			.catch((error) => console.log(error))
 	}, [])
 
@@ -149,9 +152,7 @@ const Hero = ({ myRef }) => {
 						variants={variants}
 						transition={{ duration: 0.5 }}
 					>
-						{language
-							? data && data[0].title
-							: data && data[1].title}
+						{data && data.mainTitle}
 					</StyledH1>
 				}
 
@@ -162,7 +163,7 @@ const Hero = ({ myRef }) => {
 						variants={variants2}
 						transition={'{ duration: 1 }'}
 					>
-						{data && data[1].title}
+						{data && data.title}
 					</StyledH2>
 				}
 				<StyledButton
@@ -177,7 +178,9 @@ const Hero = ({ myRef }) => {
 						)
 					}
 				>
-					LEARN MORE
+					{window.navigator.language === 'sv-SE' || 'sv'
+						? 'LÄS MER'
+						: 'LEARN MORE'}
 					<StyledArrow size={20} />
 				</StyledButton>
 			</StyledDiv>

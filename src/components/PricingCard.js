@@ -100,7 +100,9 @@ const PricingCard = ({ monthly }) => {
 				`*[_type == "pricingBenefits"] {
                 header,
 				legend,
-				names,
+				benefits,
+				benefitsSwe,
+				headerSwe,
 				priceMonth,
 				priceAnual
 				
@@ -114,6 +116,7 @@ const PricingCard = ({ monthly }) => {
 		<>
 			{subscriptions &&
 				subscriptions.map((item, index) => {
+					console.log(item)
 					return (
 						<StyledDiv key={index}>
 							<StyledLegend>{item.legend}</StyledLegend>
@@ -134,16 +137,34 @@ const PricingCard = ({ monthly }) => {
 									)}
 								</StyledH4>
 							</StyledPriceContainer>
-							<StyledH3>{item.header}</StyledH3>
+							<StyledH3>
+								{!window.navigator.language === 'sv' &&
+								'sv-SE'
+									? item.header
+									: item.headerSwe}
+							</StyledH3>
 
 							<StyledUl>
-								{item.names.map((name) => {
-									return (
-										<StyledLi key={name}>
-											{name}
-										</StyledLi>
-									)
-								})}
+								{!window.navigator.language === 'sv' &&
+								'sv-SE'
+									? item.benefits.map((name) => {
+											return (
+												<StyledLi
+													key={name}
+												>
+													{name}
+												</StyledLi>
+											)
+									  })
+									: item.benefitsSwe.map((name) => {
+											return (
+												<StyledLi
+													key={name}
+												>
+													{name}
+												</StyledLi>
+											)
+									  })}
 							</StyledUl>
 						</StyledDiv>
 					)

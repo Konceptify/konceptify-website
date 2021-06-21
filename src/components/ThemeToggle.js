@@ -23,7 +23,6 @@ const ThemeToggle = ({ setTheme, theme, themes }) => {
 		setTheme(
 			theme === themes.darkMode ? themes.lightMode : themes.darkMode
 		)
-		console.log('Theme changed!')
 	}
 
 	return (

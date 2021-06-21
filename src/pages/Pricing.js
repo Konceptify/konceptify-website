@@ -1,12 +1,14 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
 import Footer from '../components/Footer'
-/* import Background from '../img/pricingbackground.png' */
+
 import PricingImg from '../img/pricing.png'
 import Wave from 'react-wavify'
+
+import sanityClient from '../client'
 
 const Wrapper = styled(motion.section)`
 	background: linear-gradient(to bottom, #fff 60%, #3f4f45 50%);
@@ -78,17 +80,6 @@ const StyledH1 = styled.h1`
 	}
 `
 
-const StyledH3 = styled.h3`
-	margin-top: 20px;
-	padding-left: 20px;
-	font-size: 1.5rem;
-	width: 40vw;
-	color: ${({ theme }) => theme.color};
-
-	@media (max-width: 768px) {
-		display: none;
-	}
-`
 const StyledSwitchDiv = styled.div`
 	padding-left: 20px;
 	padding-top: 20px;
@@ -204,6 +195,22 @@ const StyledSpan = styled.span`
 
 const Pricing = () => {
 	const [monthly, setMonthly] = useState(true)
+	const [pageHeader, setPageHeader] = useState()
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "pricingPageHeader"] {
+                title,
+				titleSwe
+            }`
+			)
+			.then((data) => setPageHeader(data[0]))
+			.catch((error) => console.log(error))
+	}, [])
+
+	console.log(pageHeader)
+
 	return (
 		<>
 			<Wrapper
@@ -238,8 +245,9 @@ const Pricing = () => {
 				</BackgroundDiv>
 				<StyledDiv>
 					<StyledH1>
-						Get started today with your virtual management
-						platform to access full control from everywhere
+						{window.navigator.language === 'sv'
+							? pageHeader && pageHeader.titleSwe
+							: pageHeader && pageHeader.title}
 						{/* SANITY */}
 					</StyledH1>
 					<StyledPricingImg
@@ -248,7 +256,6 @@ const Pricing = () => {
 					/>
 				</StyledDiv>
 				<StyledDiv2>
-					<StyledH3>Choose between good and great</StyledH3>
 					<StyledSwitchDiv>
 						<StyledPriceSelect
 							monthly={monthly}

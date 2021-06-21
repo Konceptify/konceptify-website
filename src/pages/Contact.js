@@ -203,7 +203,7 @@ const Contact = () => {
 
 	const handleSubmit = (e) => {
 		e.preventDefault()
-		console.log(e.target)
+
 		if (
 			emailRef.current.value &&
 			nameRef.current.value &&
