@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
+import Footer from '../components/Footer'
 /* import Background from '../img/pricingbackground.png' */
 import PricingImg from '../img/pricing.png'
 import Wave from 'react-wavify'
@@ -272,6 +273,7 @@ const Pricing = () => {
 					</StyledCardContainer>
 				</StyledDiv2>
 			</Wrapper>
+			<Footer />
 		</>
 	)
 }

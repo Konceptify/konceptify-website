@@ -10,6 +10,7 @@ const StyledNav = styled(motion.nav)`
 	background-color: ${({ theme }) => theme.white};
 	position: relative;
 	z-index: 3;
+	padding-left: 100px;
 	* {
 		color: ${(props) => props.theme.color};
 		font-size: 1rem;
@@ -25,17 +26,27 @@ const StyledNav = styled(motion.nav)`
 
 const StyledMainList = styled.ul`
 	display: flex;
-	justify-content: space-around;
+	justify-content: center;
+	flex-direction: column;
 	list-style: none;
 	align-items: flex-start;
 	padding: 80px 0 0 0;
+
+	@media (max-width: 768px) {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		list-style: none;
+		align-items: flex-start;
+		padding: 40px 0 0 0;
+	}
 `
 
 const StyledSubList = styled.ul`
 	list-style: none;
-
+	margin: 30px;
 	li:first-child {
-		margin: 20px 0 0 0;
+		margin: 10px 0 0 0;
 		font-size: 1.5rem;
 	}
 	a {
@@ -91,7 +102,6 @@ const NavBar = ({ setOpenNav, openNav }) => {
 			<StyledMainList onClick={() => setOpenNav(false)}>
 				<StyledSubList>
 					<li>ZML</li>
-					<li>ZITTRON MICRO LEARNING</li>
 				</StyledSubList>
 				<StyledSubList>
 					<Link to='/pricing'>
@@ -100,13 +110,9 @@ const NavBar = ({ setOpenNav, openNav }) => {
 				</StyledSubList>
 				<StyledSubList>
 					<li>COMPANY</li>
-					<li>TEAM</li>
-					<li>STORY</li>
 				</StyledSubList>
 				<StyledSubList>
 					<li>NEWS</li>
-					<li>NEWSLETTER</li>
-					<li>LATEST</li>
 				</StyledSubList>
 				<StyledSubList>
 					<Link to='/contact'>

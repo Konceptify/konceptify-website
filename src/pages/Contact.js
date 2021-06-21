@@ -8,6 +8,7 @@ import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import MobileFooter from '../components/MobileFooter'
+import Footer from '../components/Footer'
 import sanityClient from '../client'
 
 import Background from '../Rectangle 2977.png'
@@ -313,6 +314,7 @@ const Contact = () => {
 				/>
 			</Wrapper>
 			<MobileFooter />
+			<Footer />
 		</>
 	)
 }

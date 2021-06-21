@@ -22,6 +22,8 @@ body {
 `
 
 const GlobalStyles = () => {
+
+	
 	return <GlobalStyle />
 }
 

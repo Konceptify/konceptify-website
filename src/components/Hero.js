@@ -22,6 +22,7 @@ const StyledH1 = styled(motion.h1)`
 	margin-top: -13rem;
 	width: 20ch;
 	color: ${(props) => props.theme.color};
+	letter-spacing: -1px;
 	@media (max-width: 768px) {
 		width: 90vw;
 		font-size: 2rem;
@@ -38,12 +39,12 @@ const StyledH2 = styled(motion.h2)`
 `
 
 const StyledImg = styled(motion.img)`
-	max-width: 70vw;
+	max-width: 60vw;
 	margin-left: 40%;
 	@media (max-width: 768px) {
 		position: absolute;
 		top: 0;
-		right: -50px;
+		right: 0;
 		max-width: 100%;
 		opacity: 0.5;
 	}
@@ -92,6 +93,10 @@ const StyledButton = styled.button`
 
 const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
+	const [language] = useState(
+		window.navigator.language === 'sv-SE' ? true : false
+	)
+	console.log(language)
 
 	const variantsBtn = {
 		initial: {
@@ -144,7 +149,9 @@ const Hero = ({ myRef }) => {
 						variants={variants}
 						transition={{ duration: 0.5 }}
 					>
-						{data && data[1].title}
+						{language
+							? data && data[0].title
+							: data && data[1].title}
 					</StyledH1>
 				}
 
@@ -155,7 +162,7 @@ const Hero = ({ myRef }) => {
 						variants={variants2}
 						transition={'{ duration: 1 }'}
 					>
-						{data && data[0].title}
+						{data && data[1].title}
 					</StyledH2>
 				}
 				<StyledButton

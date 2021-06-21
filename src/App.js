@@ -59,12 +59,18 @@ const App = () => {
 	const [openNav, setOpenNav] = useState(false)
 	const myRef = useRef()
 	const location = useLocation()
+	/* var mql = window.matchMedia('(prefers-color-scheme: light)') */
 
 	return (
 		<>
 			{' '}
 			<AnimatePresence exitBeforeEnter initial={true}>
 				<ThemeProvider theme={themes.lightMode}>
+					{/* <ThemeProvider
+					theme={
+						!mql.matches ? themes.lightMode : themes.darkMode
+					}
+				> */}
 					<GlobalStyles />
 					<Wrapper>
 						<Header

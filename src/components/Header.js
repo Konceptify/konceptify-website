@@ -1,15 +1,18 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from './NavBar'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
+import Hamburger from './Hamburger'
 
 const Wrapper = styled.header`
 	width: 100%;
-	height: 100px;
-	position: absolute;
+	height: 60px;
+	position: fixed;
 	z-index: 1000;
+
+	background: ${({ scroll }) => (scroll ? '#fff' : 'transparent')};
 
 	@media (max-width: 768px) {
 		height: 60px;
@@ -21,14 +24,16 @@ const LogoText = styled.p`
 	font-weight: 700;
 	font-size: 2rem;
 	letter-spacing: 0.6rem;
-	padding: 10px 10px;
+	padding: 5px 10px;
 
 	a {
 		text-decoration: none;
 
 		color: ${(props) =>
 			props.location.pathname === '/contact'
-				? '#fff'
+				? props.scroll
+					? props.theme.color
+					: '#fff'
 				: props.theme.color};
 
 		@media (max-width: 768px) {
@@ -50,7 +55,7 @@ const StyledUl = styled.ul`
 	display: flex;
 	justify-content: space-between;
 	list-style: none;
-	padding: 10px 20px;
+	padding: 10px 120px;
 	align-items: center;
 	color: ${(props) => props.theme.color};
 `
@@ -62,24 +67,37 @@ const MenuBtn = styled(motion.button)`
 	color: ${(props) => props.theme.color};
 	cursor: pointer;
 	position: absolute;
-	right: 0;
+	right: -30px;
 	top: 0;
 	z-index: 100;
-	padding: 20px 30px;
+	padding: 10px 30px;
 	font-size: 1rem;
 	font-weight: 100;
 
 	@media (max-width: 768px) {
-		padding: 20px 20px;
-		font-size: 0.5rem;
+		padding: 10px 0px;
 	}
 `
 
 const Header = ({ setOpenNav, openNav, theme }) => {
 	const location = useLocation()
+	const [scroll, setScroll] = useState(false)
+
+	const changeBackground = () => {
+		if (window.scrollY >= 26) {
+			setScroll(true)
+		} else {
+			setScroll(false)
+		}
+	}
+
+	useEffect(() => {
+		changeBackground()
+		window.addEventListener('scroll', changeBackground)
+	}, [])
 
 	return (
-		<Wrapper>
+		<Wrapper scroll={scroll}>
 			{openNav && (
 				<NavBar
 					openNav={openNav}
@@ -89,7 +107,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 			)}
 			<StyledUl>
 				<li>
-					<LogoText location={location}>
+					<LogoText scroll={scroll} location={location}>
 						<Link to='/'>ZITTRON</Link>
 					</LogoText>
 				</li>
@@ -97,7 +115,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 					<MenuBtn
 						onClick={() => setOpenNav((current) => !current)}
 					>
-						{openNav ? 'CLOSE' : 'MENU'}
+						<Hamburger openNav={openNav} />
 					</MenuBtn>
 				</li>
 			</StyledUl>
