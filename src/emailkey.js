@@ -1,5 +1,5 @@
 export default {
-	USER_ID: `user_wxOBkkzgwByLqSwq3gKCV`, //userID
-	TEMPLATE_ID: `template_o0onus4`, //templateID
-	SERVICE_ID: `service_seqausp`, //serviceID
+	USER_ID: process.env.REACT_APP_USER_ID, //userID
+	TEMPLATE_ID: process.env.REACT_APP_TEMPLATE_ID, //templateID
+	SERVICE_ID: process.env.REACT_APP_SERVICE_ID, //serviceID
 }
