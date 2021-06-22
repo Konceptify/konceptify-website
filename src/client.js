@@ -1,7 +1,7 @@
 import sanityClient from '@sanity/client'
 
 export default sanityClient({
-	projectId: 'bg3huwol',
-	dataset: 'production',
+	projectId: process.env.SANITY_STUDIO_API_PROJECT_ID,
+	dataset: process.env.SANITY_STUDIO_API_DATASET,
 	useCdn: true,
 })
