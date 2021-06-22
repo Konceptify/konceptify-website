@@ -211,10 +211,10 @@ const Contact = () => {
 		) {
 			emailjs
 				.sendForm(
-					apiKey.SERVICE_ID,
-					apiKey.TEMPLATE_ID,
+					process.env.REACT_APP_SERVICE_ID,
+					process.env.REACT_APP_TEMPLATE_ID,
 					e.target,
-					apiKey.USER_ID
+					process.env.REACT_APP_USER_ID
 				)
 				.then(
 					(result) => {
