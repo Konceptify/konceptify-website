@@ -11,7 +11,8 @@ const Wrapper = styled.header`
 	height: 60px;
 	position: fixed;
 	z-index: 1000;
-
+	opacity: ${({ scroll }) => (scroll ? 0 : 1)};
+	transition: 0.2s;
 	background: ${({ scroll }) => (scroll ? '#fff' : 'transparent')};
 
 	@media (max-width: 768px) {
@@ -89,6 +90,12 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 		} else {
 			setScroll(false)
 		}
+	}
+
+	const scrollHandler = () => {
+		window.addEventListener('scroll', () => {
+			console.log(window.scrollY)
+		})
 	}
 
 	useEffect(() => {

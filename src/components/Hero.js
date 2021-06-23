@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 
 const Wrapper = styled(motion.section)`
-	height: 100vh;
+	height: 90vh;
 	width: 100%;
 	padding: 10px 120px;
 	display: flex;
@@ -20,7 +20,7 @@ const Wrapper = styled(motion.section)`
 const StyledH1 = styled(motion.h1)`
 	font-size: 3.5vw;
 	margin-top: -13rem;
-	width: 20ch;
+	width: 18ch;
 	color: ${(props) => props.theme.color};
 	letter-spacing: -1px;
 	@media (max-width: 768px) {

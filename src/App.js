@@ -61,6 +61,14 @@ const App = () => {
 	const location = useLocation()
 	/* var mql = window.matchMedia('(prefers-color-scheme: light)') */
 
+	const scrollHandler = () => {
+		window.addEventListener('scroll', () => {
+			console.log(window.scrollY)
+		})
+	}
+
+	scrollHandler()
+
 	return (
 		<>
 			{' '}
