@@ -10,28 +10,17 @@ import MobileFooter from '../components/MobileFooter'
 import Footer from '../components/Footer'
 import sanityClient from '../client'
 
-import Background from '../Rectangle 2977.png'
-
 const Wrapper = styled.section`
 	height: 100vh;
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
-	align-items: center;
+	align-items: flex-end;
 	position: relative;
 	z-index: 2;
 
 	@media (max-width: 768px) {
 		flex-direction: column;
-	}
-`
-
-const StyledImg = styled.img`
-	position: absolute;
-	width: 55%;
-
-	@media (max-width: 768px) {
-		display: none;
 	}
 `
 
@@ -42,6 +31,25 @@ const StyledDiv = styled.div`
 	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
+
+	@media (max-width: 768px) {
+		width: 90vw;
+		justify-content: flex-start;
+		margin-top: 20%;
+	}
+`
+const StyledDiv1 = styled.div`
+	width: 80%;
+	height: 85%;
+	display: flex;
+	position: relative;
+
+	border-radius: 50px 50px 0 0;
+	margin: 0 0 20px 50px;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
+	background-color: ${(props) => props.theme.primary};
 	@media (max-width: 768px) {
 		width: 90vw;
 		justify-content: flex-start;
@@ -178,6 +186,23 @@ const StyledBtn = styled.button`
 	}
 `
 
+const StyledCircle = styled.div`
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	z-index: 1;
+	top: -50px;
+	right: 50px;
+	background-color: yellow;
+	display: inline-flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+`
+
+const StyledText = styled.p``
+
 const Contact = () => {
 	const [open, setOpen] = useState(false)
 	const [snackbarMessage, setSnackbarMessage] = useState('')
@@ -246,17 +271,20 @@ const Contact = () => {
 
 	return (
 		<>
-			<StyledImg src={Background} />
-
 			<Wrapper>
-				<StyledDiv>
+				<StyledDiv1>
 					<StyledH1>{data && data.title}</StyledH1>
 					<StyledUl>
 						<StyledLi>GREV TUREGATAN 3</StyledLi>
 						<StyledLi>+46 8 124 104 68</StyledLi>
 						<StyledLi>GOVIRTUAL@ZITTRON.COM</StyledLi>
 					</StyledUl>
-				</StyledDiv>
+					<StyledCircle>
+						<StyledText>
+							Get answer within 24 hours
+						</StyledText>
+					</StyledCircle>
+				</StyledDiv1>
 				<StyledDiv>
 					<StyledDivFormHeader>
 						<StyledP>Lets connect</StyledP>

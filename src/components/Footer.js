@@ -5,13 +5,12 @@ import { Link } from 'react-router-dom'
 const Wrapper = styled.footer`
 	width: 100vw;
 	height: 500px;
-	position: static;
+
 	bottom: 0%;
-	color: ${({ theme }) => theme.white};
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: ${({ theme }) => theme.primary};
 
 	z-index: 1;
 `
@@ -19,8 +18,7 @@ const Wrapper = styled.footer`
 const Footer = () => {
 	return (
 		<Wrapper>
-			ZITTRON much better then LIME
-			<Link to='/legal'>LEGAL</Link>
+			ZITTRON much better then LIME | <Link to='/legal'>LEGAL</Link>
 		</Wrapper>
 	)
 }

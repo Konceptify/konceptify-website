@@ -101,6 +101,11 @@ const NavBar = ({ setOpenNav, openNav }) => {
 		>
 			<StyledMainList onClick={() => setOpenNav(false)}>
 				<StyledSubList>
+					<Link to='/'>
+						<li>HOME</li>
+					</Link>
+				</StyledSubList>
+				<StyledSubList>
 					<li>ZML</li>
 				</StyledSubList>
 				<StyledSubList>

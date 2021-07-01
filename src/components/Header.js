@@ -26,16 +26,14 @@ const LogoText = styled.p`
 	font-size: 2rem;
 	letter-spacing: 0.6rem;
 	padding: 5px 10px;
+	z-index: 100;
+	position: absolute;
 
 	a {
 		text-decoration: none;
-
-		color: ${(props) =>
-			props.location.pathname === '/contact'
-				? props.scroll
-					? props.theme.color
-					: '#fff'
-				: props.theme.color};
+		z-index: 100;
+		position: absolute;
+		color: ${(props) => props.theme.color};
 
 		@media (max-width: 768px) {
 			color: #000;
@@ -43,11 +41,11 @@ const LogoText = styled.p`
 			letter-spacing: 0.4rem;
 			padding: 15px 15px;
 
-			position: absolute;
+			position: relative;
 			top: 0;
 
 			left: 0;
-			z-index: 200;
+			z-index: 100;
 		}
 	}
 `
@@ -90,12 +88,6 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 		} else {
 			setScroll(false)
 		}
-	}
-
-	const scrollHandler = () => {
-		window.addEventListener('scroll', () => {
-			console.log(window.scrollY)
-		})
 	}
 
 	useEffect(() => {

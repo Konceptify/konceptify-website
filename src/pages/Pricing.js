@@ -41,7 +41,7 @@ const StyledDiv = styled.div`
 	padding: 0 30px;
 	height: 80vh;
 	margin-right: 10px;
-	border-radius: 4px;
+	border-radius: 50px 50px 0 0;
 	background-color: ${({ theme }) => theme.primary90};
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
 	justify-content: space-between;
@@ -69,8 +69,9 @@ const StyledDiv2 = styled.div`
 `
 const StyledH1 = styled.h1`
 	width: 100%;
-	padding: 30px 20px;
-	font-size: 1.5rem;
+	padding: 60px 20px 0 20px;
+	font-size: 1.8rem;
+
 	color: ${({ theme }) => theme.white};
 
 	@media (max-width: 768px) {
