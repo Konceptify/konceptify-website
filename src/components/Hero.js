@@ -8,10 +8,12 @@ import { IoMdArrowRoundForward } from 'react-icons/io'
 const Wrapper = styled(motion.section)`
 	height: 90vh;
 	width: 100%;
-	padding: 10px 120px;
 	display: flex;
+
 	align-items: center;
+	flex-direction: row;
 	position: relative;
+	justify-content: center;
 	@media (max-width: 768px) {
 		padding: 20px;
 	}
@@ -19,7 +21,6 @@ const Wrapper = styled(motion.section)`
 
 const StyledH1 = styled(motion.h1)`
 	font-size: 3.5vw;
-	margin-top: -13rem;
 	width: 18ch;
 	color: ${(props) => props.theme.color};
 	letter-spacing: -1px;
@@ -32,15 +33,12 @@ const StyledH1 = styled(motion.h1)`
 const StyledArrow = styled(IoMdArrowRoundForward)``
 
 const StyledH2 = styled(motion.h2)`
-	margin: 20px 5px;
 	font-weight: 500;
-
+	margin-top: 20px;
 	color: ${(props) => props.theme.color};
 `
 
 const StyledImg = styled(motion.img)`
-	max-width: 60vw;
-	margin-left: 40%;
 	@media (max-width: 768px) {
 		position: absolute;
 		top: 0;
@@ -51,9 +49,7 @@ const StyledImg = styled(motion.img)`
 `
 
 const StyledDiv = styled.div`
-	width: 50%;
-	position: absolute;
-	z-index: 1;
+	padding: 70px 0px;
 `
 
 const StyledButton = styled.button`
@@ -64,6 +60,7 @@ const StyledButton = styled.button`
 	border: 1px solid ${(props) => props.theme.btnborderColor};
 	border-radius: 10px;
 	border: none;
+	margin-top: 20px;
 	letter-spacing: 2px;
 	display: flex;
 	align-items: center;
@@ -145,27 +142,24 @@ const Hero = ({ myRef }) => {
 			transition={{ duration: 1.2 }}
 		>
 			<StyledDiv>
-				{
-					<StyledH1
-						initial={'hidden'}
-						animate={'visible'}
-						variants={variants}
-						transition={{ duration: 0.5 }}
-					>
-						{data && data.mainTitle}
-					</StyledH1>
-				}
+				<StyledH1
+					initial={'hidden'}
+					animate={'visible'}
+					variants={variants}
+					transition={{ duration: 0.5 }}
+				>
+					{data && data.mainTitle}
+				</StyledH1>
 
-				{
-					<StyledH2
-						initial={'hidden'}
-						animate={'visible'}
-						variants={variants2}
-						transition={'{ duration: 1 }'}
-					>
-						{data && data.title}
-					</StyledH2>
-				}
+				<StyledH2
+					initial={'hidden'}
+					animate={'visible'}
+					variants={variants2}
+					transition={'{ duration: 1 }'}
+				>
+					{data && data.title}
+				</StyledH2>
+
 				<StyledButton
 					initial={'initial'}
 					whileTap={'animate'}
@@ -184,14 +178,17 @@ const Hero = ({ myRef }) => {
 					<StyledArrow size={20} />
 				</StyledButton>
 			</StyledDiv>
-			<StyledImg
-				initial={'hidden'}
-				animate={'visible'}
-				variants={variants3}
-				transition={{ duration: 1.5 }}
-				src={heroImg}
-				alt='hero'
-			/>
+			<StyledDiv>
+				<StyledImg
+					initial={'hidden'}
+					animate={'visible'}
+					variants={variants3}
+					transition={{ duration: 1.5 }}
+					src={heroImg}
+					alt='hero'
+					width='500'
+				/>
+			</StyledDiv>
 		</Wrapper>
 	)
 }

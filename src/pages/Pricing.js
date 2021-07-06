@@ -51,6 +51,7 @@ const StyledDiv = styled.div`
 		justify-content: flex-start;
 		margin-right: 0px;
 		margin-top: 50px;
+		border-radius: 0px;
 		height: auto;
 		background-color: ${({ theme }) => theme.primary50};
 	}
@@ -97,9 +98,17 @@ const StyledPriceSelect = styled.div`
 	background: #f1f1f1;
 	border-radius: 15px;
 	display: inline-flex;
+	flex-direction: ${(props) => (props.monthly ? 'row' : 'row-reverse')};
 	align-items: center;
 	transition-duration: 1s;
-	justify-content: ${(props) => (props.monthly ? 'flex-start' : 'flex-end')};
+	justify-content: space-between;
+
+	span {
+		color: #ccc;
+		padding-right: ${(props) => (props.monthly ? '20px' : '0px')};
+		padding-left: ${(props) => (props.monthly ? '-10px' : '20px')};
+		font-size: 0.8rem;
+	}
 
 	@media (max-width: 768px) {
 		margin: 0;
@@ -267,6 +276,7 @@ const Pricing = () => {
 							<StyledToggle>
 								{monthly ? 'MONTHLY' : 'YEARLY'}
 							</StyledToggle>
+							<span>{monthly ? 'YEARLY' : 'MONTHLY'}</span>
 						</StyledPriceSelect>
 						<StyledSpan>/ unit</StyledSpan>
 					</StyledSwitchDiv>

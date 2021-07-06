@@ -12,6 +12,7 @@ const Wrapper = styled.header`
 	position: fixed;
 	z-index: 1000;
 	opacity: ${({ scroll }) => (scroll ? 0 : 1)};
+	display: ${({ scroll }) => (scroll ? 'none' : 'block')};
 	transition: 0.2s;
 	background: ${({ scroll }) => (scroll ? '#fff' : 'transparent')};
 

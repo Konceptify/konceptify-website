@@ -46,7 +46,8 @@ const StyledDiv1 = styled.div`
 
 	border-radius: 50px 50px 0 0;
 	margin: 0 0 20px 50px;
-	justify-content: space-around;
+	justify-content: center;
+
 	align-items: center;
 	flex-direction: column;
 	background-color: ${(props) => props.theme.primary};
@@ -54,25 +55,6 @@ const StyledDiv1 = styled.div`
 		width: 90vw;
 		justify-content: flex-start;
 		margin-top: 20%;
-	}
-`
-
-const StyledH1 = styled.h1`
-	font-family: Montserrat;
-	font-style: normal;
-	font-weight: bold;
-	font-size: 5vw;
-	line-height: 73px;
-	text-align: center;
-	letter-spacing: -2px;
-	color: #fff;
-	@media (max-width: 768px) {
-		color: #000;
-		font-size: 2.5rem;
-
-		letter-spacing: 0;
-		width: 100%;
-		line-height: normal;
 	}
 `
 
@@ -97,6 +79,12 @@ const StyledLi = styled.li`
 	@media (max-width: 768px) {
 		color: black;
 	}
+`
+
+const StyledH2 = styled.h2`
+	font-size: 3rem;
+	margin-bottom: 20px;
+	color: ${({ theme }) => theme.white};
 `
 
 const StyledP = styled.p`
@@ -188,20 +176,21 @@ const StyledBtn = styled.button`
 
 const StyledCircle = styled.div`
 	border-radius: 50%;
-	width: 100px;
-	height: 100px;
+	width: 130px;
+	height: 130px;
 	position: absolute;
 	z-index: 1;
 	top: -50px;
 	right: 50px;
-	background-color: yellow;
+	background: #ffd600;
 	display: inline-flex;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
+	color: ${({ theme }) => theme.white};
+	font-weight: 700;
+	font-size: 1.2rem;
 `
-
-const StyledText = styled.p``
 
 const Contact = () => {
 	const [open, setOpen] = useState(false)
@@ -273,16 +262,14 @@ const Contact = () => {
 		<>
 			<Wrapper>
 				<StyledDiv1>
-					<StyledH1>{data && data.title}</StyledH1>
+					<StyledH2>{data && data.title}</StyledH2>
 					<StyledUl>
-						<StyledLi>GREV TUREGATAN 3</StyledLi>
+						<StyledLi>Grev Turegatan 3</StyledLi>
 						<StyledLi>+46 8 124 104 68</StyledLi>
-						<StyledLi>GOVIRTUAL@ZITTRON.COM</StyledLi>
+						<StyledLi>govirtual@zittron</StyledLi>
 					</StyledUl>
 					<StyledCircle>
-						<StyledText>
-							Get answer within 24 hours
-						</StyledText>
+						Get a reply within 24 hours
 					</StyledCircle>
 				</StyledDiv1>
 				<StyledDiv>
