@@ -19,7 +19,7 @@ const Wrapper = styled(motion.div)`
 const Next = styled.div`
 	width: 30px;
 	height: 30px;
-	margin-right: 5px;
+	margin-right: 25px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -32,7 +32,7 @@ const Next = styled.div`
 const Previous = styled.div`
 	width: 30px;
 	height: 30px;
-	margin-right: 5px;
+	margin-left: 5px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
