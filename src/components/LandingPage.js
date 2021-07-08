@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import Footer from './Footer'
-import Macbook from '../img/macbook.png'
+
 import Communicate from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
+import sanityClient from '../client'
+import imageUrlBuilder from '@sanity/image-url'
 
 const Wrapper = styled.section`
 	width: 100vw;
@@ -177,12 +179,51 @@ const LandingPage = ({ myRef }) => {
 	const [conceptSlide, setConceptSlide] = useState('Educate')
 	const sliderRef = useRef()
 
+	const [data, setData] = useState()
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "conceptOverview"] {
+                header,
+				subHeader,
+				underImage,
+				image
+				
+            }`
+			)
+			.then((data) =>
+				setData({
+					header: data[0].header,
+					subHeader: data[0].subHeader,
+					underImage: data[0].underImage,
+					image: data[0].image.asset,
+				})
+			)
+			.catch((error) => console.log(error))
+	}, [])
+
+	const builder = imageUrlBuilder(sanityClient)
+
+	// Then we like to make a simple function like this that gives the
+	// builder an image and returns the builder for you to specify additional
+	// parameters:
+	function urlFor(source) {
+		return builder.image(source)
+	}
+
+	console.log(data)
+
 	return (
 		<>
 			<Wrapper ref={myRef}>
 				<StyledSection direction='row' bg='#FCF1B7'>
 					<StyledDiv>
-						<StyledH2>Virtual Concept Manager</StyledH2>
+						<StyledH2>
+							{window.navigator.language === 'sv'
+								? data && data.header.sv
+								: data && data.header.en}
+						</StyledH2>
 						<CardContainer>
 							<StyledCard
 								onClick={() => {
@@ -210,21 +251,24 @@ const LandingPage = ({ myRef }) => {
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>
-							Connect all your units and employees in to
-							one app. Save money, be more efficient and be
-							a part of saving the planet by less commute,
-							travelling and all the surrounding eco system
+							{window.navigator.language === 'sv'
+								? data && data.subHeader.sv
+								: data && data.subHeader.en}
 						</StyledH3>
 					</StyledDiv>
 					<StyledDiv>
 						<StyledDivDesign>
-							<StyledImg
-								src={Macbook}
-								alt='demo picture'
-							/>
+							{data && (
+								<StyledImg
+									src={urlFor(data.image)
+										.width(300)
+										.url()}
+								/>
+							)}
 							<StyledH4>
-								Desktop app for managers and mobile app
-								for employees
+								{window.navigator.language === 'sv'
+									? data && data.underImage.sv
+									: data && data.underImage.en}
 							</StyledH4>
 						</StyledDivDesign>
 					</StyledDiv>
@@ -269,7 +313,10 @@ const LandingPage = ({ myRef }) => {
 					</StyledConceptDiv>
 				</StyledSection2>
 				<StyledSection bg='#ccc'></StyledSection>
-				<Footer />
+				<Footer
+					sliderRef={sliderRef}
+					setConceptSlide={setConceptSlide}
+				/>
 			</Wrapper>
 		</>
 	)

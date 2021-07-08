@@ -200,11 +200,27 @@ const Contact = () => {
 	useEffect(() => {
 		sanityClient
 			.fetch(
-				`*[_type == "contactHeader"] {
-                title
+				`*[_type == "contact"] {
+                title,
+				contactInfo,
+				replyBanner
             }`
 			)
-			.then((data) => setData(data[0]))
+			.then((data) =>
+				setData(
+					window.navigator.language === 'sv'
+						? [
+								data[0].contactInfo,
+								data[0].title.sv,
+								data[0].replyBanner.sv,
+						  ]
+						: [
+								data[0].contactInfo,
+								data[0].title.en,
+								data[0].replyBanner.en,
+						  ]
+				)
+			)
 			.catch((error) => console.log(error))
 	}, [])
 
@@ -258,27 +274,34 @@ const Contact = () => {
 		setOpen(false)
 	}
 
+	const sweLang = window.navigator.language === 'sv' ? true : false
+
 	return (
 		<>
 			<Wrapper>
 				<StyledDiv1>
-					<StyledH2>{data && data.title}</StyledH2>
+					<StyledH2>{data && data[1]}</StyledH2>
 					<StyledUl>
-						<StyledLi>Grev Turegatan 3</StyledLi>
-						<StyledLi>+46 8 124 104 68</StyledLi>
-						<StyledLi>govirtual@zittron</StyledLi>
+						{data &&
+							data[0].map((li, ind) => {
+								return (
+									<StyledLi key={ind}>{li}</StyledLi>
+								)
+							})}
 					</StyledUl>
-					<StyledCircle>
-						Get a reply within 24 hours
-					</StyledCircle>
+					<StyledCircle>{data && data[2]}</StyledCircle>
 				</StyledDiv1>
 				<StyledDiv>
 					<StyledDivFormHeader>
-						<StyledP>Lets connect</StyledP>
+						<StyledP>
+							{!sweLang
+								? 'Lets connect'
+								: 'Fyll i dina uppgifter'}
+						</StyledP>
 					</StyledDivFormHeader>
 					<StyledForm onSubmit={handleSubmit}>
 						<StyledInput
-							placeholder='Name'
+							placeholder={!sweLang ? 'Name' : 'Namn'}
 							type='text'
 							name='from_name'
 							id='from_name'
@@ -295,11 +318,16 @@ const Contact = () => {
 							type='tel'
 							name='phone'
 							id='phone'
-							placeholder='Telephone'
+							placeholder={
+								!sweLang ? 'Telephone' : 'Telefon'
+							}
 							ref={telephoneRef}
 						/>
 						<StyledBtn>
-							Get back to me{' '}
+							{!sweLang
+								? 'Get back to me'
+								: 'Kontakta mig'}
+
 							<IoMdArrowRoundForward size={30} />
 						</StyledBtn>
 					</StyledForm>

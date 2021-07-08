@@ -98,77 +98,101 @@ const PricingCard = ({ monthly }) => {
 		sanityClient
 			.fetch(
 				`*[_type == "pricingBenefits"] {
-                header,
-				legend,
-				benefits,
-				benefitsSwe,
-				headerSwe,
+                legend,
+				header,
 				priceMonth,
-				priceAnual
-				
+				priceAnual,
+				benefits,				
             }`
 			)
 			.then((data) => setSubscriptions(data.reverse()))
+
 			.catch((error) => console.log(error))
 	}, [])
+
+	console.log(subscriptions)
 
 	return (
 		<>
 			{subscriptions &&
-				subscriptions.map((item, index) => {
-					console.log(item)
-					return (
-						<StyledDiv key={index}>
-							<StyledLegend>{item.legend}</StyledLegend>
+				subscriptions.map(
+					(
+						{
+							legend,
+							priceMonth,
+							priceAnual,
+							header,
+							benefits,
+						},
+						ind
+					) => {
+						return (
+							<StyledDiv key={ind}>
+								<StyledLegend>
+									{window.navigator.language === 'sv'
+										? legend.sv
+										: legend.en}
+								</StyledLegend>
 
-							<StyledPriceContainer>
-								<StyledH4 monthly={monthly}>
-									{monthly ? (
-										`€${item.priceMonth}`
-									) : (
-										<>
-											<span>
-												€
-												{item.priceMonth *
-													12}
-											</span>
-											€{item.priceAnual}
-										</>
-									)}
-								</StyledH4>
-							</StyledPriceContainer>
-							<StyledH3>
-								{!window.navigator.language === 'sv' &&
-								'sv-SE'
-									? item.header
-									: item.headerSwe}
-							</StyledH3>
+								<StyledPriceContainer>
+									<StyledH4 monthly={monthly}>
+										{monthly ? (
+											`€${priceMonth}`
+										) : (
+											<>
+												<span>
+													€
+													{priceMonth *
+														12}
+												</span>
+												€{priceAnual}
+											</>
+										)}
+									</StyledH4>
+								</StyledPriceContainer>
+								<StyledH3>
+									{window.navigator.language === 'sv'
+										? header.sv
+										: header.en}
+								</StyledH3>
 
-							<StyledUl>
-								{!window.navigator.language === 'sv' &&
-								'sv-SE'
-									? item.benefits.map((name) => {
-											return (
-												<StyledLi
-													key={name}
-												>
-													{name}
-												</StyledLi>
-											)
-									  })
-									: item.benefitsSwe.map((name) => {
-											return (
-												<StyledLi
-													key={name}
-												>
-													{name}
-												</StyledLi>
-											)
-									  })}
-							</StyledUl>
-						</StyledDiv>
-					)
-				})}
+								<StyledUl>
+									{window.navigator.language === 'sv'
+										? benefits.sv.map(
+												(benefits, ind) => {
+													return (
+														<StyledLi
+															key={
+																ind
+															}
+														>
+															{
+																benefits
+															}
+														</StyledLi>
+													)
+												}
+										  )
+										: benefits.en.map(
+												(benefits, ind) => {
+													return (
+														<StyledLi
+															key={
+																ind
+															}
+														>
+															{
+																benefits
+															}
+														</StyledLi>
+													)
+												}
+										  )}
+								</StyledUl>
+							</StyledDiv>
+						)
+					}
+				)}
 		</>
 	)
 }

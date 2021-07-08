@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
 
-const StyledNav = styled(motion.nav)`
+const StyledNav = styled(motion.div)`
 	width: 100%;
 	height: 100vh;
 	background-color: ${({ theme }) => theme.white};
@@ -92,6 +92,7 @@ const variantsIcon = {
 }
 
 const NavBar = ({ setOpenNav, openNav }) => {
+	const lang = window.navigator === 'sv' ? true : false
 	return (
 		<StyledNav
 			initial='hidden'
@@ -102,26 +103,24 @@ const NavBar = ({ setOpenNav, openNav }) => {
 			<StyledMainList onClick={() => setOpenNav(false)}>
 				<StyledSubList>
 					<Link to='/'>
-						<li>HOME</li>
+						<li>{lang ? 'HOME' : 'HEM'}</li>
 					</Link>
 				</StyledSubList>
-				<StyledSubList>
-					<li>ZML</li>
-				</StyledSubList>
+
 				<StyledSubList>
 					<Link to='/pricing'>
-						<li>PRICING</li>
+						<li>{lang ? 'PRICING' : 'PRIS'}</li>
 					</Link>
 				</StyledSubList>
 				<StyledSubList>
-					<li>COMPANY</li>
+					<li>{lang ? 'COMPANY' : 'VI PÅ ZITTRON'}</li>
 				</StyledSubList>
 				<StyledSubList>
-					<li>NEWS</li>
+					<li>{lang ? 'NEWS' : 'NYHETER'}</li>
 				</StyledSubList>
 				<StyledSubList>
 					<Link to='/contact'>
-						<li>C0NTACT</li>
+						<li>{lang ? 'CONTACT' : 'KONTAKT'}</li>
 					</Link>
 				</StyledSubList>
 			</StyledMainList>

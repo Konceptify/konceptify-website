@@ -62,9 +62,7 @@ const App = () => {
 	/* var mql = window.matchMedia('(prefers-color-scheme: light)') */
 
 	const scrollHandler = () => {
-		window.addEventListener('scroll', () => {
-			console.log(window.scrollY)
-		})
+		window.addEventListener('scroll', () => {})
 	}
 
 	scrollHandler()
@@ -99,7 +97,7 @@ const App = () => {
 							<Route path='/pricing'>
 								<Pricing />
 							</Route>
-							<Route path='/legal'>
+							<Route path='/privacy'>
 								<Legal />
 							</Route>
 						</Switch>

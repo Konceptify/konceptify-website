@@ -205,21 +205,24 @@ const StyledSpan = styled.span`
 
 const Pricing = () => {
 	const [monthly, setMonthly] = useState(true)
-	const [pageHeader, setPageHeader] = useState()
+	const [data, setData] = useState()
 
 	useEffect(() => {
 		sanityClient
 			.fetch(
 				`*[_type == "pricingPageHeader"] {
                 title,
-				titleSwe
+				
             }`
 			)
-			.then((data) => setPageHeader(data[0]))
+			.then((data) => setData(data[0]))
 			.catch((error) => console.log(error))
 	}, [])
 
-	console.log(pageHeader)
+	console.log(data)
+
+	const monthlyS = window.navigator.language === 'sv' ? 'MÅNAD' : 'ÅR'
+	const yearlyS = window.navigator.language === 'sv' ? 'ÅR' : 'MÅNAD'
 
 	return (
 		<>
@@ -256,9 +259,8 @@ const Pricing = () => {
 				<StyledDiv>
 					<StyledH1>
 						{window.navigator.language === 'sv'
-							? pageHeader && pageHeader.titleSwe
-							: pageHeader && pageHeader.title}
-						{/* SANITY */}
+							? data && data.title.sv
+							: data && data.title.en}
 					</StyledH1>
 					<StyledPricingImg
 						alt='pricing image'
@@ -274,16 +276,23 @@ const Pricing = () => {
 							}
 						>
 							<StyledToggle>
-								{monthly ? 'MONTHLY' : 'YEARLY'}
+								{monthly ? monthlyS : yearlyS}
 							</StyledToggle>
-							<span>{monthly ? 'YEARLY' : 'MONTHLY'}</span>
+							<span>{monthly ? yearlyS : monthlyS}</span>
 						</StyledPriceSelect>
 						<StyledSpan>/ unit</StyledSpan>
 					</StyledSwitchDiv>
 
 					<StyledAside>
 						<StyledLink to='/contact'>
-							Curious to know more? <span>Contact us</span>
+							{window.navigator.language === 'sv'
+								? 'Vill du veta mer?'
+								: 'Curious to know more?'}
+							{window.navigator.language === 'sv' ? (
+								<span>Kontakta oss</span>
+							) : (
+								<span>Contact us</span>
+							)}
 						</StyledLink>
 					</StyledAside>
 					<StyledCardContainer>

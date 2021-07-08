@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import Hamburger from './Hamburger'
 
-const Wrapper = styled.header`
+const Wrapper = styled.nav`
 	width: 100%;
 	height: 60px;
 	position: fixed;

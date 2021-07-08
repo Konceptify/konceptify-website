@@ -48,7 +48,7 @@ const StyledImg = styled(motion.img)`
 	}
 `
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.header`
 	padding: 70px 0px;
 `
 
@@ -106,18 +106,18 @@ const Hero = ({ myRef }) => {
 	useEffect(() => {
 		sanityClient
 			.fetch(
-				`*[_type == "heroHeadline"] {
-                title,
+				`*[_type == "mainHeader"] {
+                subTitle,
 				mainTitle,
             }`
 			)
-			.then((data) =>
+			.then((data) => {
 				setData(
-					window.navigator.language === 'sv-SE' || 'sv'
-						? data[0]
-						: data[1]
+					window.navigator.language === 'sv'
+						? [data[0].mainTitle.sv, data[0].subTitle.sv]
+						: [data[0].mainTitle.en, data[0].subTitle.en]
 				)
-			)
+			})
 			.catch((error) => console.log(error))
 	}, [])
 
@@ -148,7 +148,7 @@ const Hero = ({ myRef }) => {
 					variants={variants}
 					transition={{ duration: 0.5 }}
 				>
-					{data && data.mainTitle}
+					{data && data[0]}
 				</StyledH1>
 
 				<StyledH2
@@ -157,7 +157,7 @@ const Hero = ({ myRef }) => {
 					variants={variants2}
 					transition={'{ duration: 1 }'}
 				>
-					{data && data.title}
+					{data && data[1]}
 				</StyledH2>
 
 				<StyledButton

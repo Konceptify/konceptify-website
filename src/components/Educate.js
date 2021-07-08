@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import VideoMockup from './VideoMockup'
 import { motion } from 'framer-motion'
+import sanityClient from '../client'
 
 const Wrapper = styled(motion.div)`
 	height: 100%;
@@ -19,6 +20,7 @@ const StyledDivDesign = styled.div`
 	border-radius: 50px 50px 0 0;
 	background: ${({ theme }) => theme.primary};
 	display: flex;
+
 	justify-content: center;
 	align-self: flex-end;
 	flex-direction: column;
@@ -42,7 +44,7 @@ const StyledH3 = styled.h3`
 const StyledH3b = styled.h3`
 	width: 80%;
 	font-size: 1rem;
-	margin-top: 20px;
+	margin-top: 40px;
 	color: ${({ theme }) => theme.white};
 	text-align: center;
 `
@@ -62,11 +64,16 @@ const StyledDivCircle = styled.div`
 	background: #ffd600;
 	color: ${({ theme }) => theme.white};
 	font-weight: 700;
+	p {
+		font-size: 0.9rem;
+		width: 11ch;
+	}
 `
 
 const StyledDiv = styled.div`
 	height: 100%;
 	width: 50%;
+	margin-top: 60px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -74,6 +81,44 @@ const StyledDiv = styled.div`
 `
 
 const Educate = ({ conceptSlide }) => {
+	const [data, setData] = useState()
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "educateTab"] {
+                header,
+				subHeader,
+				underVideo,
+				banner
+				
+            }`
+			)
+			.then((data) =>
+				setData({
+					header:
+						window.navigator.language === 'sv'
+							? data[0].header.sv
+							: data[0].header.en,
+					subHeader:
+						window.navigator.language === 'sv'
+							? data[0].subHeader.sv
+							: data[0].subHeader.en,
+					underVideo:
+						window.navigator.language === 'sv'
+							? data[0].underVideo.sv
+							: data[0].underVideo.en,
+					banner:
+						window.navigator.language === 'sv'
+							? data[0].banner.sv
+							: data[0].banner.en,
+				})
+			)
+			.catch((error) => console.log(error))
+	}, [])
+
+	console.log(data)
+
 	return (
 		<Wrapper
 			initial={{ x: '-200px' }}
@@ -81,23 +126,15 @@ const Educate = ({ conceptSlide }) => {
 			transition={{ duration: 0.05 }}
 		>
 			<StyledDivDesign>
-				<StyledH2>
-					Train your staff with short videos for better learning
-				</StyledH2>
-				<StyledH3>
-					Beacuse we all know that long paper manuals really does
-					not work right?
-				</StyledH3>
+				<StyledH2>{data && data.header}</StyledH2>
+				<StyledH3>{data && data.subHeader}</StyledH3>
 				<StyledDivCircle>
-					LEARN BETTER WITH SHORT VIDEOS
+					<p>{data && data.banner}</p>
 				</StyledDivCircle>
 			</StyledDivDesign>
 			<StyledDiv>
 				<VideoMockup />
-				<StyledH3b>
-					Need help with content creating? Choose our content
-					plan
-				</StyledH3b>
+				<StyledH3b>{data && data.underVideo}</StyledH3b>
 			</StyledDiv>
 		</Wrapper>
 	)
