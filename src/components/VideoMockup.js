@@ -79,7 +79,6 @@ const VideoMockup = () => {
 			<Previous
 				onClick={() => {
 					setNextVideo(true)
-					console.log('Hej')
 				}}
 			>
 				<PreviousArrow />

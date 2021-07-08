@@ -25,7 +25,7 @@ const Wrapper = styled(motion.section)`
 		justify-content: flex-start;
 
 		flex-direction: column;
-		height: 1500px;
+		height: 1200px;
 	}
 	@media (max-width: 1768px) {
 	}
@@ -37,14 +37,15 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 	align-items: center;
 	position: relative;
+	bottom: -100px;
 	z-index: 1;
 	padding: 0 30px;
-	height: 80vh;
-	margin-right: 10px;
-	border-radius: 50px 50px 0 0;
+	height: 90vh;
+	margin: 0 10px;
+	border-radius: 50px;
 	background-color: ${({ theme }) => theme.primary90};
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
-	justify-content: space-between;
+	box-shadow: 5px 1px 0px ${({ theme }) => theme.primary70};
+	justify-content: space-around;
 	@media (max-width: 768px) {
 		flex-direction: column;
 		width: 100%;
@@ -53,7 +54,8 @@ const StyledDiv = styled.div`
 		margin-top: 50px;
 		border-radius: 0px;
 		height: auto;
-		background-color: ${({ theme }) => theme.primary50};
+		background-color: #fff;
+		box-shadow: none;
 	}
 `
 
@@ -219,10 +221,10 @@ const Pricing = () => {
 			.catch((error) => console.log(error))
 	}, [])
 
-	console.log(data)
-
-	const monthlyS = window.navigator.language === 'sv' ? 'MÅNAD' : 'ÅR'
-	const yearlyS = window.navigator.language === 'sv' ? 'ÅR' : 'MÅNAD'
+	const monthlyS =
+		window.navigator.language === 'sv' || 'sv-SE' ? 'MÅNAD' : 'ÅR'
+	const yearlyS =
+		window.navigator.language === 'sv' || 'sv-SE' ? 'ÅR' : 'MÅNAD'
 
 	return (
 		<>
@@ -258,7 +260,7 @@ const Pricing = () => {
 				</BackgroundDiv>
 				<StyledDiv>
 					<StyledH1>
-						{window.navigator.language === 'sv'
+						{window.navigator.language === 'sv' || 'sv-SE'
 							? data && data.title.sv
 							: data && data.title.en}
 					</StyledH1>
@@ -285,10 +287,12 @@ const Pricing = () => {
 
 					<StyledAside>
 						<StyledLink to='/contact'>
-							{window.navigator.language === 'sv'
+							{window.navigator.language === 'sv' ||
+							'sv-SE'
 								? 'Vill du veta mer?'
 								: 'Curious to know more?'}
-							{window.navigator.language === 'sv' ? (
+							{window.navigator.language === 'sv' ||
+							'sv-SE' ? (
 								<span>Kontakta oss</span>
 							) : (
 								<span>Contact us</span>

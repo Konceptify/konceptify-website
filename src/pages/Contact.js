@@ -208,7 +208,7 @@ const Contact = () => {
 			)
 			.then((data) =>
 				setData(
-					window.navigator.language === 'sv'
+					window.navigator.language === 'sv' || 'sv-SE'
 						? [
 								data[0].contactInfo,
 								data[0].title.sv,
@@ -274,7 +274,8 @@ const Contact = () => {
 		setOpen(false)
 	}
 
-	const sweLang = window.navigator.language === 'sv' ? true : false
+	const sweLang =
+		window.navigator.language === 'sv' || 'sv-SE' ? true : false
 
 	return (
 		<>

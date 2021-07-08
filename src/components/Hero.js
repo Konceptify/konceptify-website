@@ -113,7 +113,7 @@ const Hero = ({ myRef }) => {
 			)
 			.then((data) => {
 				setData(
-					window.navigator.language === 'sv'
+					window.navigator.language === 'sv' || 'sv-SE'
 						? [data[0].mainTitle.sv, data[0].subTitle.sv]
 						: [data[0].mainTitle.en, data[0].subTitle.en]
 				)

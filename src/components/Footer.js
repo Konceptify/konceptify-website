@@ -90,7 +90,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 					<LinkLi
 						onClick={() => {
 							sliderRef.current.scrollIntoView()
-							setConceptSlide('Educate')
+							setConceptSlide('E-learning')
 						}}
 					>
 						E-learning

@@ -29,8 +29,9 @@ const StyledH2 = styled.h2`
 `
 const StyledH3 = styled.h3`
 	width: 80%;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	margin-top: 20px;
+	font-weight: 500;
 `
 
 const StyledDivDesign = styled.div`
@@ -50,7 +51,7 @@ const StyledH4 = styled.h4`
 	text-align: center;
 	color: ${({ theme }) => theme.white};
 	margin-top: 20px;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 	width: 60%;
 `
 
@@ -61,9 +62,9 @@ const StyledConceptDiv = styled.div`
 	background: ${({ theme, conceptSlide }) =>
 		conceptSlide === 'Compliance'
 			? theme.primary90
-			: conceptSlide === 'Educate'
+			: conceptSlide === 'E-learning'
 			? theme.primary70
-			: theme.primary50};
+			: '#f1f1f1'};
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -117,9 +118,9 @@ const EducateSlide = styled.div`
 	align-items: center;
 	cursor: pointer;
 	background: ${({ theme, conceptSlide }) =>
-		conceptSlide === 'Educate' ? theme.primary60 : 'transparent'};
+		conceptSlide === 'E-learning' ? theme.primary60 : 'transparent'};
 	color: ${({ theme, conceptSlide }) =>
-		conceptSlide === 'Educate' ? 'white' : theme.primary60};
+		conceptSlide === 'E-learning' ? 'white' : theme.primary60};
 `
 const CommunicateSlide = styled.div`
 	border-radius: 30px;
@@ -148,6 +149,8 @@ const StyledSection = styled.section`
 
 const StyledSection2 = styled(StyledSection)`
 	width: 100vw;
+	margin-top: 50px;
+
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -176,7 +179,7 @@ const StyledCard = styled.div`
 `
 
 const LandingPage = ({ myRef }) => {
-	const [conceptSlide, setConceptSlide] = useState('Educate')
+	const [conceptSlide, setConceptSlide] = useState('Communicate')
 	const sliderRef = useRef()
 
 	const [data, setData] = useState()
@@ -192,14 +195,15 @@ const LandingPage = ({ myRef }) => {
 				
             }`
 			)
-			.then((data) =>
+			.then((data) => {
+				const { header, subHeader, underImage, image } = data[0]
 				setData({
-					header: data[0].header,
-					subHeader: data[0].subHeader,
-					underImage: data[0].underImage,
-					image: data[0].image.asset,
+					header: header,
+					subHeader: subHeader,
+					underImage: underImage,
+					image: image.asset,
 				})
-			)
+			})
 			.catch((error) => console.log(error))
 	}, [])
 
@@ -212,15 +216,14 @@ const LandingPage = ({ myRef }) => {
 		return builder.image(source)
 	}
 
-	console.log(data)
-
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				<StyledSection direction='row' bg='#FCF1B7'>
+				<StyledSection direction='row' bg='#fFF8D6'>
 					<StyledDiv>
 						<StyledH2>
-							{window.navigator.language === 'sv'
+							{window.navigator.language === 'sv' ||
+							'sv-SE'
 								? data && data.header.sv
 								: data && data.header.en}
 						</StyledH2>
@@ -244,14 +247,15 @@ const LandingPage = ({ myRef }) => {
 							<StyledCard
 								onClick={() => {
 									sliderRef.current.scrollIntoView()
-									setConceptSlide('Educate')
+									setConceptSlide('E-learning')
 								}}
 							>
 								E-learning
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>
-							{window.navigator.language === 'sv'
+							{window.navigator.language === 'sv' ||
+							'sv-SE'
 								? data && data.subHeader.sv
 								: data && data.subHeader.en}
 						</StyledH3>
@@ -266,7 +270,8 @@ const LandingPage = ({ myRef }) => {
 								/>
 							)}
 							<StyledH4>
-								{window.navigator.language === 'sv'
+								{window.navigator.language === 'sv' ||
+								'sv-SE'
 									? data && data.underImage.sv
 									: data && data.underImage.en}
 							</StyledH4>
@@ -287,10 +292,10 @@ const LandingPage = ({ myRef }) => {
 							<EducateSlide
 								conceptSlide={conceptSlide}
 								onClick={() =>
-									setConceptSlide('Educate')
+									setConceptSlide('E-learning')
 								}
 							>
-								Educate
+								E-learning
 							</EducateSlide>
 							<CommunicateSlide
 								conceptSlide={conceptSlide}
@@ -305,7 +310,7 @@ const LandingPage = ({ myRef }) => {
 					<StyledConceptDiv conceptSlide={conceptSlide}>
 						{conceptSlide === 'Compliance' ? (
 							<Compliance conceptSlide={conceptSlide} />
-						) : conceptSlide === 'Educate' ? (
+						) : conceptSlide === 'E-learning' ? (
 							<Educate conceptSlide={conceptSlide} />
 						) : (
 							<Communicate conceptSlide={conceptSlide} />

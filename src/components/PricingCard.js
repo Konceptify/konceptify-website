@@ -12,11 +12,12 @@ const StyledDiv = styled.div`
 	padding-top: 50px;
 	align-items: center;
 	flex-direction: column;
-	border-radius: 3px;
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 30px;
+	box-shadow: 5px 1px 0px #cbcbcb;
 
 	@media (max-width: 768px) {
-		margin: 20px;
+		margin: 20px 0px;
+		width: 80%;
 	}
 `
 
@@ -110,8 +111,6 @@ const PricingCard = ({ monthly }) => {
 			.catch((error) => console.log(error))
 	}, [])
 
-	console.log(subscriptions)
-
 	return (
 		<>
 			{subscriptions &&
@@ -129,7 +128,8 @@ const PricingCard = ({ monthly }) => {
 						return (
 							<StyledDiv key={ind}>
 								<StyledLegend>
-									{window.navigator.language === 'sv'
+									{window.navigator.language ===
+										'sv' || 'sv-SE'
 										? legend.sv
 										: legend.en}
 								</StyledLegend>
@@ -151,13 +151,15 @@ const PricingCard = ({ monthly }) => {
 									</StyledH4>
 								</StyledPriceContainer>
 								<StyledH3>
-									{window.navigator.language === 'sv'
+									{window.navigator.language ===
+										'sv' || 'sv-SE'
 										? header.sv
 										: header.en}
 								</StyledH3>
 
 								<StyledUl>
-									{window.navigator.language === 'sv'
+									{window.navigator.language ===
+										'sv' || 'sv-SE'
 										? benefits.sv.map(
 												(benefits, ind) => {
 													return (

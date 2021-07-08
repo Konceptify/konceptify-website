@@ -94,30 +94,29 @@ const Educate = ({ conceptSlide }) => {
 				
             }`
 			)
-			.then((data) =>
+			.then((data) => {
+				const { header, subHeader, underVideo, banner } = data[0]
 				setData({
 					header:
-						window.navigator.language === 'sv'
-							? data[0].header.sv
-							: data[0].header.en,
+						window.navigator.language === 'sv' || 'sv-SE'
+							? header.sv
+							: header.en,
 					subHeader:
-						window.navigator.language === 'sv'
-							? data[0].subHeader.sv
-							: data[0].subHeader.en,
+						window.navigator.language === 'sv' || 'sv-SE'
+							? subHeader.sv
+							: subHeader.en,
 					underVideo:
-						window.navigator.language === 'sv'
-							? data[0].underVideo.sv
-							: data[0].underVideo.en,
+						window.navigator.language === 'sv' || 'sv-SE'
+							? underVideo.sv
+							: underVideo.en,
 					banner:
-						window.navigator.language === 'sv'
-							? data[0].banner.sv
-							: data[0].banner.en,
+						window.navigator.language === 'sv' || 'sv-SE'
+							? banner.sv
+							: banner.en,
 				})
-			)
+			})
 			.catch((error) => console.log(error))
 	}, [])
-
-	console.log(data)
 
 	return (
 		<Wrapper
