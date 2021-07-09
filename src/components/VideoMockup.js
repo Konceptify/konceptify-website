@@ -14,6 +14,11 @@ const Wrapper = styled(motion.div)`
 	align-items: center;
 	justify-content: space-between;
 	overflow: hidden;
+	@media (max-width: 768px) {
+		width: 100%;
+		border-radius: 0px;
+		margin-bottom: 30px;
+	}
 `
 
 const Next = styled.div`
@@ -41,6 +46,9 @@ const Previous = styled.div`
 	position: relative;
 	z-index: 2;
 	cursor: pointer;
+	@media (max-width: 768px) {
+		margin-left: 25px;
+	}
 `
 
 const PreviousArrow = styled.div`
@@ -63,12 +71,20 @@ const StyledVideo = styled(motion.video)`
 	z-index: 1;
 	position: absolute;
 	border-radius: 50px;
+	@media (max-width: 768px) {
+		border-radius: 0px;
+		width: 100%;
+	}
 `
 const StyledVideo2 = styled(motion.video)`
 	width: 45%;
 	z-index: 1;
 	position: absolute;
 	border-radius: 50px;
+	@media (max-width: 768px) {
+		border-radius: 0px;
+		width: 100%;
+	}
 `
 
 const VideoMockup = () => {
@@ -89,7 +105,7 @@ const VideoMockup = () => {
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5, ease: 'easeIn' }}
-					autoPlay='autoplay'
+					autoPlay={window.innerWith < 768 ? false : 'autoplay'}
 					loop='loop'
 				>
 					<source src={Video1} type='video/mp4' />
@@ -100,7 +116,7 @@ const VideoMockup = () => {
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5, ease: 'easeIn' }}
-					autoPlay='autoplay'
+					autoPlay={window.innerWith < 768 ? false : 'autoplay'}
 					loop='loop'
 				>
 					<source src={Video2} type='video/mp4' />

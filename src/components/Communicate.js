@@ -9,10 +9,17 @@ const Wrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding: 0 40px;
+	@media (max-width: 768px) {
+		flex-direction: column;
+		justify-content: flex-start;
+	}
 `
 
 const StyledDiv = styled.div`
 	width: 50%;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const StyledH2 = styled.h2`
@@ -20,6 +27,10 @@ const StyledH2 = styled.h2`
 
 	color: ${({ theme }) => theme.primary};
 	margin-top: -20px;
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+		margin-top: 20px;
+	}
 `
 
 const StyledH3 = styled.h3`

@@ -12,6 +12,10 @@ const Wrapper = styled(motion.div)`
 	padding: 0px 40px;
 	align-items: center;
 	justify-content: space-around;
+	@media (max-width: 768px) {
+		flex-direction: column;
+		padding: 0px;
+	}
 `
 
 const StyledDivDesign = styled.div`
@@ -27,6 +31,12 @@ const StyledDivDesign = styled.div`
 	align-items: center;
 	position: relative;
 	box-shadow: 10px 10px 0px #cbcbcb;
+	@media (max-width: 768px) {
+		width: 100%;
+		border-radius: 0px;
+		box-shadow: none;
+		background: inherit;
+	}
 `
 
 const StyledH2 = styled.h2`
@@ -34,6 +44,10 @@ const StyledH2 = styled.h2`
 	width: 80%;
 	color: ${({ theme }) => theme.white};
 	margin-top: -20px;
+	@media (max-width: 768px) {
+		margin-top: 20px;
+		font-size: 1.5rem;
+	}
 `
 const StyledH3 = styled.h3`
 	width: 80%;
@@ -47,6 +61,9 @@ const StyledH3b = styled.h3`
 	margin-top: 40px;
 	color: ${({ theme }) => theme.white};
 	text-align: center;
+	@media (max-width: 768px) {
+		margin-bottom: 40px;
+	}
 `
 
 const StyledDivCircle = styled.div`
@@ -68,6 +85,10 @@ const StyledDivCircle = styled.div`
 		font-size: 0.9rem;
 		width: 11ch;
 	}
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 const StyledDiv = styled.div`
@@ -78,6 +99,9 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const Educate = ({ conceptSlide }) => {

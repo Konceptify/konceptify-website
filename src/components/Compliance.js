@@ -12,6 +12,9 @@ const Wrapper = styled(motion.div)`
 	padding: 0px 50px;
 	align-items: center;
 	justify-content: space-between;
+	@media (max-width: 768px) {
+		flex-direction: column;
+	}
 `
 
 const StyledDivDesign = styled.div`
@@ -27,6 +30,10 @@ const StyledDivDesign = styled.div`
 	align-items: center;
 	position: relative;
 	box-shadow: 10px 10px 0px #cbcbcb;
+	@media (max-width: 768px) {
+		width: 100%;
+		margin-top: 20px;
+	}
 `
 
 const StyledDiv = styled.div`
@@ -43,17 +50,27 @@ const StyledH4 = styled.h4`
 	margin-top: 20px;
 	font-size: 2rem;
 	color: ${({ theme }) => theme.primary80};
+	@media (max-width: 768px) {
+		font-size: 1rem;
+	}
 `
 
 const StyledHeaderDiv = styled.div`
 	width: 50%;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const StyledH2 = styled.h2`
 	font-size: 3rem;
-
 	color: ${({ theme }) => theme.white};
 	margin-top: -20px;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+		margin-top: 20px;
+	}
 `
 
 const StyledH3 = styled.h3`

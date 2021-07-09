@@ -7,7 +7,7 @@ import { useLocation } from 'react-router-dom'
 import Hamburger from './Hamburger'
 
 const Wrapper = styled.nav`
-	width: 100%;
+	width: 100vw;
 	height: 60px;
 	position: fixed;
 	z-index: 1000;
@@ -58,6 +58,9 @@ const StyledUl = styled.ul`
 	padding: 10px 120px;
 	align-items: center;
 	color: ${(props) => props.theme.color};
+	@media (max-width: 768px) {
+		padding: 10px 0px;
+	}
 `
 
 const MenuBtn = styled(motion.button)`

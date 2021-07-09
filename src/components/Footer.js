@@ -19,6 +19,9 @@ const StyledUL = styled.ul`
 
 	li {
 		margin: 20px 70px;
+		@media (max-width: 768px) {
+			margin: 20px 20px;
+		}
 		a {
 			color: #000;
 			text-decoration: none;
@@ -46,6 +49,9 @@ const StyledIconsContainer = styled.div`
 const LinkLi = styled.li`
 	cursor: pointer;
 	font-size: 2rem;
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
 
 	a {
 		text-decoration: none;

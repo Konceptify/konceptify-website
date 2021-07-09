@@ -27,6 +27,7 @@ const StyledH1 = styled(motion.h1)`
 	@media (max-width: 768px) {
 		width: 90vw;
 		font-size: 2rem;
+		margin-top: -50px;
 	}
 `
 
@@ -45,6 +46,7 @@ const StyledImg = styled(motion.img)`
 		right: 0;
 		max-width: 100%;
 		opacity: 0.5;
+		display: none;
 	}
 `
 

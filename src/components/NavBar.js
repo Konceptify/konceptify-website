@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
 
 const StyledNav = styled(motion.div)`
-	width: 100%;
+	width: 100vw;
 	height: 100vh;
 	background-color: ${({ theme }) => theme.white};
 	position: relative;
@@ -93,6 +93,7 @@ const variantsIcon = {
 
 const NavBar = ({ setOpenNav, openNav }) => {
 	const lang = window.navigator === 'sv' ? true : false
+
 	return (
 		<StyledNav
 			initial='hidden'
@@ -100,26 +101,26 @@ const NavBar = ({ setOpenNav, openNav }) => {
 			transition='transition'
 			variants={variants}
 		>
-			<StyledMainList onClick={() => setOpenNav(false)}>
+			<StyledMainList>
 				<StyledSubList>
-					<Link to='/'>
+					<Link to='/' onClick={() => setOpenNav(false)}>
 						<li>{lang ? 'HOME' : 'HEM'}</li>
 					</Link>
 				</StyledSubList>
 
 				<StyledSubList>
-					<Link to='/pricing'>
+					<Link to='/pricing' onClick={() => setOpenNav(false)}>
 						<li>{lang ? 'PRICING' : 'PRIS'}</li>
 					</Link>
 				</StyledSubList>
-				<StyledSubList>
+				{/* <StyledSubList>
 					<li>{lang ? 'COMPANY' : 'VI PÅ ZITTRON'}</li>
 				</StyledSubList>
 				<StyledSubList>
 					<li>{lang ? 'NEWS' : 'NYHETER'}</li>
-				</StyledSubList>
+				</StyledSubList> */}
 				<StyledSubList>
-					<Link to='/contact'>
+					<Link to='/contact' onClick={() => setOpenNav(false)}>
 						<li>{lang ? 'CONTACT' : 'KONTAKT'}</li>
 					</Link>
 				</StyledSubList>

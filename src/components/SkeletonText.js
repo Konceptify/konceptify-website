@@ -20,6 +20,9 @@ const GreyDiv = styled.div`
 	width: ${({ width }) => width};
 	margin: 10px 10px;
 	border-radius: 5px;
+	@media (max-width: 768px) {
+		height: 8px;
+	}
 `
 
 const SkeletonText = () => {

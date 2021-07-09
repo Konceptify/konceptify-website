@@ -6,7 +6,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
-import MobileFooter from '../components/MobileFooter'
+
 import Footer from '../components/Footer'
 import sanityClient from '../client'
 
@@ -21,6 +21,8 @@ const Wrapper = styled.section`
 
 	@media (max-width: 768px) {
 		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 	}
 `
 
@@ -33,7 +35,7 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 
 	@media (max-width: 768px) {
-		width: 90vw;
+		width: 100vw;
 		justify-content: flex-start;
 		margin-top: 20%;
 	}
@@ -52,15 +54,12 @@ const StyledDiv1 = styled.div`
 	flex-direction: column;
 	background-color: ${(props) => props.theme.primary};
 	@media (max-width: 768px) {
-		width: 90vw;
-		justify-content: flex-start;
-		margin-top: 20%;
+		opacity: 0;
 	}
 `
 
 const StyledUl = styled.ul`
 	@media (max-width: 768px) {
-		display: none;
 	}
 `
 
@@ -126,7 +125,7 @@ const StyledForm = styled.form`
 const StyledInput = styled(motion.input)`
 	border: none;
 	border-bottom: 3px solid #c0cbc4;
-	padding: 0 0 10px 0;
+	padding-bottom: 10px;
 	background-color: ${(props) => props.theme.white};
 	margin-top: 90px;
 	outline: none;
@@ -190,6 +189,8 @@ const StyledCircle = styled.div`
 	color: ${({ theme }) => theme.white};
 	font-weight: 700;
 	font-size: 1.2rem;
+	@media (max-width: 768px) {
+	}
 `
 
 const Contact = () => {
@@ -356,7 +357,7 @@ const Contact = () => {
 					}
 				/>
 			</Wrapper>
-			<MobileFooter />
+
 			<Footer />
 		</>
 	)

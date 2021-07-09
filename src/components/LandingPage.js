@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Communicate from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
+import Testemonials from '../components/Testemonials'
 import sanityClient from '../client'
 import imageUrlBuilder from '@sanity/image-url'
 
@@ -21,17 +22,26 @@ const StyledDiv = styled.div`
 	justify-content: center;
 	align-items: center;
 	text-align: center;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const StyledH2 = styled.h2`
 	font-size: 4rem;
 	width: 100%;
+	@media (max-width: 768px) {
+		font-size: 2rem;
+	}
 `
 const StyledH3 = styled.h3`
 	width: 80%;
 	font-size: 1.2rem;
 	margin-top: 20px;
 	font-weight: 500;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const StyledDivDesign = styled.div`
@@ -45,6 +55,12 @@ const StyledDivDesign = styled.div`
 	align-items: center;
 	margin-bottom: -80px;
 	box-shadow: 10px 10px 0px #cbcbcb;
+	@media (max-width: 768px) {
+		width: 110%;
+		border-radius: 0;
+		box-shadow: none;
+		margin-bottom: 0px;
+	}
 `
 
 const StyledH4 = styled.h4`
@@ -53,6 +69,9 @@ const StyledH4 = styled.h4`
 	margin-top: 20px;
 	font-size: 1.2rem;
 	width: 60%;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const StyledImg = styled.img``
@@ -72,6 +91,10 @@ const StyledConceptDiv = styled.div`
 	border-radius: 0 0 50px 50px;
 	margin-bottom: 20px;
 	transition: all 0.5s linear;
+	@media (max-width: 768px) {
+		width: 130%;
+		border-radius: 0px;
+	}
 `
 
 const StyledSlideContainer = styled.div`
@@ -93,6 +116,9 @@ const StyledSlider = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	@media (max-width: 768px) {
+		width: 100%;
+	}
 `
 
 const ComplianceSlide = styled.div`
@@ -108,6 +134,9 @@ const ComplianceSlide = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	@media (max-width: 768px) {
+		font-size: 0.7rem;
+	}
 `
 const EducateSlide = styled.div`
 	border-radius: 30px;
@@ -121,6 +150,9 @@ const EducateSlide = styled.div`
 		conceptSlide === 'E-learning' ? theme.primary60 : 'transparent'};
 	color: ${({ theme, conceptSlide }) =>
 		conceptSlide === 'E-learning' ? 'white' : theme.primary60};
+	@media (max-width: 768px) {
+		font-size: 0.7rem;
+	}
 `
 const CommunicateSlide = styled.div`
 	border-radius: 30px;
@@ -134,6 +166,9 @@ const CommunicateSlide = styled.div`
 		conceptSlide === 'Communicate' ? theme.primary60 : 'transparent'};
 	color: ${({ theme, conceptSlide }) =>
 		conceptSlide === 'Communicate' ? 'white' : theme.primary60};
+	@media (max-width: 768px) {
+		font-size: 0.7rem;
+	}
 `
 
 const StyledSection = styled.section`
@@ -145,6 +180,12 @@ const StyledSection = styled.section`
 	overflow: hidden;
 	padding-left: 40px;
 	padding-right: 40px;
+
+	@media (max-width: 768px) {
+		width: 100vw;
+		height: 100vh;
+		flex-direction: column-reverse;
+	}
 `
 
 const StyledSection2 = styled(StyledSection)`
@@ -173,13 +214,19 @@ const StyledCard = styled.div`
 	background: #fafafa;
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
 
+	@media (max-width: 768px) {
+		width: 80px;
+		heighy: 60px;
+		font-size: 0.7rem;
+	}
+
 	:hover {
 		transform: scale(1.1);
 	}
 `
 
 const LandingPage = ({ myRef }) => {
-	const [conceptSlide, setConceptSlide] = useState('Communicate')
+	const [conceptSlide, setConceptSlide] = useState('Compliance')
 	const sliderRef = useRef()
 
 	const [data, setData] = useState()
@@ -317,7 +364,9 @@ const LandingPage = ({ myRef }) => {
 						)}
 					</StyledConceptDiv>
 				</StyledSection2>
-				<StyledSection bg='#ccc'></StyledSection>
+
+				<Testemonials />
+
 				<Footer
 					sliderRef={sliderRef}
 					setConceptSlide={setConceptSlide}

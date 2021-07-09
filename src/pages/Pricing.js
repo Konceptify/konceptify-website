@@ -23,9 +23,9 @@ const Wrapper = styled(motion.section)`
 	overflow: hidden;
 	@media (max-width: 768px) {
 		justify-content: flex-start;
-
+		align-items: flex-start;
 		flex-direction: column;
-		height: 1200px;
+		height: 1100px;
 	}
 	@media (max-width: 1768px) {
 	}
@@ -81,6 +81,9 @@ const StyledH1 = styled.h1`
 		color: ${({ theme }) => theme.primary90};
 		text-align: center;
 		font-size: 1.3rem;
+		margin: 0 0 40px 0;
+		padding: 0px;
+		display: none;
 	}
 `
 
@@ -89,7 +92,7 @@ const StyledSwitchDiv = styled.div`
 	padding-top: 20px;
 
 	@media (max-width: 768px) {
-		padding: 0;
+		padding-left: 0px;
 		margin: 20px 0;
 	}
 `
@@ -180,6 +183,9 @@ const StyledWave = styled(Wave)`
 	position: absolute;
 	top: 0px;
 	z-index: ${(props) => props.index};
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 const StyledPricingImg = styled.img`
@@ -198,6 +204,7 @@ const StyledCardContainer = styled.div`
 		background: var(--accent-color);
 		width: 100%;
 		flex-direction: column;
+		padding-top: 50px;
 	}
 `
 
