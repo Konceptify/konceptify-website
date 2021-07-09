@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { ReactComponent as Arrow } from '../assets/Vector.svg'
 
@@ -7,6 +7,7 @@ const Wrapper = styled.section`
 	margin-bottom: 40px;
 	display: flex;
 	align-items: center;
+	padding: 0px 40px;
 	@media (max-width: 768px) {
 		flex-direction: column;
 	}
@@ -14,24 +15,27 @@ const Wrapper = styled.section`
 
 const StyledDiv = styled.div`
 	width: 50%;
-	height: 100%;
+	height: 90vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+
 	@media (max-width: 768px) {
 		width: 100%;
 		border-radius: 0px;
 		justify-content: flex-start;
 		align-items: flex-start;
+		height: 30vh;
 	}
 `
 const StyledDiv2 = styled.div`
 	width: 50%;
-	height: 80vh;
+	height: 90vh;
 	display: flex;
-	padding: 0 20px 0 0;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+
 	@media (max-width: 768px) {
 		width: 100%;
 		border-radius: 0px;
@@ -64,6 +68,15 @@ const StyledBox = styled.div`
 
 const ReverseArrow = styled(Arrow)`
 	transform: rotate(180deg);
+	@media (max-width: 768px) {
+		display: none;
+	}
+`
+
+const Arrow1 = styled(Arrow)`
+	@media (max-width: 768px) {
+		display: none;
+	}
 `
 
 const StyledHeader = styled.div`
@@ -80,7 +93,8 @@ const StyledHeader = styled.div`
 	}
 
 	@media (max-width: 768px) {
-		font-size: 1.5rem;
+		font-size: 2rem;
+		padding: 0;
 	}
 `
 
@@ -88,26 +102,52 @@ const StyledHeaderTest = styled.div`
 	width: 80%;
 	height: 90%;
 	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: space-between;
+	justify-content: flex-end;
+	align-items: center;
 	text-align: center;
 	padding: 0px 40px;
-	border: 1px solid black;
+	@media (max-width: 768px) {
+		width: 100%;
+		height: auto;
+		text-align: left;
+		padding: 0;
+	}
 `
 
 const StyledH3 = styled.h3`
 	font-size: 2rem;
 	font-style: italic;
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+	}
+`
+
+const StyledDivAuthor = styled.div`
+	width: 80%;
+	text-align: center;
+	padding-bottom: 30px;
+	@media (max-width: 768px) {
+		margin-top: 20px;
+		padding-bottom: o;
+	}
+`
+
+const StyledParagraph = styled.p`
+	margin-bottom: 5px;
 `
 
 const LogoBox = styled.div`
-	height: 40px;
+	height: 100px;
 	width: 100%;
 	border: 1px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `
 
 const Testemonials = () => {
+	const [carousel, setCarousel] = useState(true)
+
 	return (
 		<Wrapper>
 			<StyledDiv>
@@ -117,19 +157,34 @@ const Testemonials = () => {
 					</StyledHeader>
 				</StyledBox>
 			</StyledDiv>
+			<Arrow1 onClick={() => setCarousel(true)} />
 			<StyledDiv2>
-				<Arrow />
 				<StyledHeaderTest>
-					<StyledH3>
-						" Fan va bra ni är! Vad skulle jag göra utan er?
-						Mina butiker tjänar mer pengar än någonsin och
-						mina anställda har som jag total kontroll över
-						verksamheten "
-					</StyledH3>
-					<LogoBox />
+					{carousel ? (
+						<StyledH3>
+							" Fan va bra ni är! Vad skulle jag göra utan
+							er? Mina butiker tjänar mer pengar än
+							någonsin och mina anställda har som jag total
+							kontroll över verksamheten "
+						</StyledH3>
+					) : (
+						<StyledH3>
+							" Om alla hade varit lika progressiva som er
+							så hade vi avslutat alla världskrig vid det
+							här läget! "
+						</StyledH3>
+					)}
 				</StyledHeaderTest>
-				<ReverseArrow />
+				<StyledDivAuthor>
+					<StyledParagraph>
+						{carousel
+							? 'Stefan Persson, HM'
+							: 'Elon Musk, A bit here and there'}
+					</StyledParagraph>
+					<LogoBox>LOGO HERE</LogoBox>
+				</StyledDivAuthor>
 			</StyledDiv2>
+			<ReverseArrow onClick={() => setCarousel(false)} />
 		</Wrapper>
 	)
 }
