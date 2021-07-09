@@ -105,7 +105,7 @@ const VideoMockup = () => {
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5, ease: 'easeIn' }}
-					autoPlay={window.innerWith < 768 ? false : 'autoplay'}
+					autoPlay='autoplay'
 					loop='loop'
 				>
 					<source src={Video1} type='video/mp4' />
@@ -116,7 +116,7 @@ const VideoMockup = () => {
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5, ease: 'easeIn' }}
-					autoPlay={window.innerWith < 768 ? false : 'autoplay'}
+					autoPlay='autoplay'
 					loop='loop'
 				>
 					<source src={Video2} type='video/mp4' />
