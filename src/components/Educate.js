@@ -122,19 +122,19 @@ const Educate = ({ conceptSlide }) => {
 				const { header, subHeader, underVideo, banner } = data[0]
 				setData({
 					header:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? header.sv
 							: header.en,
 					subHeader:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? subHeader.sv
 							: subHeader.en,
 					underVideo:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? underVideo.sv
 							: underVideo.en,
 					banner:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? banner.sv
 							: banner.en,
 				})

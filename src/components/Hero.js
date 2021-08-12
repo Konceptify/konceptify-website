@@ -60,7 +60,7 @@ const StyledButton = styled.button`
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.btnborderColor};
 	border: 1px solid ${(props) => props.theme.btnborderColor};
-	border-radius: 10px;
+	border-radius: 30px;
 	border: none;
 	margin-top: 20px;
 	letter-spacing: 2px;
@@ -111,11 +111,12 @@ const Hero = ({ myRef }) => {
 				`*[_type == "mainHeader"] {
                 subTitle,
 				mainTitle,
+				image
             }`
 			)
 			.then((data) => {
 				setData(
-					window.navigator.language === 'sv' || 'sv-SE'
+					window.navigator.language === 'sv' && 'sv-SE'
 						? [data[0].mainTitle.sv, data[0].subTitle.sv]
 						: [data[0].mainTitle.en, data[0].subTitle.en]
 				)
@@ -186,9 +187,8 @@ const Hero = ({ myRef }) => {
 					animate={'visible'}
 					variants={variants3}
 					transition={{ duration: 1.5 }}
-					src={heroImg}
-					alt='hero'
-					width='500'
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-900/Screen_05_kW_oguy3DL.png?updatedAt=1628766617957'
+					alt='hero image'
 				/>
 			</StyledDiv>
 		</Wrapper>

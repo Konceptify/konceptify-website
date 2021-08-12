@@ -42,9 +42,44 @@ const StyledMainList = styled.ul`
 	}
 `
 
+const StyledLogIn = styled.div`
+	position: fixed;
+	margin-bottom: 80px;
+	bottom: 0;
+	width: 260px;
+	border-radius: 30px;
+	background: ${({ theme }) => theme.primary70};
+	padding: 25px 28px;
+	font-size: 0.7rem;
+	color: #fff;
+	text-decoration: none;
+	* {
+		margin: 3px 0 5px 5px;
+		:hover {
+			fill: #c1c1c1;
+		}
+	}
+`
+
+const StyledAnchor = styled.a`
+	color: #fff;
+	text-decoration: none;
+	font-weight: 700;
+	margin-left: 22px;
+
+	:hover {
+		color: #c1c1c1;
+	}
+`
+
 const StyledSubList = styled.ul`
 	list-style: none;
-	margin: 30px;
+	margin: 20px;
+
+	li {
+		padding: 10px 25px;
+		border-radius: 20px;
+	}
 	li:first-child {
 		margin: 10px 0 0 0;
 		font-size: 1.5rem;
@@ -55,17 +90,18 @@ const StyledSubList = styled.ul`
 	a:visited {
 		text-decoration: none;
 	}
+
+	* {
+		:hover {
+			background-color: ${({ theme }) => theme.primary80};
+			color: white;
+		}
+	}
 `
 
 const StyledIconsContainer = styled.div`
-	position: fixed;
-	bottom: 60px;
-	right: 60px;
 	display: flex;
 	flex-direction: column;
-	* {
-		margin-top: 10px;
-	}
 `
 
 const variants = {
@@ -79,20 +115,10 @@ const variants = {
 		duration: 1,
 	},
 }
-const variantsIcon = {
-	hidden: {
-		scale: 1,
-	},
-	visible: {
-		scale: [1, 1.2, 1],
-	},
-	transition: {
-		duration: 0.5,
-	},
-}
 
 const NavBar = ({ setOpenNav, openNav }) => {
-	const lang = window.navigator === 'sv' ? true : false
+	const lang = window.navigator.language === 'sv' && 'sv-se' ? true : false
+	console.log(lang)
 
 	return (
 		<StyledNav
@@ -104,60 +130,49 @@ const NavBar = ({ setOpenNav, openNav }) => {
 			<StyledMainList>
 				<StyledSubList>
 					<Link to='/' onClick={() => setOpenNav(false)}>
-						<li>{lang ? 'HOME' : 'HEM'}</li>
+						<li>{lang ? 'HEM' : 'HOME'}</li>
 					</Link>
 				</StyledSubList>
 
 				<StyledSubList>
 					<Link to='/pricing' onClick={() => setOpenNav(false)}>
-						<li>{lang ? 'PRICING' : 'PRIS'}</li>
+						<li>{lang ? 'PRIS' : 'PRICING'}</li>
 					</Link>
 				</StyledSubList>
-				{/* <StyledSubList>
-					<li>{lang ? 'COMPANY' : 'VI PÅ ZITTRON'}</li>
-				</StyledSubList>
-				<StyledSubList>
-					<li>{lang ? 'NEWS' : 'NYHETER'}</li>
-				</StyledSubList> */}
+
 				<StyledSubList>
 					<Link to='/contact' onClick={() => setOpenNav(false)}>
-						<li>{lang ? 'CONTACT' : 'KONTAKT'}</li>
+						<li>{lang ? 'KONTAKT' : 'CONTACT'}</li>
 					</Link>
 				</StyledSubList>
 			</StyledMainList>
-			<StyledIconsContainer>
-				<a
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://www.linkedin.com/company/zittron'
-				>
-					<motion.div
-						initial='hidden'
-						whileTap='visible'
-						whileHover='visible'
-						transition='transition'
-						variants={variantsIcon}
-					>
-						<RiLinkedinFill size='40' />
-					</motion.div>
-				</a>
 
-				<a
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://www.instagram.com/zittron/'
-				>
-					<motion.div
-						initial='hidden'
-						whileTap='visible'
-						whileHover='visible'
-						transition='transition'
-						variants={variantsIcon}
+			<StyledLogIn>
+				<StyledIconsContainer>
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://www.linkedin.com/company/zittron'
 					>
-						<RiInstagramLine size='40' />
-					</motion.div>
-				</a>
-			</StyledIconsContainer>
+						<div>
+							<RiLinkedinFill fill='white' size='40' />
+						</div>
+					</a>
+
+					<a
+						target='_blank'
+						rel='noopener noreferrer'
+						href='https://www.instagram.com/zittron/'
+					>
+						<div>
+							<RiInstagramLine fill='white' size='40' />
+						</div>
+					</a>
+				</StyledIconsContainer>
+				<StyledAnchor href='https://primemanager.zittron.com/'>
+					PRIME MANAGER
+				</StyledAnchor>
+			</StyledLogIn>
 		</StyledNav>
 	)
 }

@@ -96,11 +96,11 @@ const Compliance = () => {
 				const { header, subHeader } = data[0]
 				setData({
 					header:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? header.sv
 							: header.en,
 					subHeader:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? subHeader.sv
 							: subHeader.en,
 				})

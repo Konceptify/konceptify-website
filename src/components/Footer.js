@@ -72,18 +72,20 @@ const variantsIcon = {
 }
 
 const Footer = ({ setConceptSlide, sliderRef }) => {
+	const lang = window.navigator.language === 'sv' && 'sv-se' ? true : false
+
 	return (
 		<Wrapper>
 			<StyledMainUL>
 				<StyledUL>
-					<li>Concept</li>
+					<li>{lang ? 'Koncept' : 'Concept'}</li>
 					<LinkLi
 						onClick={() => {
 							sliderRef.current.scrollIntoView()
 							setConceptSlide('Compliance')
 						}}
 					>
-						Compliance
+						{lang ? 'Checklistor' : 'Compliance'}
 					</LinkLi>
 					<LinkLi
 						onClick={() => {
@@ -91,7 +93,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 							setConceptSlide('Communicate')
 						}}
 					>
-						Communicate
+						{lang ? 'Kommunikation' : 'Comunicate'}
 					</LinkLi>
 					<LinkLi
 						onClick={() => {
@@ -99,7 +101,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 							setConceptSlide('E-learning')
 						}}
 					>
-						E-learning
+						{lang ? 'Utbildning' : 'Education'}
 					</LinkLi>
 					<li>
 						<hr />
@@ -109,7 +111,9 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 							to='/contact'
 							onClick={() => window.scrollTo(0, 0)}
 						>
-							Contact Zittron
+							{lang
+								? 'Kontakta Zittron'
+								: 'Contact Zittron'}
 						</Link>
 					</LinkLi>
 					<LinkLi>
@@ -117,12 +121,11 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 							to='/pricing'
 							onClick={() => window.scrollTo(0, 0)}
 						>
-							Pricing
+							{lang ? 'Prisplan' : 'Pricing'}
 						</Link>
 					</LinkLi>
 				</StyledUL>
 				<StyledUL>
-					<li>Legal</li>
 					<li>
 						<Link to='/privacy'>Privacy Policy</Link>
 					</li>

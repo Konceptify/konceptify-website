@@ -56,11 +56,11 @@ const Communicate = () => {
 				const { header, subHeader } = data[0]
 				setData({
 					header:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? header.sv
 							: header.en,
 					subHeader:
-						window.navigator.language === 'sv' || 'sv-SE'
+						window.navigator.language === 'sv' && 'sv-SE'
 							? subHeader.sv
 							: subHeader.en,
 				})
@@ -70,7 +70,12 @@ const Communicate = () => {
 
 	return (
 		<Wrapper>
-			<StyledDiv></StyledDiv>
+			<StyledDiv>
+				<img
+					src='https://ik.imagekit.io/lct7da3kd6o/tr:w-500/Zittron/Screen_01_dK3nT6TdI.png?updatedAt=1628766617907'
+					alt='chat popup'
+				/>
+			</StyledDiv>
 			<StyledDiv>
 				<StyledH2>{data && data.header}</StyledH2>
 				<StyledH3>{data && data.subHeader}</StyledH3>

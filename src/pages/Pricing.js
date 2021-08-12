@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
 import Footer from '../components/Footer'
 
-import PricingImg from '../img/pricing.png'
 import Wave from 'react-wavify'
 
 import sanityClient from '../client'
@@ -18,7 +17,7 @@ const Wrapper = styled(motion.section)`
 	justify-content: center;
 	align-items: flex-end;
 	position: relative;
-	padding-bottom: 50px;
+	padding-bottom: 70px;
 	z-index: 1;
 	overflow: hidden;
 	@media (max-width: 768px) {
@@ -31,32 +30,12 @@ const Wrapper = styled(motion.section)`
 	}
 `
 
-const StyledDiv = styled.div`
-	display: flex;
-	width: 30%;
-	flex-direction: column;
-	align-items: center;
-	position: relative;
-	bottom: -100px;
-	z-index: 1;
-	padding: 0 30px;
-	height: 90vh;
-	margin: 0 10px;
-	border-radius: 50px;
-	background-color: ${({ theme }) => theme.primary90};
-	box-shadow: 5px 1px 0px ${({ theme }) => theme.primary70};
-	justify-content: space-around;
-	@media (max-width: 768px) {
-		flex-direction: column;
-		width: 100%;
-		justify-content: flex-start;
-		margin-right: 0px;
-		margin-top: 50px;
-		border-radius: 0px;
-		height: auto;
-		background-color: #fff;
-		box-shadow: none;
-	}
+const StyledH1 = styled.h1`
+	font-size: 2vw;
+	position: fixed;
+	top: 20%;
+	left: 7%;
+	color: ${({ theme }) => theme.primary90};
 `
 
 const StyledDiv2 = styled.div`
@@ -70,26 +49,10 @@ const StyledDiv2 = styled.div`
 		width: 100%;
 	}
 `
-const StyledH1 = styled.h1`
-	width: 100%;
-	padding: 60px 20px 0 20px;
-	font-size: 1.8rem;
-
-	color: ${({ theme }) => theme.white};
-
-	@media (max-width: 768px) {
-		color: ${({ theme }) => theme.primary90};
-		text-align: center;
-		font-size: 1.3rem;
-		margin: 0 0 40px 0;
-		padding: 0px;
-		display: none;
-	}
-`
 
 const StyledSwitchDiv = styled.div`
 	padding-left: 20px;
-	padding-top: 20px;
+	padding-top: 0px;
 
 	@media (max-width: 768px) {
 		padding-left: 0px;
@@ -188,13 +151,6 @@ const StyledWave = styled(Wave)`
 	}
 `
 
-const StyledPricingImg = styled.img`
-	width: 100%;
-	@media (max-width: 768px) {
-		display: none;
-	}
-`
-
 const StyledCardContainer = styled.div`
 	display: flex;
 	justify-content: center;
@@ -229,9 +185,9 @@ const Pricing = () => {
 	}, [])
 
 	const monthlyS =
-		window.navigator.language === 'sv' || 'sv-SE' ? 'MÅNAD' : 'ÅR'
+		window.navigator.language === 'sv' && 'sv-SE' ? 'MÅNAD' : 'ÅR'
 	const yearlyS =
-		window.navigator.language === 'sv' || 'sv-SE' ? 'ÅR' : 'MÅNAD'
+		window.navigator.language === 'sv' && 'sv-SE' ? 'ÅR' : 'MÅNAD'
 
 	return (
 		<>
@@ -265,17 +221,7 @@ const Pricing = () => {
 						}}
 					/>
 				</BackgroundDiv>
-				<StyledDiv>
-					<StyledH1>
-						{window.navigator.language === 'sv' || 'sv-SE'
-							? data && data.title.sv
-							: data && data.title.en}
-					</StyledH1>
-					<StyledPricingImg
-						alt='pricing image'
-						src={PricingImg}
-					/>
-				</StyledDiv>
+				<StyledH1>Välj den plan som passar dig</StyledH1>
 				<StyledDiv2>
 					<StyledSwitchDiv>
 						<StyledPriceSelect
@@ -294,11 +240,11 @@ const Pricing = () => {
 
 					<StyledAside>
 						<StyledLink to='/contact'>
-							{window.navigator.language === 'sv' ||
+							{window.navigator.language === 'sv' &&
 							'sv-SE'
 								? 'Vill du veta mer?'
 								: 'Curious to know more?'}
-							{window.navigator.language === 'sv' ||
+							{window.navigator.language === 'sv' &&
 							'sv-SE' ? (
 								<span>Kontakta oss</span>
 							) : (

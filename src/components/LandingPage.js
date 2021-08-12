@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import Footer from './Footer'
-
 import Communicate from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
@@ -74,7 +73,9 @@ const StyledH4 = styled.h4`
 	}
 `
 
-const StyledImg = styled.img``
+const StyledImg = styled.img`
+	mix-blend-mode: normal;
+`
 
 const StyledConceptDiv = styled.div`
 	height: 80vh;
@@ -266,10 +267,10 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				<StyledSection direction='row' bg='#fFF8D6'>
+				<StyledSection direction='row' bg='#f1f1f1'>
 					<StyledDiv>
 						<StyledH2>
-							{window.navigator.language === 'sv' ||
+							{window.navigator.language === 'sv' &&
 							'sv-SE'
 								? data && data.header.sv
 								: data && data.header.en}
@@ -301,7 +302,7 @@ const LandingPage = ({ myRef }) => {
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>
-							{window.navigator.language === 'sv' ||
+							{window.navigator.language === 'sv' &&
 							'sv-SE'
 								? data && data.subHeader.sv
 								: data && data.subHeader.en}
@@ -312,12 +313,13 @@ const LandingPage = ({ myRef }) => {
 							{data && (
 								<StyledImg
 									src={urlFor(data.image)
-										.width(300)
+										.width(600)
 										.url()}
 								/>
 							)}
+
 							<StyledH4>
-								{window.navigator.language === 'sv' ||
+								{window.navigator.language === 'sv' &&
 								'sv-SE'
 									? data && data.underImage.sv
 									: data && data.underImage.en}
@@ -365,7 +367,7 @@ const LandingPage = ({ myRef }) => {
 					</StyledConceptDiv>
 				</StyledSection2>
 
-				<Testemonials />
+				{/* 		<Testemonials /> */}
 
 				<Footer
 					sliderRef={sliderRef}

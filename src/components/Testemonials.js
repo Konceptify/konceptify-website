@@ -80,7 +80,7 @@ const Arrow1 = styled(Arrow)`
 `
 
 const StyledHeader = styled.div`
-	font-size: 5rem;
+	font-size: 4vw;
 	width: 100%;
 	padding: 15%;
 	text-align: left;
