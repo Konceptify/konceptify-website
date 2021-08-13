@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
+import { LanguageContext } from '../App'
 
 const Wrapper = styled.footer`
 	width: 100vw;
@@ -72,7 +73,7 @@ const variantsIcon = {
 }
 
 const Footer = ({ setConceptSlide, sliderRef }) => {
-	const lang = window.navigator.language === 'sv' && 'sv-se' ? true : false
+	const { lang } = useContext(LanguageContext)
 
 	return (
 		<Wrapper>

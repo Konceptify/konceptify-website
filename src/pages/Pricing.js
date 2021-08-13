@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
 import Footer from '../components/Footer'
+import { LanguageContext } from '../App'
 
 import Wave from 'react-wavify'
 
@@ -33,7 +34,7 @@ const Wrapper = styled(motion.section)`
 const StyledH1 = styled.h1`
 	font-size: 2vw;
 	position: fixed;
-	top: 20%;
+	top: 15%;
 	left: 7%;
 	color: ${({ theme }) => theme.primary90};
 `
@@ -171,6 +172,7 @@ const StyledSpan = styled.span`
 const Pricing = () => {
 	const [monthly, setMonthly] = useState(true)
 	const [data, setData] = useState()
+	const { lang } = useContext(LanguageContext)
 
 	useEffect(() => {
 		sanityClient
@@ -183,11 +185,6 @@ const Pricing = () => {
 			.then((data) => setData(data[0]))
 			.catch((error) => console.log(error))
 	}, [])
-
-	const monthlyS =
-		window.navigator.language === 'sv' && 'sv-SE' ? 'MÅNAD' : 'ÅR'
-	const yearlyS =
-		window.navigator.language === 'sv' && 'sv-SE' ? 'ÅR' : 'MÅNAD'
 
 	return (
 		<>
@@ -221,7 +218,9 @@ const Pricing = () => {
 						}}
 					/>
 				</BackgroundDiv>
-				<StyledH1>Välj den plan som passar dig</StyledH1>
+				<StyledH1>
+					{data ? (lang ? data.title.sv : data.title.en) : null}
+				</StyledH1>
 				<StyledDiv2>
 					<StyledSwitchDiv>
 						<StyledPriceSelect
@@ -231,21 +230,35 @@ const Pricing = () => {
 							}
 						>
 							<StyledToggle>
-								{monthly ? monthlyS : yearlyS}
+								{monthly
+									? lang
+										? 'MÅNAD'
+										: 'MONTH'
+									: lang
+									? 'ÅR'
+									: 'YEAR'}
 							</StyledToggle>
-							<span>{monthly ? yearlyS : monthlyS}</span>
+							<span>
+								{!monthly
+									? lang
+										? 'MÅNAD'
+										: 'MONTH'
+									: lang
+									? 'ÅR'
+									: 'YEAR'}
+							</span>
 						</StyledPriceSelect>
-						<StyledSpan>/ unit</StyledSpan>
+						<StyledSpan>
+							/ {lang ? 'enhet' : 'unit'}
+						</StyledSpan>
 					</StyledSwitchDiv>
 
 					<StyledAside>
 						<StyledLink to='/contact'>
-							{window.navigator.language === 'sv' &&
-							'sv-SE'
+							{lang
 								? 'Vill du veta mer?'
 								: 'Curious to know more?'}
-							{window.navigator.language === 'sv' &&
-							'sv-SE' ? (
+							{lang ? (
 								<span>Kontakta oss</span>
 							) : (
 								<span>Contact us</span>

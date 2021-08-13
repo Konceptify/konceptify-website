@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
+import { LanguageContext } from '../App'
 
 const StyledNav = styled(motion.div)`
 	width: 100vw;
@@ -116,9 +117,25 @@ const variants = {
 	},
 }
 
+const StyledLangList = styled.ul`
+	display: flex;
+	list-style: none;
+	margin: 40px 0 0 20px;
+
+	button {
+		background: none;
+		border: none;
+		padding: 10px 25px;
+		border-radius: 20px;
+		:hover {
+			background-color: ${({ theme }) => theme.primary80};
+			color: white;
+		}
+	}
+`
+
 const NavBar = ({ setOpenNav, openNav }) => {
-	const lang = window.navigator.language === 'sv' && 'sv-se' ? true : false
-	console.log(lang)
+	const { lang, setLang } = useContext(LanguageContext)
 
 	return (
 		<StyledNav
@@ -145,6 +162,31 @@ const NavBar = ({ setOpenNav, openNav }) => {
 						<li>{lang ? 'KONTAKT' : 'CONTACT'}</li>
 					</Link>
 				</StyledSubList>
+				<StyledLangList>
+					<li>
+						<button
+							onClick={() => {
+								setLang(false)
+								localStorage.setItem('language', false)
+								setOpenNav(false)
+							}}
+						>
+							EN
+						</button>
+					</li>
+
+					<li>
+						<button
+							onClick={() => {
+								setLang(true)
+								localStorage.setItem('language', true)
+								setOpenNav(false)
+							}}
+						>
+							SV
+						</button>
+					</li>
+				</StyledLangList>
 			</StyledMainList>
 
 			<StyledLogIn>

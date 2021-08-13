@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import VideoMockup from './VideoMockup'
 import { motion } from 'framer-motion'
 import sanityClient from '../client'
+import { LanguageContext } from '../App'
 
 const Wrapper = styled(motion.div)`
 	height: 100%;
@@ -106,6 +107,7 @@ const StyledDiv = styled.div`
 
 const Educate = ({ conceptSlide }) => {
 	const [data, setData] = useState()
+	const { lang } = useContext(LanguageContext)
 
 	useEffect(() => {
 		sanityClient
@@ -119,25 +121,7 @@ const Educate = ({ conceptSlide }) => {
             }`
 			)
 			.then((data) => {
-				const { header, subHeader, underVideo, banner } = data[0]
-				setData({
-					header:
-						window.navigator.language === 'sv' && 'sv-SE'
-							? header.sv
-							: header.en,
-					subHeader:
-						window.navigator.language === 'sv' && 'sv-SE'
-							? subHeader.sv
-							: subHeader.en,
-					underVideo:
-						window.navigator.language === 'sv' && 'sv-SE'
-							? underVideo.sv
-							: underVideo.en,
-					banner:
-						window.navigator.language === 'sv' && 'sv-SE'
-							? banner.sv
-							: banner.en,
-				})
+				setData(data[0])
 			})
 			.catch((error) => console.log(error))
 	}, [])
@@ -149,15 +133,39 @@ const Educate = ({ conceptSlide }) => {
 			transition={{ duration: 0.05 }}
 		>
 			<StyledDivDesign>
-				<StyledH2>{data && data.header}</StyledH2>
-				<StyledH3>{data && data.subHeader}</StyledH3>
+				<StyledH2>
+					{data
+						? lang
+							? data.header.sv
+							: data.header.en
+						: null}
+				</StyledH2>
+				<StyledH3>
+					{data
+						? lang
+							? data.subHeader.sv
+							: data.subHeader.en
+						: null}
+				</StyledH3>
 				<StyledDivCircle>
-					<p>{data && data.banner}</p>
+					<p>
+						{data
+							? lang
+								? data.banner.sv
+								: data.banner.en
+							: null}
+					</p>
 				</StyledDivCircle>
 			</StyledDivDesign>
 			<StyledDiv>
 				<VideoMockup />
-				<StyledH3b>{data && data.underVideo}</StyledH3b>
+				<StyledH3b>
+					{data
+						? lang
+							? data.underVideo.sv
+							: data.underVideo.en
+						: null}
+				</StyledH3b>
 			</StyledDiv>
 		</Wrapper>
 	)

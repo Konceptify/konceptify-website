@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import Snackbar from '@material-ui/core/Snackbar'
 import IconButton from '@material-ui/core/IconButton'
@@ -6,6 +6,7 @@ import CloseIcon from '@material-ui/icons/Close'
 import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
+import { LanguageContext } from '../App'
 
 import Footer from '../components/Footer'
 import sanityClient from '../client'
@@ -197,6 +198,7 @@ const Contact = () => {
 	const [open, setOpen] = useState(false)
 	const [snackbarMessage, setSnackbarMessage] = useState('')
 	const [data, setData] = useState(null)
+	const { lang } = useContext(LanguageContext)
 
 	useEffect(() => {
 		sanityClient
@@ -207,25 +209,9 @@ const Contact = () => {
 				replyBanner
             }`
 			)
-			.then((data) =>
-				setData(
-					window.navigator.language === 'sv' && 'sv-SE'
-						? [
-								data[0].contactInfo,
-								data[0].title.sv,
-								data[0].replyBanner.sv,
-						  ]
-						: [
-								data[0].contactInfo,
-								data[0].title.en,
-								data[0].replyBanner.en,
-						  ]
-				)
-			)
+			.then((data) => setData(data[0]))
 			.catch((error) => console.log(error))
 	}, [])
-
-	console.log(data)
 
 	const emailRef = useRef()
 	const nameRef = useRef()
@@ -275,35 +261,49 @@ const Contact = () => {
 		setOpen(false)
 	}
 
-	const sweLang =
-		window.navigator.language === 'sv' && 'sv-SE' ? true : false
+	console.log(data)
 
 	return (
 		<>
 			<Wrapper>
 				<StyledDiv1>
-					<StyledH2>{data && data[1]}</StyledH2>
+					<StyledH2>
+						{data
+							? lang
+								? data.title.sv
+								: data.title.en
+							: null}
+					</StyledH2>
 					<StyledUl>
-						{data &&
-							data[0].map((li, ind) => {
-								return (
-									<StyledLi key={ind}>{li}</StyledLi>
-								)
-							})}
+						{data
+							? data.contactInfo.map((li, ind) => {
+									return (
+										<StyledLi key={ind}>
+											{li}
+										</StyledLi>
+									)
+							  })
+							: null}
 					</StyledUl>
-					<StyledCircle>{data && data[2]}</StyledCircle>
+					<StyledCircle>
+						{data
+							? lang
+								? data.replyBanner.sv
+								: data.replyBanner.en
+							: null}
+					</StyledCircle>
 				</StyledDiv1>
 				<StyledDiv>
 					<StyledDivFormHeader>
 						<StyledP>
-							{!sweLang
-								? 'Lets connect'
-								: 'Fyll i dina uppgifter'}
+							{lang
+								? 'Fyll i dina uppgifter'
+								: 'Lets connect'}
 						</StyledP>
 					</StyledDivFormHeader>
 					<StyledForm onSubmit={handleSubmit}>
 						<StyledInput
-							placeholder={!sweLang ? 'Name' : 'Namn'}
+							placeholder={lang ? 'Namn' : 'Name'}
 							type='text'
 							name='from_name'
 							id='from_name'
@@ -320,15 +320,11 @@ const Contact = () => {
 							type='tel'
 							name='phone'
 							id='phone'
-							placeholder={
-								!sweLang ? 'Telephone' : 'Telefon'
-							}
+							placeholder={lang ? 'Telefon' : 'Telephone'}
 							ref={telephoneRef}
 						/>
 						<StyledBtn>
-							{!sweLang
-								? 'Get back to me'
-								: 'Kontakta mig'}
+							{lang ? 'Kontakta mig' : 'Get back to me'}
 
 							<IoMdArrowRoundForward size={30} />
 						</StyledBtn>

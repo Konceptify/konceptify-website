@@ -1,22 +1,40 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
-import heroImg from '../img/heroimg.png'
 import sanityClient from '../client'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
+import { LanguageContext } from '../App'
 
 const Wrapper = styled(motion.section)`
 	height: 90vh;
 	width: 100%;
 	display: flex;
-
 	align-items: center;
 	flex-direction: row;
 	position: relative;
 	justify-content: center;
+
 	@media (max-width: 768px) {
 		padding: 20px;
 	}
+`
+
+const StyledDiv = styled.header`
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	padding-left: 70px;
+`
+
+const StyledDiv2 = styled.header`
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding-right: 70px;
+	position: relative;
 `
 
 const StyledH1 = styled(motion.h1)`
@@ -40,18 +58,12 @@ const StyledH2 = styled(motion.h2)`
 `
 
 const StyledImg = styled(motion.img)`
+	position: relative;
+	width: 700px;
 	@media (max-width: 768px) {
-		position: absolute;
-		top: 0;
-		right: 0;
-		max-width: 100%;
-		opacity: 0.5;
-		display: none;
+		margin-top: 500px;
+		width: 400px;
 	}
-`
-
-const StyledDiv = styled.header`
-	padding: 70px 0px;
 `
 
 const StyledButton = styled.button`
@@ -92,6 +104,7 @@ const StyledButton = styled.button`
 
 const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
+	const { lang } = useContext(LanguageContext)
 
 	const variantsBtn = {
 		initial: {
@@ -115,11 +128,7 @@ const Hero = ({ myRef }) => {
             }`
 			)
 			.then((data) => {
-				setData(
-					window.navigator.language === 'sv' && 'sv-SE'
-						? [data[0].mainTitle.sv, data[0].subTitle.sv]
-						: [data[0].mainTitle.en, data[0].subTitle.en]
-				)
+				setData(data[0])
 			})
 			.catch((error) => console.log(error))
 	}, [])
@@ -151,7 +160,11 @@ const Hero = ({ myRef }) => {
 					variants={variants}
 					transition={{ duration: 0.5 }}
 				>
-					{data && data[0]}
+					{data
+						? lang
+							? data.mainTitle.sv
+							: data.mainTitle.en
+						: null}
 				</StyledH1>
 
 				<StyledH2
@@ -160,7 +173,11 @@ const Hero = ({ myRef }) => {
 					variants={variants2}
 					transition={'{ duration: 1 }'}
 				>
-					{data && data[1]}
+					{data
+						? lang
+							? data.subTitle.sv
+							: data.subTitle.en
+						: null}
 				</StyledH2>
 
 				<StyledButton
@@ -181,16 +198,16 @@ const Hero = ({ myRef }) => {
 					<StyledArrow size={20} />
 				</StyledButton>
 			</StyledDiv>
-			<StyledDiv>
+			<StyledDiv2>
 				<StyledImg
 					initial={'hidden'}
 					animate={'visible'}
 					variants={variants3}
 					transition={{ duration: 1.5 }}
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-900/Screen_05_kW_oguy3DL.png?updatedAt=1628766617957'
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_1_2x_C8eKJrZMy.png?updatedAt=1628846766012'
 					alt='hero image'
 				/>
-			</StyledDiv>
+			</StyledDiv2>
 		</Wrapper>
 	)
 }

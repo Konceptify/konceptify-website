@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import styled from 'styled-components'
 import Footer from './Footer'
 import Communicate from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
-import Testemonials from '../components/Testemonials'
+/* import Testemonials from '../components/Testemonials' */
 import sanityClient from '../client'
-import imageUrlBuilder from '@sanity/image-url'
+
+import { LanguageContext } from '../App'
 
 const Wrapper = styled.section`
 	width: 100vw;
@@ -47,13 +48,13 @@ const StyledDivDesign = styled.div`
 	width: 80%;
 	height: 90%;
 	border-radius: 50px 50px 0 0;
-	background: ${({ theme }) => theme.primary};
+	/* background: ${({ theme }) => theme.primary60}; */
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	margin-bottom: -80px;
-	box-shadow: 10px 10px 0px #cbcbcb;
+	/* box-shadow: 10px 10px 0px #cbcbcb; */
 	@media (max-width: 768px) {
 		width: 110%;
 		border-radius: 0;
@@ -229,6 +230,7 @@ const StyledCard = styled.div`
 const LandingPage = ({ myRef }) => {
 	const [conceptSlide, setConceptSlide] = useState('Compliance')
 	const sliderRef = useRef()
+	const { lang } = useContext(LanguageContext)
 
 	const [data, setData] = useState()
 
@@ -239,39 +241,41 @@ const LandingPage = ({ myRef }) => {
                 header,
 				subHeader,
 				underImage,
-				image
+				
 				
             }`
 			)
 			.then((data) => {
-				const { header, subHeader, underImage, image } = data[0]
+				const { header, subHeader, underImage } = data[0]
 				setData({
 					header: header,
 					subHeader: subHeader,
 					underImage: underImage,
-					image: image.asset,
 				})
 			})
 			.catch((error) => console.log(error))
 	}, [])
 
-	const builder = imageUrlBuilder(sanityClient)
-
-	// Then we like to make a simple function like this that gives the
-	// builder an image and returns the builder for you to specify additional
-	// parameters:
-	function urlFor(source) {
-		return builder.image(source)
-	}
-
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				<StyledSection direction='row' bg='#f1f1f1'>
+				<StyledSection direction='row' bg='#fcfffd'>
+					<StyledDiv>
+						<StyledDivDesign>
+							{data && (
+								<StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-800/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' />
+							)}
+
+							<StyledH4>
+								{lang
+									? data && data.underImage.sv
+									: data && data.underImage.en}
+							</StyledH4>
+						</StyledDivDesign>
+					</StyledDiv>
 					<StyledDiv>
 						<StyledH2>
-							{window.navigator.language === 'sv' &&
-							'sv-SE'
+							{lang
 								? data && data.header.sv
 								: data && data.header.en}
 						</StyledH2>
@@ -302,29 +306,10 @@ const LandingPage = ({ myRef }) => {
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>
-							{window.navigator.language === 'sv' &&
-							'sv-SE'
+							{lang
 								? data && data.subHeader.sv
 								: data && data.subHeader.en}
 						</StyledH3>
-					</StyledDiv>
-					<StyledDiv>
-						<StyledDivDesign>
-							{data && (
-								<StyledImg
-									src={urlFor(data.image)
-										.width(600)
-										.url()}
-								/>
-							)}
-
-							<StyledH4>
-								{window.navigator.language === 'sv' &&
-								'sv-SE'
-									? data && data.underImage.sv
-									: data && data.underImage.en}
-							</StyledH4>
-						</StyledDivDesign>
 					</StyledDiv>
 				</StyledSection>
 				<StyledSection2 ref={sliderRef}>

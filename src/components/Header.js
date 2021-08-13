@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import Hamburger from './Hamburger'
+import { ReactComponent as LogoSVG } from '../img/Resurs 5.svg'
 
 const Wrapper = styled.nav`
 	width: 100vw;
@@ -111,7 +112,9 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 			<StyledUl>
 				<li>
 					<LogoText scroll={scroll} location={location}>
-						<Link to='/'>ZITTRON</Link>
+						<Link to='/'>
+							<LogoSVG width='160px' />
+						</Link>
 					</LogoText>
 				</li>
 				<li>

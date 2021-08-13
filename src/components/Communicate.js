@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import sanityClient from '../client'
+import { LanguageContext } from '../App'
 
 const Wrapper = styled.div`
 	height: 100%;
@@ -41,6 +42,7 @@ const StyledH3 = styled.h3`
 
 const Communicate = () => {
 	const [data, setData] = useState()
+	const { lang } = useContext(LanguageContext)
 
 	useEffect(() => {
 		sanityClient
@@ -53,17 +55,7 @@ const Communicate = () => {
             }`
 			)
 			.then((data) => {
-				const { header, subHeader } = data[0]
-				setData({
-					header:
-						window.navigator.language === 'sv' && 'sv-SE'
-							? header.sv
-							: header.en,
-					subHeader:
-						window.navigator.language === 'sv' && 'sv-SE'
-							? subHeader.sv
-							: subHeader.en,
-				})
+				setData(data[0])
 			})
 			.catch((error) => console.log(error))
 	}, [])
@@ -77,8 +69,20 @@ const Communicate = () => {
 				/>
 			</StyledDiv>
 			<StyledDiv>
-				<StyledH2>{data && data.header}</StyledH2>
-				<StyledH3>{data && data.subHeader}</StyledH3>
+				<StyledH2>
+					{data
+						? lang
+							? data.header.sv
+							: data.header.en
+						: null}
+				</StyledH2>
+				<StyledH3>
+					{data
+						? lang
+							? data.subHeader.sv
+							: data.subHeader.en
+						: null}
+				</StyledH3>
 			</StyledDiv>
 		</Wrapper>
 	)

@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import sanityClient from '../client'
+import { LanguageContext } from '../App'
 
 const StyledDiv = styled.div`
 	width: 300px;
@@ -95,6 +96,7 @@ const StyledLi = styled.li`
 
 const PricingCard = ({ monthly }) => {
 	const [subscriptions, setSubscriptions] = useState([])
+	const { lang } = useContext(LanguageContext)
 	useEffect(() => {
 		sanityClient
 			.fetch(
@@ -128,10 +130,7 @@ const PricingCard = ({ monthly }) => {
 						return (
 							<StyledDiv key={ind}>
 								<StyledLegend>
-									{window.navigator.language ===
-										'sv' || 'sv-SE'
-										? legend.sv
-										: legend.en}
+									{lang ? legend.sv : legend.en}
 								</StyledLegend>
 
 								<StyledPriceContainer>
@@ -151,15 +150,11 @@ const PricingCard = ({ monthly }) => {
 									</StyledH4>
 								</StyledPriceContainer>
 								<StyledH3>
-									{window.navigator.language ===
-										'sv' || 'sv-SE'
-										? header.sv
-										: header.en}
+									{lang ? header.sv : header.en}
 								</StyledH3>
 
 								<StyledUl>
-									{window.navigator.language ===
-										'sv' || 'sv-SE'
+									{lang
 										? benefits.sv.map(
 												(benefits, ind) => {
 													return (

@@ -12,6 +12,8 @@ import Pricing from './pages/Pricing'
 import Legal from './pages/Legal'
 /* import ThemeToggle from './components/ThemeToggle' */
 
+export const LanguageContext = React.createContext()
+
 const Wrapper = styled.div`
 	width: 100vw;
 	display: flex;
@@ -59,51 +61,50 @@ const App = () => {
 	const [openNav, setOpenNav] = useState(false)
 	const myRef = useRef()
 	const location = useLocation()
-	/* var mql = window.matchMedia('(prefers-color-scheme: light)') */
+	const [lang, setLang] = useState(
+		localStorage.language !== undefined
+			? JSON.parse(localStorage.getItem('language'))
+			: window.navigator.language === 'sv' && 'sv-SE'
+	)
 
-	const scrollHandler = () => {
-		window.addEventListener('scroll', () => {})
+	const ContextValue = {
+		lang,
+		setLang,
 	}
-
-	scrollHandler()
 
 	return (
 		<>
-			{' '}
-			<AnimatePresence exitBeforeEnter initial={true}>
-				<ThemeProvider theme={themes.lightMode}>
-					{/* <ThemeProvider
-					theme={
-						!mql.matches ? themes.lightMode : themes.darkMode
-					}
-				> */}
-					<GlobalStyles />
-					<Wrapper>
-						<Header
-							openNav={openNav}
-							setOpenNav={setOpenNav}
-						/>
-						<Switch
-							location={location}
-							key={location.pathname}
-						>
-							<Route exact path='/'>
-								<Hero myRef={myRef} />
-								<LandingPage myRef={myRef} />
-							</Route>
-							<Route path='/contact'>
-								<Contact />
-							</Route>
-							<Route path='/pricing'>
-								<Pricing />
-							</Route>
-							<Route path='/privacy'>
-								<Legal />
-							</Route>
-						</Switch>
-					</Wrapper>
-				</ThemeProvider>
-			</AnimatePresence>
+			<LanguageContext.Provider value={ContextValue}>
+				<AnimatePresence exitBeforeEnter initial={true}>
+					<ThemeProvider theme={themes.lightMode}>
+						<GlobalStyles />
+						<Wrapper>
+							<Header
+								openNav={openNav}
+								setOpenNav={setOpenNav}
+							/>
+							<Switch
+								location={location}
+								key={location.pathname}
+							>
+								<Route exact path='/'>
+									<Hero myRef={myRef} />
+									<LandingPage myRef={myRef} />
+								</Route>
+								<Route path='/contact'>
+									<Contact />
+								</Route>
+								<Route path='/pricing'>
+									<Pricing />
+								</Route>
+								<Route path='/privacy'>
+									<Legal />
+								</Route>
+							</Switch>
+						</Wrapper>
+					</ThemeProvider>
+				</AnimatePresence>
+			</LanguageContext.Provider>
 		</>
 	)
 }
