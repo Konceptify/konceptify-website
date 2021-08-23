@@ -19,9 +19,6 @@ const StyledNav = styled(motion.div)`
 
 	@media (max-width: 768px) {
 		padding: 0 30px;
-		ul {
-			flex-direction: column;
-		}
 	}
 `
 
@@ -32,25 +29,24 @@ const StyledMainList = styled.ul`
 	list-style: none;
 	align-items: flex-start;
 	padding: 80px 0 0 0;
+	* {
+		:hover {
+			color: #c1c1c1;
+		}
+	}
 
 	@media (max-width: 768px) {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		list-style: none;
-		align-items: flex-start;
 		padding: 40px 0 0 0;
 	}
 `
 
 const StyledLogIn = styled.div`
-	position: fixed;
-	margin-bottom: 80px;
+	margin-bottom: 20px;
 	bottom: 0;
 	width: 260px;
 	border-radius: 30px;
 	background: ${({ theme }) => theme.primary70};
-	padding: 25px 28px;
+	padding: 20px 18px;
 	font-size: 0.7rem;
 	color: #fff;
 	text-decoration: none;
@@ -58,6 +54,7 @@ const StyledLogIn = styled.div`
 		margin: 3px 0 5px 5px;
 		:hover {
 			fill: #c1c1c1;
+			color: #c1c1c1;
 		}
 	}
 `
@@ -91,13 +88,6 @@ const StyledSubList = styled.ul`
 	a:visited {
 		text-decoration: none;
 	}
-
-	* {
-		:hover {
-			background-color: ${({ theme }) => theme.primary80};
-			color: white;
-		}
-	}
 `
 
 const StyledIconsContainer = styled.div`
@@ -118,19 +108,15 @@ const variants = {
 }
 
 const StyledLangList = styled.ul`
-	display: flex;
 	list-style: none;
-	margin: 40px 0 0 20px;
+	display: flex;
+	padding-left: 50px;
 
-	button {
-		background: none;
-		border: none;
-		padding: 10px 25px;
-		border-radius: 20px;
-		:hover {
-			background-color: ${({ theme }) => theme.primary80};
-			color: white;
-		}
+	li {
+		padding-right: 15px;
+		margin-bottom: 30px;
+		cursor: pointer;
+		margin-top: 40px;
 	}
 `
 
@@ -163,28 +149,24 @@ const NavBar = ({ setOpenNav, openNav }) => {
 					</Link>
 				</StyledSubList>
 				<StyledLangList>
-					<li>
-						<button
-							onClick={() => {
-								setLang(false)
-								localStorage.setItem('language', false)
-								setOpenNav(false)
-							}}
-						>
-							EN
-						</button>
+					<li
+						onClick={() => {
+							setLang(false)
+							localStorage.setItem('language', false)
+							setOpenNav(false)
+						}}
+					>
+						EN
 					</li>
 
-					<li>
-						<button
-							onClick={() => {
-								setLang(true)
-								localStorage.setItem('language', true)
-								setOpenNav(false)
-							}}
-						>
-							SV
-						</button>
+					<li
+						onClick={() => {
+							setLang(true)
+							localStorage.setItem('language', true)
+							setOpenNav(false)
+						}}
+					>
+						SV
 					</li>
 				</StyledLangList>
 			</StyledMainList>

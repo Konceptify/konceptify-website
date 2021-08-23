@@ -23,7 +23,7 @@ const Wrapper = styled(motion.section)`
 	overflow: hidden;
 	@media (max-width: 768px) {
 		justify-content: flex-start;
-		align-items: flex-start;
+		align-items: center;
 		flex-direction: column;
 		height: 1100px;
 	}
@@ -37,13 +37,19 @@ const StyledH1 = styled.h1`
 	top: 15%;
 	left: 7%;
 	color: ${({ theme }) => theme.primary90};
+	@media (max-width: 768px) {
+		font-size: 1.2rem;
+		padding-top: 50px;
+		opacity: 0;
+		position: static;
+	}
 `
 
 const StyledDiv2 = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 580px;
+
 	align-items: center;
 
 	@media (max-width: 768px) {

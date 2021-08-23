@@ -64,15 +64,26 @@ const StyledH1 = styled(motion.h1)`
 	}
 `
 
-const StyledArrow = styled(IoMdArrowRoundForward)``
-
 const StyledH2 = styled(motion.h2)`
 	font-weight: 500;
+	max-width: 90%;
+	font-size: 1.5vw;
 	margin-top: 20px;
 	color: ${(props) => props.theme.color};
 	@media (max-width: 768px) {
 		width: 100vw;
 		font-size: 1rem;
+	}
+`
+const StyledH2b = styled(motion.h2)`
+	font-weight: 500;
+	max-width: 90%;
+	font-size: 1vw;
+	margin-top: 20px;
+	color: ${(props) => props.theme.color};
+	@media (max-width: 768px) {
+		width: 100vw;
+		font-size: 0.8rem;
 	}
 `
 
@@ -82,10 +93,11 @@ const StyledImg = styled(motion.img)`
 	@media (max-width: 768px) {
 		width: 100vw;
 		position: absolute;
-		padding-top: 200px;
+		padding-top: 220px;
 		padding-left: 150px;
 	}
 `
+const StyledArrow = styled(IoMdArrowRoundForward)``
 
 const StyledButton = styled.button`
 	width: 150px;
@@ -144,6 +156,7 @@ const Hero = ({ myRef }) => {
 			.fetch(
 				`*[_type == "mainHeader"] {
                 subTitle,
+                subTitleTwo,
 				mainTitle,
 				image
             }`
@@ -200,6 +213,18 @@ const Hero = ({ myRef }) => {
 							: data.subTitle.en
 						: null}
 				</StyledH2>
+				<StyledH2b
+					initial={'hidden'}
+					animate={'visible'}
+					variants={variants2}
+					transition={'{ duration: 1 }'}
+				>
+					{data
+						? lang
+							? data.subTitleTwo.sv
+							: data.subTitleTwo.en
+						: null}
+				</StyledH2b>
 
 				<StyledButton
 					initial={'initial'}

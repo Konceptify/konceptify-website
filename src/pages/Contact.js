@@ -23,7 +23,7 @@ const Wrapper = styled.section`
 	@media (max-width: 768px) {
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 	}
 `
 
@@ -37,8 +37,6 @@ const StyledDiv = styled.div`
 
 	@media (max-width: 768px) {
 		width: 100vw;
-		justify-content: flex-start;
-		margin-top: 20%;
 	}
 `
 const StyledDiv1 = styled.div`
@@ -55,7 +53,7 @@ const StyledDiv1 = styled.div`
 	flex-direction: column;
 	background-color: ${(props) => props.theme.primary};
 	@media (max-width: 768px) {
-		opacity: 0;
+		display: none;
 	}
 `
 
@@ -89,6 +87,7 @@ const StyledH2 = styled.h2`
 
 const StyledP = styled.p`
 	font-weight: 600;
+	margin-left: 15px;
 `
 
 const StyledDivFormHeader = styled.div`
@@ -104,9 +103,19 @@ const StyledDivFormHeader = styled.div`
 	color: ${(props) => props.theme.color};
 	align-items: center;
 	background-color: ${({ theme }) => theme.white};
+	img {
+		display: none;
+	}
 
 	@media (max-width: 768px) {
-		display: none;
+		img {
+			display: block;
+		}
+		filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
+		border: none;
+		justify-content: flex-start;
+		padding-left: 60px;
+		font-size: 2.5rem;
 	}
 `
 
@@ -117,9 +126,12 @@ const StyledForm = styled.form`
 	width: 460px;
 
 	@media (max-width: 768px) {
-		width: 100%;
-		padding: 10px;
-		margin-top: -300px;
+		width: 95%;
+		padding: 0 10px 20px 10px;
+		margin: 10px 10px;
+		margin-top: -200px;
+		background: ${({ theme }) => theme.primary70};
+		border-radius: 20px;
 	}
 `
 
@@ -149,6 +161,9 @@ const StyledInput = styled(motion.input)`
 	@media (max-width: 768px) {
 		margin-top: 50px;
 		font-size: 16px;
+		border-bottom: none;
+		padding: 10px 15px;
+		border-radius: 10px;
 	}
 `
 
@@ -252,6 +267,10 @@ const Contact = () => {
 			setSnackbarMessage('Please fill in all info')
 			setOpen(true)
 		}
+
+		emailRef.current.value = ''
+		nameRef.current.value = ''
+		telephoneRef.current.value = ''
 	}
 
 	const handleClose = (event, reason) => {
@@ -295,12 +314,18 @@ const Contact = () => {
 				</StyledDiv1>
 				<StyledDiv>
 					<StyledDivFormHeader>
+						<img
+							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/Resurs_1_4x_iT35dIXf62.png?updatedAt=1629711469111'
+							alt='logo'
+							width='45'
+						/>
 						<StyledP>
 							{lang
 								? 'Fyll i dina uppgifter'
 								: 'Lets connect'}
 						</StyledP>
 					</StyledDivFormHeader>
+
 					<StyledForm onSubmit={handleSubmit}>
 						<StyledInput
 							placeholder={lang ? 'Namn' : 'Name'}
@@ -324,7 +349,7 @@ const Contact = () => {
 							ref={telephoneRef}
 						/>
 						<StyledBtn>
-							{lang ? 'Kontakta mig' : 'Get back to me'}
+							{lang ? 'Skicka' : 'Submit'}
 
 							<IoMdArrowRoundForward size={30} />
 						</StyledBtn>
