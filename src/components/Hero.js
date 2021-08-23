@@ -135,6 +135,43 @@ const StyledButton = styled.button`
 	}
 `
 
+const StyledButton2 = styled.button`
+	width: 150px;
+	height: 42.29px;
+	background-color: ${(props) => props.theme.primary};
+	color: ${(props) => props.theme.btnborderColor};
+	border: 1px solid ${(props) => props.theme.btnborderColor};
+	border-radius: 30px;
+	border: none;
+
+	letter-spacing: 2px;
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+	cursor: pointer;
+	padding: 15px 18px;
+	font-size: 0.7rem;
+
+	a {
+		text-decoration: none;
+		color: white;
+	}
+
+	@media (max-width: 768px) {
+	}
+`
+
+const StyledDownloadDiv = styled.div`
+	position: absolute;
+	bottom: 20px;
+	left: 250px;
+	display: flex;
+	align-items: center;
+	* {
+		margin: 0 5px;
+	}
+`
+
 const Hero = ({ myRef }) => {
 	const [data, setData] = useState(null)
 	const { lang } = useContext(LanguageContext)
@@ -244,6 +281,29 @@ const Hero = ({ myRef }) => {
 					{lang ? 'LÄS MER' : 'LEARN MORE'}
 					<StyledArrow size={20} />
 				</StyledButton>
+				<StyledDownloadDiv>
+					<a href='https://apps.apple.com/se/app/zittron/id1549633030?l=en'>
+						<img
+							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-120/apple_2x_u-Ff_4ztY.png?updatedAt=1629721705118'
+							alt='apple download'
+							width='120'
+							style={{ cursor: 'pointer' }}
+						/>
+					</a>
+					<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee'>
+						<img
+							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-150/google_2x_e5Et7nh6N.png?updatedAt=1629721705186'
+							alt='google download'
+							width='150'
+							style={{ cursor: 'pointer' }}
+						/>
+					</a>
+					<StyledButton2>
+						<a href='https://primemanager.zittron.com/'>
+							{lang ? 'LOGGA IN' : 'CUSTOMER LOG IN'}
+						</a>
+					</StyledButton2>
+				</StyledDownloadDiv>
 			</StyledDiv>
 			<StyledDiv2>
 				<StyledImg

@@ -32,6 +32,7 @@ const StyledDiv = styled.div`
 const StyledH2 = styled.h2`
 	font-size: 4rem;
 	width: 100%;
+	color: ${({ theme }) => theme.color};
 	@media (max-width: 768px) {
 		font-size: 2rem;
 	}
@@ -50,6 +51,7 @@ const StyledDivDesign = styled.div`
 	width: 80%;
 	height: 90%;
 	border-radius: 50px 50px 0 0;
+	position: relative;
 	/* background: ${({ theme }) => theme.primary60}; */
 	display: flex;
 	justify-content: center;
@@ -68,9 +70,10 @@ const StyledDivDesign = styled.div`
 const StyledH4 = styled.h4`
 	text-align: center;
 	color: ${({ theme }) => theme.primary90};
-	margin-top: 20px;
-	font-size: 1.2rem;
-	width: 60%;
+	position: absolute;
+	bottom: 10px;
+	font-size: 1rem;
+	width: 100%;
 	@media (max-width: 768px) {
 		width: 100%;
 		font-size: 0.7rem;
@@ -218,8 +221,8 @@ const StyledCard = styled.div`
 	margin: 20px 10px;
 	border-radius: 20px;
 	cursor: pointer;
-	color: ${({ theme }) => theme.primary};
-	background: #fafafa;
+	color: ${({ theme }) => theme.white};
+	background-color: ${({ theme }) => theme.primary};
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
 
 	@media (max-width: 768px) {

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from './components/GlobalStyles'
 import { Switch, Route, useLocation } from 'react-router-dom'
@@ -72,6 +72,25 @@ const App = () => {
 		lang,
 		setLang,
 	}
+
+	useEffect(() => {
+		const faviconUpdate = async () => {
+			const favicon = document.getElementById('favicon')
+			//check count value, if below 0 we change href property to our red circle image path
+			if (
+				window.matchMedia &&
+				window.matchMedia('(prefers-color-scheme: dark)').matches
+			) {
+				favicon.href = 'Resurs vit.png'
+			}
+			//if above 0, we set back to green
+			else {
+				favicon.href = '/Resurs 2.png'
+			}
+		}
+		//run our function here
+		faviconUpdate()
+	}, [])
 
 	return (
 		<>

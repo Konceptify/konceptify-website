@@ -9,7 +9,7 @@ const StyledNav = styled(motion.div)`
 	width: 100vw;
 	height: 100vh;
 	background-color: ${({ theme }) => theme.white};
-	position: relative;
+
 	z-index: 3;
 	padding-left: 100px;
 	* {
@@ -194,7 +194,7 @@ const NavBar = ({ setOpenNav, openNav }) => {
 					</a>
 				</StyledIconsContainer>
 				<StyledAnchor href='https://primemanager.zittron.com/'>
-					PRIME MANAGER
+					PRIME MANAGER LOG IN
 				</StyledAnchor>
 			</StyledLogIn>
 		</StyledNav>

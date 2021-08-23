@@ -59,7 +59,7 @@ const StyledH3 = styled.h3`
 const StyledH3b = styled.h3`
 	width: 80%;
 	font-size: 1rem;
-	margin-top: 40px;
+	margin-top: 60px;
 	color: ${({ theme }) => theme.white};
 	text-align: center;
 	@media (max-width: 768px) {

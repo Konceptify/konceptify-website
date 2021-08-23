@@ -18,6 +18,7 @@ const Wrapper = styled.section`
 	align-items: flex-end;
 	position: relative;
 	z-index: 2;
+	background: #fafafa;
 
 	@media (max-width: 768px) {
 		flex-direction: column;
@@ -50,7 +51,7 @@ const StyledDiv1 = styled.div`
 
 	align-items: center;
 	flex-direction: column;
-	background-color: ${(props) => props.theme.primary};
+	background-color: ${(props) => props.theme.primary80};
 	@media (max-width: 768px) {
 		display: none;
 	}
@@ -85,8 +86,8 @@ const StyledLi = styled.li`
 `
 
 const StyledH2 = styled.h2`
-	font-size: 3rem;
-	margin-bottom: 20px;
+	font-size: 3vw;
+	margin-bottom: 60px;
 	color: ${({ theme }) => theme.white};
 `
 
@@ -144,7 +145,7 @@ const StyledInput = styled(motion.input)`
 	border: none;
 	border-bottom: 3px solid #c0cbc4;
 	padding-bottom: 10px;
-	background-color: ${(props) => props.theme.white};
+	background-color: #fafafa;
 	margin-top: 90px;
 	outline: none;
 
@@ -328,8 +329,8 @@ const Contact = () => {
 						/>
 						<StyledP>
 							{lang
-								? 'Fyll i dina uppgifter'
-								: 'Lets connect'}
+								? 'Fyll i dina uppgifter så kontaktar teamet dig'
+								: 'Lets our team connect with you'}
 						</StyledP>
 					</StyledDivFormHeader>
 

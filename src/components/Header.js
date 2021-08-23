@@ -93,12 +93,13 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 		} else {
 			setScroll(false)
 		}
+		setOpenNav(false)
 	}
 
 	useEffect(() => {
 		changeBackground()
 		window.addEventListener('scroll', changeBackground)
-	}, [])
+	})
 
 	return (
 		<Wrapper scroll={scroll}>
