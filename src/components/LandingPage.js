@@ -24,6 +24,7 @@ const StyledDiv = styled.div`
 	text-align: center;
 	@media (max-width: 768px) {
 		width: 100%;
+		padding-top: 30px;
 	}
 `
 
@@ -56,7 +57,7 @@ const StyledDivDesign = styled.div`
 	margin-bottom: -80px;
 	/* box-shadow: 10px 10px 0px #cbcbcb; */
 	@media (max-width: 768px) {
-		width: 110%;
+		width: 100%;
 		border-radius: 0;
 		box-shadow: none;
 		margin-bottom: 0px;
@@ -65,17 +66,21 @@ const StyledDivDesign = styled.div`
 
 const StyledH4 = styled.h4`
 	text-align: center;
-	color: ${({ theme }) => theme.white};
+	color: ${({ theme }) => theme.primary90};
 	margin-top: 20px;
 	font-size: 1.2rem;
 	width: 60%;
 	@media (max-width: 768px) {
 		width: 100%;
+		font-size: 0.7rem;
 	}
 `
 
 const StyledImg = styled.img`
 	mix-blend-mode: normal;
+	@media (max-width: 768px) {
+		width: 90vw;
+	}
 `
 
 const StyledConceptDiv = styled.div`
@@ -259,7 +264,7 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				<StyledSection direction='row' bg='#fcfffd'>
+				<StyledSection direction='row' bg='#fafafa'>
 					<StyledDiv>
 						<StyledDivDesign>
 							{data && (

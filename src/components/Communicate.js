@@ -16,6 +16,14 @@ const Wrapper = styled.div`
 	}
 `
 
+const StyledImg = styled.img`
+	width: 600px;
+	@media (max-width: 768px) {
+		width: 100%;
+		padding-top: 50px;
+	}
+`
+
 const StyledDiv = styled.div`
 	width: 50%;
 	@media (max-width: 768px) {
@@ -63,8 +71,8 @@ const Communicate = () => {
 	return (
 		<Wrapper>
 			<StyledDiv>
-				<img
-					src='https://ik.imagekit.io/lct7da3kd6o/tr:w-500/Zittron/Screen_01_dK3nT6TdI.png?updatedAt=1628766617907'
+				<StyledImg
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_2_4x_m24TjcELRk.png?updatedAt=1629706140849'
 					alt='chat popup'
 				/>
 			</StyledDiv>

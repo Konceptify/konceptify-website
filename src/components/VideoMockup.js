@@ -8,7 +8,6 @@ const Wrapper = styled(motion.div)`
 	height: 60%;
 	width: 100%;
 
-	border-radius: 50px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -16,7 +15,7 @@ const Wrapper = styled(motion.div)`
 	overflow: hidden;
 	@media (max-width: 768px) {
 		width: 100%;
-		border-radius: 0px;
+		border-radius: 10px;
 		margin-bottom: 30px;
 	}
 `
@@ -72,7 +71,7 @@ const StyledVideo = styled(motion.video)`
 	position: absolute;
 	border-radius: 50px;
 	@media (max-width: 768px) {
-		border-radius: 0px;
+		border-radius: 10px;
 		width: 100%;
 	}
 `
@@ -82,7 +81,7 @@ const StyledVideo2 = styled(motion.video)`
 	position: absolute;
 	border-radius: 50px;
 	@media (max-width: 768px) {
-		border-radius: 0px;
+		border-radius: 10px;
 		width: 100%;
 	}
 `
@@ -106,6 +105,7 @@ const VideoMockup = () => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5, ease: 'easeIn' }}
 					autoPlay='autoplay'
+					playsInline
 					loop='loop'
 				>
 					<source src={Video1} type='video/mp4' />
@@ -117,6 +117,7 @@ const VideoMockup = () => {
 					exit={{ opacity: 0 }}
 					transition={{ duration: 0.5, ease: 'easeIn' }}
 					autoPlay='autoplay'
+					playsInline
 					loop='loop'
 				>
 					<source src={Video2} type='video/mp4' />

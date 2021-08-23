@@ -7,7 +7,7 @@ import { LanguageContext } from '../App'
 
 const Wrapper = styled(motion.section)`
 	height: 90vh;
-	width: 100%;
+	width: 100vw;
 	display: flex;
 	align-items: center;
 	flex-direction: row;
@@ -15,19 +15,28 @@ const Wrapper = styled(motion.section)`
 	justify-content: center;
 
 	@media (max-width: 768px) {
-		padding: 20px;
+		padding: 0px;
+		flex-direction: column;
 	}
 `
 
-const StyledDiv = styled.header`
+const StyledDiv = styled.div`
 	width: 50%;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	padding-left: 70px;
+
+	@media (max-width: 768px) {
+		width: 100vw;
+		justify-content: flex-start;
+		padding-left: 20px;
+		position: absolute;
+		z-index: 1;
+	}
 `
 
-const StyledDiv2 = styled.header`
+const StyledDiv2 = styled.div`
 	width: 50%;
 	display: flex;
 	justify-content: center;
@@ -35,6 +44,11 @@ const StyledDiv2 = styled.header`
 	flex-direction: column;
 	padding-right: 70px;
 	position: relative;
+	@media (max-width: 768px) {
+		width: 100vw;
+		padding-right: 0px;
+		padding-top: 50px;
+	}
 `
 
 const StyledH1 = styled(motion.h1)`
@@ -46,6 +60,7 @@ const StyledH1 = styled(motion.h1)`
 		width: 90vw;
 		font-size: 2rem;
 		margin-top: -50px;
+		padding-right: 0px;
 	}
 `
 
@@ -55,14 +70,20 @@ const StyledH2 = styled(motion.h2)`
 	font-weight: 500;
 	margin-top: 20px;
 	color: ${(props) => props.theme.color};
+	@media (max-width: 768px) {
+		width: 100vw;
+		font-size: 1rem;
+	}
 `
 
 const StyledImg = styled(motion.img)`
 	position: relative;
 	width: 700px;
 	@media (max-width: 768px) {
-		margin-top: 500px;
-		width: 400px;
+		width: 100vw;
+		position: absolute;
+		padding-top: 200px;
+		padding-left: 150px;
 	}
 `
 
@@ -187,14 +208,15 @@ const Hero = ({ myRef }) => {
 					transition={'transition'}
 					onClick={() =>
 						setTimeout(
-							() => myRef.current.scrollIntoView(),
+							() =>
+								myRef.current.scrollIntoView({
+									behavior: 'smooth',
+								}),
 							500
 						)
 					}
 				>
-					{window.navigator.language === 'sv-SE' || 'sv'
-						? 'LÄS MER'
-						: 'LEARN MORE'}
+					{lang ? 'LÄS MER' : 'LEARN MORE'}
 					<StyledArrow size={20} />
 				</StyledButton>
 			</StyledDiv>
@@ -207,6 +229,12 @@ const Hero = ({ myRef }) => {
 					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_1_2x_C8eKJrZMy.png?updatedAt=1628846766012'
 					alt='hero image'
 				/>
+				{/* <video autoPlay loop muted>
+					<source
+						src='https://ik.imagekit.io/lct7da3kd6o/Zittron/WhatsApp_Video_2021-08-19_at_10.49.28_CTtr5XOqmM.mp4'
+						type='video/mp4'
+					/>
+				</video> */}
 			</StyledDiv2>
 		</Wrapper>
 	)
