@@ -8,7 +8,6 @@ import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
 
-import Footer from '../components/Footer'
 import sanityClient from '../client'
 
 const Wrapper = styled.section`
@@ -58,6 +57,12 @@ const StyledDiv1 = styled.div`
 `
 
 const StyledUl = styled.ul`
+	display: flex;
+	position: absolute;
+	bottom: 10px;
+	li {
+		margin: 0 10px;
+	}
 	@media (max-width: 768px) {
 	}
 `
@@ -280,8 +285,6 @@ const Contact = () => {
 		setOpen(false)
 	}
 
-	console.log(data)
-
 	return (
 		<>
 			<Wrapper>
@@ -293,6 +296,10 @@ const Contact = () => {
 								: data.title.en
 							: null}
 					</StyledH2>
+					<img
+						src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-400/Resurs_3_4x_J2lQ-3Lr7t5.png?updatedAt=1629718409148'
+						alt='task manager'
+					/>
 					<StyledUl>
 						{data
 							? data.contactInfo.map((li, ind) => {
@@ -378,8 +385,6 @@ const Contact = () => {
 					}
 				/>
 			</Wrapper>
-
-			<Footer />
 		</>
 	)
 }

@@ -9,9 +9,14 @@ const Wrapper = styled.div`
 	display: flex;
 	padding: 100px 20px;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
-	p {
-		width: 100ch;
+	a {
+		text-decoration: none;
+		color: black;
+		margin-top: 50px;
+		font-size: 5vw;
 	}
 `
 
@@ -36,6 +41,8 @@ const Legal = () => {
 			{policy && (
 				<a href={`${policy.privacyPDFURL}?dl=`}>Privacy Policy</a>
 			)}
+
+			<p>(click text to download PDF)</p>
 		</Wrapper>
 	)
 }

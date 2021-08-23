@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
-import Footer from '../components/Footer'
+
 import { LanguageContext } from '../App'
 
 import Wave from 'react-wavify'
@@ -33,7 +33,7 @@ const Wrapper = styled(motion.section)`
 
 const StyledH1 = styled.h1`
 	font-size: 2vw;
-	position: fixed;
+	position: absolute;
 	top: 15%;
 	left: 7%;
 	color: ${({ theme }) => theme.primary90};
@@ -276,7 +276,6 @@ const Pricing = () => {
 					</StyledCardContainer>
 				</StyledDiv2>
 			</Wrapper>
-			<Footer />
 		</>
 	)
 }

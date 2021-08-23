@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import LandingPage from './components/LandingPage'
 import Pricing from './pages/Pricing'
 import Legal from './pages/Legal'
+import Footer from './components/Footer'
 /* import ThemeToggle from './components/ThemeToggle' */
 
 export const LanguageContext = React.createContext()
@@ -101,6 +102,7 @@ const App = () => {
 									<Legal />
 								</Route>
 							</Switch>
+							<Footer />
 						</Wrapper>
 					</ThemeProvider>
 				</AnimatePresence>

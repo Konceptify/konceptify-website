@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -74,34 +75,28 @@ const variantsIcon = {
 
 const Footer = ({ setConceptSlide, sliderRef }) => {
 	const { lang } = useContext(LanguageContext)
+	const history = useHistory()
+	const location = useLocation()
+
+	const handleClick = () => {
+		history.push('/')
+		if (location.pathname === '/') {
+			console.log('hemma')
+		}
+	}
 
 	return (
 		<Wrapper>
 			<StyledMainUL>
 				<StyledUL>
 					<li>{lang ? 'Koncept' : 'Concept'}</li>
-					<LinkLi
-						onClick={() => {
-							sliderRef.current.scrollIntoView()
-							setConceptSlide('Compliance')
-						}}
-					>
+					<LinkLi onClick={handleClick}>
 						{lang ? 'Checklistor' : 'Compliance'}
 					</LinkLi>
-					<LinkLi
-						onClick={() => {
-							sliderRef.current.scrollIntoView()
-							setConceptSlide('Communicate')
-						}}
-					>
+					<LinkLi onClick={handleClick}>
 						{lang ? 'Kommunikation' : 'Comunicate'}
 					</LinkLi>
-					<LinkLi
-						onClick={() => {
-							sliderRef.current.scrollIntoView()
-							setConceptSlide('E-learning')
-						}}
-					>
+					<LinkLi onClick={handleClick}>
 						{lang ? 'Utbildning' : 'Education'}
 					</LinkLi>
 					<li>

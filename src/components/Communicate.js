@@ -17,7 +17,6 @@ const Wrapper = styled.div`
 `
 
 const StyledImg = styled.img`
-	width: 600px;
 	@media (max-width: 768px) {
 		width: 100%;
 		padding-top: 50px;
@@ -72,7 +71,7 @@ const Communicate = () => {
 		<Wrapper>
 			<StyledDiv>
 				<StyledImg
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_2_4x_m24TjcELRk.png?updatedAt=1629706140849'
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-600/Resurs_5_08FgDgtoW.png?updatedAt=1629718921512'
 					alt='chat popup'
 				/>
 			</StyledDiv>

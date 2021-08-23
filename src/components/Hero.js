@@ -221,8 +221,8 @@ const Hero = ({ myRef }) => {
 				>
 					{data
 						? lang
-							? data.subTitleTwo.sv
-							: data.subTitleTwo.en
+							? data.subTitleTwo.sv && data.subTitleTwo.sv
+							: data.subTitleTwo.en && data.subTitleTwo.en
 						: null}
 				</StyledH2b>
 

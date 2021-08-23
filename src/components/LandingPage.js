@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef, useContext } from 'react'
 import styled from 'styled-components'
-import Footer from './Footer'
+
 import Communicate from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
 /* import Testemonials from '../components/Testemonials' */
+import Contact from '../pages/Contact'
 import sanityClient from '../client'
 
 import { LanguageContext } from '../App'
@@ -356,13 +357,14 @@ const LandingPage = ({ myRef }) => {
 						)}
 					</StyledConceptDiv>
 				</StyledSection2>
+				<Contact />
 
 				{/* 		<Testemonials /> */}
 
-				<Footer
+				{/* <Footer
 					sliderRef={sliderRef}
 					setConceptSlide={setConceptSlide}
-				/>
+				/> */}
 			</Wrapper>
 		</>
 	)
