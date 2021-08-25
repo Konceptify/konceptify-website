@@ -36,7 +36,15 @@ const StyledH1 = styled.h1`
 	position: absolute;
 	top: 15%;
 	left: 7%;
-	color: ${({ theme }) => theme.primary90};
+	color: ${({ theme }) => theme.color};
+	@media (min-width: 768px) {
+		background: ${({ theme }) => theme.primary};
+		color: ${({ theme }) => theme.white};
+		border-radius: 0px 30px 30px 0;
+
+		padding: 10px 20px 10px 150px;
+		left: 0;
+	}
 	@media (max-width: 768px) {
 		font-size: 1.2rem;
 		padding-top: 50px;
@@ -77,6 +85,7 @@ const StyledPriceSelect = styled.div`
 	align-items: center;
 	transition-duration: 1s;
 	justify-content: space-between;
+	margin-bottom: 100px;
 
 	span {
 		color: #ccc;
@@ -105,7 +114,8 @@ const StyledToggle = styled.div`
 const StyledAside = styled.div`
 	position: absolute;
 	left: 80%;
-	bottom: 80%;
+	bottom: 70%;
+	border: 4px solid black;
 	width: 100px;
 	height: 100px;
 	min-width: 100px;

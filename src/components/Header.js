@@ -60,8 +60,9 @@ const StyledUl = styled.ul`
 	display: flex;
 	justify-content: flex-end;
 	list-style: none;
-	padding: 10px 120px;
+	padding: 10px 120px 0 0;
 	align-items: center;
+
 	color: ${(props) => props.theme.color};
 	@media (max-width: 768px) {
 		padding: 10px 0px;
@@ -71,6 +72,11 @@ const StyledUl = styled.ul`
 const StyledLi = styled.li`
 	margin: 10px 10px;
 	cursor: pointer;
+
+	a {
+		text-decoration: none;
+		color: inherit;
+	}
 	:hover {
 		color: #cacaca;
 		svg {
@@ -86,8 +92,8 @@ const StyledLi = styled.li`
 const StyledContact = styled(StyledLi)`
 	background: ${({ theme }) => theme.primary};
 	color: white;
-	padding: 10px;
-	border-radius: 5px;
+	padding: 10px 15px;
+	border-radius: 30px;
 `
 
 const MenuBtn = styled(motion.button)`
@@ -118,7 +124,7 @@ const StyledLogoSVG = styled(LogoSVG)`
 const Header = ({ setOpenNav, openNav, theme }) => {
 	const location = useLocation()
 	const [scroll, setScroll] = useState(false)
-	const { setLang } = useContext(LanguageContext)
+	const { lang, setLang } = useContext(LanguageContext)
 
 	const changeBackground = () => {
 		if (window.scrollY >= 26) {
@@ -148,15 +154,19 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 				</Link>
 			</LogoText>
 			<StyledUl>
-				<StyledContact>Contact</StyledContact>
-				<StyledLi>Pricing</StyledLi>
+				<StyledContact>
+					<Link to='/contact'>Contact</Link>
+				</StyledContact>
+				<StyledLi>
+					<Link to='/pricing'>Pricing</Link>
+				</StyledLi>
 				<StyledLi>
 					<a
 						target='_blank'
 						rel='noopener noreferrer'
 						href='https://www.linkedin.com/company/zittron'
 					>
-						<RiLinkedinFill fill='black' size='10' />
+						<RiLinkedinFill fill='black' size='18' />
 					</a>
 				</StyledLi>
 				<StyledLi>
@@ -165,28 +175,30 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 						rel='noopener noreferrer'
 						href='https://www.instagram.com/zittron/'
 					>
-						<RiInstagramLine fill='black' size='10' />
+						<RiInstagramLine fill='black' size='18' />
 					</a>
 				</StyledLi>
-				<StyledLi
-					onClick={() => {
-						setLang(false)
-						localStorage.setItem('language', false)
-						setOpenNav(false)
-					}}
-				>
-					EN
-				</StyledLi>
-
-				<StyledLi
-					onClick={() => {
-						setLang(true)
-						localStorage.setItem('language', true)
-						setOpenNav(false)
-					}}
-				>
-					SV
-				</StyledLi>
+				{lang ? (
+					<StyledLi
+						onClick={() => {
+							setLang(false)
+							localStorage.setItem('language', false)
+							setOpenNav(false)
+						}}
+					>
+						EN
+					</StyledLi>
+				) : (
+					<StyledLi
+						onClick={() => {
+							setLang(true)
+							localStorage.setItem('language', true)
+							setOpenNav(false)
+						}}
+					>
+						SV
+					</StyledLi>
+				)}
 				<li>
 					<MenuBtn
 						onClick={() => setOpenNav((current) => !current)}

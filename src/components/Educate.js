@@ -64,6 +64,7 @@ const StyledH3b = styled.h3`
 	text-align: center;
 	@media (max-width: 768px) {
 		margin-bottom: 40px;
+		font-size: 0.8rem;
 	}
 `
 

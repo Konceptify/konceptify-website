@@ -138,25 +138,27 @@ const NavBar = ({ setOpenNav, openNav }) => {
 					</Link>
 				</StyledSubList>
 				<StyledLangList>
-					<li
-						onClick={() => {
-							setLang(false)
-							localStorage.setItem('language', false)
-							setOpenNav(false)
-						}}
-					>
-						EN
-					</li>
-
-					<li
-						onClick={() => {
-							setLang(true)
-							localStorage.setItem('language', true)
-							setOpenNav(false)
-						}}
-					>
-						SV
-					</li>
+					{lang ? (
+						<li
+							onClick={() => {
+								setLang(false)
+								localStorage.setItem('language', false)
+								setOpenNav(false)
+							}}
+						>
+							EN
+						</li>
+					) : (
+						<li
+							onClick={() => {
+								setLang(true)
+								localStorage.setItem('language', true)
+								setOpenNav(false)
+							}}
+						>
+							SV
+						</li>
+					)}
 				</StyledLangList>
 			</StyledMainList>
 

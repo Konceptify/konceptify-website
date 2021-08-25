@@ -35,6 +35,10 @@ const StyledH2 = styled.h2`
 
 	color: ${({ theme }) => theme.primary};
 	margin-top: -20px;
+	max-width: 80%;
+	@media (max-width: 1768px) {
+		padding-left: 40px;
+	}
 	@media (max-width: 768px) {
 		font-size: 1.5rem;
 		margin-top: 20px;
@@ -42,9 +46,14 @@ const StyledH2 = styled.h2`
 `
 
 const StyledH3 = styled.h3`
-	font-size: 1rem;
+	font-size: 0.9rem;
+	width: 70%;
 	margin-top: 20px;
+	padding-left: 40px;
 	color: ${({ theme }) => theme.primary};
+	@media (max-width: 1768px) {
+		padding-left: 40px;
+	}
 `
 
 const Communicate = () => {

@@ -4,6 +4,7 @@ import sanityClient from '../client'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
+import Button from './Button'
 
 const Wrapper = styled(motion.section)`
 	height: 90vh;
@@ -87,6 +88,7 @@ const StyledH2b = styled(motion.h2)`
 
 const StyledImg = styled(motion.img)`
 	position: relative;
+	right: 8vw;
 	width: 35vw;
 	@media (max-width: 768px) {
 		width: 100vw;
@@ -94,73 +96,11 @@ const StyledImg = styled(motion.img)`
 		padding-top: 80px;
 		padding-left: 150px;
 	}
+	@media (max-width: 1768px) {
+		margin-left: 240px;
+	}
 `
 const StyledArrow = styled(IoMdArrowRoundForward)``
-
-const StyledButton = styled.button`
-	width: 150px;
-	height: 42.29px;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.btnborderColor};
-	border: 1px solid ${(props) => props.theme.btnborderColor};
-	border-radius: 30px;
-	border: none;
-	margin-top: 20px;
-	letter-spacing: 2px;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	cursor: pointer;
-	padding: 15px 18px;
-	font-size: 0.6rem;
-
-	svg {
-		fill: ${({ theme }) => theme.btnborderColor};
-		size: 40;
-		padding-bottom: 2px;
-		transform: rotate(0deg);
-		transition-duration: 0.5s;
-	}
-
-	:hover {
-		svg {
-			transform: rotate(90deg);
-			transition-duration: 0.5s;
-		}
-	}
-
-	@media (max-width: 768px) {
-	}
-`
-
-const StyledButton2 = styled.button`
-	width: 170px;
-	height: 40px;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.btnborderColor};
-	border: 1px solid ${(props) => props.theme.btnborderColor};
-	border-radius: 30px;
-	border: none;
-	letter-spacing: 2px;
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
-	cursor: pointer;
-	padding: 15px 17px;
-	font-size: 0.7rem;
-
-	a {
-		text-decoration: none;
-		color: white;
-	}
-
-	@media (max-width: 768px) {
-		width: 80px;
-		height: 15px;
-		font-size: 0.4rem;
-		padding: 12px 5px;
-	}
-`
 
 const StyledDownloadDiv = styled.div`
 	position: absolute;
@@ -276,7 +216,8 @@ const Hero = ({ myRef }) => {
 						: null}
 				</StyledH2b>
 
-				<StyledButton
+				<Button
+					text={lang ? 'LÄS MER' : 'LEARN MORE'}
 					initial={'initial'}
 					whileTap={'animate'}
 					variants={variantsBtn}
@@ -291,9 +232,8 @@ const Hero = ({ myRef }) => {
 						)
 					}
 				>
-					{lang ? 'LÄS MER' : 'LEARN MORE'}
 					<StyledArrow size={20} />
-				</StyledButton>
+				</Button>
 				<StyledDownloadDiv>
 					<a href='https://apps.apple.com/se/app/zittron/id1549633030?l=en'>
 						<StyledImg2
@@ -311,11 +251,11 @@ const Hero = ({ myRef }) => {
 							style={{ cursor: 'pointer' }}
 						/>
 					</a>
-					<StyledButton2>
+					<Button>
 						<a href='https://primemanager.zittron.com/'>
 							{lang ? 'LOGGA IN' : 'SIGN IN'}
 						</a>
-					</StyledButton2>
+					</Button>
 				</StyledDownloadDiv>
 			</StyledDiv>
 			<StyledDiv2>

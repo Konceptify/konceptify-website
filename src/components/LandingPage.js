@@ -29,6 +29,7 @@ const StyledDiv = styled.div`
 	text-align: center;
 	@media (max-width: 768px) {
 		width: 100%;
+
 		padding-top: 30px;
 	}
 `
@@ -73,26 +74,35 @@ const StyledDivDesign = styled.div`
 
 const StyledH4 = styled.h4`
 	text-align: center;
-	color: ${({ theme }) => theme.primary90};
+	display: none;
+	color: ${({ theme }) => theme.color};
+	font-weight: 300;
+	padding: 10px 20px;
 	position: absolute;
 	bottom: 10px;
 	font-size: 1rem;
 	width: 100%;
+
 	@media (max-width: 768px) {
 		width: 100%;
-		font-size: 0.7rem;
+		font-size: 0.8rem;
+		background: inherit;
+		color: ${({ theme }) => theme.primary90};
+		padding: 0px;
+		display: block;
 	}
 `
 
 const StyledImg = styled.img`
-	mix-blend-mode: normal;
+	width: 45vw;
 	@media (max-width: 768px) {
 		width: 90vw;
+		margin-bottom: 100px;
 	}
 `
 
 const StyledConceptDiv = styled.div`
-	height: 80vh;
+	height: 90vh;
 	background: ${({ theme, conceptSlide }) =>
 		conceptSlide === 'Compliance'
 			? theme.primary90
@@ -193,8 +203,7 @@ const StyledSection = styled.section`
 	display: flex;
 	flex-direction: ${({ direction }) => direction};
 	overflow: hidden;
-	padding-left: 40px;
-	padding-right: 40px;
+	padding: 0 40px;
 
 	@media (max-width: 768px) {
 		width: 100vw;
@@ -231,7 +240,7 @@ const StyledCard = styled.div`
 
 	@media (max-width: 768px) {
 		width: 80px;
-		heighy: 60px;
+		height: 60px;
 		font-size: 0.7rem;
 	}
 
@@ -276,7 +285,7 @@ const LandingPage = ({ myRef }) => {
 					<StyledDiv>
 						<StyledDivDesign>
 							{data && (
-								<StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-800/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' />
+								<StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' />
 							)}
 
 							<StyledH4>
@@ -334,7 +343,9 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Compliance')
 								}
 							>
-								Compliance
+								{lang
+									? 'Checklistor'
+									: 'Task managment'}
 							</ComplianceSlide>
 							<EducateSlide
 								conceptSlide={conceptSlide}
@@ -342,7 +353,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('E-learning')
 								}
 							>
-								E-learning
+								{lang ? 'Utbildning' : 'Education'}
 							</EducateSlide>
 							<CommunicateSlide
 								conceptSlide={conceptSlide}
@@ -350,7 +361,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Communicate')
 								}
 							>
-								Communicate
+								{lang ? 'Kommunikation' : 'Communicate'}
 							</CommunicateSlide>
 						</StyledSlider>
 					</StyledSlideContainer>
@@ -365,13 +376,6 @@ const LandingPage = ({ myRef }) => {
 					</StyledConceptDiv>
 				</StyledSection2>
 				<Contact />
-
-				{/* 		<Testemonials /> */}
-
-				{/* <Footer
-					sliderRef={sliderRef}
-					setConceptSlide={setConceptSlide}
-				/> */}
 			</Wrapper>
 		</>
 	)

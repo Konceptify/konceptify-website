@@ -7,6 +7,7 @@ import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
+import Button from '../components/Button'
 
 import sanityClient from '../client'
 
@@ -60,7 +61,11 @@ const StyledDiv1 = styled.div`
 const StyledUl = styled.ul`
 	display: flex;
 	position: absolute;
-	bottom: 10px;
+	justify-content: space-evenly;
+	padding-bottom: 10px;
+	bottom: 0px;
+	width: 100%;
+	background-color: ${({ theme }) => theme.primary};
 	li {
 		margin: 0 10px;
 	}
@@ -73,7 +78,7 @@ const StyledLi = styled.li`
 	font-style: normal;
 	font-weight: 200;
 	list-style: none;
-	font-size: 1rem;
+	font-size: 0.8rem;
 	line-height: 2rem;
 	padding: 5px;
 	text-align: center;
@@ -87,13 +92,18 @@ const StyledLi = styled.li`
 
 const StyledH2 = styled.h2`
 	font-size: 3vw;
-	margin-bottom: 60px;
+	margin-bottom: 20px;
 	color: ${({ theme }) => theme.white};
 `
 
 const StyledP = styled.p`
 	font-weight: 600;
 	margin-left: 15px;
+
+	@media (max-width: 768px) {
+		font-size: 1.5rem;
+		font-weight: 700;
+	}
 `
 
 const StyledDivFormHeader = styled.div`
@@ -117,11 +127,13 @@ const StyledDivFormHeader = styled.div`
 		img {
 			display: block;
 		}
-		filter: drop-shadow(0px 0px 0px rgba(0, 0, 0, 0.25));
+		filter: none;
 		border: none;
 		justify-content: flex-start;
 		padding-left: 60px;
+		margin-top: -100px;
 		font-size: 2.5rem;
+		background-color: inherit;
 	}
 `
 
@@ -135,9 +147,13 @@ const StyledForm = styled.form`
 		width: 95%;
 		padding: 0 10px 20px 10px;
 		margin: 10px 10px;
-		margin-top: -200px;
+		margin-top: -400px;
+
 		background: ${({ theme }) => theme.primary70};
 		border-radius: 20px;
+		button {
+			margin: 50px 0 0 5px;
+		}
 	}
 `
 
@@ -151,6 +167,9 @@ const StyledInput = styled(motion.input)`
 
 	::placeholder {
 		color: ${(props) => props.theme.color};
+		@media (max-width: 768px) {
+			background-color: ${({ theme }) => theme.primary50};
+		}
 	}
 
 	:hover {
@@ -165,45 +184,25 @@ const StyledInput = styled(motion.input)`
 		color: #ccc;
 	}
 	@media (max-width: 768px) {
-		margin-top: 50px;
-		font-size: 16px;
+		margin-top: 40px;
+		font-size: 0.8rem;
+		background-color: ${({ theme }) => theme.primary50};
 		border-bottom: none;
 		padding: 10px 15px;
 		border-radius: 10px;
 	}
 `
 
-const StyledBtn = styled.button`
-	border: none;
-	background-color: ${(props) => props.theme.primary};
-	color: ${(props) => props.theme.white};
-	border: 1px solid #212a25;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-	border-radius: 20px;
-	height: 48px;
-	margin-top: 80px;
-	cursor: pointer;
-	font-size: 1.2rem;
-	padding: 20px 0px;
-	width: 55%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-
-	svg {
-		padding-top: 3px;
-	}
-`
-
 const StyledCircle = styled.div`
 	border-radius: 50%;
-	width: 130px;
-	height: 130px;
+	width: 140px;
+	height: 140px;
 	position: absolute;
 	z-index: 1;
 	top: -50px;
 	right: 50px;
 	background: #ffd600;
+	border: 4px solid white;
 	display: inline-flex;
 	text-align: center;
 	justify-content: center;
@@ -212,6 +211,23 @@ const StyledCircle = styled.div`
 	font-weight: 700;
 	font-size: 1.2rem;
 	@media (max-width: 768px) {
+	}
+`
+
+const StyledImgDiv = styled.div`
+	width: 25vw;
+	height: 25vw;
+	background: ${({ theme }) => theme.primary70};
+	padding: 40px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`
+
+const StyledImg = styled.img`
+	@media (max-width: 1768px) {
+		width: 20vw;
 	}
 `
 
@@ -297,16 +313,18 @@ const Contact = () => {
 								: data.title.en
 							: null}
 					</StyledH2>
-					<img
-						src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-400/Resurs_3_4x_J2lQ-3Lr7t5.png?updatedAt=1629718409148'
-						alt='task manager'
-					/>
+					<StyledImgDiv>
+						<StyledImg
+							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-500/Resurs_3_4x_J2lQ-3Lr7t5.png?updatedAt=1629718409148'
+							alt='task manager'
+						/>
+					</StyledImgDiv>
 					<StyledUl>
 						{data
 							? data.contactInfo.map((li, ind) => {
 									return (
 										<StyledLi key={ind}>
-											{li}
+											{li.toUpperCase()}
 										</StyledLi>
 									)
 							  })
@@ -325,13 +343,9 @@ const Contact = () => {
 						<img
 							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/Resurs_1_4x_iT35dIXf62.png?updatedAt=1629711469111'
 							alt='logo'
-							width='45'
+							width='30'
 						/>
-						<StyledP>
-							{lang
-								? 'Get in touch with us'
-								: 'Get in touch with us'}
-						</StyledP>
+						<StyledP>{'Get in touch with us'}</StyledP>
 					</StyledDivFormHeader>
 
 					<StyledForm onSubmit={handleSubmit}>
@@ -356,11 +370,11 @@ const Contact = () => {
 							placeholder={lang ? 'Telefon' : 'Telephone'}
 							ref={telephoneRef}
 						/>
-						<StyledBtn>
-							{lang ? 'Skicka' : 'Submit'}
+						<Button>
+							{lang ? 'SKICKA' : 'SUBMIT'}
 
-							<IoMdArrowRoundForward size={30} />
-						</StyledBtn>
+							<IoMdArrowRoundForward size={15} />
+						</Button>
 					</StyledForm>
 				</StyledDiv>
 				<Snackbar
