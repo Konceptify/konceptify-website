@@ -31,8 +31,6 @@ const StyledDiv = styled.div`
 		width: 100vw;
 		justify-content: flex-start;
 		padding-left: 20px;
-		position: absolute;
-		z-index: 1;
 	}
 `
 
@@ -89,11 +87,11 @@ const StyledH2b = styled(motion.h2)`
 
 const StyledImg = styled(motion.img)`
 	position: relative;
-	width: 700px;
+	width: 35vw;
 	@media (max-width: 768px) {
 		width: 100vw;
 		position: absolute;
-		padding-top: 220px;
+		padding-top: 80px;
 		padding-left: 150px;
 	}
 `
@@ -114,7 +112,7 @@ const StyledButton = styled.button`
 	justify-content: space-evenly;
 	cursor: pointer;
 	padding: 15px 18px;
-	font-size: 0.7rem;
+	font-size: 0.6rem;
 
 	svg {
 		fill: ${({ theme }) => theme.btnborderColor};
@@ -136,20 +134,19 @@ const StyledButton = styled.button`
 `
 
 const StyledButton2 = styled.button`
-	width: 150px;
-	height: 42.29px;
+	width: 170px;
+	height: 40px;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.btnborderColor};
 	border: 1px solid ${(props) => props.theme.btnborderColor};
 	border-radius: 30px;
 	border: none;
-
 	letter-spacing: 2px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
 	cursor: pointer;
-	padding: 15px 18px;
+	padding: 15px 17px;
 	font-size: 0.7rem;
 
 	a {
@@ -158,6 +155,10 @@ const StyledButton2 = styled.button`
 	}
 
 	@media (max-width: 768px) {
+		width: 80px;
+		height: 15px;
+		font-size: 0.4rem;
+		padding: 12px 5px;
 	}
 `
 
@@ -166,9 +167,21 @@ const StyledDownloadDiv = styled.div`
 	bottom: 20px;
 	left: 250px;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	* {
 		margin: 0 5px;
+	}
+	@media (max-width: 768px) {
+		width: 100%;
+		left: 0;
+		justify-content: center;
+	}
+`
+
+const StyledImg2 = styled.img`
+	@media (max-width: 768px) {
+		width: 80px;
 	}
 `
 
@@ -283,7 +296,7 @@ const Hero = ({ myRef }) => {
 				</StyledButton>
 				<StyledDownloadDiv>
 					<a href='https://apps.apple.com/se/app/zittron/id1549633030?l=en'>
-						<img
+						<StyledImg2
 							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-120/apple_2x_u-Ff_4ztY.png?updatedAt=1629721705118'
 							alt='apple download'
 							width='120'
@@ -291,7 +304,7 @@ const Hero = ({ myRef }) => {
 						/>
 					</a>
 					<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee'>
-						<img
+						<StyledImg2
 							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-150/google_2x_e5Et7nh6N.png?updatedAt=1629721705186'
 							alt='google download'
 							width='150'
@@ -300,7 +313,7 @@ const Hero = ({ myRef }) => {
 					</a>
 					<StyledButton2>
 						<a href='https://primemanager.zittron.com/'>
-							{lang ? 'LOGGA IN' : 'CUSTOMER LOG IN'}
+							{lang ? 'LOGGA IN' : 'SIGN IN'}
 						</a>
 					</StyledButton2>
 				</StyledDownloadDiv>

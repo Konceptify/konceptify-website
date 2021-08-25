@@ -13,6 +13,10 @@ import { LanguageContext } from '../App'
 const Wrapper = styled.section`
 	width: 100vw;
 	background-color: #fff;
+
+	@media (max-width: 768px) {
+		margin-top: 80px;
+	}
 `
 
 const StyledDiv = styled.div`

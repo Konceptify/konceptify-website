@@ -59,17 +59,6 @@ const StyledLogIn = styled.div`
 	}
 `
 
-const StyledAnchor = styled.a`
-	color: #fff;
-	text-decoration: none;
-	font-weight: 700;
-	margin-left: 22px;
-
-	:hover {
-		color: #c1c1c1;
-	}
-`
-
 const StyledSubList = styled.ul`
 	list-style: none;
 	margin: 20px;
@@ -92,7 +81,7 @@ const StyledSubList = styled.ul`
 
 const StyledIconsContainer = styled.div`
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 `
 
 const variants = {
@@ -193,9 +182,6 @@ const NavBar = ({ setOpenNav, openNav }) => {
 						</div>
 					</a>
 				</StyledIconsContainer>
-				<StyledAnchor href='https://primemanager.zittron.com/'>
-					PRIME MANAGER LOG IN
-				</StyledAnchor>
 			</StyledLogIn>
 		</StyledNav>
 	)
