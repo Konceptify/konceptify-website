@@ -16,7 +16,10 @@ const Wrapper = styled.aside`
 	cursor: pointer;
 	position: fixed;
 	z-index: 1000;
-	margin-bottom: 200px;
+
+	@media (max-width: 768px) {
+		position: static;
+	}
 `
 
 const StyledLink = styled(Link)`
@@ -31,11 +34,13 @@ const StyledDiv = styled.div`
 
 const Banner = () => {
 	const { lang } = useContext(LanguageContext)
-	const [open, setOpen] = useState(
+	const [open, setOpen] = useState(true)
+	/* const [open, setOpen] = useState(
 		localStorage.banner !== undefined
 			? JSON.parse(localStorage.getItem('banner'))
 			: true
-	)
+	) */
+
 	return (
 		<>
 			{open && (

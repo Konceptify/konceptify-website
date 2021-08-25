@@ -25,6 +25,10 @@ const Wrapper = styled.div`
 	overflow-x: hidden;
 	transition: all 0.25s linear;
 	margin-top: 20px;
+
+	@media (max-width: 768px) {
+		margin-top: 0px;
+	}
 `
 const themes = {
 	darkMode: {
