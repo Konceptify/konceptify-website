@@ -11,6 +11,7 @@ import LandingPage from './components/LandingPage'
 import Pricing from './pages/Pricing'
 import Legal from './pages/Legal'
 import Footer from './components/Footer'
+import Banner from './components/Banner'
 /* import ThemeToggle from './components/ThemeToggle' */
 
 export const LanguageContext = React.createContext()
@@ -23,6 +24,7 @@ const Wrapper = styled.div`
 	position: absolute;
 	overflow-x: hidden;
 	transition: all 0.25s linear;
+	margin-top: 20px;
 `
 const themes = {
 	darkMode: {
@@ -98,6 +100,7 @@ const App = () => {
 				<AnimatePresence exitBeforeEnter initial={true}>
 					<ThemeProvider theme={themes.lightMode}>
 						<GlobalStyles />
+						<Banner />
 						<Wrapper>
 							<Header
 								openNav={openNav}

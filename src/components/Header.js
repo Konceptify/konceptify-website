@@ -166,7 +166,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 						rel='noopener noreferrer'
 						href='https://www.linkedin.com/company/zittron'
 					>
-						<RiLinkedinFill fill='black' size='18' />
+						<RiLinkedinFill fill='#292928' size='18' />
 					</a>
 				</StyledLi>
 				<StyledLi>
@@ -175,7 +175,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 						rel='noopener noreferrer'
 						href='https://www.instagram.com/zittron/'
 					>
-						<RiInstagramLine fill='black' size='18' />
+						<RiInstagramLine fill='#292928' size='18' />
 					</a>
 				</StyledLi>
 				{lang ? (
