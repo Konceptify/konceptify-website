@@ -160,7 +160,8 @@ const ComplianceSlide = styled.div`
 	justify-content: center;
 	align-items: center;
 	@media (max-width: 768px) {
-		font-size: 0.7rem;
+		font-size: 0.6rem;
+		padding: 8px 0;
 	}
 `
 const EducateSlide = styled.div`

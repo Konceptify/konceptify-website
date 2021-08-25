@@ -149,7 +149,7 @@ const StyledForm = styled.form`
 		margin: 10px 10px;
 		margin-top: -400px;
 
-		background: ${({ theme }) => theme.primary70};
+		background: ${({ theme }) => theme.primary90};
 		border-radius: 20px;
 		button {
 			margin: 50px 0 0 5px;
