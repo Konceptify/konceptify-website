@@ -329,8 +329,8 @@ const Contact = () => {
 						/>
 						<StyledP>
 							{lang
-								? 'Fyll i dina uppgifter så kontaktar teamet dig'
-								: 'Lets our team connect with you'}
+								? 'Get in touch with us'
+								: 'Get in touch with us'}
 						</StyledP>
 					</StyledDivFormHeader>
 
