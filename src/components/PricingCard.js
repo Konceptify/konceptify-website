@@ -14,10 +14,14 @@ const StyledDiv = styled.div`
 	align-items: center;
 	flex-direction: column;
 	border-radius: 30px;
-	box-shadow: 5px 1px 0px #cbcbcb;
+	/* box-shadow: 5px 1px 0px #cbcbcb; */
+
+	:last-child {
+		border: 4px solid #ffd600;
+	}
 
 	@media (max-width: 768px) {
-		margin: 20px 0px;
+		margin: 50px 0px;
 		width: 80%;
 		height: 90vh;
 	}
@@ -60,10 +64,8 @@ const StyledH4 = styled.h4`
 	text-decoration: none;
 
 	span {
-		margin-right: 10px;
-		text-decoration: line-through;
-		color: ${({ theme }) => theme.color};
-		opacity: 0.4;
+		font-size: 1rem;
+		margin-left: 5px;
 	}
 `
 
@@ -141,18 +143,12 @@ const PricingCard = ({ monthly }) => {
 
 								<StyledPriceContainer>
 									<StyledH4 monthly={monthly}>
-										{monthly ? (
-											`€${priceMonth}`
-										) : (
-											<>
-												<span>
-													€
-													{priceMonth *
-														12}
-												</span>
-												€{priceAnual}
-											</>
-										)}
+										{`€${
+											priceMonth === undefined
+												? 'N/A'
+												: priceMonth
+										}`}
+										<span>/ unit</span>
 									</StyledH4>
 								</StyledPriceContainer>
 								<StyledH3>

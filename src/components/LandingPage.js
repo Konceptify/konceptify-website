@@ -79,7 +79,7 @@ const StyledDivDesign = styled.div`
 	}
 
 	video {
-		padding-left: 40px;
+		padding-left: 140px;
 		width: 65vw;
 	}
 `
@@ -240,7 +240,7 @@ const StyledSection2 = styled(StyledSection)`
 const CardContainer = styled.div`
 	display: flex;
 	position: relative;
-	z-inde: 10;
+	z-index: 10;
 `
 
 const StyledCard = styled.div`

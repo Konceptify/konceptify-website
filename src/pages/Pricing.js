@@ -15,8 +15,9 @@ const Wrapper = styled(motion.section)`
 	width: 100vw;
 	height: 130vh;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
-	align-items: flex-end;
+	align-items: center;
 	position: relative;
 	padding-bottom: 70px;
 	z-index: 1;
@@ -32,23 +33,14 @@ const Wrapper = styled(motion.section)`
 `
 
 const StyledH1 = styled.h1`
-	font-size: 1.5vw;
-	position: absolute;
-	border-bottom: 6px solid ${({ theme }) => theme.primary90};
-	top: 15%;
-	left: 7%;
+	font-size: 3vw;
+	margin-bottom: 100px;
 	color: ${({ theme }) => theme.color};
-	@media (min-width: 768px) {
-		background: ${({ theme }) => theme.primary};
-		color: ${({ theme }) => theme.white};
-		border-radius: 0px 30px 30px 0;
-		padding: 10px 20px 10px 150px;
-		left: 0;
-	}
+
 	@media (max-width: 768px) {
 		font-size: 1.2rem;
-		padding-top: 50px;
-		opacity: 0;
+		margin-bottom: 50px;
+		display: none;
 		position: static;
 	}
 `
@@ -64,7 +56,6 @@ const StyledDiv2 = styled.div`
 		width: 100%;
 	}
 `
-
 const StyledSwitchDiv = styled.div`
 	padding-left: 20px;
 	padding-top: 0px;
@@ -74,7 +65,6 @@ const StyledSwitchDiv = styled.div`
 		margin: 20px 0;
 	}
 `
-
 const StyledPriceSelect = styled.div`
 	width: 180px;
 	height: 30px;
@@ -98,7 +88,6 @@ const StyledPriceSelect = styled.div`
 		margin: 0;
 	}
 `
-
 const StyledToggle = styled.div`
 	border-radius: 15px;
 	width: 90px;
@@ -204,42 +193,41 @@ const Pricing = () => {
 	}, [])
 
 	return (
-		<>
-			<Wrapper
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-				transition={{ duration: 0.5 }}
-			>
-				<BackgroundDiv>
-					<StyledWave
-						fill='#3F4F45'
-						paused={false}
-						index='1'
-						options={{
-							height: 20,
-							amplitude: 20,
-							speed: 0.15,
-							points: 4,
-						}}
-					/>
-					<StyledWave
-						fill='#a4b6ab'
-						paused={false}
-						index='0'
-						options={{
-							height: 20,
-							amplitude: 20,
-							speed: 0.15,
-							points: 3,
-						}}
-					/>
-				</BackgroundDiv>
-				<StyledH1>
-					{data ? (lang ? data.title.sv : data.title.en) : null}
-				</StyledH1>
-				<StyledDiv2>
-					{/* <StyledSwitchDiv>
+		<Wrapper
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
+			transition={{ duration: 0.5 }}
+		>
+			<BackgroundDiv>
+				<StyledWave
+					fill='#3F4F45'
+					paused={false}
+					index='1'
+					options={{
+						height: 20,
+						amplitude: 20,
+						speed: 0.15,
+						points: 4,
+					}}
+				/>
+				<StyledWave
+					fill='#a4b6ab'
+					paused={false}
+					index='0'
+					options={{
+						height: 20,
+						amplitude: 20,
+						speed: 0.15,
+						points: 3,
+					}}
+				/>
+			</BackgroundDiv>
+
+			<StyledH1>
+				{data ? (lang ? data.title.sv : data.title.en) : null}
+			</StyledH1>
+			{/* <StyledSwitchDiv>
 						<StyledPriceSelect
 							monthly={monthly}
 							onClick={() =>
@@ -270,24 +258,20 @@ const Pricing = () => {
 						</StyledSpan>
 					</StyledSwitchDiv> */}
 
-					<StyledAside>
-						<StyledLink to='/contact'>
-							{lang
-								? 'Vill du veta mer?'
-								: 'Curious to know more?'}
-							{lang ? (
-								<span>Kontakta oss</span>
-							) : (
-								<span>Contact us</span>
-							)}
-						</StyledLink>
-					</StyledAside>
-					<StyledCardContainer>
-						<PricingCard monthly={monthly} />
-					</StyledCardContainer>
-				</StyledDiv2>
-			</Wrapper>
-		</>
+			{/* <StyledAside>
+				<StyledLink to='/contact'>
+					{lang ? 'Vill du veta mer?' : 'Curious to know more?'}
+					{lang ? (
+						<span>Kontakta oss</span>
+					) : (
+						<span>Contact us</span>
+					)}
+				</StyledLink>
+			</StyledAside> */}
+			<StyledCardContainer>
+				<PricingCard monthly={monthly} />
+			</StyledCardContainer>
+		</Wrapper>
 	)
 }
 
