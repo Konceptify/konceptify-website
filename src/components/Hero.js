@@ -28,6 +28,11 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 	padding-left: 70px;
 
+	button {
+		position: relative;
+		z-index: 1;
+	}
+
 	@media (max-width: 900px) {
 		width: 100vw;
 		justify-content: flex-start;
@@ -136,9 +141,9 @@ const StyledImg2 = styled.img`
 	}
 `
 
-const Hero = ({ myRef }) => {
+const Hero = () => {
 	const [data, setData] = useState(null)
-	const { lang } = useContext(LanguageContext)
+	const { lang, myRef } = useContext(LanguageContext)
 
 	const variantsBtn = {
 		initial: {
@@ -228,23 +233,17 @@ const Hero = ({ myRef }) => {
 				</StyledH2b>
 
 				<Button
-					text={lang ? 'LÄS MER' : 'LEARN MORE'}
 					initial={'initial'}
 					whileTap={'animate'}
 					variants={variantsBtn}
 					transition={'transition'}
-					onClick={() =>
-						setTimeout(
-							() =>
-								myRef.current.scrollIntoView({
-									behavior: 'smooth',
-								}),
-							500
-						)
-					}
+					handleClick={() => myRef.current.scrollIntoView()}
 				>
+					{lang ? 'LÄS MER' : 'LEARN MORE'}
+
 					<StyledArrow size={20} />
 				</Button>
+
 				<StyledDownloadDiv>
 					<a href='https://apps.apple.com/se/app/zittron/id1549633030?l=en'>
 						<StyledImg2

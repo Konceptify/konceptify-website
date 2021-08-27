@@ -25,6 +25,7 @@ const Wrapper = styled.section`
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
+		height: auto;
 	}
 `
 
@@ -38,6 +39,7 @@ const StyledDiv = styled.div`
 
 	@media (max-width: 968px) {
 		width: 100vw;
+		height: 54%;
 	}
 `
 const StyledDiv1 = styled.div`
@@ -131,10 +133,13 @@ const StyledDivFormHeader = styled.div`
 		filter: none;
 		border: none;
 		justify-content: flex-start;
-		padding-left: 60px;
-		margin-top: -100px;
+		color: ${({ theme }) => theme.white};
+		padding-left: 20px;
+		margin-bottom: 0px;
 		font-size: 2.5rem;
-		background-color: inherit;
+		background-color: ${({ theme }) => theme.primary};
+		border-radius: 15px 15px 0 0;
+		width: 95%;
 	}
 `
 
@@ -147,13 +152,14 @@ const StyledForm = styled.form`
 	@media (max-width: 968px) {
 		width: 95%;
 		padding: 0 10px 20px 10px;
-		margin: 10px 10px;
-		margin-top: -400px;
 
-		background: ${({ theme }) => theme.primary90};
-		border-radius: 20px;
+		margin-top: 0px;
+		padding-top: 40px;
+
+		background: ${({ theme }) => theme.white};
+		border-radius: 0 0 15px 15px;
 		button {
-			margin: 50px 0 0 5px;
+			margin: 80px 0 0 5px;
 		}
 	}
 `
@@ -169,7 +175,7 @@ const StyledInput = styled(motion.input)`
 	::placeholder {
 		color: ${(props) => props.theme.color};
 		@media (max-width: 968px) {
-			background-color: ${({ theme }) => theme.primary50};
+			background-color: ${({ theme }) => theme.white};
 		}
 	}
 
@@ -185,11 +191,17 @@ const StyledInput = styled(motion.input)`
 		color: #ccc;
 	}
 	@media (max-width: 968px) {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+
 		margin-top: 40px;
 		font-size: 0.8rem;
-		background-color: ${({ theme }) => theme.primary50};
+		background-color: ${({ theme }) => theme.white};
 		border-bottom: none;
-		padding: 10px 15px;
+		border: 2px dotted ${({ theme }) => theme.whiteOf};
+
+		padding: 17px 15px;
 		border-radius: 10px;
 	}
 `
@@ -342,11 +354,12 @@ const Contact = () => {
 				<StyledDiv>
 					<StyledDivFormHeader>
 						<img
-							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/Resurs_1_4x_iT35dIXf62.png?updatedAt=1629711469111'
+							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/logo512_R-_7HYAFz.png?updatedAt=1630058739502'
 							alt='logo'
 							width='30'
+							color='#fff'
 						/>
-						<StyledP>{'Get in touch with us'}</StyledP>
+						<StyledP>Contact form</StyledP>
 					</StyledDivFormHeader>
 
 					<StyledForm onSubmit={handleSubmit}>

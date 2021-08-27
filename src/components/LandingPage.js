@@ -15,7 +15,7 @@ const Wrapper = styled.section`
 	background-color: #fff;
 
 	@media (max-width: 976px) {
-		margin-top: 80px;
+		padding-top: 80px;
 	}
 `
 
@@ -208,7 +208,7 @@ const StyledSection = styled.section`
 
 	@media (max-width: 976px) {
 		width: 100vw;
-		height: 100vh;
+		height: 120vh;
 		flex-direction: column-reverse;
 	}
 `
@@ -240,8 +240,9 @@ const StyledCard = styled.div`
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
 
 	@media (max-width: 976px) {
-		width: 80px;
-		height: 60px;
+		width: 100px;
+		height: 45px;
+		padding: 20px 20px;
 		font-size: 0.7rem;
 	}
 

@@ -41,8 +41,10 @@ const StyledH2 = styled.h2`
 		padding-left: 40px;
 	}
 	@media (max-width: 768px) {
-		font-size: 1.5rem;
+		font-size: 1.2rem;
 		margin-top: 20px;
+		max-width: 100%;
+		padding-left: 0px;
 	}
 `
 
@@ -54,6 +56,8 @@ const StyledH3 = styled.h3`
 	color: ${({ theme }) => theme.primary90};
 	@media (max-width: 1768px) {
 		padding-left: 40px;
+		width: 100%;
+		padding-left: 0px;
 	}
 `
 

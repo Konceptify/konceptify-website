@@ -21,6 +21,7 @@ const Wrapper = styled.nav`
 
 	@media (max-width: 768px) {
 		height: 60px;
+		position: absolute;
 		background: ${({ theme }) => theme.white};
 	}
 `

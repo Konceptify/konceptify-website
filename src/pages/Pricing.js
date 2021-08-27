@@ -32,8 +32,9 @@ const Wrapper = styled(motion.section)`
 `
 
 const StyledH1 = styled.h1`
-	font-size: 2vw;
+	font-size: 1.5vw;
 	position: absolute;
+	border-bottom: 6px solid ${({ theme }) => theme.primary90};
 	top: 15%;
 	left: 7%;
 	color: ${({ theme }) => theme.color};
@@ -41,7 +42,6 @@ const StyledH1 = styled.h1`
 		background: ${({ theme }) => theme.primary};
 		color: ${({ theme }) => theme.white};
 		border-radius: 0px 30px 30px 0;
-
 		padding: 10px 20px 10px 150px;
 		left: 0;
 	}
@@ -115,7 +115,7 @@ const StyledAside = styled.div`
 	position: absolute;
 	left: 80%;
 	bottom: 70%;
-	border: 4px solid black;
+	border: 4px solid ${({ theme }) => theme.primary80};
 	width: 100px;
 	height: 100px;
 	min-width: 100px;

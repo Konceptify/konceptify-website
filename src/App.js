@@ -51,7 +51,7 @@ const themes = {
 
 const App = () => {
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
-	const [openNav, setOpenNav] = useState(false)
+	const [openNav, setOpenNav] = useState(true)
 	const myRef = useRef()
 	const location = useLocation()
 	const history = useHistory()
@@ -76,6 +76,7 @@ const App = () => {
 		setConceptSlide,
 		handleFooterClick,
 		sliderRef,
+		myRef,
 	}
 
 	useEffect(() => {
@@ -114,7 +115,7 @@ const App = () => {
 								key={location.pathname}
 							>
 								<Route exact path='/'>
-									<Hero myRef={myRef} />
+									<Hero />
 									<LandingPage myRef={myRef} />
 								</Route>
 								<Route path='/contact'>

@@ -59,9 +59,9 @@ const Banner = () => {
 
 	return (
 		<>
-			{open && (
+			{open && data?.banner ? (
 				<Wrapper>
-					{data
+					{data?.banner
 						? lang
 							? data.banner.sv
 							: data.banner.en
@@ -90,7 +90,7 @@ const Banner = () => {
 						/>
 					</StyledDiv>
 				</Wrapper>
-			)}
+			) : null}
 		</>
 	)
 }

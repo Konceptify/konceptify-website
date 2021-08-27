@@ -4,8 +4,8 @@ import sanityClient from '../client'
 import { LanguageContext } from '../App'
 
 const StyledDiv = styled.div`
-	width: 300px;
-	height: 400px;
+	width: 350px;
+	height: 450px;
 	background-color: #fafafa;
 	margin: 0 10px;
 	position: relative;
@@ -68,18 +68,20 @@ const StyledH4 = styled.h4`
 
 const StyledUl = styled.ul`
 	position: absolute;
-	padding-top: 10px;
+
 	bottom: 40px;
 	height: 200px;
+	padding-bottom: 10px;
 
 	@media (max-width: 768px) {
 		bottom: 60px;
 		padding-top: 30px;
+		width: 100%;
 	}
 `
 
 const StyledLi = styled.li`
-	width: 30ch;
+	width: 35ch;
 	padding-left: 20px;
 	padding-top: 9px;
 	font-size: 0.9rem;

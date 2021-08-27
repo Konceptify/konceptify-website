@@ -23,11 +23,16 @@ const StyledUL = styled.ul`
 		@media (max-width: 768px) {
 			margin: 20px 20px;
 		}
+
 		a {
 			color: #000;
 			text-decoration: none;
 		}
 	}
+`
+
+const HeaderLi = styled.li`
+	font-weight: 700;
 `
 
 const StyledMainUL = styled(StyledUL)`
@@ -51,7 +56,7 @@ const LinkLi = styled.li`
 	cursor: pointer;
 	font-size: 1.2rem;
 	@media (max-width: 768px) {
-		font-size: 1.5rem;
+		font-size: 1rem;
 	}
 
 	a {
@@ -79,7 +84,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 		<Wrapper>
 			<StyledMainUL>
 				<StyledUL>
-					<li>{lang ? 'Koncept' : 'Concept'}</li>
+					<HeaderLi>{lang ? 'Koncept' : 'Concept'}</HeaderLi>
 					<LinkLi
 						onClick={() => handleFooterClick('Compliance')}
 					>

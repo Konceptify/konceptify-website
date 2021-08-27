@@ -7,81 +7,46 @@ import { LanguageContext } from '../App'
 
 const StyledNav = styled(motion.div)`
 	width: 100vw;
-	height: 100vh;
+	height: 90vh;
 	background-color: ${({ theme }) => theme.white};
-
-	z-index: 3;
-	padding-left: 100px;
-	* {
-		color: ${(props) => props.theme.color};
-		font-size: 1rem;
-	}
-
-	@media (max-width: 768px) {
-		padding: 0 30px;
-	}
-`
-
-const StyledMainList = styled.ul`
 	display: flex;
-	justify-content: center;
 	flex-direction: column;
-	list-style: none;
-	align-items: flex-start;
-	padding: 80px 0 0 0;
-	* {
-		:hover {
-			color: #c1c1c1;
-		}
-	}
+	justify-content: space-between;
+	z-index: 3;
+	position: relative;
+	padding: 120px 30px 0 30px;
 
-	@media (max-width: 768px) {
-		padding: 40px 0 0 0;
+	@media (min-width: 768px) {
+		display: none;
 	}
 `
-
-const StyledLogIn = styled.div`
-	margin-bottom: 20px;
-	bottom: 0;
-	width: 260px;
-	border-radius: 30px;
-	background: ${({ theme }) => theme.primary70};
-	padding: 20px 18px;
-	font-size: 0.7rem;
-	color: #fff;
-	text-decoration: none;
-	* {
-		margin: 3px 0 5px 5px;
-		:hover {
-			fill: #c1c1c1;
-			color: #c1c1c1;
-		}
+const IconUl = styled.ul`
+	position: absolute;
+	bottom: 30%;
+	left: 40px;
+	list-style: none;
+	li {
+		margin: 15px;
 	}
 `
-
-const StyledSubList = styled.ul`
+const StyledUl = styled.ul`
 	list-style: none;
-	margin: 20px;
+	margin: 0px;
 
 	li {
-		padding: 10px 25px;
-		border-radius: 20px;
+		padding: 15px 25px;
+		display: flex;
+		align-items: center;
+		font-size: 1.2rem;
 	}
-	li:first-child {
-		margin: 10px 0 0 0;
-		font-size: 1.5rem;
-	}
+
 	a {
 		text-decoration: none;
+		color: inherit;
 	}
 	a:visited {
 		text-decoration: none;
 	}
-`
-
-const StyledIconsContainer = styled.div`
-	display: flex;
-	flex-direction: row;
 `
 
 const variants = {
@@ -96,19 +61,6 @@ const variants = {
 	},
 }
 
-const StyledLangList = styled.ul`
-	list-style: none;
-	display: flex;
-	padding-left: 50px;
-
-	li {
-		padding-right: 15px;
-		margin-bottom: 30px;
-		cursor: pointer;
-		margin-top: 40px;
-	}
-`
-
 const NavBar = ({ setOpenNav, openNav }) => {
 	const { lang, setLang } = useContext(LanguageContext)
 
@@ -119,72 +71,75 @@ const NavBar = ({ setOpenNav, openNav }) => {
 			transition='transition'
 			variants={variants}
 		>
-			<StyledMainList>
-				<StyledSubList>
+			<StyledUl>
+				<li>
 					<Link to='/' onClick={() => setOpenNav(false)}>
-						<li>{lang ? 'HEM' : 'HOME'}</li>
+						{lang ? 'HEM' : 'HOME'}
 					</Link>
-				</StyledSubList>
+				</li>
 
-				<StyledSubList>
+				<li>
 					<Link to='/pricing' onClick={() => setOpenNav(false)}>
-						<li>{lang ? 'PRIS' : 'PRICING'}</li>
+						{lang ? 'PRIS' : 'PRICING'}
 					</Link>
-				</StyledSubList>
+				</li>
 
-				<StyledSubList>
+				<li>
 					<Link to='/contact' onClick={() => setOpenNav(false)}>
-						<li>{lang ? 'KONTAKT' : 'CONTACT'}</li>
+						{lang ? 'KONTAKT' : 'CONTACT'}
 					</Link>
-				</StyledSubList>
-				<StyledLangList>
-					{lang ? (
-						<li
-							onClick={() => {
-								setLang(false)
-								localStorage.setItem('language', false)
-								setOpenNav(false)
-							}}
-						>
-							EN
-						</li>
-					) : (
-						<li
-							onClick={() => {
-								setLang(true)
-								localStorage.setItem('language', true)
-								setOpenNav(false)
-							}}
-						>
-							SV
-						</li>
-					)}
-				</StyledLangList>
-			</StyledMainList>
+				</li>
 
-			<StyledLogIn>
-				<StyledIconsContainer>
+				{lang ? (
+					<li
+						onClick={() => {
+							setLang(false)
+							localStorage.setItem('language', false)
+							setOpenNav(false)
+						}}
+					>
+						<img
+							src='https://www.countryflags.io/gb/flat/16.png'
+							alt='English flag'
+						/>{' '}
+						EN
+					</li>
+				) : (
+					<li
+						onClick={() => {
+							setLang(true)
+							localStorage.setItem('language', true)
+							setOpenNav(false)
+						}}
+					>
+						<img
+							src='https://www.countryflags.io/se/flat/16.png'
+							alt='Swedish flag'
+						/>{' '}
+						SV
+					</li>
+				)}
+			</StyledUl>
+			<IconUl>
+				<li className='icon'>
 					<a
 						target='_blank'
 						rel='noopener noreferrer'
 						href='https://www.linkedin.com/company/zittron'
 					>
-						<div>
-							<RiLinkedinFill fill='white' size='40' />
-						</div>
+						<RiLinkedinFill fill='#292928' size='40' />
 					</a>
-
+				</li>
+				<li className='icon'>
 					<a
 						target='_blank'
 						rel='noopener noreferrer'
 						href='https://www.instagram.com/zittron/'
 					>
-						<div>
-							<RiInstagramLine fill='white' size='40' />
-						</div>
+						<RiInstagramLine fill='#292928' size='40' />
 					</a>
-				</StyledIconsContainer>
-			</StyledLogIn>
+				</li>
+			</IconUl>
 		</StyledNav>
 	)
 }

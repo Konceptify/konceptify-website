@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import Video1 from '../img/Order - Packning - Leverans.mov'
+import sanityClient from '../client'
+import { useEffect } from 'react'
 
 const Wrapper = styled(motion.div)`
 	height: 60%;
@@ -32,19 +33,44 @@ const StyledVideo = styled(motion.video)`
 `
 
 const VideoMockup = () => {
+	const [data, setData] = useState()
+
+	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "educateTab"] {
+                video,
+				"videoURL": video.asset->url,
+				
+				
+            }`
+			)
+			.then((data) => {
+				setData(data[0])
+			})
+			.catch((error) => console.log(error))
+	}, [])
+
+	console.log(data?.videoURL && data.videoURL)
+
 	return (
-		<Wrapper>
-			<StyledVideo
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-				transition={{ duration: 0.5, ease: 'easeIn' }}
-				autoPlay='autoplay'
-				playsInline
-			>
-				<source src={Video1} type='video/mp4' />
-			</StyledVideo>
-		</Wrapper>
+		<>
+			{data ? (
+				<Wrapper>
+					<StyledVideo
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5, ease: 'easeIn' }}
+						autoPlay='autoplay'
+						loop
+						playsInline
+					>
+						<source src={data.videoURL} type='video/mp4' />
+					</StyledVideo>
+				</Wrapper>
+			) : null}
+		</>
 	)
 }
 

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-	max-width: 150px;
+	max-width: 170px;
 	height: 40px;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.btnborderColor};
@@ -18,6 +18,7 @@ const StyledButton = styled.button`
 	padding: 15px 18px;
 	font-size: 0.6rem;
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
+
 	a {
 		text-decoration: none;
 		color: ${({ theme }) => theme.white};
@@ -39,20 +40,18 @@ const StyledButton = styled.button`
 	}
 
 	@media (max-width: 768px) {
-		max-width: 100px;
-		font-size: 0.5rem;
+		max-width: 140px;
+		font-size: 0.4em;
 		height: 30px;
-		padding: 5px 10px;
+		padding: 8px 15px;
+		svg {
+			transform: rotate(90deg);
+		}
 	}
 `
 
-const Button = ({ text, children }) => {
-	return (
-		<StyledButton>
-			{text}
-			{children}
-		</StyledButton>
-	)
+const Button = ({ children, handleClick }) => {
+	return <StyledButton onClick={handleClick}>{children}</StyledButton>
 }
 
 export default Button
