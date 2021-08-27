@@ -1,5 +1,4 @@
 import React, { useContext } from 'react'
-import { useHistory, useLocation } from 'react-router-dom'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -50,7 +49,7 @@ const StyledIconsContainer = styled.div`
 
 const LinkLi = styled.li`
 	cursor: pointer;
-	font-size: 2rem;
+	font-size: 1.2rem;
 	@media (max-width: 768px) {
 		font-size: 1.5rem;
 	}
@@ -74,29 +73,24 @@ const variantsIcon = {
 }
 
 const Footer = ({ setConceptSlide, sliderRef }) => {
-	const { lang } = useContext(LanguageContext)
-	const history = useHistory()
-	const location = useLocation()
-
-	const handleClick = () => {
-		history.push('/')
-		if (location.pathname === '/') {
-			console.log('hemma')
-		}
-	}
+	const { lang, handleFooterClick } = useContext(LanguageContext)
 
 	return (
 		<Wrapper>
 			<StyledMainUL>
 				<StyledUL>
 					<li>{lang ? 'Koncept' : 'Concept'}</li>
-					<LinkLi onClick={handleClick}>
+					<LinkLi
+						onClick={() => handleFooterClick('Compliance')}
+					>
 						{lang ? 'Checklistor' : 'Compliance'}
 					</LinkLi>
-					<LinkLi onClick={handleClick}>
+					<LinkLi
+						onClick={() => handleFooterClick('Comunicate')}
+					>
 						{lang ? 'Kommunikation' : 'Comunicate'}
 					</LinkLi>
-					<LinkLi onClick={handleClick}>
+					<LinkLi onClick={() => handleFooterClick('Education')}>
 						{lang ? 'Utbildning' : 'Education'}
 					</LinkLi>
 					<li>

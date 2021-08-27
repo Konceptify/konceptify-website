@@ -17,6 +17,7 @@ const Wrapper = styled.div`
 `
 
 const StyledImg = styled.img`
+	width: 90%;
 	@media (max-width: 768px) {
 		width: 100%;
 		padding-top: 50px;
@@ -31,7 +32,7 @@ const StyledDiv = styled.div`
 `
 
 const StyledH2 = styled.h2`
-	font-size: 3rem;
+	font-size: 3vw;
 
 	color: ${({ theme }) => theme.primary};
 	margin-top: -20px;
@@ -50,7 +51,7 @@ const StyledH3 = styled.h3`
 	width: 70%;
 	margin-top: 20px;
 	padding-left: 40px;
-	color: ${({ theme }) => theme.primary};
+	color: ${({ theme }) => theme.primary90};
 	@media (max-width: 1768px) {
 		padding-left: 40px;
 	}

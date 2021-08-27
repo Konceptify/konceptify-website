@@ -15,7 +15,7 @@ const Wrapper = styled(motion.section)`
 	position: relative;
 	justify-content: center;
 
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		padding: 0px;
 		flex-direction: column;
 	}
@@ -28,7 +28,7 @@ const StyledDiv = styled.div`
 	flex-direction: column;
 	padding-left: 70px;
 
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		width: 100vw;
 		justify-content: flex-start;
 		padding-left: 20px;
@@ -43,7 +43,11 @@ const StyledDiv2 = styled.div`
 	flex-direction: column;
 	padding-right: 70px;
 	position: relative;
-	@media (max-width: 768px) {
+
+	video {
+		background: white;
+	}
+	@media (max-width: 900px) {
 		width: 100vw;
 		padding-right: 0px;
 		padding-top: 50px;
@@ -55,7 +59,7 @@ const StyledH1 = styled(motion.h1)`
 	width: 18ch;
 	color: ${(props) => props.theme.color};
 	letter-spacing: -1px;
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		width: 90vw;
 		font-size: 2rem;
 		margin-top: -50px;
@@ -69,7 +73,7 @@ const StyledH2 = styled(motion.h2)`
 	font-size: 1.5vw;
 	margin-top: 20px;
 	color: ${(props) => props.theme.color};
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		width: 100vw;
 		font-size: 1rem;
 	}
@@ -80,7 +84,7 @@ const StyledH2b = styled(motion.h2)`
 	font-size: 1vw;
 	margin-top: 20px;
 	color: ${(props) => props.theme.color};
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		width: 100vw;
 		font-size: 0.8rem;
 	}
@@ -90,13 +94,20 @@ const StyledImg = styled(motion.img)`
 	position: relative;
 	right: 8vw;
 	width: 35vw;
-	@media (max-width: 768px) {
+
+	@media (min-width: 500px) and (max-width: 900px) {
+		width: 50vw;
+		position: absolute;
+		z-index: -1;
+	}
+
+	@media (max-width: 500px) {
 		width: 100vw;
 		position: absolute;
 		padding-top: 80px;
 		padding-left: 150px;
 	}
-	@media (max-width: 1768px) {
+	@media (max-width: 1900px) {
 		margin-left: 240px;
 	}
 `
@@ -112,7 +123,7 @@ const StyledDownloadDiv = styled.div`
 	* {
 		margin: 0 5px;
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		width: 100%;
 		left: 0;
 		justify-content: center;
@@ -120,7 +131,7 @@ const StyledDownloadDiv = styled.div`
 `
 
 const StyledImg2 = styled.img`
-	@media (max-width: 768px) {
+	@media (max-width: 900px) {
 		width: 80px;
 	}
 `
@@ -269,8 +280,8 @@ const Hero = ({ myRef }) => {
 				/>
 				{/* <video autoPlay loop muted>
 					<source
-						src='https://ik.imagekit.io/lct7da3kd6o/Zittron/WhatsApp_Video_2021-08-19_at_10.49.28_CTtr5XOqmM.mp4'
-						type='video/mp4'
+						src='https://ik.imagekit.io/lct7da3kd6o/Zittron/7__1__9W_MdpLYU.webm'
+						type='video/webm'
 					/>
 				</video> */}
 			</StyledDiv2>

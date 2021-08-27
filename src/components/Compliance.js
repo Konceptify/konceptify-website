@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import SkeletonText from './SkeletonText'
 import sanityClient from '../client'
 import { LanguageContext } from '../App'
 
@@ -18,41 +17,26 @@ const Wrapper = styled(motion.div)`
 	}
 `
 
+const StyledImg = styled.img`
+	width: 95%;
+`
+
 const StyledDivDesign = styled.div`
 	width: 40%;
 	height: 85%;
 	border-radius: 50px 50px 0 0;
-	background: ${({ theme }) => theme.primary};
+
 	display: flex;
 
 	justify-content: center;
-	align-self: flex-end;
+
 	flex-direction: column;
 	align-items: center;
 	position: relative;
-	box-shadow: 10px 10px 0px #cbcbcb;
+
 	@media (max-width: 768px) {
-		width: 100%;
+		width: 90%;
 		margin-top: 20px;
-	}
-`
-
-const StyledDiv = styled.div`
-	height: 95%;
-	width: 90%;
-	background: #fffdf5;
-	text-align: center;
-	border-radius: 50px 50px 0 0;
-	position: absolute;
-	bottom: 0;
-`
-
-const StyledH4 = styled.h4`
-	margin-top: 20px;
-	font-size: 2rem;
-	color: ${({ theme }) => theme.primary80};
-	@media (max-width: 768px) {
-		font-size: 1rem;
 	}
 `
 
@@ -77,7 +61,7 @@ const StyledH2 = styled.h2`
 const StyledH3 = styled.h3`
 	font-size: 1rem;
 	margin-top: 20px;
-	color: ${({ theme }) => theme.white};
+	color: ${({ theme }) => theme.whiteOf};
 `
 
 const Compliance = () => {
@@ -119,13 +103,10 @@ const Compliance = () => {
 				</StyledH3>
 			</StyledHeaderDiv>
 			<StyledDivDesign>
-				<StyledDiv>
-					<StyledH4>Todays checklist</StyledH4>
-					<SkeletonText />
-					<SkeletonText />
-					<SkeletonText />
-					<SkeletonText />
-				</StyledDiv>
+				<StyledImg
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/checklist_NgupaGaA8F3.png?updatedAt=1630049500106'
+					alt='checklist'
+				/>
 			</StyledDivDesign>
 		</Wrapper>
 	)

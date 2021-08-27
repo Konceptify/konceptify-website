@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 
 import Communicate from '../components/Communicate'
@@ -14,7 +14,7 @@ const Wrapper = styled.section`
 	width: 100vw;
 	background-color: #fff;
 
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		margin-top: 80px;
 	}
 `
@@ -27,7 +27,7 @@ const StyledDiv = styled.div`
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 100%;
 
 		padding-top: 30px;
@@ -38,7 +38,7 @@ const StyledH2 = styled.h2`
 	font-size: 4rem;
 	width: 100%;
 	color: ${({ theme }) => theme.color};
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		font-size: 2rem;
 	}
 `
@@ -47,7 +47,7 @@ const StyledH3 = styled.h3`
 	font-size: 1.2rem;
 	margin-top: 20px;
 	font-weight: 500;
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 100%;
 	}
 `
@@ -64,7 +64,7 @@ const StyledDivDesign = styled.div`
 	align-items: center;
 	margin-bottom: -80px;
 	/* box-shadow: 10px 10px 0px #cbcbcb; */
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 100%;
 		border-radius: 0;
 		box-shadow: none;
@@ -83,7 +83,7 @@ const StyledH4 = styled.h4`
 	font-size: 1rem;
 	width: 100%;
 
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 100%;
 		font-size: 0.8rem;
 		background: inherit;
@@ -95,7 +95,7 @@ const StyledH4 = styled.h4`
 
 const StyledImg = styled.img`
 	width: 45vw;
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 90vw;
 		margin-bottom: 100px;
 	}
@@ -116,7 +116,7 @@ const StyledConceptDiv = styled.div`
 	border-radius: 0 0 50px 50px;
 	margin-bottom: 20px;
 	transition: all 0.5s linear;
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 130%;
 		border-radius: 0px;
 	}
@@ -141,7 +141,7 @@ const StyledSlider = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 100%;
 	}
 `
@@ -159,7 +159,7 @@ const ComplianceSlide = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		font-size: 0.6rem;
 		padding: 8px 0;
 	}
@@ -176,7 +176,7 @@ const EducateSlide = styled.div`
 		conceptSlide === 'E-learning' ? theme.primary60 : 'transparent'};
 	color: ${({ theme, conceptSlide }) =>
 		conceptSlide === 'E-learning' ? 'white' : theme.primary60};
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		font-size: 0.7rem;
 	}
 `
@@ -192,7 +192,7 @@ const CommunicateSlide = styled.div`
 		conceptSlide === 'Communicate' ? theme.primary60 : 'transparent'};
 	color: ${({ theme, conceptSlide }) =>
 		conceptSlide === 'Communicate' ? 'white' : theme.primary60};
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		font-size: 0.7rem;
 	}
 `
@@ -206,7 +206,7 @@ const StyledSection = styled.section`
 	overflow: hidden;
 	padding: 0 40px;
 
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 100vw;
 		height: 100vh;
 		flex-direction: column-reverse;
@@ -239,7 +239,7 @@ const StyledCard = styled.div`
 	background-color: ${({ theme }) => theme.primary};
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
 
-	@media (max-width: 768px) {
+	@media (max-width: 976px) {
 		width: 80px;
 		height: 60px;
 		font-size: 0.7rem;
@@ -251,9 +251,8 @@ const StyledCard = styled.div`
 `
 
 const LandingPage = ({ myRef }) => {
-	const [conceptSlide, setConceptSlide] = useState('Compliance')
-	const sliderRef = useRef()
-	const { lang } = useContext(LanguageContext)
+	const { lang, sliderRef, conceptSlide, setConceptSlide } =
+		useContext(LanguageContext)
 
 	const [data, setData] = useState()
 
@@ -309,7 +308,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Communicate')
 								}}
 							>
-								Chat
+								{lang ? 'Kommunikation' : 'Communicate'}
 							</StyledCard>
 							<StyledCard
 								onClick={() => {
@@ -317,7 +316,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Compliance')
 								}}
 							>
-								Checklists
+								{lang ? 'Checklistor' : 'Checklists'}
 							</StyledCard>
 							<StyledCard
 								onClick={() => {
@@ -325,7 +324,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('E-learning')
 								}}
 							>
-								E-learning
+								{lang ? 'Utbildning' : 'Education'}
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>

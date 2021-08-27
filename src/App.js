@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from './components/GlobalStyles'
-import { Switch, Route, useLocation } from 'react-router-dom'
+import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
 import Header from './components/Header'
@@ -31,23 +31,9 @@ const Wrapper = styled.div`
 	}
 `
 const themes = {
-	darkMode: {
-		white: '#2e3330',
-		backgroundColor2: 'transparent',
-		color: '#fff',
-		primary: '#fff',
-		primary90: '#fff',
-		primary80: '#fff',
-		primary70: '#fff',
-		primary60: '#fff',
-		primary50: '#fff',
-		logoColor: '#fff',
-		btnborderColor: '#3F4F45',
-		name: 'flex-end',
-		gradient: 'linear-gradient(#091236, #1E215D)',
-	},
 	lightMode: {
 		white: '#fff',
+		whiteOf: '#f0f0f0',
 		backgroundColor2: 'transparent',
 		color: '#292928',
 		logoColor: '#2e3330',
@@ -68,15 +54,28 @@ const App = () => {
 	const [openNav, setOpenNav] = useState(false)
 	const myRef = useRef()
 	const location = useLocation()
+	const history = useHistory()
+	const sliderRef = useRef()
+	const [conceptSlide, setConceptSlide] = useState('Compliance')
 	const [lang, setLang] = useState(
 		localStorage.language !== undefined
 			? JSON.parse(localStorage.getItem('language'))
 			: window.navigator.language === 'sv' && 'sv-SE'
 	)
 
+	const handleFooterClick = async (state) => {
+		history.push('/')
+		await setConceptSlide(state)
+		await sliderRef.current.scrollIntoView()
+	}
+
 	const ContextValue = {
 		lang,
 		setLang,
+		conceptSlide,
+		setConceptSlide,
+		handleFooterClick,
+		sliderRef,
 	}
 
 	useEffect(() => {

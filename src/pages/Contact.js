@@ -21,7 +21,7 @@ const Wrapper = styled.section`
 	z-index: 2;
 	background: #fafafa;
 
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
@@ -36,7 +36,7 @@ const StyledDiv = styled.div`
 	align-items: center;
 	flex-direction: column;
 
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		width: 100vw;
 	}
 `
@@ -52,8 +52,8 @@ const StyledDiv1 = styled.div`
 
 	align-items: center;
 	flex-direction: column;
-	background-color: ${(props) => props.theme.primary80};
-	@media (max-width: 768px) {
+	background-color: ${(props) => props.theme.primary90};
+	@media (max-width: 968px) {
 		display: none;
 	}
 `
@@ -69,7 +69,7 @@ const StyledUl = styled.ul`
 	li {
 		margin: 0 10px;
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 	}
 `
 
@@ -78,14 +78,14 @@ const StyledLi = styled.li`
 	font-style: normal;
 	font-weight: 200;
 	list-style: none;
-	font-size: 0.8rem;
+	font-size: 0.8vw;
 	line-height: 2rem;
 	padding: 5px;
 	text-align: center;
 	letter-spacing: 1px;
 	color: #fff;
 
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		color: black;
 	}
 `
@@ -100,7 +100,7 @@ const StyledP = styled.p`
 	font-weight: 600;
 	margin-left: 15px;
 
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		font-size: 1.5rem;
 		font-weight: 700;
 	}
@@ -115,6 +115,7 @@ const StyledDivFormHeader = styled.div`
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 	border-radius: 2px;
 	display: flex;
+	border-radius: 15px;
 	justify-content: center;
 	color: ${(props) => props.theme.color};
 	align-items: center;
@@ -123,7 +124,7 @@ const StyledDivFormHeader = styled.div`
 		display: none;
 	}
 
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		img {
 			display: block;
 		}
@@ -143,7 +144,7 @@ const StyledForm = styled.form`
 	margin-top: -250px;
 	width: 460px;
 
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		width: 95%;
 		padding: 0 10px 20px 10px;
 		margin: 10px 10px;
@@ -167,7 +168,7 @@ const StyledInput = styled(motion.input)`
 
 	::placeholder {
 		color: ${(props) => props.theme.color};
-		@media (max-width: 768px) {
+		@media (max-width: 968px) {
 			background-color: ${({ theme }) => theme.primary50};
 		}
 	}
@@ -183,7 +184,7 @@ const StyledInput = styled(motion.input)`
 	:focus::-webkit-input-placeholder {
 		color: #ccc;
 	}
-	@media (max-width: 768px) {
+	@media (max-width: 968px) {
 		margin-top: 40px;
 		font-size: 0.8rem;
 		background-color: ${({ theme }) => theme.primary50};

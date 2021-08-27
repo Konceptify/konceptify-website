@@ -54,13 +54,20 @@ const StyledH3 = styled.h3`
 	width: 80%;
 	font-size: 1rem;
 	margin-top: 20px;
-	color: ${({ theme }) => theme.white};
+	color: ${({ theme }) => theme.whiteOf};
+`
+
+const StyledH32 = styled.h3`
+	width: 80%;
+	font-size: 1rem;
+	margin-top: 10px;
+	color: ${({ theme }) => theme.whiteOf};
 `
 const StyledH3b = styled.h3`
 	width: 80%;
 	font-size: 1rem;
 	margin-top: 60px;
-	color: ${({ theme }) => theme.white};
+	color: ${({ theme }) => theme.whiteOf};
 	text-align: center;
 	@media (max-width: 768px) {
 		margin-bottom: 40px;
@@ -116,6 +123,7 @@ const Educate = ({ conceptSlide }) => {
 				`*[_type == "educateTab"] {
                 header,
 				subHeader,
+				subHeaderTwo,
 				underVideo,
 				banner
 				
@@ -148,6 +156,13 @@ const Educate = ({ conceptSlide }) => {
 							: data.subHeader.en
 						: null}
 				</StyledH3>
+				<StyledH32>
+					{data?.subHeaderTwo
+						? lang
+							? data.subHeaderTwo.sv
+							: data.subHeaderTwo.en
+						: null}
+				</StyledH32>
 				<StyledDivCircle>
 					<p>
 						{data
