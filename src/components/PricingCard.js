@@ -5,7 +5,7 @@ import { LanguageContext } from '../App'
 
 const StyledDiv = styled.div`
 	width: 350px;
-	height: 450px;
+	height: 80vh;
 	background-color: #fafafa;
 	margin: 0 10px;
 	position: relative;
@@ -19,6 +19,7 @@ const StyledDiv = styled.div`
 	@media (max-width: 768px) {
 		margin: 20px 0px;
 		width: 80%;
+		height: 90vh;
 	}
 `
 
@@ -68,23 +69,26 @@ const StyledH4 = styled.h4`
 
 const StyledUl = styled.ul`
 	position: absolute;
-
-	bottom: 40px;
-	height: 200px;
+	display: flex;
+	width: 100%;
+	height: 70%;
+	flex-direction: column;
+	flex-wrap: wrap;
+	bottom: 10px;
+	padding-left: 30px;
 	padding-bottom: 10px;
 
 	@media (max-width: 768px) {
-		bottom: 60px;
 		padding-top: 30px;
-		width: 100%;
+		flex-wrap: nowrap;
+		padding-left: 0px;
 	}
 `
 
 const StyledLi = styled.li`
-	width: 35ch;
 	padding-left: 20px;
 	padding-top: 9px;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	list-style: none;
 	color: ${({ theme }) => theme.color};
 

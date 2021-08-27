@@ -277,12 +277,6 @@ const Hero = () => {
 					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_1_2x_C8eKJrZMy.png?updatedAt=1628846766012'
 					alt='hero image'
 				/>
-				{/* <video autoPlay loop muted>
-					<source
-						src='https://ik.imagekit.io/lct7da3kd6o/Zittron/7__1__9W_MdpLYU.webm'
-						type='video/webm'
-					/>
-				</video> */}
 			</StyledDiv2>
 		</Wrapper>
 	)

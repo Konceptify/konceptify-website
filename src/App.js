@@ -51,7 +51,7 @@ const themes = {
 
 const App = () => {
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
-	const [openNav, setOpenNav] = useState(true)
+	const [openNav, setOpenNav] = useState(false)
 	const myRef = useRef()
 	const location = useLocation()
 	const history = useHistory()

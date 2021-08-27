@@ -37,6 +37,8 @@ const StyledDiv = styled.div`
 const StyledH2 = styled.h2`
 	font-size: 4rem;
 	width: 100%;
+	position: relative;
+	z-index: 10;
 	color: ${({ theme }) => theme.color};
 	@media (max-width: 976px) {
 		font-size: 2rem;
@@ -47,6 +49,8 @@ const StyledH3 = styled.h3`
 	font-size: 1.2rem;
 	margin-top: 20px;
 	font-weight: 500;
+	position: relative;
+	z-index: 10;
 	@media (max-width: 976px) {
 		width: 100%;
 	}
@@ -69,6 +73,14 @@ const StyledDivDesign = styled.div`
 		border-radius: 0;
 		box-shadow: none;
 		margin-bottom: 0px;
+		video {
+			display: none;
+		}
+	}
+
+	video {
+		padding-left: 40px;
+		width: 65vw;
 	}
 `
 
@@ -79,6 +91,7 @@ const StyledH4 = styled.h4`
 	font-weight: 300;
 	padding: 10px 20px;
 	position: absolute;
+	z-index: 1;
 	bottom: 10px;
 	font-size: 1rem;
 	width: 100%;
@@ -95,8 +108,10 @@ const StyledH4 = styled.h4`
 
 const StyledImg = styled.img`
 	width: 45vw;
+	display: none;
 	@media (max-width: 976px) {
 		width: 90vw;
+		display: block;
 		margin-bottom: 100px;
 	}
 `
@@ -224,6 +239,8 @@ const StyledSection2 = styled(StyledSection)`
 
 const CardContainer = styled.div`
 	display: flex;
+	position: relative;
+	z-inde: 10;
 `
 
 const StyledCard = styled.div`
@@ -282,11 +299,19 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				<StyledSection direction='row' bg='#fafafa'>
+				<StyledSection direction='row' bg='#fff'>
 					<StyledDiv>
 						<StyledDivDesign>
 							{data && (
-								<StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' />
+								<>
+									<StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' />
+									<video autoPlay loop muted>
+										<source
+											src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/7_1-1_ULhrhMJ14.webm?updatedAt=1630067426607'
+											type='video/webm'
+										/>
+									</video>
+								</>
 							)}
 
 							<StyledH4>

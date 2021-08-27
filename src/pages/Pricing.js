@@ -13,7 +13,7 @@ import sanityClient from '../client'
 const Wrapper = styled(motion.section)`
 	background: linear-gradient(to bottom, #fff 60%, #3f4f45 50%);
 	width: 100vw;
-	height: 100vh;
+	height: 130vh;
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
@@ -25,9 +25,9 @@ const Wrapper = styled(motion.section)`
 		justify-content: flex-start;
 		align-items: center;
 		flex-direction: column;
-		height: 1100px;
 	}
-	@media (max-width: 1768px) {
+	@media (max-width: 768px) {
+		height: 220vh;
 	}
 `
 
@@ -171,6 +171,7 @@ const StyledWave = styled(Wave)`
 const StyledCardContainer = styled.div`
 	display: flex;
 	justify-content: center;
+
 	@media (max-width: 768px) {
 		align-items: center;
 		justify-content: flex-start;
@@ -238,7 +239,7 @@ const Pricing = () => {
 					{data ? (lang ? data.title.sv : data.title.en) : null}
 				</StyledH1>
 				<StyledDiv2>
-					<StyledSwitchDiv>
+					{/* <StyledSwitchDiv>
 						<StyledPriceSelect
 							monthly={monthly}
 							onClick={() =>
@@ -267,7 +268,7 @@ const Pricing = () => {
 						<StyledSpan>
 							/ {lang ? 'enhet' : 'unit'}
 						</StyledSpan>
-					</StyledSwitchDiv>
+					</StyledSwitchDiv> */}
 
 					<StyledAside>
 						<StyledLink to='/contact'>
