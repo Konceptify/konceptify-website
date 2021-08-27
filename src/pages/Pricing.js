@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import PricingCard from '../components/PricingCard'
 
 import { LanguageContext } from '../App'
@@ -45,101 +44,6 @@ const StyledH1 = styled.h1`
 	}
 `
 
-const StyledDiv2 = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-
-	align-items: center;
-
-	@media (max-width: 768px) {
-		width: 100%;
-	}
-`
-const StyledSwitchDiv = styled.div`
-	padding-left: 20px;
-	padding-top: 0px;
-
-	@media (max-width: 768px) {
-		padding-left: 0px;
-		margin: 20px 0;
-	}
-`
-const StyledPriceSelect = styled.div`
-	width: 180px;
-	height: 30px;
-	background: #f1f1f1;
-	border-radius: 15px;
-	display: inline-flex;
-	flex-direction: ${(props) => (props.monthly ? 'row' : 'row-reverse')};
-	align-items: center;
-	transition-duration: 1s;
-	justify-content: space-between;
-	margin-bottom: 100px;
-
-	span {
-		color: #ccc;
-		padding-right: ${(props) => (props.monthly ? '20px' : '0px')};
-		padding-left: ${(props) => (props.monthly ? '-10px' : '20px')};
-		font-size: 0.8rem;
-	}
-
-	@media (max-width: 768px) {
-		margin: 0;
-	}
-`
-const StyledToggle = styled.div`
-	border-radius: 15px;
-	width: 90px;
-	height: 30px;
-	background: ${({ theme }) => theme.primary60};
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 0.8rem;
-	color: ${({ theme }) => theme.white};
-`
-
-const StyledAside = styled.div`
-	position: absolute;
-	left: 80%;
-	bottom: 70%;
-	border: 4px solid ${({ theme }) => theme.primary80};
-	width: 100px;
-	height: 100px;
-	min-width: 100px;
-	min-height: 100px;
-	border-radius: 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: ${({ theme }) => theme.primary70};
-	padding: 10px;
-	transition: 0.5s linear;
-	transform: scale(1);
-	:hover {
-		transform: scale(1.1);
-		transition: 0.5s linear;
-	}
-
-	@media (max-width: 768px) {
-		display: none;
-	}
-`
-
-const StyledLink = styled(Link)`
-	color: ${({ theme }) => theme.color};
-	text-decoration: none;
-	text-align: center;
-	font-size: 0.7rem;
-	color: ${({ theme }) => theme.white};
-	font-weight: 700;
-
-	span {
-		font-size: 0.8rem;
-	}
-`
-
 const BackgroundDiv = styled.div`
 	position: absolute;
 	bottom: 0;
@@ -171,12 +75,8 @@ const StyledCardContainer = styled.div`
 	}
 `
 
-const StyledSpan = styled.span`
-	margin: 0 0 0 5px;
-`
-
 const Pricing = () => {
-	const [monthly, setMonthly] = useState(true)
+	const [monthly] = useState(true)
 	const [data, setData] = useState()
 	const { lang } = useContext(LanguageContext)
 
