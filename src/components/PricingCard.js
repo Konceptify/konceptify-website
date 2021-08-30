@@ -45,7 +45,7 @@ const StyledLegend = styled.div`
 
 const StyledH3 = styled.h3`
 	font-size: 1.5rem;
-	padding: 10px 20px;
+	padding: 20px 20px;
 	text-align: center;
 	height: 60px;
 	width: 100%;
@@ -105,6 +105,11 @@ const StyledLi = styled.li`
 const PricingCard = ({ monthly }) => {
 	const [subscriptions, setSubscriptions] = useState([])
 	const { lang } = useContext(LanguageContext)
+
+	function hasNumber(myString) {
+		return /\d/.test(myString)
+	}
+
 	useEffect(() => {
 		sanityClient
 			.fetch(
@@ -129,7 +134,7 @@ const PricingCard = ({ monthly }) => {
 						{
 							legend,
 							priceMonth,
-							priceAnual,
+
 							header,
 							benefits,
 						},
@@ -143,12 +148,18 @@ const PricingCard = ({ monthly }) => {
 
 								<StyledPriceContainer>
 									<StyledH4 monthly={monthly}>
-										{`€${
-											priceMonth === undefined
-												? 'N/A'
-												: priceMonth
-										}`}
-										<span>/ unit</span>
+										{hasNumber(priceMonth)
+											? '€'
+											: null}
+										{priceMonth === undefined
+											? 'N/A'
+											: priceMonth}
+
+										<span>
+											{hasNumber(priceMonth)
+												? 'per unit / month'
+												: null}
+										</span>
 									</StyledH4>
 								</StyledPriceContainer>
 								<StyledH3>
