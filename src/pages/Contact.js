@@ -7,7 +7,7 @@ import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
 import { LanguageContext } from '../App'
 import Button from '../components/Button'
-import axios from 'axios'
+/* import axios from 'axios' */
 import Form from '../components/Form'
 
 import sanityClient from '../client'
@@ -330,7 +330,7 @@ const Contact = () => {
 		telephoneRef.current.value = ''
 	}
 
-	const handleSubmit2 = async (e) => {
+	/* const handleSubmit2 = async (e) => {
 		e.preventDefault() // prevent form submit default behavior
 		if (
 			!nameRef.current.value ||
@@ -344,9 +344,9 @@ const Contact = () => {
 			telephoneRef.current.Value
 		)
 		console.log(hubspot_response) // make sure it succeeded!
-	}
+	} */
 
-	const submit_hubspot_form = async (email, firstname, telephone) => {
+	/* const submit_hubspot_form = async (email, firstname, telephone) => {
 		const portalId = '6998830' // example portal ID (not real)
 		const formGuid = '48f871d1-553a-43b2-8d01-43cfa9f28786' // example form GUID (not real)
 		const config = {
@@ -385,7 +385,7 @@ const Contact = () => {
 		nameRef.current.value = ''
 		telephoneRef.current.value = ''
 		return response
-	}
+	} */
 
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {

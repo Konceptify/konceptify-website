@@ -122,7 +122,7 @@ const StyledH4 = styled.h4`
 	}
 `
 
-const StyledImg = styled.img`
+/* const StyledImg = styled.img`
 	width: 45vw;
 	display: none;
 	@media (max-width: 976px) {
@@ -130,7 +130,7 @@ const StyledImg = styled.img`
 		display: block;
 		margin-bottom: 100px;
 	}
-`
+` */
 
 const StyledConceptDiv = styled.div`
 	height: 90vh;

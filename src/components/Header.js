@@ -143,6 +143,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 		return () => {
 			window.removeEventListener('scroll', handleScroll, false)
 		}
+		// eslint-disable-next-line
 	}, [lastYPos])
 
 	const { lang, setLang } = useContext(LanguageContext)
