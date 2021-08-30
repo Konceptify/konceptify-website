@@ -363,7 +363,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Compliance')
 								}}
 							>
-								{lang ? 'Checklistor' : 'Checklists'}
+								{lang ? 'Drift' : 'Operations'}
 							</StyledCard>
 							<StyledCard
 								onClick={() => {
@@ -390,9 +390,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Compliance')
 								}
 							>
-								{lang
-									? 'Checklistor'
-									: 'Task managment'}
+								{lang ? 'Drift' : 'Operations'}
 							</ComplianceSlide>
 							<EducateSlide
 								conceptSlide={conceptSlide}

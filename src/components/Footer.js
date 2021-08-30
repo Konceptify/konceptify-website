@@ -97,7 +97,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 					<LinkLi
 						onClick={() => handleFooterClick('Compliance')}
 					>
-						{lang ? 'Checklistor' : 'Operations'}
+						{lang ? 'Drift' : 'Operations'}
 					</LinkLi>
 					<LinkLi
 						onClick={() => handleFooterClick('Comunicate')}

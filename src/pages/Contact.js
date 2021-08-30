@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 import { LanguageContext } from '../App'
 import Button from '../components/Button'
 /* import axios from 'axios' */
-import Form from '../components/Form'
+/* import Form from '../components/Form' */
 
 import sanityClient from '../client'
 
@@ -150,6 +150,10 @@ const StyledForm = styled.form`
 	flex-direction: column;
 	margin-top: -250px;
 	width: 460px;
+
+	button {
+		margin-top: 40px;
+	}
 
 	@media (max-width: 968px) {
 		width: 95%;
@@ -431,7 +435,6 @@ const Contact = () => {
 					</StyledCircle>
 				</StyledDiv1>
 				<StyledDiv>
-					<Form />
 					<StyledDivFormHeader>
 						<img
 							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/logo512_R-_7HYAFz.png?updatedAt=1630058739502'

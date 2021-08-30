@@ -5,6 +5,8 @@ import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
 import Button from './Button'
+import AppleLogo from '../img/Resurs 1@4x.png'
+import GoogleLogo from '../img/Resurs 3@4x.png'
 
 const Wrapper = styled(motion.section)`
 	height: 90vh;
@@ -17,7 +19,10 @@ const Wrapper = styled(motion.section)`
 
 	@media (max-width: 900px) {
 		padding: 0px;
+		padding-top: 100px;
+		padding-left: 10px;
 		flex-direction: column;
+		justify-content: flex-start;
 	}
 `
 
@@ -121,25 +126,28 @@ const StyledImg = styled(motion.img)`
 const StyledArrow = styled(IoMdArrowRoundForward)``
 
 const StyledDownloadDiv = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	position: absolute;
 	bottom: 20px;
-	left: 250px;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	* {
-		margin: 0 5px;
-	}
-	@media (max-width: 900px) {
-		width: 100%;
-		left: 0;
-		justify-content: center;
-	}
-`
 
-const StyledImg2 = styled.img`
-	@media (max-width: 900px) {
-		width: 80px;
+	img {
+		@media (max-width: 768px) {
+			height: 40px;
+		}
+		height: 50px;
+		margin: 8px 15px;
+	}
+
+	button {
+		margin-left: 20px;
+		margin-bottom: 2px;
+	}
+
+	@media (max-width: 768px) {
+		bottom: 150px;
 	}
 `
 
@@ -247,27 +255,27 @@ const Hero = () => {
 				</Button>
 
 				<StyledDownloadDiv>
-					<a href='https://apps.apple.com/se/app/zittron/id1549633030?l=en'>
-						<StyledImg2
-							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-120/apple_2x_u-Ff_4ztY.png?updatedAt=1629721705118'
+					<a href='../img/Resurs 1@4x.png'>
+						<img
+							src={AppleLogo}
 							alt='apple download'
-							width='120'
 							style={{ cursor: 'pointer' }}
 						/>
 					</a>
-					<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee'>
-						<StyledImg2
-							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-150/google_2x_e5Et7nh6N.png?updatedAt=1629721705186'
+					<a href='../img/Resurs 2@4x.png'>
+						<img
+							src={GoogleLogo}
 							alt='google download'
-							width='150'
 							style={{ cursor: 'pointer' }}
 						/>
 					</a>
-					<Button>
-						<a href='https://primemanager.zittron.com/'>
-							{lang ? 'LOGGA IN' : 'SIGN IN'}
-						</a>
-					</Button>
+					{window.innerWidth > 768 && (
+						<Button>
+							<a href='https://primemanager.zittron.com/'>
+								{lang ? 'LOGGA IN' : 'SIGN IN'}
+							</a>
+						</Button>
+					)}
 				</StyledDownloadDiv>
 			</StyledDiv>
 			<StyledDiv2>

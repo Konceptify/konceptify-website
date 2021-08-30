@@ -9,7 +9,7 @@ const StyledButton = styled.button`
 	border: 1px solid ${(props) => props.theme.btnborderColor};
 	border-radius: 30px;
 	border: none;
-	margin-top: 20px;
+
 	letter-spacing: 2px;
 	display: flex;
 	align-items: center;
