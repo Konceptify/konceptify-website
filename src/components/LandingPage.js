@@ -47,7 +47,8 @@ const StyledDiv2 = styled.div`
 	@media (max-width: 976px) {
 		width: 100%;
 
-		padding-top: 30px;
+		padding-top: 0px;
+		height: fit-content;
 	}
 `
 
@@ -118,6 +119,7 @@ const StyledH4 = styled.h4`
 		background: inherit;
 		color: ${({ theme }) => theme.primary90};
 		padding: 0px;
+		margin-top: 30px;
 		display: block;
 	}
 `
@@ -239,7 +241,8 @@ const StyledSection = styled.section`
 
 	@media (max-width: 976px) {
 		width: 100vw;
-		height: 120vh;
+		height: 110vh;
+
 		flex-direction: column-reverse;
 	}
 `

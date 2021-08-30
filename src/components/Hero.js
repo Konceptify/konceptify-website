@@ -110,13 +110,12 @@ const StyledImg = styled(motion.img)`
 		width: 50vw;
 		position: absolute;
 		z-index: -1;
-		margin-top: 0px;
 	}
 
 	@media (max-width: 500px) {
 		width: 100vw;
 		position: absolute;
-		margin-top: 0px;
+		margin-top: 50px;
 		padding-left: 150px;
 	}
 	@media (max-width: 1900px) {
