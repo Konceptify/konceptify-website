@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import sanityClient from '../client'
 import { LanguageContext } from '../App'
+import { motion } from 'framer-motion'
 
 const Wrapper = styled.div`
 	height: 100%;
@@ -16,10 +17,10 @@ const Wrapper = styled.div`
 	}
 `
 
-const StyledImg = styled.img`
-	width: 90%;
+const StyledImg = styled(motion.img)`
+	width: 35vw;
 	@media (max-width: 768px) {
-		width: 100%;
+		width: 80vw;
 		padding-top: 50px;
 	}
 `
@@ -31,12 +32,11 @@ const StyledDiv = styled.div`
 	}
 `
 
-const StyledH2 = styled.h2`
-	font-size: 3vw;
-
+const StyledH2 = styled(motion.h2)`
+	font-size: 2vw;
 	color: ${({ theme }) => theme.primary};
 	margin-top: -20px;
-	max-width: 80%;
+	max-width: 35ch;
 	@media (max-width: 1768px) {
 		padding-left: 40px;
 	}
@@ -48,11 +48,11 @@ const StyledH2 = styled.h2`
 	}
 `
 
-const StyledH3 = styled.h3`
+const StyledH3 = styled(motion.h3)`
 	font-size: 0.9rem;
 	width: 70%;
 	margin-top: 20px;
-	padding-left: 40px;
+	padding-left: 0px;
 	color: ${({ theme }) => theme.primary90};
 	@media (max-width: 1768px) {
 		padding-left: 40px;
@@ -85,19 +85,30 @@ const Communicate = () => {
 		<Wrapper>
 			<StyledDiv>
 				<StyledImg
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-600/Resurs_5_08FgDgtoW.png?updatedAt=1629718921512'
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_5_08FgDgtoW.png?updatedAt=1629718921512'
 					alt='chat popup'
+					initial={{ opacity: 0, y: '20px' }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
 				/>
 			</StyledDiv>
 			<StyledDiv>
-				<StyledH2>
+				<StyledH2
+					initial={{ opacity: 0, y: '-20px' }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
+				>
 					{data
 						? lang
 							? data.header.sv
 							: data.header.en
 						: null}
 				</StyledH2>
-				<StyledH3>
+				<StyledH3
+					initial={{ opacity: 0, x: '-100px' }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 0.7 }}
+				>
 					{data
 						? lang
 							? data.subHeader.sv

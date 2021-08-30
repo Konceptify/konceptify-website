@@ -9,19 +9,20 @@ import { ReactComponent as LogoSVG } from '../img/Resurs 5.svg'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
 import { LanguageContext } from '../App'
 
-const Wrapper = styled.nav`
+const Wrapper = styled(motion.nav)`
 	width: 100vw;
-	height: 60px;
+	height: 65px;
 	position: fixed;
 	z-index: 1000;
 	opacity: ${({ scroll }) => (scroll ? 0 : 1)};
 	display: ${({ scroll }) => (scroll ? 'none' : 'block')};
 	transition: 0.2s;
-	background: ${({ scroll }) => (scroll ? '#fff' : 'transparent')};
+	background: rgba(255, 255, 255, 0.9);
 
 	@media (max-width: 768px) {
 		height: 60px;
-		position: absolute;
+		position: relative;
+		top: 0;
 		background: ${({ theme }) => theme.white};
 	}
 `
@@ -124,24 +125,37 @@ const StyledLogoSVG = styled(LogoSVG)`
 
 const Header = ({ setOpenNav, openNav, theme }) => {
 	const location = useLocation()
-	const [scroll, setScroll] = useState(false)
-	const { lang, setLang } = useContext(LanguageContext)
-
-	const changeBackground = () => {
-		if (window.scrollY >= 26) {
-			setScroll(true)
-		} else {
-			setScroll(false)
-		}
-	}
+	const [shouldShowActions, setShouldShowActions] = useState()
+	const [lastYPos, setLastYPos] = useState(0)
+	const media = window.innerWidth > 767
 
 	useEffect(() => {
-		changeBackground()
-		window.addEventListener('scroll', changeBackground)
-	})
+		function handleScroll() {
+			const yPos = window.scrollY
+			const isScrollingUp = yPos < lastYPos
+
+			setShouldShowActions(media ? isScrollingUp : true)
+			setLastYPos(yPos)
+		}
+
+		window.addEventListener('scroll', handleScroll, false)
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll, false)
+		}
+	}, [lastYPos])
+
+	const { lang, setLang } = useContext(LanguageContext)
 
 	return (
-		<Wrapper scroll={scroll}>
+		<Wrapper
+			animate={{
+				y: shouldShowActions ? 0 : '-60px',
+				opacity: media ? (shouldShowActions ? 1 : 0) : 1,
+			}}
+			initial={{ opacity: media ? 0 : 1, y: '-60px' }}
+			transition={{ opacity: { duration: 0.1 } }}
+		>
 			{openNav && (
 				<NavBar
 					openNav={openNav}
@@ -149,7 +163,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 					setOpenNav={setOpenNav}
 				/>
 			)}
-			<LogoText scroll={scroll} location={location}>
+			<LogoText location={location}>
 				<Link to='/'>
 					<StyledLogoSVG />
 				</Link>

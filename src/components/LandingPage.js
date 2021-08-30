@@ -7,7 +7,7 @@ import Compliance from '../components/Compliance'
 /* import Testemonials from '../components/Testemonials' */
 import Contact from '../pages/Contact'
 import sanityClient from '../client'
-
+import Video from '../img/animated-video.mp4'
 import { LanguageContext } from '../App'
 
 const Wrapper = styled.section`
@@ -19,13 +19,30 @@ const Wrapper = styled.section`
 	}
 `
 
-const StyledDiv = styled.div`
+const StyledDiv1 = styled.div`
 	height: 100%;
 	width: 50%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	text-align: center;
+	@media (max-width: 976px) {
+		width: 100%;
+
+		padding-top: 30px;
+	}
+`
+
+const StyledDiv2 = styled.div`
+	height: 100%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 3000;
 	text-align: center;
 	@media (max-width: 976px) {
 		width: 100%;
@@ -41,46 +58,45 @@ const StyledH2 = styled.h2`
 	z-index: 10;
 	color: ${({ theme }) => theme.color};
 	@media (max-width: 976px) {
-		font-size: 2rem;
+		font-size: 1.7rem;
+		margin-bottom: 30px;
 	}
 `
 const StyledH3 = styled.h3`
 	width: 80%;
-	font-size: 1.2rem;
+	font-size: 1rem;
 	margin-top: 20px;
 	font-weight: 500;
 	position: relative;
 	z-index: 10;
 	@media (max-width: 976px) {
 		width: 100%;
+		text-align: left;
+		margin-bottom: -150px;
 	}
 `
 
 const StyledDivDesign = styled.div`
-	width: 80%;
-	height: 90%;
-	border-radius: 50px 50px 0 0;
 	position: relative;
 	/* background: ${({ theme }) => theme.primary60}; */
 	display: flex;
 	justify-content: center;
-	flex-direction: column;
+
 	align-items: center;
-	margin-bottom: -80px;
-	/* box-shadow: 10px 10px 0px #cbcbcb; */
-	@media (max-width: 976px) {
-		width: 100%;
-		border-radius: 0;
-		box-shadow: none;
-		margin-bottom: 0px;
-		video {
-			display: none;
-		}
+
+	z-index: 100;
+	video {
+		width: 60vw;
 	}
 
-	video {
-		padding-left: 140px;
-		width: 65vw;
+	@media (max-width: 976px) {
+		width: 100%;
+
+		margin-bottom: 0px;
+		video {
+			width: 200vw;
+			margin-left: 130px;
+		}
 	}
 `
 
@@ -91,7 +107,7 @@ const StyledH4 = styled.h4`
 	font-weight: 300;
 	padding: 10px 20px;
 	position: absolute;
-	z-index: 1;
+	z-index: 2;
 	bottom: 10px;
 	font-size: 1rem;
 	width: 100%;
@@ -300,15 +316,20 @@ const LandingPage = ({ myRef }) => {
 		<>
 			<Wrapper ref={myRef}>
 				<StyledSection direction='row' bg='#fff'>
-					<StyledDiv>
+					<StyledDiv1>
 						<StyledDivDesign>
 							{data && (
 								<>
-									<StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' />
-									<video autoPlay loop muted>
+									{/* <StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' /> */}
+									<video
+										autoPlay
+										loop
+										muted
+										playsInline
+									>
 										<source
-											src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/7_1-1_ULhrhMJ14.webm?updatedAt=1630067426607'
-											type='video/webm'
+											src={Video}
+											type='video/mp4'
 										/>
 									</video>
 								</>
@@ -320,8 +341,8 @@ const LandingPage = ({ myRef }) => {
 									: data && data.underImage.en}
 							</StyledH4>
 						</StyledDivDesign>
-					</StyledDiv>
-					<StyledDiv>
+					</StyledDiv1>
+					<StyledDiv2>
 						<StyledH2>
 							{lang
 								? data && data.header.sv
@@ -358,7 +379,7 @@ const LandingPage = ({ myRef }) => {
 								? data && data.subHeader.sv
 								: data && data.subHeader.en}
 						</StyledH3>
-					</StyledDiv>
+					</StyledDiv2>
 				</StyledSection>
 				<StyledSection2 ref={sliderRef}>
 					<StyledSlideContainer>

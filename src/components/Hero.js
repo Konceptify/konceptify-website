@@ -97,6 +97,7 @@ const StyledH2b = styled(motion.h2)`
 
 const StyledImg = styled(motion.img)`
 	position: relative;
+	margin-top: 80px;
 	right: 8vw;
 	width: 35vw;
 
@@ -104,12 +105,13 @@ const StyledImg = styled(motion.img)`
 		width: 50vw;
 		position: absolute;
 		z-index: -1;
+		margin-top: 0px;
 	}
 
 	@media (max-width: 500px) {
 		width: 100vw;
 		position: absolute;
-		padding-top: 80px;
+		margin-top: 0px;
 		padding-left: 150px;
 	}
 	@media (max-width: 1900px) {

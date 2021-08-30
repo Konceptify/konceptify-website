@@ -65,6 +65,12 @@ const LinkLi = styled.li`
 	}
 `
 
+const Copyright = styled(LinkLi)`
+	font-size: 0.7rem;
+	position: absolute;
+	bottom: 40px;
+`
+
 const variantsIcon = {
 	hidden: {
 		scale: 1,
@@ -80,6 +86,9 @@ const variantsIcon = {
 const Footer = ({ setConceptSlide, sliderRef }) => {
 	const { lang, handleFooterClick } = useContext(LanguageContext)
 
+	let date = new Date()
+	let year = date.getFullYear()
+
 	return (
 		<Wrapper>
 			<StyledMainUL>
@@ -88,7 +97,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 					<LinkLi
 						onClick={() => handleFooterClick('Compliance')}
 					>
-						{lang ? 'Checklistor' : 'Compliance'}
+						{lang ? 'Checklistor' : 'Operations'}
 					</LinkLi>
 					<LinkLi
 						onClick={() => handleFooterClick('Comunicate')}
@@ -119,6 +128,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 							{lang ? 'Prisplan' : 'Pricing'}
 						</Link>
 					</LinkLi>
+					<Copyright>© Copyright Zittron {year}</Copyright>
 				</StyledUL>
 				<StyledUL>
 					<li>

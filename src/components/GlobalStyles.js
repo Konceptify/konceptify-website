@@ -17,6 +17,34 @@ outline: none;
 
 }
 
+html {
+	scrollbar-width: normal;
+      scrollbar-color: #777 #555;
+}
+
+html::-webkit-scrollbar {
+      width: 0.5vw;
+    }
+
+    html::-webkit-scrollbar-thumb {
+      
+      background-color: #566c5e;
+	  border-radius: 10px;
+    }
+
+    html::-webkit-scrollbar-thumb:hover {
+      background-color: #3F4F45;
+    }
+
+    html::-webkit-scrollbar-track {
+      background-color: #cacaca;
+    }
+
+    html::-webkit-scrollbar-track:hover {
+      background-color: #c1c1c1;
+    }
+
+
 body {
     font-family: 'Montserrat';
 }

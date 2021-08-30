@@ -6,7 +6,7 @@ import { LanguageContext } from '../App'
 import sanityClient from '../client'
 
 const Wrapper = styled.aside`
-	width: 99vw;
+	width: 100vw;
 	height: 30px;
 	background: ${({ theme }) => theme.primary90};
 	color: ${({ theme }) => theme.white};
@@ -16,7 +16,7 @@ const Wrapper = styled.aside`
 	font-size: 0.8rem;
 	cursor: pointer;
 	position: fixed;
-	z-index: 1000;
+	z-index: 1001;
 
 	@media (max-width: 768px) {
 		position: static;
@@ -32,6 +32,10 @@ const StyledLink = styled(Link)`
 const StyledDiv = styled.div`
 	position: absolute;
 	right: 10px;
+
+	svg {
+		margin-right: 10px;
+	}
 `
 
 const Banner = () => {

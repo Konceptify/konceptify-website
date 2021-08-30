@@ -17,14 +17,20 @@ const Wrapper = styled(motion.div)`
 	}
 `
 
-const StyledImg = styled.img`
-	width: 95%;
+const StyledImg = styled(motion.img)`
+	margin-right: 140px;
+	width: 35vw;
+
+	@media (max-width: 768px) {
+		margin-right: 0;
+		margin-bottom: 60px;
+
+		width: 70vw;
+	}
 `
 
 const StyledDivDesign = styled.div`
-	width: 40%;
-	height: 85%;
-	border-radius: 50px 50px 0 0;
+	width: 50%;
 
 	display: flex;
 
@@ -36,19 +42,22 @@ const StyledDivDesign = styled.div`
 
 	@media (max-width: 768px) {
 		width: 90%;
-		margin-top: 20px;
 	}
 `
 
 const StyledHeaderDiv = styled.div`
+	padding-left: 40px;
 	width: 50%;
 	@media (max-width: 768px) {
 		width: 100%;
+		padding-left: 0px;
+		padding-top: 40px;
 	}
 `
 
-const StyledH2 = styled.h2`
+const StyledH2 = styled(motion.h2)`
 	font-size: 3rem;
+	max-width: 25ch;
 	color: ${({ theme }) => theme.white};
 	margin-top: -20px;
 
@@ -58,9 +67,10 @@ const StyledH2 = styled.h2`
 	}
 `
 
-const StyledH3 = styled.h3`
+const StyledH3 = styled(motion.h3)`
 	font-size: 1rem;
 	margin-top: 20px;
+	max-width: 60ch;
 	color: ${({ theme }) => theme.whiteOf};
 `
 
@@ -87,14 +97,22 @@ const Compliance = () => {
 	return (
 		<Wrapper>
 			<StyledHeaderDiv>
-				<StyledH2>
+				<StyledH2
+					initial={{ opacity: 0, y: '-20px' }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
+				>
 					{data
 						? lang
 							? data.header.sv
 							: data.header.en
 						: null}
 				</StyledH2>
-				<StyledH3>
+				<StyledH3
+					initial={{ opacity: 0, x: '-100px' }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 0.5 }}
+				>
 					{data
 						? lang
 							? data.subHeader.sv
@@ -104,8 +122,11 @@ const Compliance = () => {
 			</StyledHeaderDiv>
 			<StyledDivDesign>
 				<StyledImg
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/checklist_NgupaGaA8F3.png?updatedAt=1630049500106'
+					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/checklist_NgupaGaA8F3.png?updatedAt=1630049500106'
 					alt='checklist'
+					initial={{ opacity: 0, y: '-20px' }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 0.7 }}
 				/>
 			</StyledDivDesign>
 		</Wrapper>

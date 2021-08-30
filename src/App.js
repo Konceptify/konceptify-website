@@ -23,7 +23,7 @@ const Wrapper = styled.div`
 	flex-direction: column;
 	position: absolute;
 	overflow-x: hidden;
-	transition: all 0.25s linear;
+	transition: all 0.1s linear;
 	margin-top: 20px;
 
 	@media (max-width: 768px) {

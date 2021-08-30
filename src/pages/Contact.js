@@ -5,9 +5,10 @@ import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
 import emailjs from 'emailjs-com'
 import { motion } from 'framer-motion'
-import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
 import Button from '../components/Button'
+import axios from 'axios'
+import Form from '../components/Form'
 
 import sanityClient from '../client'
 
@@ -54,6 +55,7 @@ const StyledDiv1 = styled.div`
 
 	align-items: center;
 	flex-direction: column;
+	box-shadow: 10px 10px 0px #cbcbcb;
 	background-color: ${(props) => props.theme.primary90};
 	@media (max-width: 968px) {
 		display: none;
@@ -171,6 +173,26 @@ const StyledInput = styled(motion.input)`
 	background-color: #fafafa;
 	margin-top: 90px;
 	outline: none;
+
+	::-webkit-input-placeholder {
+		font-family: 'Montserrat';
+		font-weight: 600;
+	}
+
+	:-ms-input-placeholder {
+		font-family: 'Montserrat';
+		font-weight: 600;
+	}
+
+	:-moz-placeholder {
+		font-family: 'Montserrat';
+		font-weight: 600;
+	}
+
+	::-moz-placeholder {
+		font-family: 'Montserrat';
+		font-weight: 600;
+	}
 
 	::placeholder {
 		color: ${(props) => props.theme.color};
@@ -308,6 +330,63 @@ const Contact = () => {
 		telephoneRef.current.value = ''
 	}
 
+	const handleSubmit2 = async (e) => {
+		e.preventDefault() // prevent form submit default behavior
+		if (
+			!nameRef.current.value ||
+			!emailRef.current.value ||
+			telephoneRef.current.value
+		)
+			return // if an input field is empty, don't submit the form
+		const hubspot_response = await submit_hubspot_form(
+			emailRef.current.value,
+			nameRef.current.value,
+			telephoneRef.current.Value
+		)
+		console.log(hubspot_response) // make sure it succeeded!
+	}
+
+	const submit_hubspot_form = async (email, firstname, telephone) => {
+		const portalId = '6998830' // example portal ID (not real)
+		const formGuid = '48f871d1-553a-43b2-8d01-43cfa9f28786' // example form GUID (not real)
+		const config = {
+			// important!
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		}
+
+		const response = await axios
+			.post(
+				`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
+				{
+					portalId,
+					formGuid,
+					fields: [
+						{
+							name: 'firstname',
+							value: firstname,
+						},
+						{
+							name: 'email',
+							value: email,
+						},
+						{
+							name: 'telephone',
+							value: telephone,
+						},
+					],
+				},
+				config
+			)
+			.then(() => console.log('Funkade!'))
+
+		emailRef.current.value = ''
+		nameRef.current.value = ''
+		telephoneRef.current.value = ''
+		return response
+	}
+
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
 			return
@@ -352,6 +431,7 @@ const Contact = () => {
 					</StyledCircle>
 				</StyledDiv1>
 				<StyledDiv>
+					<Form />
 					<StyledDivFormHeader>
 						<img
 							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/logo512_R-_7HYAFz.png?updatedAt=1630058739502'
@@ -361,7 +441,6 @@ const Contact = () => {
 						/>
 						<StyledP>Contact form</StyledP>
 					</StyledDivFormHeader>
-
 					<StyledForm onSubmit={handleSubmit}>
 						<StyledInput
 							placeholder={lang ? 'Namn' : 'Name'}
@@ -384,11 +463,7 @@ const Contact = () => {
 							placeholder={lang ? 'Telefon' : 'Telephone'}
 							ref={telephoneRef}
 						/>
-						<Button>
-							{lang ? 'SKICKA' : 'SUBMIT'}
-
-							<IoMdArrowRoundForward size={15} />
-						</Button>
+						<Button>{lang ? 'SKICKA' : 'SUBMIT'}</Button>
 					</StyledForm>
 				</StyledDiv>
 				<Snackbar
