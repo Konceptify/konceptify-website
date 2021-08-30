@@ -130,7 +130,7 @@ const StyledDownloadDiv = styled.div`
 	justify-content: center;
 
 	position: absolute;
-	bottom: 20px;
+	bottom: 10px;
 
 	img {
 		@media (max-width: 768px) {
