@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import NavBar from './NavBar'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -14,8 +14,6 @@ const Wrapper = styled(motion.nav)`
 	height: 65px;
 	position: fixed;
 	z-index: 100000;
-	opacity: ${({ scroll }) => (scroll ? 0 : 1)};
-	display: ${({ scroll }) => (scroll ? 'none' : 'block')};
 	transition: 0.2s;
 	background: rgba(255, 255, 255, 0.9);
 
@@ -125,38 +123,11 @@ const StyledLogoSVG = styled(LogoSVG)`
 
 const Header = ({ setOpenNav, openNav, theme }) => {
 	const location = useLocation()
-	const [shouldShowActions, setShouldShowActions] = useState()
-	const [lastYPos, setLastYPos] = useState(0)
-	const media = window.innerWidth > 767
-
-	useEffect(() => {
-		function handleScroll() {
-			const yPos = window.scrollY
-			const isScrollingUp = yPos < lastYPos
-
-			setShouldShowActions(media ? isScrollingUp : true)
-			setLastYPos(yPos)
-		}
-
-		window.addEventListener('scroll', handleScroll, false)
-
-		return () => {
-			window.removeEventListener('scroll', handleScroll, false)
-		}
-		// eslint-disable-next-line
-	}, [lastYPos])
 
 	const { lang, setLang } = useContext(LanguageContext)
 
 	return (
-		<Wrapper
-			animate={{
-				y: shouldShowActions ? 0 : '-60px',
-				opacity: media ? (shouldShowActions ? 1 : 0) : 1,
-			}}
-			initial={{ opacity: media ? 0 : 1, y: '-60px' }}
-			transition={{ opacity: { duration: 0.1 } }}
-		>
+		<Wrapper>
 			{openNav && (
 				<NavBar
 					openNav={openNav}

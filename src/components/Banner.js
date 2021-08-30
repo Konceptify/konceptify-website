@@ -16,7 +16,7 @@ const Wrapper = styled.aside`
 	font-size: 0.8rem;
 	cursor: pointer;
 	position: fixed;
-	z-index: 1001;
+	z-index: 100001;
 
 	@media (max-width: 768px) {
 		position: static;
