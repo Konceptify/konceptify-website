@@ -254,14 +254,14 @@ const Hero = () => {
 				</Button>
 
 				<StyledDownloadDiv>
-					<a href='../img/Resurs 1@4x.png'>
+					<a href='https://apps.apple.com/se/app/zittron/id1549633030'>
 						<img
 							src={AppleLogo}
 							alt='apple download'
 							style={{ cursor: 'pointer' }}
 						/>
 					</a>
-					<a href='../img/Resurs 2@4x.png'>
+					<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US'>
 						<img
 							src={GoogleLogo}
 							alt='google download'
