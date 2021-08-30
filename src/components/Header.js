@@ -13,7 +13,7 @@ const Wrapper = styled(motion.nav)`
 	width: 100vw;
 	height: 65px;
 	position: fixed;
-	z-index: 1000;
+	z-index: 100000;
 	opacity: ${({ scroll }) => (scroll ? 0 : 1)};
 	display: ${({ scroll }) => (scroll ? 'none' : 'block')};
 	transition: 0.2s;
