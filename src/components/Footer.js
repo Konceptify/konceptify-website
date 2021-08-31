@@ -134,6 +134,9 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 					<li>
 						<Link to='/privacy'>Privacy Policy</Link>
 					</li>
+					<li>
+						<Link to='/cookies'>Cookies</Link>
+					</li>
 				</StyledUL>
 			</StyledMainUL>
 			<StyledIconsContainer>

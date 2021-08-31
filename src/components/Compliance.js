@@ -21,6 +21,10 @@ const StyledImg = styled(motion.img)`
 	margin-right: 140px;
 	width: 35vw;
 
+	@media (max-width: 1768px) {
+		margin-right: 0px;
+		margin-left: 150px;
+	}
 	@media (max-width: 768px) {
 		margin-right: 0;
 		margin-bottom: 60px;

@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from './components/GlobalStyles'
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-
+import { useCookieConsent } from 'use-cookie-consent'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Contact from './pages/Contact'
@@ -13,6 +13,8 @@ import Legal from './pages/Legal'
 import Footer from './components/Footer'
 import Banner from './components/Banner'
 /* import ThemeToggle from './components/ThemeToggle' */
+import { Cookie } from './components/Cookie'
+import { Cookies } from './pages/Cookies'
 
 export const LanguageContext = React.createContext()
 
@@ -52,6 +54,11 @@ const themes = {
 const App = () => {
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
 	const [openNav, setOpenNav] = useState(false)
+	const { consent } = useCookieConsent()
+	const [openCookie, setOpenCookie] = useState(
+		consent.firstParty ? false : true
+	)
+
 	const myRef = useRef()
 	const location = useLocation()
 	const history = useHistory()
@@ -76,6 +83,8 @@ const App = () => {
 		setConceptSlide,
 		handleFooterClick,
 		sliderRef,
+		openCookie,
+		setOpenCookie,
 		myRef,
 	}
 
@@ -103,6 +112,7 @@ const App = () => {
 			<LanguageContext.Provider value={ContextValue}>
 				<AnimatePresence exitBeforeEnter initial={true}>
 					<ThemeProvider theme={themes.lightMode}>
+						<Cookie />
 						<GlobalStyles />
 						<Banner />
 						<Wrapper>
@@ -126,6 +136,9 @@ const App = () => {
 								</Route>
 								<Route path='/privacy'>
 									<Legal />
+								</Route>
+								<Route path='/cookies'>
+									<Cookies />
 								</Route>
 							</Switch>
 							<Footer />

@@ -15,6 +15,7 @@
 		"emailjs-com": "^3.0.2",
 		"framer-motion": "^4.1.17",
 		"react": "^16.13.1",
+		"react-cookie": "^4.1.1",
 		"react-dom": "^16.13.1",
 		"react-hero-video": "^0.1.1",
 		"react-icons": "^4.2.0",
@@ -24,7 +25,8 @@
 		"react-scripts": "3.4.3",
 		"react-wavify": "^1.5.2",
 		"smoothscroll-polyfill": "^0.4.4",
-		"styled-components": "^5.3.0"
+		"styled-components": "^5.3.0",
+		"use-cookie-consent": "^0.1.13"
 	},
 	"scripts": {
 		"start": "react-scripts start",

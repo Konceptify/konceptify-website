@@ -49,7 +49,7 @@ const StyledDiv1 = styled.div`
 	display: flex;
 	position: relative;
 
-	border-radius: 50px 50px 0 0;
+	border-radius: 50px 50px 10px 10px;
 	margin: 0 0 20px 50px;
 	justify-content: center;
 
@@ -70,6 +70,7 @@ const StyledUl = styled.ul`
 	bottom: 0px;
 	width: 100%;
 	background-color: ${({ theme }) => theme.primary};
+	border-radius: 0px 0px 10px 10px;
 	li {
 		margin: 0 10px;
 	}
