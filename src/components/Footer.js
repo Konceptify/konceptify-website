@@ -102,7 +102,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 					<LinkLi
 						onClick={() => handleFooterClick('Comunicate')}
 					>
-						{lang ? 'Kommunikation' : 'Comunicate'}
+						{lang ? 'Kommunikation' : 'Communicate'}
 					</LinkLi>
 					<LinkLi onClick={() => handleFooterClick('Education')}>
 						{lang ? 'Utbildning' : 'Education'}
