@@ -116,7 +116,7 @@ export const Cookies = () => {
 	console.log(consent)
 
 	useEffect(() => {
-		consent.firstParty ? setOpenCookie(false) : setOpenCookie(true)
+		setOpenCookie(false)
 		// eslint-disable-next-line
 	}, [setOpenCookie])
 
