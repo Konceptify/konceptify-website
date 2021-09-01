@@ -5,7 +5,7 @@ import { LanguageContext } from '../App'
 
 const StyledDiv = styled.div`
 	width: 350px;
-	height: 80vh;
+	min-height: 600px;
 	background-color: #fafafa;
 	margin: 0 10px;
 	position: relative;
@@ -75,10 +75,11 @@ const StyledUl = styled.ul`
 	width: 100%;
 	height: 70%;
 	flex-direction: column;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	bottom: 10px;
 	padding-left: 30px;
 	padding-bottom: 10px;
+	padding-top: 30px;
 
 	@media (max-width: 768px) {
 		padding-top: 30px;
