@@ -264,7 +264,7 @@ const CardContainer = styled.div`
 
 const StyledCard = styled.div`
 	width: 130px;
-	height: 90px;
+	height: 70px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -274,6 +274,7 @@ const StyledCard = styled.div`
 	color: ${({ theme }) => theme.white};
 	background-color: ${({ theme }) => theme.primary};
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
+	font-size: 0.8rem;
 
 	@media (max-width: 976px) {
 		width: 100px;
