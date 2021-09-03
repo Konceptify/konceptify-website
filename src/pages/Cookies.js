@@ -121,6 +121,10 @@ const StyledButton = styled.button`
 	color: #fff;
 	padding: 10px;
 	margin-top: 20px;
+	display: none;
+	@media (max-width: 900px) {
+		display: block;
+	}
 `
 
 export const Cookies = () => {
