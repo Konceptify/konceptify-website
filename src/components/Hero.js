@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
 import Button from './Button'
+import Spinner from './Spinner'
 import AppleLogo from '../img/Resurs 1@4x.png'
 import GoogleLogo from '../img/Resurs 3@4x.png'
 
@@ -209,11 +210,15 @@ const Hero = () => {
 					variants={variants}
 					transition={{ duration: 0.5 }}
 				>
-					{data
-						? lang
-							? data.mainTitle.sv
-							: data.mainTitle.en
-						: null}
+					{data ? (
+						lang ? (
+							data.mainTitle.sv
+						) : (
+							data.mainTitle.en
+						)
+					) : (
+						<Spinner />
+					)}
 				</StyledH1>
 
 				<StyledH2
@@ -234,11 +239,15 @@ const Hero = () => {
 					variants={variants2}
 					transition={'{ duration: 1 }'}
 				>
-					{data
-						? lang
-							? data.subTitleTwo.sv && data.subTitleTwo.sv
-							: data.subTitleTwo.en && data.subTitleTwo.en
-						: null}
+					{data ? (
+						lang ? (
+							data.subTitleTwo.sv && data.subTitleTwo.sv
+						) : (
+							data.subTitleTwo.en && data.subTitleTwo.en
+						)
+					) : (
+						<Spinner />
+					)}
 				</StyledH2b>
 
 				<Button

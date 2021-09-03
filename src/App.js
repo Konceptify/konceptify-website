@@ -20,7 +20,7 @@ import useGaTracker from './useGaTracker'
 export const LanguageContext = React.createContext()
 
 const Wrapper = styled.div`
-	width: 100vw;
+	width: 99vw;
 	display: flex;
 	background-color: ${(props) => props.theme.white};
 	flex-direction: column;
