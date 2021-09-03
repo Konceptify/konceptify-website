@@ -27,6 +27,7 @@ const Wrapper = styled.section`
 		align-items: center;
 		justify-content: flex-start;
 		height: auto;
+		margin-top: 40px;
 	}
 `
 
@@ -140,8 +141,8 @@ const StyledDivFormHeader = styled.div`
 		padding-left: 20px;
 		margin-bottom: 0px;
 		font-size: 2.5rem;
-		background-color: ${({ theme }) => theme.primary};
-		border-radius: 15px 15px 0 0;
+		background-color: ${({ theme }) => theme.primary90};
+		border-radius: 20px;
 		width: 95%;
 	}
 `
@@ -437,12 +438,6 @@ const Contact = () => {
 				</StyledDiv1>
 				<StyledDiv>
 					<StyledDivFormHeader>
-						<img
-							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/logo512_R-_7HYAFz.png?updatedAt=1630058739502'
-							alt='logo'
-							width='30'
-							color='#fff'
-						/>
 						<StyledP>Contact form</StyledP>
 					</StyledDivFormHeader>
 					<StyledForm onSubmit={handleSubmit}>

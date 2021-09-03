@@ -5,13 +5,16 @@ import { LanguageContext } from '../App'
 
 const Wrapper = styled.section`
 	width: 100vw;
-	height: 100vh;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 40px;
 
-	@media (max-width: 768opx) {
+	@media (max-width: 768px) {
 		flex-direction: column;
+		justify-content: flex-start;
+		padding: 40px;
 	}
 `
 
@@ -19,15 +22,17 @@ const StyledImg = styled.img`
 	width: 35vw;
 	margin-right: 40px;
 
-	@media (max-width: 768opx) {
-		width: 95vw;
+	@media (max-width: 768px) {
+		width: 80vw;
+		margin-right: 0px;
+		margin-top: 60px;
 	}
 `
 
 const StyledDiv = styled.div`
 	width: 50%;
 
-	@media (max-width: 768opx) {
+	@media (max-width: 768px) {
 		width: 100%;
 	}
 `
@@ -36,21 +41,27 @@ const StyledH2 = styled.h2`
 	max-width: 28ch;
 	margin: 20px 0px;
 	color: ${({ theme }) => theme.primary};
-	@media (max-width: 768opx) {
+	@media (max-width: 768px) {
 		font-size: 1.2rem;
+		margin: 0 px;
+		max-width: 100%;
 	}
 `
 const StyledH3 = styled.h3`
 	font-size: 0.9rem;
 	max-width: 70%;
 	margin: 20px 0px;
-	@media (max-width: 768opx) {
+	color: ${({ theme }) => theme.primary};
+	@media (max-width: 768px) {
+		width: 100%;
 	}
 `
 const StyledH4 = styled.h4`
 	font-size: 0.8rem;
 	max-width: 70%;
-	@media (max-width: 768opx) {
+	color: ${({ theme }) => theme.primary};
+	@media (max-width: 768px) {
+		width: 100%;
 	}
 `
 
@@ -98,6 +109,7 @@ const Measure = () => {
 								: null}
 						</StyledH4>
 					</StyledDiv>
+
 					<StyledImg src={data.imageURL} alt='Laptop computer' />
 				</Wrapper>
 			)}

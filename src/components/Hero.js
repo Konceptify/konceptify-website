@@ -19,11 +19,11 @@ const Wrapper = styled(motion.section)`
 	justify-content: center;
 
 	@media (max-width: 900px) {
-		padding: 0px;
-		padding-top: 100px;
-		padding-left: 10px;
+		padding: 100px 0 0 10px;
+		height: 70vh;
 		flex-direction: column;
 		justify-content: flex-start;
+		margin-bottom: 60px;
 	}
 `
 
@@ -147,7 +147,7 @@ const StyledDownloadDiv = styled.div`
 	}
 
 	@media (max-width: 768px) {
-		bottom: 150px;
+		bottom: 0px;
 	}
 `
 

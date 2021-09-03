@@ -16,7 +16,6 @@ const Wrapper = styled.section`
 	background-color: #fff;
 
 	@media (max-width: 976px) {
-		padding-top: 80px;
 	}
 `
 
@@ -242,7 +241,7 @@ const StyledSection = styled.section`
 
 	@media (max-width: 976px) {
 		width: 100vw;
-		height: 110vh;
+		min-height: 50vh;
 
 		flex-direction: column-reverse;
 	}
