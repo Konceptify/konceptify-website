@@ -108,6 +108,19 @@ const StyledLabel = styled.label`
 
 		border-radius: 34px;
 	}
+
+	@media (max-width: 900px) {
+		display: none;
+	}
+`
+
+const StyledButton = styled.button`
+	background: ${({ theme }) => theme.primary80};
+	border-radius: 10px;
+	border: none;
+	color: #fff;
+	padding: 10px;
+	margin-top: 20px;
 `
 
 export const Cookies = () => {
@@ -141,6 +154,9 @@ export const Cookies = () => {
 	function handleClick(e) {
 		e.target.checked ? acceptAllCookies() : declineAllCookies()
 	}
+	function handleClickMobile() {
+		consent.marketing ? declineAllCookies() : acceptAllCookies()
+	}
 
 	return (
 		<Wrapper>
@@ -173,6 +189,11 @@ export const Cookies = () => {
 							/>
 							<span></span>
 						</StyledLabel>
+						<StyledButton onClick={handleClickMobile}>
+							{consent.marketing
+								? 'Decline all'
+								: 'Accept All'}
+						</StyledButton>
 					</div>
 				</>
 			) : (
