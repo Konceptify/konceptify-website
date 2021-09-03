@@ -1,7 +1,9 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { useCookieConsent } from 'use-cookie-consent'
 import { LanguageContext } from '../App'
+import { Link } from 'react-router-dom'
+import sanityClient from '../client'
 
 const Wrapper = styled.div`
 	height: 100vh;
@@ -19,7 +21,6 @@ const Wrapper = styled.div`
 	}
 
 	a {
-		text-decoration: none;
 		color: black;
 		margin-top: 50px;
 		font-size: 5vw;
@@ -52,7 +53,7 @@ const Wrapper = styled.div`
 `
 
 const StyledLabel = styled.label`
-	margin-top: 10px;
+	margin-top: 30px;
 	position: relative;
 	display: inline-block;
 	width: 60px;
@@ -110,12 +111,31 @@ const StyledLabel = styled.label`
 `
 
 export const Cookies = () => {
-	const { setOpenCookie } = useContext(LanguageContext)
+	const [data, setData] = useState()
+	const { setOpenCookie, lang } = useContext(LanguageContext)
 	const { consent, acceptAllCookies, declineAllCookies } = useCookieConsent()
 
 	console.log(consent)
 
 	useEffect(() => {
+		sanityClient
+			.fetch(
+				`*[_type == "cookies"] {
+                title1,
+                title2,
+                subTitle,
+                subTitleTwo,
+               
+				
+            
+            }`
+			)
+			.then((data) => {
+				setData(data[0])
+				console.log(data)
+			})
+			.catch((error) => console.log(error))
+
 		setOpenCookie(false)
 		// eslint-disable-next-line
 	}, [setOpenCookie])
@@ -126,47 +146,40 @@ export const Cookies = () => {
 
 	return (
 		<Wrapper>
-			<h1>Cookies</h1>
+			{data ? (
+				<>
+					<h1>Cookies</h1>
 
-			<div>
-				<h2>Necessary Cookies (Always Active)</h2>
+					<div>
+						<h2>{lang ? data.title1.sv : data.title1.en}</h2>
+						<p>
+							{lang ? data.subTitle.sv : data.subTitle.en}
+						</p>
+					</div>
 
-				<p>
-					These cookies are necessary for the website to function
-					and cannot be switched off in our systems. They are
-					usually only set in response to actions made by you
-					which amount to a request for services, such as setting
-					your privacy preferences, logging in, or filling in
-					forms. You can set your browser to block or alert you
-					about these cookies, but some parts of the site will
-					not then work. These cookies do not store any
-					personally identifiable information.
-				</p>
-			</div>
-
-			<div>
-				<h2>Personalization, Analytics, and Marketing Cookies</h2>
-				<p>
-					These cookies allow us to: Remember information that
-					changes the way our service behaves or looks, such as
-					the "remember me" functionality Count visits and
-					traffic sources so we can measure and improve the
-					performance of our site Test new advertisements, pages,
-					features or new functionality of the service to see how
-					our users react to them If you do not allow these
-					cookies: We will not know when you have visited our
-					site, and will not be able to monitor its performance
-					Some or all of these services may not function properly
-				</p>
-				<StyledLabel>
-					<input
-						checked={consent.marketing ? true : false}
-						onChange={handleClick}
-						type='checkbox'
-					/>
-					<span></span>
-				</StyledLabel>
-			</div>
+					<div>
+						<h2>{lang ? data.title2.sv : data.title2.en}</h2>
+						<p>
+							{lang
+								? data.subTitleTwo.sv
+								: data.subTitleTwo.en}
+						</p>
+						<Link to='/privacy'>Privacy Policy</Link>
+						<StyledLabel>
+							<input
+								checked={
+									consent.marketing ? true : false
+								}
+								onChange={handleClick}
+								type='checkbox'
+							/>
+							<span></span>
+						</StyledLabel>
+					</div>
+				</>
+			) : (
+				<div>Loading...</div>
+			)}
 		</Wrapper>
 	)
 }

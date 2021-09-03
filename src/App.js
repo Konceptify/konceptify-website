@@ -15,6 +15,7 @@ import Banner from './components/Banner'
 /* import ThemeToggle from './components/ThemeToggle' */
 import { Cookie } from './components/Cookie'
 import { Cookies } from './pages/Cookies'
+import useGaTracker from './useGaTracker'
 
 export const LanguageContext = React.createContext()
 
@@ -52,6 +53,7 @@ const themes = {
 }
 
 const App = () => {
+	useGaTracker()
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
 	const [openNav, setOpenNav] = useState(false)
 	const { consent } = useCookieConsent()

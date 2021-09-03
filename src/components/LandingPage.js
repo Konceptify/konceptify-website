@@ -6,6 +6,7 @@ import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
 /* import Testemonials from '../components/Testemonials' */
 import Contact from '../pages/Contact'
+import Measure from './Measure'
 import sanityClient from '../client'
 import Video from '../img/animated-video.mp4'
 import { LanguageContext } from '../App'
@@ -423,6 +424,7 @@ const LandingPage = ({ myRef }) => {
 						)}
 					</StyledConceptDiv>
 				</StyledSection2>
+				<Measure />
 				<Contact />
 			</Wrapper>
 		</>

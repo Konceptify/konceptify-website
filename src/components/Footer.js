@@ -71,6 +71,10 @@ const Copyright = styled(LinkLi)`
 	bottom: 40px;
 `
 
+const StyledLi = styled.li`
+	font-size: 0.7rem;
+`
+
 const variantsIcon = {
 	hidden: {
 		scale: 1,
@@ -129,6 +133,8 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 						</Link>
 					</LinkLi>
 					<Copyright>© Copyright Zittron {year}</Copyright>
+					<StyledLi>Org. num: 559239-2368</StyledLi>
+					<StyledLi>Tax number: SE559239236801</StyledLi>
 				</StyledUL>
 				<StyledUL>
 					<li>
