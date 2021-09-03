@@ -91,6 +91,18 @@ const App = () => {
 	}
 
 	useEffect(() => {
+		let msg = '%c Hi 👋! Welcome to Zittron.com!'
+		/* let msg2 = 'govirtual@zittron.com for job aplications' */
+		let styles = [
+			'font-size: 12px',
+			'font-family: monospace',
+			'background: white',
+			'display: inline-block',
+			'color: black',
+			'padding: 8px 19px',
+			'border: 1px dashed;',
+		].join(';')
+		console.log(msg, styles)
 		const faviconUpdate = async () => {
 			const favicon = document.getElementById('favicon')
 			//check count value, if below 0 we change href property to our red circle image path

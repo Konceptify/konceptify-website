@@ -104,14 +104,12 @@ const StyledH3 = styled.h4`
 export const Cookie = () => {
 	const { openCookie, setOpenCookie } = useContext(LanguageContext)
 
-	const { consent, acceptAllCookies } = useCookieConsent()
+	const { acceptAllCookies } = useCookieConsent()
 
 	function handleAcceptClick() {
 		acceptAllCookies()
 		setOpenCookie(false)
 	}
-
-	console.log(consent)
 
 	return (
 		<>

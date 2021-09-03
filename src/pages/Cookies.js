@@ -115,8 +115,6 @@ export const Cookies = () => {
 	const { setOpenCookie, lang } = useContext(LanguageContext)
 	const { consent, acceptAllCookies, declineAllCookies } = useCookieConsent()
 
-	console.log(consent)
-
 	useEffect(() => {
 		sanityClient
 			.fetch(
