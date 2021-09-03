@@ -275,7 +275,7 @@ const StyledCard = styled.div`
 	color: ${({ theme }) => theme.white};
 	background-color: ${({ theme }) => theme.primary};
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
-	font-size: 0.8rem;
+	font-size: 0.7rem;
 
 	@media (max-width: 976px) {
 		width: 100px;
