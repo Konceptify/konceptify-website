@@ -19,7 +19,7 @@ const Wrapper = styled(motion.section)`
 	justify-content: center;
 
 	@media (max-width: 900px) {
-		padding: 100px 0 0 10px;
+		padding: 100px 0 0 0px;
 		height: 70vh;
 		flex-direction: column;
 		justify-content: flex-start;
@@ -136,6 +136,7 @@ const StyledDownloadDiv = styled.div`
 	img {
 		@media (max-width: 768px) {
 			height: 40px;
+			margin: 0;
 		}
 		height: 50px;
 		margin: 8px 15px;
@@ -148,6 +149,14 @@ const StyledDownloadDiv = styled.div`
 
 	@media (max-width: 768px) {
 		bottom: 0px;
+		width: 100%;
+		margin: 0;
+		padding-right: 30px;
+		justify-content: space-evenly;
+
+		button {
+			display: none;
+		}
 	}
 `
 
@@ -277,13 +286,12 @@ const Hero = () => {
 							style={{ cursor: 'pointer' }}
 						/>
 					</a>
-					{window.innerWidth > 768 && (
-						<Button>
-							<a href='https://primemanager.zittron.com/'>
-								{lang ? 'LOGGA IN' : 'SIGN IN'}
-							</a>
-						</Button>
-					)}
+
+					<Button>
+						<a href='https://primemanager.zittron.com/'>
+							{lang ? 'LOGGA IN' : 'SIGN IN'}
+						</a>
+					</Button>
 				</StyledDownloadDiv>
 			</StyledDiv>
 			<StyledDiv2>
