@@ -58,7 +58,7 @@ const App = () => {
 	const [openNav, setOpenNav] = useState(false)
 	const { consent } = useCookieConsent()
 	const [openCookie, setOpenCookie] = useState(
-		consent.firstParty ? false : true
+		consent.necessary ? false : true
 	)
 
 	const myRef = useRef()
