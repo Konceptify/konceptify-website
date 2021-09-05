@@ -230,7 +230,7 @@ const StyledInput = styled(motion.input)`
 		border: 2px dotted ${({ theme }) => theme.whiteOf};
 
 		padding: 17px 15px;
-		border-radius: 10px;
+		border-radius: 20px;
 	}
 `
 
