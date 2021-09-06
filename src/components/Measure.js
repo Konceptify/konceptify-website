@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from 'react'
 import sanityClient from '../client'
 import styled from 'styled-components'
 import { LanguageContext } from '../App'
+import Spinner from './Spinner'
 
 const Wrapper = styled.section`
 	width: 100vw;
@@ -90,29 +91,37 @@ const Measure = () => {
 
 	return (
 		<>
-			{data && (
-				<Wrapper>
-					<StyledDiv>
-						<StyledH2>
-							{lang
-								? data.mainTitle.sv
-								: data.mainTitle.en}
-						</StyledH2>
-						<StyledH3>
-							{lang ? data.subTitle.sv : data.subTitle.en}
-						</StyledH3>
-						<StyledH4>
-							{data?.subTitleTwo
-								? lang
-									? data.subTitleTwo.sv
-									: data.subTitleTwo.en
-								: null}
-						</StyledH4>
-					</StyledDiv>
+			{data?.mainTitle &&
+				(data ? (
+					<Wrapper>
+						<StyledDiv>
+							<StyledH2>
+								{lang
+									? data.mainTitle.sv
+									: data.mainTitle.en}
+							</StyledH2>
+							<StyledH3>
+								{lang
+									? data.subTitle.sv
+									: data.subTitle.en}
+							</StyledH3>
+							<StyledH4>
+								{data?.subTitleTwo
+									? lang
+										? data.subTitleTwo.sv
+										: data.subTitleTwo.en
+									: null}
+							</StyledH4>
+						</StyledDiv>
 
-					<StyledImg src={data.imageURL} alt='Laptop computer' />
-				</Wrapper>
-			)}
+						<StyledImg
+							src={data.imageURL}
+							alt='Laptop computer'
+						/>
+					</Wrapper>
+				) : (
+					<Spinner />
+				))}
 		</>
 	)
 }
