@@ -8,6 +8,8 @@ import Button from './Button'
 import Spinner from './Spinner'
 import AppleLogo from '../img/Resurs 1@4x.png'
 import GoogleLogo from '../img/Resurs 3@4x.png'
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-206812801-1')
 
 const Wrapper = styled(motion.section)`
 	height: 90vh;
@@ -175,6 +177,10 @@ const Hero = () => {
 			duration: 1,
 		},
 	}
+
+	useEffect(() => {
+		ReactGA.pageview(window.location.pathname + window.location.search)
+	}, [])
 
 	useEffect(() => {
 		sanityClient
