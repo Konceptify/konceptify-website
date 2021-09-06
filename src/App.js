@@ -16,6 +16,8 @@ import Banner from './components/Banner'
 import { Cookie } from './components/Cookie'
 import { Cookies } from './pages/Cookies'
 /* import useGaTracker from './useGaTracker' */
+import ReactGA from 'react-ga'
+ReactGA.initialize('UA-206812801-1')
 
 export const LanguageContext = React.createContext()
 
@@ -88,6 +90,10 @@ const App = () => {
 		setOpenCookie,
 		myRef,
 	}
+
+	useEffect(() => {
+		ReactGA.pageview(window.location.pathname + window.location.search)
+	}, [])
 
 	useEffect(() => {
 		let msg = '%c Hi 👋! Welcome to Zittron.com!'
