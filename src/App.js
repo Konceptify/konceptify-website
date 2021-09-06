@@ -17,7 +17,7 @@ import { Cookie } from './components/Cookie'
 import { Cookies } from './pages/Cookies'
 /* import useGaTracker from './useGaTracker' */
 import ReactGA from 'react-ga'
-ReactGA.initialize('UA-206812801-1')
+ReactGA.initialize(process.env.REACT_APP_USER_ID)
 
 export const LanguageContext = React.createContext()
 
