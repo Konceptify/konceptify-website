@@ -35,12 +35,14 @@ const StyledH1 = styled.h1`
 	font-size: 3vw;
 	margin-bottom: 100px;
 	color: ${({ theme }) => theme.color};
+	margin-top: 100px;
 
 	@media (max-width: 768px) {
 		font-size: 1.2rem;
 		margin-bottom: 50px;
 		display: none;
 		position: static;
+		margin-top: 0;
 	}
 `
 
