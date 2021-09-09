@@ -1,14 +1,11 @@
-import React, { useState, useRef, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 import Snackbar from '@material-ui/core/Snackbar'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
-import emailjs from 'emailjs-com'
-import { motion } from 'framer-motion'
+
 import { LanguageContext } from '../App'
-import Button from '../components/Button'
-/* import axios from 'axios' */
-/* import Form from '../components/Form' */
+import Form from '../components/Form'
 
 import sanityClient from '../client'
 
@@ -17,8 +14,9 @@ const Wrapper = styled.section`
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
-	align-items: flex-end;
+	align-items: center;
 	position: relative;
+	margin-top: 100px;
 	z-index: 2;
 	background: #fafafa;
 
@@ -33,9 +31,7 @@ const Wrapper = styled.section`
 
 const StyledDiv = styled.div`
 	width: 100%;
-	height: 100%;
 	display: flex;
-	justify-content: space-around;
 	align-items: center;
 	flex-direction: column;
 
@@ -114,13 +110,14 @@ const StyledP = styled.p`
 
 const StyledDivFormHeader = styled.div`
 	width: 460px;
+	display: none;
 	height: 56px;
 	text-align: center;
 	border: 1px solid;
 	border-color: ${(props) => props.theme.color};
 	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 	border-radius: 2px;
-	display: flex;
+
 	border-radius: 15px;
 	justify-content: center;
 	color: ${(props) => props.theme.color};
@@ -131,6 +128,7 @@ const StyledDivFormHeader = styled.div`
 	}
 
 	@media (max-width: 968px) {
+		display: flex;
 		img {
 			display: block;
 		}
@@ -144,93 +142,6 @@ const StyledDivFormHeader = styled.div`
 		background-color: ${({ theme }) => theme.primary90};
 		border-radius: 20px;
 		width: 95%;
-	}
-`
-
-const StyledForm = styled.form`
-	display: flex;
-	flex-direction: column;
-	margin-top: -250px;
-	width: 460px;
-
-	button {
-		margin-top: 40px;
-	}
-
-	@media (max-width: 968px) {
-		width: 95%;
-		padding: 0 10px 20px 10px;
-
-		margin-top: 0px;
-		padding-top: 40px;
-
-		background: ${({ theme }) => theme.white};
-		border-radius: 0 0 15px 15px;
-		button {
-			margin: 80px 0 0 5px;
-		}
-	}
-`
-
-const StyledInput = styled(motion.input)`
-	border: none;
-	border-bottom: 3px solid #c0cbc4;
-	padding-bottom: 10px;
-	background-color: #fafafa;
-	margin-top: 90px;
-	outline: none;
-
-	::-webkit-input-placeholder {
-		font-family: 'Montserrat';
-		font-weight: 600;
-	}
-
-	:-ms-input-placeholder {
-		font-family: 'Montserrat';
-		font-weight: 600;
-	}
-
-	:-moz-placeholder {
-		font-family: 'Montserrat';
-		font-weight: 600;
-	}
-
-	::-moz-placeholder {
-		font-family: 'Montserrat';
-		font-weight: 600;
-	}
-
-	::placeholder {
-		color: ${(props) => props.theme.color};
-		@media (max-width: 968px) {
-			background-color: ${({ theme }) => theme.white};
-		}
-	}
-
-	:hover {
-		::placeholder {
-			font-size: 0.8rem;
-			transition-duration: 1s;
-			color: #ccc;
-		}
-	}
-
-	:focus::-webkit-input-placeholder {
-		color: #ccc;
-	}
-	@media (max-width: 968px) {
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-
-		margin-top: 40px;
-		font-size: 0.8rem;
-		background-color: ${({ theme }) => theme.white};
-		border-bottom: none;
-		border: 2px dotted ${({ theme }) => theme.whiteOf};
-
-		padding: 17px 15px;
-		border-radius: 20px;
 	}
 `
 
@@ -274,9 +185,9 @@ const StyledImg = styled.img`
 
 const Contact = () => {
 	const [open, setOpen] = useState(false)
-	const [snackbarMessage, setSnackbarMessage] = useState('')
+
 	const [data, setData] = useState(null)
-	const { lang } = useContext(LanguageContext)
+	const { lang, snackbarMessage } = useContext(LanguageContext)
 
 	useEffect(() => {
 		sanityClient
@@ -290,108 +201,6 @@ const Contact = () => {
 			.then((data) => setData(data[0]))
 			.catch((error) => console.log(error))
 	}, [])
-
-	const emailRef = useRef()
-	const nameRef = useRef()
-	const telephoneRef = useRef()
-
-	const handleSubmit = (e) => {
-		e.preventDefault()
-
-		if (
-			emailRef.current.value &&
-			nameRef.current.value &&
-			telephoneRef.current.value
-		) {
-			emailjs
-				.sendForm(
-					process.env.REACT_APP_SERVICE_ID,
-					process.env.REACT_APP_TEMPLATE_ID,
-					e.target,
-					process.env.REACT_APP_USER_ID
-				)
-				.then(
-					(result) => {
-						if (result.text === 'OK') {
-							setOpen(true)
-							setSnackbarMessage(
-								'Submitted to a team member'
-							)
-						}
-					},
-					(error) => {
-						alert(
-							'An error occurred, Please try again',
-							error.text
-						)
-					}
-				)
-		} else {
-			setSnackbarMessage('Please fill in all info')
-			setOpen(true)
-		}
-
-		emailRef.current.value = ''
-		nameRef.current.value = ''
-		telephoneRef.current.value = ''
-	}
-
-	/* const handleSubmit2 = async (e) => {
-		e.preventDefault() // prevent form submit default behavior
-		if (
-			!nameRef.current.value ||
-			!emailRef.current.value ||
-			telephoneRef.current.value
-		)
-			return // if an input field is empty, don't submit the form
-		const hubspot_response = await submit_hubspot_form(
-			emailRef.current.value,
-			nameRef.current.value,
-			telephoneRef.current.Value
-		)
-		console.log(hubspot_response) // make sure it succeeded!
-	} */
-
-	/* const submit_hubspot_form = async (email, firstname, telephone) => {
-		const portalId = '6998830' // example portal ID (not real)
-		const formGuid = '48f871d1-553a-43b2-8d01-43cfa9f28786' // example form GUID (not real)
-		const config = {
-			// important!
-			headers: {
-				'Content-Type': 'application/json',
-			},
-		}
-
-		const response = await axios
-			.post(
-				`https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formGuid}`,
-				{
-					portalId,
-					formGuid,
-					fields: [
-						{
-							name: 'firstname',
-							value: firstname,
-						},
-						{
-							name: 'email',
-							value: email,
-						},
-						{
-							name: 'telephone',
-							value: telephone,
-						},
-					],
-				},
-				config
-			)
-			.then(() => console.log('Funkade!'))
-
-		emailRef.current.value = ''
-		nameRef.current.value = ''
-		telephoneRef.current.value = ''
-		return response
-	} */
 
 	const handleClose = (event, reason) => {
 		if (reason === 'clickaway') {
@@ -440,30 +249,8 @@ const Contact = () => {
 					<StyledDivFormHeader>
 						<StyledP>Contact form</StyledP>
 					</StyledDivFormHeader>
-					<StyledForm onSubmit={handleSubmit}>
-						<StyledInput
-							placeholder={lang ? 'Namn' : 'Name'}
-							type='text'
-							name='from_name'
-							id='from_name'
-							ref={nameRef}
-						/>
-						<StyledInput
-							type='email'
-							name='email'
-							id='email'
-							placeholder='Email'
-							ref={emailRef}
-						/>
-						<StyledInput
-							type='tel'
-							name='phone'
-							id='phone'
-							placeholder={lang ? 'Telefon' : 'Telephone'}
-							ref={telephoneRef}
-						/>
-						<Button>{lang ? 'SKICKA' : 'SUBMIT'}</Button>
-					</StyledForm>
+
+					<Form />
 				</StyledDiv>
 				<Snackbar
 					anchorOrigin={{

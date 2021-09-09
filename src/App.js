@@ -67,6 +67,7 @@ const App = () => {
 	const history = useHistory()
 	const sliderRef = useRef()
 	const [conceptSlide, setConceptSlide] = useState('Compliance')
+	const [snackbarMessage, setSnackbarMessage] = useState('')
 	const [lang, setLang] = useState(
 		localStorage.language !== undefined
 			? JSON.parse(localStorage.getItem('language'))
@@ -89,6 +90,8 @@ const App = () => {
 		openCookie,
 		setOpenCookie,
 		myRef,
+		snackbarMessage,
+		setSnackbarMessage,
 	}
 
 	useEffect(() => {
