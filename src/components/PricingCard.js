@@ -149,15 +149,27 @@ const PricingCard = ({ monthly }) => {
 
 								<StyledPriceContainer>
 									<StyledH4 monthly={monthly}>
-										{hasNumber(priceMonth)
-											? '€'
-											: null}
-										{priceMonth === undefined
-											? 'N/A'
-											: priceMonth}
-
+										{lang
+											? hasNumber(
+													priceMonth.sv
+											  )
+												? `${priceMonth.sv} SEK`
+												: priceMonth.sv
+											: hasNumber(
+													priceMonth.en
+											  )
+											? `${priceMonth.en} €`
+											: priceMonth.en}
 										<span>
-											{hasNumber(priceMonth)
+											{lang
+												? hasNumber(
+														priceMonth.sv
+												  )
+													? 'per enhet / månad'
+													: null
+												: hasNumber(
+														priceMonth.sv
+												  )
 												? 'per unit / month'
 												: null}
 										</span>
