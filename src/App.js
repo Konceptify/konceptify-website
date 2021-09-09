@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyles from './components/GlobalStyles'
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
-import { useCookieConsent } from 'use-cookie-consent'
+
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Contact from './pages/Contact'
@@ -57,10 +57,10 @@ const themes = {
 const App = () => {
 	/* 	const [theme, setTheme] = useState(themes.lightMode) */
 	const [openNav, setOpenNav] = useState(false)
-	const { consent } = useCookieConsent()
-	const [openCookie, setOpenCookie] = useState(
-		consent.necessary ? false : true
-	)
+
+	const [openCookie, setOpenCookie] = useState(!navigator.cookieEnabled)
+
+	console.log()
 
 	const myRef = useRef()
 	const location = useLocation()

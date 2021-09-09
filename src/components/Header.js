@@ -84,7 +84,7 @@ const StyledLi = styled.li`
 		}
 	}
 
-	@media (max-width: 1068px) {
+	@media (max-width: 768px) {
 		display: none;
 	}
 `
@@ -111,7 +111,7 @@ const MenuBtn = styled(motion.button)`
 	font-weight: 100;
 	display: none;
 
-	@media (max-width: 1068px) {
+	@media (max-width: 768px) {
 		padding: 10px 0px;
 		display: block;
 	}
