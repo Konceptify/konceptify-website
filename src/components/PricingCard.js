@@ -229,13 +229,13 @@ const PricingCard = ({ monthly }) => {
 												}
 										  )}
 								</StyledUl>
-								{!hasNumber(priceMonth.sv) ? (
+								
 									<Link to='/contact'>
 										{lang
 											? 'Kontakta oss'
 											: 'Contact Us'}
 									</Link>
-								) : null}
+								
 							</StyledDiv>
 						)
 					}
