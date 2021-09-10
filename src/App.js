@@ -4,6 +4,7 @@ import GlobalStyles from './components/GlobalStyles'
 import { Switch, Route, useLocation, useHistory } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
+import Chat from './useChat'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Contact from './pages/Contact'
@@ -59,8 +60,6 @@ const App = () => {
 	const [openNav, setOpenNav] = useState(false)
 
 	const [openCookie, setOpenCookie] = useState(!navigator.cookieEnabled)
-
-	console.log()
 
 	const myRef = useRef()
 	const location = useLocation()
@@ -134,6 +133,7 @@ const App = () => {
 			<LanguageContext.Provider value={ContextValue}>
 				<AnimatePresence exitBeforeEnter initial={true}>
 					<ThemeProvider theme={themes.lightMode}>
+						<Chat />
 						<Cookie />
 						<GlobalStyles />
 						<Banner />
