@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import styled from 'styled-components'
 import sanityClient from '../client'
+import { Link } from 'react-router-dom'
 import { LanguageContext } from '../App'
 
 const StyledDiv = styled.div`
@@ -14,7 +15,20 @@ const StyledDiv = styled.div`
 	align-items: center;
 	flex-direction: column;
 	border-radius: 30px;
-	/* box-shadow: 5px 1px 0px #cbcbcb; */
+	a {
+		margin: 10px 0px;
+		text-decoration: none;
+		position: absolute;
+		bottom: 10px;
+		border: none;
+		background: ${({ theme }) => theme.primary90};
+		color: white;
+		padding: 10px 20px;
+		border-radius: 20px;
+		text-transform: uppercase;
+		font-size: 0.5rem;
+		letter-spacing: 0.1rem;
+	}
 
 	:last-child {
 		border: 4px solid #ffd600;
@@ -54,6 +68,9 @@ const StyledH3 = styled.h3`
 
 const StyledPriceContainer = styled.div`
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 `
 
 const StyledH4 = styled.h4`
@@ -212,6 +229,13 @@ const PricingCard = ({ monthly }) => {
 												}
 										  )}
 								</StyledUl>
+								{!hasNumber(priceMonth.sv) ? (
+									<Link to='/contact'>
+										{lang
+											? 'Kontakta oss'
+											: 'Contact Us'}
+									</Link>
+								) : null}
 							</StyledDiv>
 						)
 					}

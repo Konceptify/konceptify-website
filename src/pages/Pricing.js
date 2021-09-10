@@ -12,7 +12,7 @@ import sanityClient from '../client'
 const Wrapper = styled(motion.section)`
 	background: linear-gradient(to bottom, #fff 60%, #3f4f45 50%);
 	width: 100vw;
-	height: 130vh;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
