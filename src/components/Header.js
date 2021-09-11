@@ -151,10 +151,14 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 			</LogoText>
 			<StyledUl>
 				<StyledContact>
-					<Link to='/contact'>Contact</Link>
+					<Link to='/contact'>
+						{lang ? 'Kontakt' : 'Contact'}
+					</Link>
 				</StyledContact>
 				<StyledLi>
-					<Link to='/pricing'>Pricing</Link>
+					<Link to='/pricing'>
+						{lang ? 'Prisplan' : 'Pricing'}
+					</Link>
 				</StyledLi>
 				<StyledLi>
 					<a
