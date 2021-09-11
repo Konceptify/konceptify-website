@@ -6,8 +6,6 @@ import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
 import Button from './Button'
 import Spinner from './Spinner'
-import AppleLogo from '../img/Resurs 1@4x.png'
-import GoogleLogo from '../img/Resurs 3@4x.png'
 
 const Wrapper = styled(motion.section)`
 	height: 90vh;
@@ -20,7 +18,7 @@ const Wrapper = styled(motion.section)`
 
 	@media (max-width: 900px) {
 		padding: 100px 0 0 0px;
-		height: 70vh;
+		height: 75vh;
 		flex-direction: column;
 		justify-content: flex-start;
 		margin-bottom: 60px;
@@ -133,15 +131,6 @@ const StyledDownloadDiv = styled.div`
 	position: absolute;
 	bottom: 0px;
 
-	img {
-		@media (max-width: 768px) {
-			height: 40px;
-			margin: 0;
-		}
-		height: 50px;
-		margin: 8px 15px;
-	}
-
 	button {
 		margin-left: 20px;
 		margin-bottom: 2px;
@@ -157,6 +146,18 @@ const StyledDownloadDiv = styled.div`
 		button {
 			display: none;
 		}
+	}
+`
+
+const StyledApple = styled.img`
+	height: 42px;
+
+	@media (max-width: 600px) {
+	}
+`
+const StyledGoogle = styled.img`
+	height: 60px;
+	@media (max-width: 600px) {
 	}
 `
 
@@ -272,20 +273,36 @@ const Hero = () => {
 				</Button>
 
 				<StyledDownloadDiv>
-					<a href='https://apps.apple.com/se/app/zittron/id1549633030'>
-						<img
-							src={AppleLogo}
-							alt='apple download'
-							style={{ cursor: 'pointer' }}
-						/>
-					</a>
-					<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US'>
-						<img
-							src={GoogleLogo}
-							alt='google download'
-							style={{ cursor: 'pointer' }}
-						/>
-					</a>
+					{lang ? (
+						<a href='https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200'>
+							<StyledApple
+								src='https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/sv-se&amp;releaseDate=1611360000&h=03597dc481a5892f8dba29a574a3d59d'
+								alt='Download on the App Store'
+							/>
+						</a>
+					) : (
+						<a href='https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200'>
+							<StyledApple
+								src='https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us&amp;releaseDate=1611360000&h=c29f17b16336b66f6e948b5ba0444e68'
+								alt='Download on the App Store'
+							/>
+						</a>
+					)}
+					{lang ? (
+						<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+							<StyledGoogle
+								alt='Ladda ned på Google Play'
+								src='https://play.google.com/intl/en_us/badges/static/images/badges/sv_badge_web_generic.png'
+							/>
+						</a>
+					) : (
+						<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+							<StyledGoogle
+								alt='Get it on Google Play'
+								src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
+							/>
+						</a>
+					)}
 
 					<Button>
 						<a href='https://primemanager.zittron.com/'>
