@@ -305,7 +305,7 @@ const Hero = () => {
 					)}
 
 					<Button>
-						<a href='https://primemanager.zittron.com/'>
+						<a href='https://conceptmanager.zittron.com/'>
 							{lang ? 'LOGGA IN' : 'SIGN IN'}
 						</a>
 					</Button>
