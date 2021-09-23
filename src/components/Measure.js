@@ -6,12 +6,12 @@ import Spinner from './Spinner'
 
 const Wrapper = styled.section`
 	width: 100vw;
-
+	height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 40px;
-
+	background-color: ${({ theme }) => theme.whiteOf};
 	@media (max-width: 768px) {
 		flex-direction: column;
 		justify-content: flex-start;
@@ -21,7 +21,7 @@ const Wrapper = styled.section`
 
 const StyledImg = styled.img`
 	width: 35vw;
-	margin-right: 40px;
+	margin-left: 40px;
 
 	@media (max-width: 768px) {
 		width: 80vw;
@@ -31,6 +31,17 @@ const StyledImg = styled.img`
 `
 
 const StyledDiv = styled.div`
+	width: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	@media (max-width: 768px) {
+		width: 100%;
+	}
+`
+const StyledDiv2 = styled.div`
 	width: 50%;
 
 	@media (max-width: 768px) {
@@ -95,6 +106,12 @@ const Measure = () => {
 				(data ? (
 					<Wrapper>
 						<StyledDiv>
+							<StyledImg
+								src={data.imageURL}
+								alt='Laptop computer'
+							/>
+						</StyledDiv>
+						<StyledDiv2>
 							<StyledH2>
 								{lang
 									? data.mainTitle.sv
@@ -112,12 +129,7 @@ const Measure = () => {
 										: data.subTitleTwo.en
 									: null}
 							</StyledH4>
-						</StyledDiv>
-
-						<StyledImg
-							src={data.imageURL}
-							alt='Laptop computer'
-						/>
+						</StyledDiv2>
 					</Wrapper>
 				) : (
 					<Spinner />
