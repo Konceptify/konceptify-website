@@ -43,7 +43,7 @@ const StyledMainUL = styled(StyledUL)`
 
 const StyledIconsContainer = styled.div`
 	position: absolute;
-	bottom: 60px;
+	bottom: 120px;
 	right: 60px;
 	display: flex;
 	flex-direction: column;
