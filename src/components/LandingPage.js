@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 
-import Communicate from '../components/Communicate'
+import Communications from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
 /* import Testemonials from '../components/Testemonials' */
@@ -213,8 +213,9 @@ const EducateSlide = styled.div`
 		font-size: 0.7rem;
 	}
 `
-const CommunicateSlide = styled.div`
+const CommunicationsSlide = styled.div`
 	border-radius: 30px;
+
 	width: 33%;
 	height: 100%;
 	display: flex;
@@ -222,9 +223,9 @@ const CommunicateSlide = styled.div`
 	align-items: center;
 	cursor: pointer;
 	background: ${({ theme, conceptSlide }) =>
-		conceptSlide === 'Communicate' ? theme.primary60 : 'transparent'};
+		conceptSlide === 'Communications' ? theme.primary60 : 'transparent'};
 	color: ${({ theme, conceptSlide }) =>
-		conceptSlide === 'Communicate' ? 'white' : theme.primary60};
+		conceptSlide === 'Communications' ? 'white' : theme.primary60};
 	@media (max-width: 976px) {
 		font-size: 0.7rem;
 	}
@@ -356,10 +357,12 @@ const LandingPage = ({ myRef }) => {
 							<StyledCard
 								onClick={() => {
 									sliderRef.current.scrollIntoView()
-									setConceptSlide('Communicate')
+									setConceptSlide('Communications')
 								}}
 							>
-								{lang ? 'Kommunikation' : 'Communicate'}
+								{lang
+									? 'Kommunikation'
+									: 'Communications'}
 							</StyledCard>
 							<StyledCard
 								onClick={() => {
@@ -375,7 +378,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('E-learning')
 								}}
 							>
-								{lang ? 'Utbildning' : 'Education'}
+								{lang ? 'Utbildning' : 'Academy'}
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>
@@ -402,16 +405,18 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('E-learning')
 								}
 							>
-								{lang ? 'Utbildning' : 'Education'}
+								{lang ? 'Utbildning' : 'Academy'}
 							</EducateSlide>
-							<CommunicateSlide
+							<CommunicationsSlide
 								conceptSlide={conceptSlide}
 								onClick={() =>
-									setConceptSlide('Communicate')
+									setConceptSlide('Communications')
 								}
 							>
-								{lang ? 'Kommunikation' : 'Communicate'}
-							</CommunicateSlide>
+								{lang
+									? 'Kommunikation'
+									: 'Communications'}
+							</CommunicationsSlide>
 						</StyledSlider>
 					</StyledSlideContainer>
 					<StyledConceptDiv conceptSlide={conceptSlide}>
@@ -420,7 +425,9 @@ const LandingPage = ({ myRef }) => {
 						) : conceptSlide === 'E-learning' ? (
 							<Educate conceptSlide={conceptSlide} />
 						) : (
-							<Communicate conceptSlide={conceptSlide} />
+							<Communications
+								conceptSlide={conceptSlide}
+							/>
 						)}
 					</StyledConceptDiv>
 				</StyledSection2>

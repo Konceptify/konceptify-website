@@ -62,7 +62,7 @@ const StyledH3 = styled(motion.h3)`
 	}
 `
 
-const Communicate = () => {
+const Communications = () => {
 	const [data, setData] = useState()
 	const { lang } = useContext(LanguageContext)
 
@@ -121,4 +121,4 @@ const Communicate = () => {
 	)
 }
 
-export default Communicate
+export default Communications

@@ -152,7 +152,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 			<StyledUl>
 				<StyledContact>
 					<Link to='/contact'>
-						{lang ? 'Kontakt' : 'Contact'}
+						{lang ? 'Boka en Demo' : 'Request a Demo'}
 					</Link>
 				</StyledContact>
 				<StyledLi>
