@@ -347,22 +347,6 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				{/* <TestimonialsSection>
-					<h3 style={{ marginBottom: '30px' }}>Trusted by others</h3>
-					<TestimonialList>
-						{logotypeArray.map((logo) => {
-							return (
-								<TestimonialsListItem
-									initial={{ opacity: 0 }}
-									animate={{ opacity: 1, transition: { duration: 0.5 } }}
-									exit={{ opacity: 0, transition: { duration: 0.5 } }}
-								>
-									{logo}
-								</TestimonialsListItem>
-							)
-						})}
-					</TestimonialList>
-				</TestimonialsSection> */}
 				<StyledSection direction="row" bg="#fff">
 					<StyledDiv1>
 						<StyledDivDesign>
