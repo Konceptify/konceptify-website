@@ -112,8 +112,9 @@ const Form = () => {
 	const [email, setEmail] = useState('')
 	const [tel, setTel] = useState('')
 	const [company, setCompany] = useState('')
-	const { lang, setSnackbarMessage } = useContext(LanguageContext)
+	const { lang } = useContext(LanguageContext)
 	const [checked, setChecked] = useState(false)
+	const [sent, setSent] = useState(false)
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
@@ -151,7 +152,7 @@ const Form = () => {
 			xhr.setRequestHeader('Content-Type', 'application/json')
 
 			xhr.send(final_data)
-			setSnackbarMessage('Email sent to our team')
+			setSent(true)
 			setEmail('')
 			setTel('')
 			setFirstname('')
@@ -162,64 +163,70 @@ const Form = () => {
 
 	return (
 		<StyledForm
-			method='POST'
-			action='/subscribe-success/'
+			method="POST"
+			action="/subscribe-success/"
 			onSubmit={handleSubmit}
 		>
-			<StyledInput
-				type='text'
-				id='firstName'
-				name='firstName'
-				placeholder='Your name*'
-				value={firstName}
-				onChange={(e) => setFirstname(e.target.value)}
-			/>
-			<StyledInput
-				type='text'
-				id='company'
-				name='company'
-				placeholder='Company Name'
-				value={company}
-				onChange={(e) => setCompany(e.target.value)}
-			/>
-			<StyledInput
-				type='email'
-				id='email'
-				name='email'
-				placeholder='Your email address*'
-				value={email}
-				onChange={(e) => setEmail(e.target.value)}
-				required='required'
-			/>
-			<StyledInput
-				type='tel'
-				id='tel'
-				name='tel'
-				placeholder='Telephone*'
-				value={tel}
-				onChange={(e) => setTel(e.target.value)}
-				required='required'
-			/>
-			<CheckDiv>
-				<input
-					id='terms'
-					type='checkbox'
-					checked={checked}
-					onChange={() => setChecked((prevState) => !prevState)}
-				/>
-				<label htmlFor='terms'> I accept the terms</label>
-			</CheckDiv>
-			<StyledP>
-				Zittron AB is committed to protecting and respecting your
-				privacy, and we’ll only use your personal information to
-				administer your account and to provide the products and
-				services you requested from us. From time to time, we would
-				like to contact you about our products and services, as well
-				as other content that may be of interest to you. If you
-				consent to us contacting you for this purpose, please tick
-				below to say how you would like us to contact you:
-			</StyledP>
-			<Button>{lang ? 'SKICKA' : 'SUBMIT'}</Button>
+			{sent ? (
+				<h1>Thank you! We will get back to you as soon as possible</h1>
+			) : (
+				<>
+					<StyledInput
+						type="text"
+						id="firstName"
+						name="firstName"
+						placeholder="Your name*"
+						value={firstName}
+						onChange={(e) => setFirstname(e.target.value)}
+					/>
+					<StyledInput
+						type="text"
+						id="company"
+						name="company"
+						placeholder="Company Name"
+						value={company}
+						onChange={(e) => setCompany(e.target.value)}
+					/>
+					<StyledInput
+						type="email"
+						id="email"
+						name="email"
+						placeholder="Your email address*"
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+						required="required"
+					/>
+					<StyledInput
+						type="tel"
+						id="tel"
+						name="tel"
+						placeholder="Telephone*"
+						value={tel}
+						onChange={(e) => setTel(e.target.value)}
+						required="required"
+					/>
+					<CheckDiv>
+						<input
+							id="terms"
+							type="checkbox"
+							checked={checked}
+							onChange={() => setChecked((prevState) => !prevState)}
+						/>
+						<label htmlFor="terms"> I accept the terms</label>
+					</CheckDiv>
+					<StyledP>
+						Zittron AB is committed to protecting and respecting your privacy,
+						and we’ll only use your personal information to administer your
+						account and to provide the products and services you requested from
+						us. From time to time, we would like to contact you about our
+						products and services, as well as other content that may be of
+						interest to you. If you consent to us contacting you for this
+						purpose, please tick below to say how you would like us to contact
+						you:
+					</StyledP>
+					<Button>{lang ? 'SKICKA' : 'SUBMIT'}</Button>
+				</>
+			)}
 		</StyledForm>
 	)
 }

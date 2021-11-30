@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Communications from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
-/* import Testemonials from '../components/Testemonials' */
+import { motion } from 'framer-motion'
 import Contact from '../pages/Contact'
 import Measure from './Measure'
 import sanityClient from '../client'
@@ -234,7 +234,7 @@ const CommunicationsSlide = styled.div`
 const StyledSection = styled.section`
 	background-color: ${({ bg }) => bg};
 	width: 100vw;
-	height: 100vh;
+	height: 110vh;
 	display: flex;
 	flex-direction: ${({ direction }) => direction};
 	overflow: hidden;
@@ -289,7 +289,34 @@ const StyledCard = styled.div`
 	}
 `
 
+const TestimonialsSection = styled.section`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 300px;
+	padding: 40px;
+`
+const TestimonialList = styled.ul`
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	width: 80%;
+	justify-content: space-around;
+`
+
+const TestimonialsListItem = styled(motion.li)`
+	width: 100px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+`
+
 const LandingPage = ({ myRef }) => {
+	const logotypeArray = [1, 2, 3]
+
 	const { lang, sliderRef, conceptSlide, setConceptSlide } =
 		useContext(LanguageContext)
 
@@ -309,9 +336,9 @@ const LandingPage = ({ myRef }) => {
 			.then((data) => {
 				const { header, subHeader, underImage } = data[0]
 				setData({
-					header: header,
-					subHeader: subHeader,
-					underImage: underImage,
+					header,
+					subHeader,
+					underImage,
 				})
 			})
 			.catch((error) => console.log(error))
@@ -320,38 +347,42 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
-				<StyledSection direction='row' bg='#fff'>
+				{/* <TestimonialsSection>
+					<h3 style={{ marginBottom: '30px' }}>Trusted by others</h3>
+					<TestimonialList>
+						{logotypeArray.map((logo) => {
+							return (
+								<TestimonialsListItem
+									initial={{ opacity: 0 }}
+									animate={{ opacity: 1, transition: { duration: 0.5 } }}
+									exit={{ opacity: 0, transition: { duration: 0.5 } }}
+								>
+									{logo}
+								</TestimonialsListItem>
+							)
+						})}
+					</TestimonialList>
+				</TestimonialsSection> */}
+				<StyledSection direction="row" bg="#fff">
 					<StyledDiv1>
 						<StyledDivDesign>
 							{data && (
 								<>
 									{/* <StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' /> */}
-									<video
-										autoPlay
-										loop
-										muted
-										playsInline
-									>
-										<source
-											src={Video}
-											type='video/mp4'
-										/>
+									<video autoPlay loop muted playsInline>
+										<source src={Video} type="video/mp4" />
 									</video>
 								</>
 							)}
 
 							<StyledH4>
-								{lang
-									? data && data.underImage.sv
-									: data && data.underImage.en}
+								{lang ? data && data.underImage.sv : data && data.underImage.en}
 							</StyledH4>
 						</StyledDivDesign>
 					</StyledDiv1>
 					<StyledDiv2>
 						<StyledH2>
-							{lang
-								? data && data.header.sv
-								: data && data.header.en}
+							{lang ? data && data.header.sv : data && data.header.en}
 						</StyledH2>
 						<CardContainer>
 							<StyledCard
@@ -360,9 +391,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Communications')
 								}}
 							>
-								{lang
-									? 'Kommunikation'
-									: 'Communications'}
+								{lang ? 'Kommunikation' : 'Communications'}
 							</StyledCard>
 							<StyledCard
 								onClick={() => {
@@ -382,9 +411,7 @@ const LandingPage = ({ myRef }) => {
 							</StyledCard>
 						</CardContainer>
 						<StyledH3>
-							{lang
-								? data && data.subHeader.sv
-								: data && data.subHeader.en}
+							{lang ? data && data.subHeader.sv : data && data.subHeader.en}
 						</StyledH3>
 					</StyledDiv2>
 				</StyledSection>
@@ -393,29 +420,21 @@ const LandingPage = ({ myRef }) => {
 						<StyledSlider conceptSlide={conceptSlide}>
 							<ComplianceSlide
 								conceptSlide={conceptSlide}
-								onClick={() =>
-									setConceptSlide('Compliance')
-								}
+								onClick={() => setConceptSlide('Compliance')}
 							>
 								{lang ? 'Drift' : 'Operations'}
 							</ComplianceSlide>
 							<EducateSlide
 								conceptSlide={conceptSlide}
-								onClick={() =>
-									setConceptSlide('E-learning')
-								}
+								onClick={() => setConceptSlide('E-learning')}
 							>
 								{lang ? 'Utbildning' : 'Academy'}
 							</EducateSlide>
 							<CommunicationsSlide
 								conceptSlide={conceptSlide}
-								onClick={() =>
-									setConceptSlide('Communications')
-								}
+								onClick={() => setConceptSlide('Communications')}
 							>
-								{lang
-									? 'Kommunikation'
-									: 'Communications'}
+								{lang ? 'Kommunikation' : 'Communications'}
 							</CommunicationsSlide>
 						</StyledSlider>
 					</StyledSlideContainer>
@@ -425,9 +444,7 @@ const LandingPage = ({ myRef }) => {
 						) : conceptSlide === 'E-learning' ? (
 							<Educate conceptSlide={conceptSlide} />
 						) : (
-							<Communications
-								conceptSlide={conceptSlide}
-							/>
+							<Communications conceptSlide={conceptSlide} />
 						)}
 					</StyledConceptDiv>
 				</StyledSection2>

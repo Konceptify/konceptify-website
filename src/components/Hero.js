@@ -220,15 +220,7 @@ const Hero = () => {
 					variants={variants}
 					transition={{ duration: 0.5 }}
 				>
-					{data ? (
-						lang ? (
-							data.mainTitle.sv
-						) : (
-							data.mainTitle.en
-						)
-					) : (
-						<Spinner />
-					)}
+					{data ? lang ? data.mainTitle.sv : data.mainTitle.en : <Spinner />}
 				</StyledH1>
 
 				<StyledH2
@@ -237,11 +229,7 @@ const Hero = () => {
 					variants={variants2}
 					transition={'{ duration: 1 }'}
 				>
-					{data
-						? lang
-							? data.subTitle.sv
-							: data.subTitle.en
-						: null}
+					{data ? (lang ? data.subTitle.sv : data.subTitle.en) : null}
 				</StyledH2>
 				<StyledH2b
 					initial={'hidden'}
@@ -274,38 +262,38 @@ const Hero = () => {
 
 				<StyledDownloadDiv>
 					{lang ? (
-						<a href='https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200'>
+						<a href="https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200">
 							<StyledApple
-								src='https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/sv-se&amp;releaseDate=1611360000&h=03597dc481a5892f8dba29a574a3d59d'
-								alt='Download on the App Store'
+								src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/sv-se&amp;releaseDate=1611360000&h=03597dc481a5892f8dba29a574a3d59d"
+								alt="Download on the App Store"
 							/>
 						</a>
 					) : (
-						<a href='https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200'>
+						<a href="https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200">
 							<StyledApple
-								src='https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us&amp;releaseDate=1611360000&h=c29f17b16336b66f6e948b5ba0444e68'
-								alt='Download on the App Store'
+								src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us&amp;releaseDate=1611360000&h=c29f17b16336b66f6e948b5ba0444e68"
+								alt="Download on the App Store"
 							/>
 						</a>
 					)}
 					{lang ? (
-						<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+						<a href="https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
 							<StyledGoogle
-								alt='Ladda ned på Google Play'
-								src='https://play.google.com/intl/en_us/badges/static/images/badges/sv_badge_web_generic.png'
+								alt="Ladda ned på Google Play"
+								src="https://play.google.com/intl/en_us/badges/static/images/badges/sv_badge_web_generic.png"
 							/>
 						</a>
 					) : (
-						<a href='https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+						<a href="https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
 							<StyledGoogle
-								alt='Get it on Google Play'
-								src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'
+								alt="Get it on Google Play"
+								src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
 							/>
 						</a>
 					)}
 
 					<Button>
-						<a href='https://conceptmanager.zittron.com/'>
+						<a href="https://conceptmanager.zittron.com/">
 							{lang ? 'LOGGA IN' : 'SIGN IN'}
 						</a>
 					</Button>
@@ -317,8 +305,8 @@ const Hero = () => {
 					animate={'visible'}
 					variants={variants3}
 					transition={{ duration: 1.5 }}
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_1_2x_C8eKJrZMy.png?updatedAt=1628846766012'
-					alt='hero image'
+					src="https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_1_2x_C8eKJrZMy.png?updatedAt=1628846766012"
+					alt="hero image"
 				/>
 			</StyledDiv2>
 		</Wrapper>
