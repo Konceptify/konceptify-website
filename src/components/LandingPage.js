@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import Communications from '../components/Communicate'
 import Educate from '../components/Educate'
 import Compliance from '../components/Compliance'
-import { motion } from 'framer-motion'
 import Contact from '../pages/Contact'
 import Measure from './Measure'
 import sanityClient from '../client'
@@ -289,34 +288,7 @@ const StyledCard = styled.div`
 	}
 `
 
-const TestimonialsSection = styled.section`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	height: 300px;
-	padding: 40px;
-`
-const TestimonialList = styled.ul`
-	display: flex;
-	flex-wrap: wrap;
-	list-style: none;
-	width: 80%;
-	justify-content: space-around;
-`
-
-const TestimonialsListItem = styled(motion.li)`
-	width: 100px;
-	height: 40px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 20px;
-`
-
 const LandingPage = ({ myRef }) => {
-	const logotypeArray = [1, 2, 3]
-
 	const { lang, sliderRef, conceptSlide, setConceptSlide } =
 		useContext(LanguageContext)
 
