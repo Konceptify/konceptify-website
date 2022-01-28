@@ -66,26 +66,26 @@ const NavBar = ({ setOpenNav, openNav }) => {
 
 	return (
 		<StyledNav
-			initial='hidden'
-			animate='visible'
-			transition='transition'
+			initial="hidden"
+			animate="visible"
+			transition="transition"
 			variants={variants}
 		>
 			<StyledUl>
 				<li>
-					<Link to='/' onClick={() => setOpenNav(false)}>
+					<Link to="/" onClick={() => setOpenNav(false)}>
 						{lang ? 'HEM' : 'HOME'}
 					</Link>
 				</li>
 
 				<li>
-					<Link to='/pricing' onClick={() => setOpenNav(false)}>
+					<Link to="/pricing" onClick={() => setOpenNav(false)}>
 						{lang ? 'PRIS' : 'PRICING'}
 					</Link>
 				</li>
 
 				<li>
-					<Link to='/contact' onClick={() => setOpenNav(false)}>
+					<Link to="/contact" onClick={() => setOpenNav(false)}>
 						{lang ? 'KONTAKT' : 'CONTACT'}
 					</Link>
 				</li>
@@ -99,8 +99,8 @@ const NavBar = ({ setOpenNav, openNav }) => {
 						}}
 					>
 						<img
-							src='https://www.countryflags.io/gb/flat/16.png'
-							alt='English flag'
+							src="https://www.countryflags.io/gb/flat/16.png"
+							alt="English flag"
 						/>{' '}
 						EN
 					</li>
@@ -113,30 +113,30 @@ const NavBar = ({ setOpenNav, openNav }) => {
 						}}
 					>
 						<img
-							src='https://www.countryflags.io/se/flat/16.png'
-							alt='Swedish flag'
+							src="https://www.countryflags.io/se/flat/16.png"
+							alt="Swedish flag"
 						/>{' '}
 						SV
 					</li>
 				)}
 			</StyledUl>
 			<IconUl>
-				<li className='icon'>
+				<li className="icon">
 					<a
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://www.linkedin.com/company/zittron'
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.linkedin.com/company/konceptify"
 					>
-						<RiLinkedinFill fill='#292928' size='40' />
+						<RiLinkedinFill fill="#292928" size="40" />
 					</a>
 				</li>
-				<li className='icon'>
+				<li className="icon">
 					<a
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://www.instagram.com/zittron/'
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.instagram.com/zittron/"
 					>
-						<RiInstagramLine fill='#292928' size='40' />
+						<RiInstagramLine fill="#292928" size="40" />
 					</a>
 				</li>
 			</IconUl>

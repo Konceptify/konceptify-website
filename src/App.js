@@ -98,8 +98,8 @@ const App = () => {
 	}, [])
 
 	useEffect(() => {
-		let msg = '%c Hi 👋! Welcome to Zittron.com!'
-		/* let msg2 = 'govirtual@zittron.com for job aplications' */
+		let msg = '%c Hi 👋! Welcome to Konceptify.com!'
+		/* let msg2 = 'govirtual@konceptify.com for job aplications' */
 		let styles = [
 			'font-size: 12px',
 			'font-family: monospace',
@@ -138,28 +138,22 @@ const App = () => {
 						<GlobalStyles />
 						<Banner />
 						<Wrapper>
-							<Header
-								openNav={openNav}
-								setOpenNav={setOpenNav}
-							/>
-							<Switch
-								location={location}
-								key={location.pathname}
-							>
-								<Route exact path='/'>
+							<Header openNav={openNav} setOpenNav={setOpenNav} />
+							<Switch location={location} key={location.pathname}>
+								<Route exact path="/">
 									<Hero />
 									<LandingPage myRef={myRef} />
 								</Route>
-								<Route path='/contact'>
+								<Route path="/contact">
 									<Contact />
 								</Route>
-								<Route path='/pricing'>
+								<Route path="/pricing">
 									<Pricing />
 								</Route>
-								<Route path='/privacy'>
+								<Route path="/privacy">
 									<Legal />
 								</Route>
-								<Route path='/cookies'>
+								<Route path="/cookies">
 									<Cookies />
 								</Route>
 							</Switch>

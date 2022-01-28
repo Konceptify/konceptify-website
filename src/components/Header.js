@@ -5,7 +5,6 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import Hamburger from './Hamburger'
-import { ReactComponent as LogoSVG } from '../img/Resurs 5.svg'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
 import { LanguageContext } from '../App'
 
@@ -117,8 +116,8 @@ const MenuBtn = styled(motion.button)`
 	}
 `
 
-const StyledLogoSVG = styled(LogoSVG)`
-	width: 135px;
+const StyledLogoSVG = styled.img`
+	width: 200px;
 `
 
 const Header = ({ setOpenNav, openNav, theme }) => {
@@ -129,11 +128,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 	return (
 		<Wrapper>
 			{openNav && (
-				<NavBar
-					openNav={openNav}
-					theme={theme}
-					setOpenNav={setOpenNav}
-				/>
+				<NavBar openNav={openNav} theme={theme} setOpenNav={setOpenNav} />
 			)}
 			<LogoText
 				onClick={() =>
@@ -145,37 +140,33 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 				}
 				location={location}
 			>
-				<Link to='/'>
-					<StyledLogoSVG />
+				<Link to="/">
+					<StyledLogoSVG src="https://ik.imagekit.io/lct7da3kd6o/Zittron/Asset_2_8x__1__pk3g5meQC.png?ik-sdk-version=javascript-1.4.3&updatedAt=1643289700172" />
 				</Link>
 			</LogoText>
 			<StyledUl>
 				<StyledContact>
-					<Link to='/contact'>
-						{lang ? 'Boka en Demo' : 'Request a Demo'}
-					</Link>
+					<Link to="/contact">{lang ? 'Boka en Demo' : 'Request a Demo'}</Link>
 				</StyledContact>
 				<StyledLi>
-					<Link to='/pricing'>
-						{lang ? 'Prisplan' : 'Pricing'}
-					</Link>
+					<Link to="/pricing">{lang ? 'Prisplan' : 'Pricing'}</Link>
 				</StyledLi>
 				<StyledLi>
 					<a
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://www.linkedin.com/company/zittron'
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.linkedin.com/company/konceptify"
 					>
-						<RiLinkedinFill fill='#292928' size='18' />
+						<RiLinkedinFill fill="#292928" size="18" />
 					</a>
 				</StyledLi>
 				<StyledLi>
 					<a
-						target='_blank'
-						rel='noopener noreferrer'
-						href='https://www.instagram.com/zittron/'
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://www.instagram.com/zittron/"
 					>
-						<RiInstagramLine fill='#292928' size='18' />
+						<RiInstagramLine fill="#292928" size="18" />
 					</a>
 				</StyledLi>
 				{lang ? (
@@ -200,9 +191,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 					</StyledLi>
 				)}
 				<li>
-					<MenuBtn
-						onClick={() => setOpenNav((current) => !current)}
-					>
+					<MenuBtn onClick={() => setOpenNav((current) => !current)}>
 						<Hamburger openNav={openNav} />
 					</MenuBtn>
 				</li>

@@ -28,6 +28,8 @@ const StyledUl = styled.ul`
 `
 
 const MobileFooter = () => {
+	const date = new Date()
+	console.log(date)
 	return (
 		<Wrapper>
 			<hr />
@@ -36,9 +38,9 @@ const MobileFooter = () => {
 				<li>LinkedIn</li>
 			</StyledUl>
 			<StyledUl>
-				<li>© Zittron AB 2021</li>
+				<li>© Konceptify AB </li>
 				<li>
-					<Link to='/legal'>Legal</Link>
+					<Link to="/legal">Legal</Link>
 				</li>
 			</StyledUl>
 		</Wrapper>

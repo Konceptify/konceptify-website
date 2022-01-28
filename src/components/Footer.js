@@ -98,14 +98,10 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 			<StyledMainUL>
 				<StyledUL>
 					<HeaderLi>{lang ? 'Koncept' : 'Concept'}</HeaderLi>
-					<LinkLi
-						onClick={() => handleFooterClick('Compliance')}
-					>
+					<LinkLi onClick={() => handleFooterClick('Compliance')}>
 						{lang ? 'Drift' : 'Operations'}
 					</LinkLi>
-					<LinkLi
-						onClick={() => handleFooterClick('Comunicate')}
-					>
+					<LinkLi onClick={() => handleFooterClick('Comunicate')}>
 						{lang ? 'Kommunikation' : 'Communications'}
 					</LinkLi>
 					<LinkLi onClick={() => handleFooterClick('Academy')}>
@@ -115,66 +111,57 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 						<hr />
 					</li>
 					<LinkLi>
-						<Link
-							to='/contact'
-							onClick={() => window.scrollTo(0, 0)}
-						>
-							{lang
-								? 'Kontakta Zittron'
-								: 'Contact Zittron'}
+						<Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+							{lang ? 'Kontakta Konceptify' : 'Contact Konceptify'}
 						</Link>
 					</LinkLi>
 					<LinkLi>
-						<Link
-							to='/pricing'
-							onClick={() => window.scrollTo(0, 0)}
-						>
+						<Link to="/pricing" onClick={() => window.scrollTo(0, 0)}>
 							{lang ? 'Prisplan' : 'Pricing'}
 						</Link>
 					</LinkLi>
-					<Copyright>© Copyright Zittron {year}</Copyright>
+					<Copyright>© Copyright Konceptify {year}</Copyright>
 					<StyledLi>Org. num: 559239-2368</StyledLi>
-					<StyledLi>Tax number: SE559239236801</StyledLi>
 				</StyledUL>
 				<StyledUL>
 					<li>
-						<Link to='/privacy'>Privacy Policy</Link>
+						<Link to="/privacy">Privacy Policy</Link>
 					</li>
 					<li>
-						<Link to='/cookies'>Cookies</Link>
+						<Link to="/cookies">Cookies</Link>
 					</li>
 				</StyledUL>
 			</StyledMainUL>
 			<StyledIconsContainer>
 				<a
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://www.linkedin.com/company/zittron'
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://www.linkedin.com/company/konceptify"
 				>
 					<motion.div
-						initial='hidden'
-						whileTap='visible'
-						whileHover='visible'
-						transition='transition'
+						initial="hidden"
+						whileTap="visible"
+						whileHover="visible"
+						transition="transition"
 						variants={variantsIcon}
 					>
-						<RiLinkedinFill size='40' color='#000' />
+						<RiLinkedinFill size="40" color="#000" />
 					</motion.div>
 				</a>
 
 				<a
-					target='_blank'
-					rel='noopener noreferrer'
-					href='https://www.instagram.com/zittron/'
+					target="_blank"
+					rel="noopener noreferrer"
+					href="https://www.instagram.com/Konceptify/"
 				>
 					<motion.div
-						initial='hidden'
-						whileTap='visible'
-						whileHover='visible'
-						transition='transition'
+						initial="hidden"
+						whileTap="visible"
+						whileHover="visible"
+						transition="transition"
 						variants={variantsIcon}
 					>
-						<RiInstagramLine size='40' color='#000' />
+						<RiInstagramLine size="40" color="#000" />
 					</motion.div>
 				</a>
 			</StyledIconsContainer>

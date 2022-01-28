@@ -145,27 +145,6 @@ const StyledDivFormHeader = styled.div`
 	}
 `
 
-const StyledCircle = styled.div`
-	border-radius: 50%;
-	width: 140px;
-	height: 140px;
-	position: absolute;
-	z-index: 1;
-	top: -50px;
-	right: 50px;
-	background: #ffd600;
-	border: 4px solid white;
-	display: inline-flex;
-	text-align: center;
-	justify-content: center;
-	align-items: center;
-	color: ${({ theme }) => theme.white};
-	font-weight: 700;
-	font-size: 1.2rem;
-	@media (max-width: 768px) {
-	}
-`
-
 const StyledImgDiv = styled.div`
 	width: 25vw;
 	height: 25vw;
@@ -214,36 +193,21 @@ const Contact = () => {
 			<Wrapper>
 				<StyledDiv1>
 					<StyledH2>
-						{data
-							? lang
-								? data.title.sv
-								: data.title.en
-							: null}
+						{data ? (lang ? data.title.sv : data.title.en) : null}
 					</StyledH2>
 					<StyledImgDiv>
 						<StyledImg
-							src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-500/Resurs_3_4x_J2lQ-3Lr7t5.png?updatedAt=1629718409148'
-							alt='task manager'
+							src="https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-500/Resurs_3_4x_J2lQ-3Lr7t5.png?updatedAt=1629718409148"
+							alt="task manager"
 						/>
 					</StyledImgDiv>
 					<StyledUl>
 						{data
 							? data.contactInfo.map((li, ind) => {
-									return (
-										<StyledLi key={ind}>
-											{li.toUpperCase()}
-										</StyledLi>
-									)
+									return <StyledLi key={ind}>{li.toUpperCase()}</StyledLi>
 							  })
 							: null}
 					</StyledUl>
-					<StyledCircle>
-						{data
-							? lang
-								? data.replyBanner.sv
-								: data.replyBanner.en
-							: null}
-					</StyledCircle>
 				</StyledDiv1>
 				<StyledDiv>
 					<StyledDivFormHeader>
@@ -264,12 +228,12 @@ const Contact = () => {
 					action={
 						<>
 							<IconButton
-								size='small'
-								aria-label='close'
-								color='inherit'
+								size="small"
+								aria-label="close"
+								color="inherit"
 								onClick={handleClose}
 							>
-								<CloseIcon fontSize='small' />
+								<CloseIcon fontSize="small" />
 							</IconButton>
 						</>
 					}
