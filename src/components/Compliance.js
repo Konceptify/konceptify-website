@@ -74,6 +74,7 @@ const StyledH2 = styled(motion.h2)`
 const StyledH3 = styled(motion.h3)`
 	font-size: 1rem;
 	margin-top: 20px;
+	font-weight: 200;
 	max-width: 60ch;
 	color: ${({ theme }) => theme.whiteOf};
 `

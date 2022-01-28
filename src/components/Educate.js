@@ -54,6 +54,7 @@ const StyledH3 = styled.h3`
 	width: 80%;
 	font-size: 1rem;
 	margin-top: 20px;
+	font-weight: 200;
 	color: ${({ theme }) => theme.whiteOf};
 `
 
@@ -61,12 +62,14 @@ const StyledH32 = styled.h3`
 	width: 80%;
 	font-size: 1rem;
 	margin-top: 10px;
+	font-weight: 200;
 	color: ${({ theme }) => theme.whiteOf};
 `
 const StyledH3b = styled.h3`
 	width: 80%;
 	font-size: 1rem;
 	margin-top: 60px;
+	font-weight: 200;
 	color: ${({ theme }) => theme.whiteOf};
 	text-align: center;
 	@media (max-width: 768px) {
@@ -143,18 +146,10 @@ const Educate = ({ conceptSlide }) => {
 		>
 			<StyledDivDesign>
 				<StyledH2>
-					{data
-						? lang
-							? data.header.sv
-							: data.header.en
-						: null}
+					{data ? (lang ? data.header.sv : data.header.en) : null}
 				</StyledH2>
 				<StyledH3>
-					{data
-						? lang
-							? data.subHeader.sv
-							: data.subHeader.en
-						: null}
+					{data ? (lang ? data.subHeader.sv : data.subHeader.en) : null}
 				</StyledH3>
 				<StyledH32>
 					{data?.subHeaderTwo
@@ -164,23 +159,13 @@ const Educate = ({ conceptSlide }) => {
 						: null}
 				</StyledH32>
 				<StyledDivCircle>
-					<p>
-						{data
-							? lang
-								? data.banner.sv
-								: data.banner.en
-							: null}
-					</p>
+					<p>{data ? (lang ? data.banner.sv : data.banner.en) : null}</p>
 				</StyledDivCircle>
 			</StyledDivDesign>
 			<StyledDiv>
 				<VideoMockup />
 				<StyledH3b>
-					{data
-						? lang
-							? data.underVideo.sv
-							: data.underVideo.en
-						: null}
+					{data ? (lang ? data.underVideo.sv : data.underVideo.en) : null}
 				</StyledH3b>
 			</StyledDiv>
 		</Wrapper>

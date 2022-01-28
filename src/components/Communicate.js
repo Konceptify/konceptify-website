@@ -49,7 +49,8 @@ const StyledH2 = styled(motion.h2)`
 `
 
 const StyledH3 = styled(motion.h3)`
-	font-size: 0.9rem;
+	font-size: 1rem;
+	font-weight: 200;
 	width: 70%;
 	margin-top: 20px;
 	padding-left: 0px;
