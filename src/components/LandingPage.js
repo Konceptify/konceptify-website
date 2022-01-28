@@ -9,17 +9,14 @@ import Measure from './Measure'
 import sanityClient from '../client'
 import Video from '../img/animated-video.mp4'
 import { LanguageContext } from '../App'
+import { toCapitalCase } from '../utils/utils'
 
 const Wrapper = styled.section`
 	width: 100vw;
 	background-color: #fff;
-
-	@media (max-width: 976px) {
-	}
 `
 
 const StyledDiv1 = styled.div`
-	height: 100%;
 	width: 50%;
 	display: flex;
 	flex-direction: column;
@@ -34,39 +31,40 @@ const StyledDiv1 = styled.div`
 `
 
 const StyledDiv2 = styled.div`
-	height: 100%;
 	width: 50%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	position: relative;
-	z-index: 3000;
+
 	text-align: center;
 	@media (max-width: 976px) {
 		width: 100%;
-
-		padding-top: 0px;
-		height: fit-content;
+		padding-top: 2rem;
 	}
 `
 
 const StyledH2 = styled.h2`
 	font-size: 4rem;
 	width: 100%;
+	font-weight: 700;
 	position: relative;
 	z-index: 10;
 	color: ${({ theme }) => theme.color};
 	@media (max-width: 976px) {
-		font-size: 1.7rem;
+		font-size: 2rem;
+		font-weight: 700;
+		text-align: center;
 		margin-bottom: 30px;
 	}
 `
 const StyledH3 = styled.h3`
 	width: 80%;
 	font-size: 1rem;
+	text-align: left;
 	margin-top: 20px;
-	font-weight: 500;
+	font-weight: 200;
 	position: relative;
 	z-index: 10;
 	@media (max-width: 976px) {
@@ -77,61 +75,27 @@ const StyledH3 = styled.h3`
 `
 
 const StyledDivDesign = styled.div`
-	position: relative;
 	/* background: ${({ theme }) => theme.primary60}; */
 	display: flex;
 	justify-content: center;
 
 	align-items: center;
 
-	z-index: 100;
 	video {
 		width: 60vw;
+		margin: 0 2rem;
 	}
 
 	@media (max-width: 976px) {
 		width: 100%;
-
-		margin-bottom: 0px;
 		video {
-			width: 200vw;
-			margin-left: 130px;
+			width: 200%;
+			margin: 8rem 2rem;
 		}
 	}
 `
 
-const StyledH4 = styled.h4`
-	text-align: center;
-	display: none;
-	color: ${({ theme }) => theme.color};
-	font-weight: 300;
-	padding: 10px 20px;
-	position: absolute;
-	z-index: 2;
-	bottom: 10px;
-	font-size: 1rem;
-	width: 100%;
-
-	@media (max-width: 976px) {
-		width: 100%;
-		font-size: 0.8rem;
-		background: inherit;
-		color: ${({ theme }) => theme.primary90};
-		padding: 0px;
-		margin-top: 30px;
-		display: block;
-	}
-`
-
-/* const StyledImg = styled.img`
-	width: 45vw;
-	display: none;
-	@media (max-width: 976px) {
-		width: 90vw;
-		display: block;
-		margin-bottom: 100px;
-	}
-` */
+const StyledH4 = styled.h4``
 
 const StyledConceptDiv = styled.div`
 	height: 90vh;
@@ -233,13 +197,13 @@ const CommunicationsSlide = styled.div`
 const StyledSection = styled.section`
 	background-color: ${({ bg }) => bg};
 	width: 100vw;
-	height: 110vh;
+
 	display: flex;
 	flex-direction: ${({ direction }) => direction};
 	overflow: hidden;
 	padding: 0 40px;
 
-	@media (max-width: 976px) {
+	@media (max-width: 700px) {
 		width: 100vw;
 		min-height: 50vh;
 
@@ -263,24 +227,22 @@ const CardContainer = styled.div`
 `
 
 const StyledCard = styled.div`
-	width: 130px;
-	height: 70px;
+	min-width: 8rem;
+	padding: 1em 2em;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin: 20px 10px;
-	border-radius: 20px;
+	border-radius: 100vw;
 	cursor: pointer;
 	color: ${({ theme }) => theme.white};
 	background-color: ${({ theme }) => theme.primary};
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
-	font-size: 0.7rem;
 
 	@media (max-width: 976px) {
 		width: 100px;
 		height: 45px;
 		padding: 20px 20px;
-		font-size: 0.7rem;
 	}
 
 	:hover {
@@ -323,22 +285,17 @@ const LandingPage = ({ myRef }) => {
 					<StyledDiv1>
 						<StyledDivDesign>
 							{data && (
-								<>
-									{/* <StyledImg src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-1500/Resurs_2_4x-8__xPkNywNB.png?updatedAt=1628848469943' /> */}
-									<video autoPlay loop muted playsInline>
-										<source src={Video} type="video/mp4" />
-									</video>
-								</>
+								<video autoPlay loop muted playsInline>
+									<source src={Video} type="video/mp4" />
+								</video>
 							)}
-
-							<StyledH4>
-								{lang ? data && data.underImage.sv : data && data.underImage.en}
-							</StyledH4>
 						</StyledDivDesign>
 					</StyledDiv1>
 					<StyledDiv2>
 						<StyledH2>
-							{lang ? data && data.header.sv : data && data.header.en}
+							{lang
+								? data && toCapitalCase(data.header.sv)
+								: data && toCapitalCase(data.header.en)}
 						</StyledH2>
 						<CardContainer>
 							<StyledCard
@@ -347,7 +304,7 @@ const LandingPage = ({ myRef }) => {
 									setConceptSlide('Communications')
 								}}
 							>
-								{lang ? 'Kommunikation' : 'Communications'}
+								Chat
 							</StyledCard>
 							<StyledCard
 								onClick={() => {

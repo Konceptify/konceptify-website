@@ -7,6 +7,7 @@ import { motion } from 'framer-motion'
 const Wrapper = styled.div`
 	height: 100%;
 	width: 100%;
+	background-color: white;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -86,8 +87,9 @@ const Communications = () => {
 		<Wrapper>
 			<StyledDiv>
 				<StyledImg
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_5_08FgDgtoW.png?updatedAt=1629718921512'
-					alt='chat popup'
+					/* src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/Resurs_5_08FgDgtoW.png?updatedAt=1629718921512' */
+					src="https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/chat_kD75a1-aKL.png?ik-sdk-version=javascript-1.4.3&updatedAt=1643364215977"
+					alt="chat popup"
 					initial={{ opacity: 0, y: '20px' }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7 }}
@@ -99,22 +101,14 @@ const Communications = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7 }}
 				>
-					{data
-						? lang
-							? data.header.sv
-							: data.header.en
-						: null}
+					{data ? (lang ? data.header.sv : data.header.en) : null}
 				</StyledH2>
 				<StyledH3
 					initial={{ opacity: 0, x: '-100px' }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.7 }}
 				>
-					{data
-						? lang
-							? data.subHeader.sv
-							: data.subHeader.en
-						: null}
+					{data ? (lang ? data.subHeader.sv : data.subHeader.en) : null}
 				</StyledH3>
 			</StyledDiv>
 		</Wrapper>

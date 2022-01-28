@@ -11,7 +11,7 @@ const Wrapper = styled.section`
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 40px;
-	background-color: ${({ theme }) => theme.whiteOf};
+	background-color: ${({ theme }) => theme.white};
 	@media (max-width: 768px) {
 		flex-direction: column;
 		justify-content: flex-start;
@@ -20,7 +20,7 @@ const Wrapper = styled.section`
 `
 
 const StyledImg = styled.img`
-	width: 35vw;
+	width: 40vw;
 	margin-left: 40px;
 
 	@media (max-width: 768px) {
@@ -49,23 +49,25 @@ const StyledDiv2 = styled.div`
 	}
 `
 const StyledH2 = styled.h2`
-	font-size: 2.5vw;
+	font-size: 4rem;
 	max-width: 28ch;
 	margin: 20px 0px;
 	color: ${({ theme }) => theme.primary};
 	@media (max-width: 768px) {
-		font-size: 1.2rem;
+		font-size: 2rem;
 		margin: 0 px;
 		max-width: 100%;
 	}
 `
 const StyledH3 = styled.h3`
-	font-size: 0.9rem;
-	max-width: 70%;
+	font-size: 1.5rem;
+	font-weight: 200;
+	width: 70%;
 	margin: 20px 0px;
 	color: ${({ theme }) => theme.primary};
 	@media (max-width: 768px) {
 		width: 100%;
+		font-size: 1rem;
 	}
 `
 const StyledH4 = styled.h4`
@@ -106,22 +108,13 @@ const Measure = () => {
 				(data ? (
 					<Wrapper>
 						<StyledDiv>
-							<StyledImg
-								src={data.imageURL}
-								alt='Laptop computer'
-							/>
+							<StyledImg src={data.imageURL} alt="Laptop computer" />
 						</StyledDiv>
 						<StyledDiv2>
 							<StyledH2>
-								{lang
-									? data.mainTitle.sv
-									: data.mainTitle.en}
+								{lang ? data.mainTitle.sv : data.mainTitle.en}
 							</StyledH2>
-							<StyledH3>
-								{lang
-									? data.subTitle.sv
-									: data.subTitle.en}
-							</StyledH3>
+							<StyledH3>{lang ? data.subTitle.sv : data.subTitle.en}</StyledH3>
 							<StyledH4>
 								{data?.subTitleTwo
 									? lang

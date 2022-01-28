@@ -7,31 +7,28 @@ import { LanguageContext } from '../App'
 
 const StyledNav = styled(motion.div)`
 	width: 100vw;
-	height: 90vh;
+	min-height: 100%;
 	background-color: ${({ theme }) => theme.white};
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
-	z-index: 3;
-	position: relative;
-	padding: 120px 30px 0 30px;
+	justify-content: space-around;
+	z-index: 13;
+	overflow: hidden;
+	position: fixed;
+	padding: 2rem;
 
 	@media (min-width: 768px) {
 		display: none;
 	}
 `
 const IconUl = styled.ul`
-	position: absolute;
-	bottom: 30%;
-	left: 40px;
 	list-style: none;
 	li {
-		margin: 15px;
 	}
 `
 const StyledUl = styled.ul`
 	list-style: none;
-	margin: 0px;
+	margin: 0px 0 2rem 0;
 
 	li {
 		padding: 15px 25px;
@@ -98,10 +95,6 @@ const NavBar = ({ setOpenNav, openNav }) => {
 							setOpenNav(false)
 						}}
 					>
-						<img
-							src="https://www.countryflags.io/gb/flat/16.png"
-							alt="English flag"
-						/>{' '}
 						EN
 					</li>
 				) : (
@@ -112,10 +105,6 @@ const NavBar = ({ setOpenNav, openNav }) => {
 							setOpenNav(false)
 						}}
 					>
-						<img
-							src="https://www.countryflags.io/se/flat/16.png"
-							alt="Swedish flag"
-						/>{' '}
 						SV
 					</li>
 				)}
@@ -134,7 +123,7 @@ const NavBar = ({ setOpenNav, openNav }) => {
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://www.instagram.com/zittron/"
+						href="https://www.instagram.com/konceptifyapp/"
 					>
 						<RiInstagramLine fill="#292928" size="40" />
 					</a>

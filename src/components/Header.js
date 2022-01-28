@@ -11,6 +11,9 @@ import { LanguageContext } from '../App'
 const Wrapper = styled(motion.nav)`
 	width: 100vw;
 	height: 65px;
+
+	display: flex;
+	align-items: center;
 	position: fixed;
 	z-index: 100000;
 	transition: 0.2s;
@@ -24,11 +27,7 @@ const Wrapper = styled(motion.nav)`
 	}
 `
 
-const LogoText = styled.p`
-	font-weight: 700;
-	font-size: 2rem;
-	letter-spacing: 0.6rem;
-	padding: 5px 10px;
+const LogoText = styled.div`
 	z-index: 100;
 	position: absolute;
 	margin: 10px 0 0 40px;
@@ -42,7 +41,7 @@ const LogoText = styled.p`
 		@media (max-width: 768px) {
 			color: #000;
 			font-size: 1rem;
-			letter-spacing: 0.4rem;
+
 			padding: 15px 0px;
 			margin: 0;
 			position: relative;
@@ -59,7 +58,7 @@ const StyledUl = styled.ul`
 	display: flex;
 	justify-content: flex-end;
 	list-style: none;
-	padding: 10px 120px 0 0;
+	padding: 0px 120px 0 0;
 	align-items: center;
 
 	color: ${(props) => props.theme.color};
@@ -98,7 +97,7 @@ const StyledContact = styled(StyledLi)`
 const MenuBtn = styled(motion.button)`
 	background-color: transparent;
 	border: none;
-	letter-spacing: 0.2rem;
+
 	color: ${(props) => props.theme.color};
 	cursor: pointer;
 	position: absolute;
@@ -155,7 +154,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://www.linkedin.com/company/konceptify"
+						href="https://www.linkedin.com/company/konceptify/"
 					>
 						<RiLinkedinFill fill="#292928" size="18" />
 					</a>
@@ -164,7 +163,7 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 					<a
 						target="_blank"
 						rel="noopener noreferrer"
-						href="https://www.instagram.com/zittron/"
+						href="https://www.instagram.com/konceptifyapp/"
 					>
 						<RiInstagramLine fill="#292928" size="18" />
 					</a>

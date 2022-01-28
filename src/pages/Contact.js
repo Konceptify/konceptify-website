@@ -84,7 +84,7 @@ const StyledLi = styled.li`
 	line-height: 2rem;
 	padding: 5px;
 	text-align: center;
-	letter-spacing: 1px;
+
 	color: #fff;
 
 	@media (max-width: 968px) {

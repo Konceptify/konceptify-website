@@ -151,7 +151,7 @@ const Form = () => {
 
 			xhr.setRequestHeader('Content-Type', 'application/json')
 
-			xhr.send(final_data)
+			/* xhr.send(final_data) */
 			setSent(true)
 			setEmail('')
 			setTel('')
@@ -168,14 +168,18 @@ const Form = () => {
 			onSubmit={handleSubmit}
 		>
 			{sent ? (
-				<h1>Thank you! We will get back to you as soon as possible</h1>
+				<h1>
+					{lang
+						? 'Tack, vi hör av oss så snart vi kan.'
+						: 'Thank you! We will get back to you as soon as possible'}
+				</h1>
 			) : (
 				<>
 					<StyledInput
 						type="text"
 						id="firstName"
 						name="firstName"
-						placeholder="Your name*"
+						placeholder={lang ? 'Namn*' : 'Your name*'}
 						value={firstName}
 						onChange={(e) => setFirstname(e.target.value)}
 					/>
@@ -183,7 +187,7 @@ const Form = () => {
 						type="text"
 						id="company"
 						name="company"
-						placeholder="Company Name"
+						placeholder={lang ? 'Företag' : 'Company Name'}
 						value={company}
 						onChange={(e) => setCompany(e.target.value)}
 					/>
@@ -191,7 +195,7 @@ const Form = () => {
 						type="email"
 						id="email"
 						name="email"
-						placeholder="Your email address*"
+						placeholder={lang ? 'Emailadress' : 'Your email address*'}
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required="required"
@@ -200,7 +204,7 @@ const Form = () => {
 						type="tel"
 						id="tel"
 						name="tel"
-						placeholder="Telephone*"
+						placeholder={lang ? 'Telefon' : 'Telephone*'}
 						value={tel}
 						onChange={(e) => setTel(e.target.value)}
 						required="required"
@@ -212,7 +216,10 @@ const Form = () => {
 							checked={checked}
 							onChange={() => setChecked((prevState) => !prevState)}
 						/>
-						<label htmlFor="terms"> I accept the terms</label>
+						<label htmlFor="terms">
+							{' '}
+							{lang ? 'Acceptera villkoren (engelska)' : 'I accept the terms'}
+						</label>
 					</CheckDiv>
 					<StyledP>
 						Konceptify AB is committed to protecting and respecting your

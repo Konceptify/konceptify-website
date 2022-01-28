@@ -46,7 +46,7 @@ html::-webkit-scrollbar {
 
 
 body {
-    font-family: 'Montserrat';
+    font-family: 'poppins';
 }
 `
 

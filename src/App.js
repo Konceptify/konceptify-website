@@ -12,25 +12,21 @@ import LandingPage from './components/LandingPage'
 import Pricing from './pages/Pricing'
 import Legal from './pages/Legal'
 import Footer from './components/Footer'
-import Banner from './components/Banner'
-/* import ThemeToggle from './components/ThemeToggle' */
 import { Cookie } from './components/Cookie'
 import { Cookies } from './pages/Cookies'
-/* import useGaTracker from './useGaTracker' */
 import ReactGA from 'react-ga'
 ReactGA.initialize('UA-206812801-1')
 
 export const LanguageContext = React.createContext()
 
 const Wrapper = styled.div`
-	width: 99vw;
 	display: flex;
 	background-color: ${(props) => props.theme.white};
 	flex-direction: column;
-	position: absolute;
+	position: relative;
 	overflow-x: hidden;
 	transition: all 0.1s linear;
-	margin-top: 20px;
+	/* margin-top: 20px; */
 
 	@media (max-width: 768px) {
 		margin-top: 0px;
@@ -136,7 +132,7 @@ const App = () => {
 						<Chat />
 						<Cookie />
 						<GlobalStyles />
-						<Banner />
+
 						<Wrapper>
 							<Header openNav={openNav} setOpenNav={setOpenNav} />
 							<Switch location={location} key={location.pathname}>

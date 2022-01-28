@@ -2,21 +2,19 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-	max-width: 170px;
-	height: 40px;
 	background-color: ${(props) => props.theme.primary};
 	color: ${(props) => props.theme.btnborderColor};
 	border: 1px solid ${(props) => props.theme.btnborderColor};
 	border-radius: 30px;
 	border: none;
+	width: fit-content;
 
-	letter-spacing: 2px;
 	display: flex;
 	align-items: center;
 	justify-content: space-evenly;
 	cursor: pointer;
-	padding: 15px 18px;
-	font-size: 0.6rem;
+	padding: 1em 2em;
+	font-size: 1rem;
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
 
 	a {
@@ -40,10 +38,8 @@ const StyledButton = styled.button`
 	}
 
 	@media (max-width: 768px) {
-		max-width: 140px;
-		font-size: 0.4em;
-		height: 30px;
-		padding: 8px 15px;
+		font-size: 1em;
+
 		svg {
 			transform: rotate(90deg);
 		}

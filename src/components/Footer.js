@@ -136,7 +136,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href="https://www.linkedin.com/company/konceptify"
+					href="https://www.linkedin.com/company/konceptify/"
 				>
 					<motion.div
 						initial="hidden"
@@ -152,7 +152,7 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 				<a
 					target="_blank"
 					rel="noopener noreferrer"
-					href="https://www.instagram.com/Konceptify/"
+					href="https://www.instagram.com/konceptifyapp/"
 				>
 					<motion.div
 						initial="hidden"

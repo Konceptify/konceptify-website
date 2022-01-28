@@ -27,7 +27,7 @@ const StyledImg = styled(motion.img)`
 	}
 	@media (max-width: 768px) {
 		margin-right: 0;
-		margin-bottom: 60px;
+		padding: 2rem;
 
 		width: 70vw;
 	}
@@ -106,28 +106,20 @@ const Compliance = () => {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7 }}
 				>
-					{data
-						? lang
-							? data.header.sv
-							: data.header.en
-						: null}
+					{data ? (lang ? data.header.sv : data.header.en) : null}
 				</StyledH2>
 				<StyledH3
 					initial={{ opacity: 0, x: '-100px' }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5 }}
 				>
-					{data
-						? lang
-							? data.subHeader.sv
-							: data.subHeader.en
-						: null}
+					{data ? (lang ? data.subHeader.sv : data.subHeader.en) : null}
 				</StyledH3>
 			</StyledHeaderDiv>
 			<StyledDivDesign>
 				<StyledImg
-					src='https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/checklist_NgupaGaA8F3.png?updatedAt=1630049500106'
-					alt='checklist'
+					src="https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-2000/checklist_NgupaGaA8F3.png?updatedAt=1630049500106"
+					alt="checklist"
 					initial={{ opacity: 0, y: '-20px' }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.7 }}

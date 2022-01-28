@@ -27,7 +27,6 @@ const StyledDiv = styled.div`
 		border-radius: 20px;
 		text-transform: uppercase;
 		font-size: 0.5rem;
-		letter-spacing: 0.1rem;
 	}
 
 	:last-child {
@@ -160,82 +159,43 @@ const PricingCard = ({ monthly }) => {
 					) => {
 						return (
 							<StyledDiv key={ind}>
-								<StyledLegend>
-									{lang ? legend.sv : legend.en}
-								</StyledLegend>
+								<StyledLegend>{lang ? legend.sv : legend.en}</StyledLegend>
 
 								<StyledPriceContainer>
 									<StyledH4 monthly={monthly}>
 										{lang
-											? hasNumber(
-													priceMonth.sv
-											  )
+											? hasNumber(priceMonth.sv)
 												? `${priceMonth.sv} SEK`
 												: priceMonth.sv
-											: hasNumber(
-													priceMonth.en
-											  )
+											: hasNumber(priceMonth.en)
 											? `${priceMonth.en} €`
 											: priceMonth.en}
 										<span>
 											{lang
-												? hasNumber(
-														priceMonth.sv
-												  )
+												? hasNumber(priceMonth.sv)
 													? 'per enhet / månad'
 													: null
-												: hasNumber(
-														priceMonth.sv
-												  )
+												: hasNumber(priceMonth.sv)
 												? 'per unit / month'
 												: null}
 										</span>
 									</StyledH4>
 								</StyledPriceContainer>
-								<StyledH3>
-									{lang ? header.sv : header.en}
-								</StyledH3>
+								<StyledH3>{lang ? header.sv : header.en}</StyledH3>
 
 								<StyledUl>
 									{lang
-										? benefits.sv.map(
-												(benefits, ind) => {
-													return (
-														<StyledLi
-															key={
-																ind
-															}
-														>
-															{
-																benefits
-															}
-														</StyledLi>
-													)
-												}
-										  )
-										: benefits.en.map(
-												(benefits, ind) => {
-													return (
-														<StyledLi
-															key={
-																ind
-															}
-														>
-															{
-																benefits
-															}
-														</StyledLi>
-													)
-												}
-										  )}
+										? benefits.sv.map((benefits, ind) => {
+												return <StyledLi key={ind}>{benefits}</StyledLi>
+										  })
+										: benefits.en.map((benefits, ind) => {
+												return <StyledLi key={ind}>{benefits}</StyledLi>
+										  })}
 								</StyledUl>
-								
-									<Link to='/contact'>
-										{lang
-											? 'Kontakta oss'
-											: 'Contact Us'}
-									</Link>
-								
+
+								<Link to="/contact">
+									{lang ? 'Kontakta oss' : 'Contact Us'}
+								</Link>
 							</StyledDiv>
 						)
 					}
