@@ -95,8 +95,6 @@ const StyledDivDesign = styled.div`
 	}
 `
 
-const StyledH4 = styled.h4``
-
 const StyledConceptDiv = styled.div`
 	height: 90vh;
 	background: ${({ theme, conceptSlide }) =>

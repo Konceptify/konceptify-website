@@ -151,7 +151,7 @@ const Form = () => {
 
 			xhr.setRequestHeader('Content-Type', 'application/json')
 
-			/* xhr.send(final_data) */
+			xhr.send(final_data)
 			setSent(true)
 			setEmail('')
 			setTel('')
