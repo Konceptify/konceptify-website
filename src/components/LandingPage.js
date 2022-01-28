@@ -137,6 +137,7 @@ const StyledSlider = styled.div`
 	align-items: center;
 	@media (max-width: 976px) {
 		width: 100%;
+		border-radius: 20px;
 	}
 `
 
@@ -204,15 +205,12 @@ const StyledSection = styled.section`
 	@media (max-width: 700px) {
 		width: 100vw;
 		min-height: 50vh;
-
+		padding: 0 1rem;
 		flex-direction: column-reverse;
 	}
 `
 
 const StyledSection2 = styled(StyledSection)`
-	width: 100vw;
-	margin-top: 50px;
-
 	display: flex;
 	align-items: center;
 	flex-direction: column;
@@ -220,8 +218,16 @@ const StyledSection2 = styled(StyledSection)`
 
 const CardContainer = styled.div`
 	display: flex;
-	position: relative;
-	z-index: 10;
+	@media (max-width: 700px) {
+		flex-direction: column;
+		background-color: #ccc;
+		border-radius: 30px;
+		width: 100%;
+		align-items: center;
+		padding: 2rem;
+		div {
+		}
+	}
 `
 
 const StyledCard = styled.div`
@@ -241,6 +247,7 @@ const StyledCard = styled.div`
 		width: 100px;
 		height: 45px;
 		padding: 20px 20px;
+		margin: 0.5rem;
 	}
 
 	:hover {
@@ -298,7 +305,7 @@ const LandingPage = ({ myRef }) => {
 						<CardContainer>
 							<StyledCard
 								onClick={() => {
-									sliderRef.current.scrollIntoView()
+									sliderRef.current.scrollIntoView(true)
 									setConceptSlide('Communications')
 								}}
 							>
