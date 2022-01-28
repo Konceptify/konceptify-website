@@ -241,6 +241,7 @@ const StyledCard = styled.div`
 		width: 100px;
 		height: 45px;
 		padding: 20px 20px;
+font-size: 0.8rem;
 	}
 
 	:hover {
