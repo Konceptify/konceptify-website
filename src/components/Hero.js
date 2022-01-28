@@ -99,7 +99,7 @@ const StyledH2b = styled(motion.h2)`
 `
 
 const StyledImg = styled(motion.img)`
-	margin-top: 2rem;
+	margin-top: 4rem;
 	max-width: 70%;
 `
 const StyledArrow = styled(IoMdArrowRoundForward)``
