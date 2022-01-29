@@ -195,7 +195,7 @@ const Form = () => {
 						type="email"
 						id="email"
 						name="email"
-						placeholder={lang ? 'Emailadress' : 'Your email address*'}
+						placeholder={lang ? 'Email' : 'Your email address*'}
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 						required="required"
