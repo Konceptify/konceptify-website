@@ -17,6 +17,10 @@ outline: none;
 
 }
 
+h1,h2 {
+	letter-spacing: -0.5px;
+}
+
 html {
 	scrollbar-width: normal;
       scrollbar-color: #777 #555;
