@@ -197,7 +197,7 @@ const Contact = () => {
 					</StyledH2>
 					<StyledImgDiv>
 						<StyledImg
-							src="https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-500/Resurs_3_4x_J2lQ-3Lr7t5.png?updatedAt=1629718409148"
+							src="https://ik.imagekit.io/lct7da3kd6o/Zittron/tr:w-500/task_oQvnBHeIh.png?ik-sdk-version=javascript-1.4.3&updatedAt=1643617799552"
 							alt="task manager"
 						/>
 					</StyledImgDiv>

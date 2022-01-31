@@ -6,6 +6,7 @@ import { IoMdArrowRoundForward } from 'react-icons/io'
 import { LanguageContext } from '../App'
 import Button from './Button'
 import Spinner from './Spinner'
+import { ReactComponent as BackgroundSVG } from '../assets/Vector2.svg'
 
 const Wrapper = styled(motion.section)`
 	min-height: 90vh;
@@ -26,11 +27,28 @@ const Wrapper = styled(motion.section)`
 	}
 `
 
+const BackgroundDiv = styled.div`
+	position: absolute;
+	/* 	left: -23%;
+	top: -45%;
+	transform: rotate(90deg); */
+	display: none;
+
+	@media (max-width: 700px) {
+		display: block;
+		left: -3%;
+		top: -7%;
+		transform: rotate(180deg);
+	}
+`
+
 const StyledDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
-	padding-left: 70px;
+	padding-left: 12rem;
+	position: relative;
+	z-index: 999;
 
 	button {
 		position: relative;
@@ -182,6 +200,9 @@ const Hero = () => {
 				exit={{ opacity: 0 }}
 				transition={{ duration: 1.2 }}
 			>
+				<BackgroundDiv>
+					<BackgroundSVG />
+				</BackgroundDiv>
 				<StyledDiv>
 					<StyledH1
 						initial={'hidden'}
