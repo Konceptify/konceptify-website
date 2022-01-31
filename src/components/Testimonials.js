@@ -13,6 +13,9 @@ const Wrapper = styled.section`
 	padding: 2rem 10rem;
 	background-color: #f7f7f7;
 	margin-bottom: 5rem;
+	@media (max-width: 700px) {
+		padding: 1rem;
+	}
 `
 
 const ClientContainer = styled.div`
@@ -26,12 +29,19 @@ const ClientContainer = styled.div`
 	background-color: #fcfcfc;
 	border-radius: 1rem;
 	margin-top: 1rem;
-
 	padding: 1rem;
+	@media (max-width: 700px) {
+		padding: 0;
+		gap: 0.5rem;
+		min-height: auto;
+	}
 `
 
 const StyledImg = styled.img`
 	max-width: 150px;
+	@media (max-width: 700px) {
+		max-width: 70px;
+	}
 `
 
 const StyledH2 = styled.h2`
