@@ -6,7 +6,7 @@ import { LanguageContext } from '../App'
 
 const StyledDiv = styled.div`
 	width: 350px;
-	min-height: 600px;
+	min-height: 700px;
 	background-color: #fafafa;
 	margin: 0 10px;
 	position: relative;
@@ -36,7 +36,7 @@ const StyledDiv = styled.div`
 	@media (max-width: 768px) {
 		margin: 50px 0px;
 		width: 80%;
-		height: 90vh;
+		height: fit-content;
 	}
 `
 
@@ -73,7 +73,7 @@ const StyledPriceContainer = styled.div`
 `
 
 const StyledH4 = styled.h4`
-	font-size: 2rem;
+	font-size: 1.7rem;
 	color: ${({ theme }) => theme.color};
 
 	text-align: center;

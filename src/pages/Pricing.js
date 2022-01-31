@@ -27,7 +27,6 @@ const Wrapper = styled(motion.section)`
 		flex-direction: column;
 	}
 	@media (max-width: 768px) {
-		height: 220vh;
 	}
 `
 
@@ -103,9 +102,9 @@ const Pricing = () => {
 		>
 			<BackgroundDiv>
 				<StyledWave
-					fill='#3F4F45'
+					fill="#3F4F45"
 					paused={false}
-					index='1'
+					index="1"
 					options={{
 						height: 20,
 						amplitude: 20,
@@ -114,9 +113,9 @@ const Pricing = () => {
 					}}
 				/>
 				<StyledWave
-					fill='#a4b6ab'
+					fill="#a4b6ab"
 					paused={false}
-					index='0'
+					index="0"
 					options={{
 						height: 20,
 						amplitude: 20,

@@ -7,14 +7,15 @@ import { LanguageContext } from '../App'
 
 const StyledNav = styled(motion.div)`
 	width: 100vw;
-	min-height: 100%;
+	min-height: 100vh;
 	background-color: ${({ theme }) => theme.white};
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	z-index: 13;
 	overflow: hidden;
-	position: fixed;
+	position: absolute;
+	top: 0;
 	padding: 2rem;
 
 	@media (min-width: 768px) {
