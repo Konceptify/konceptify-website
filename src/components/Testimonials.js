@@ -1,10 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import styled from 'styled-components'
-import pinchos from '../img/pinchos.jpeg'
-import mjukmjuk from '../img/mjukmjuk.jpeg'
-import bores from '../img/bores.jpeg'
-import gps from '../img/gps.jpeg'
+
 import { LanguageContext } from '../App'
+import { motion, AnimatePresence } from 'framer-motion'
+import { getRandom } from '../utils/utils'
+import { clients } from '../utils/clientsData'
 
 const Wrapper = styled.section`
 	display: flex;
@@ -23,7 +23,7 @@ const ClientContainer = styled.div`
 	width: 100%;
 	display: grid;
 	grid-auto-rows: 200px;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	place-items: center;
 	gap: 1rem;
 	background-color: #fcfcfc;
@@ -49,7 +49,7 @@ const StyledH2 = styled.h2`
 	color: #292928;
 `
 
-const StyledAnchor = styled.a`
+const StyledAnchor = styled(motion.a)`
 	display: flex;
 	gap: 1rem;
 	flex-direction: column;
@@ -61,32 +61,53 @@ const StyledAnchor = styled.a`
 
 const Testimonials = () => {
 	const { lang } = useContext(LanguageContext)
+	const [clientsArr, setClientsArr] = useState(getRandom(clients, 3))
 
-	const clients = [
-		{ name: 'MjukMjuk', photo: mjukmjuk, link: 'https://mjukmjuk.se/' },
-		{ name: 'Bores', photo: bores, link: 'https://bores.se/' },
-		{
-			name: 'Guilty Pleasure',
-			photo: gps,
-			link: 'https://www.guiltypleasure.se/',
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setClientsArr(getRandom(clients, 3))
+		}, 6000)
+
+		return () => clearInterval(interval)
+		// eslint-disable-next-line
+	}, [])
+
+	const variants = {
+		visible: {
+			opacity: 1,
+			transition: {
+				// duration: 1
+			},
 		},
-		{ name: 'Pinchos', photo: pinchos, link: 'https://www.pinchos.se/' },
-	]
+		hidden: {
+			opacity: 0,
+			transition: {
+				// duration: 0
+			},
+		},
+	}
 
 	return (
 		<Wrapper>
 			<StyledH2>{lang ? 'Våra kunder' : 'Trusted by'}</StyledH2>
 			<ClientContainer>
-				{clients.map((client) => {
-					return (
-						<StyledAnchor
-							href={client.link || 'https://konceptify.com/'}
-							target="_blank"
-						>
-							<StyledImg src={client.photo} alt={client.name} />
-						</StyledAnchor>
-					)
-				})}
+				<AnimatePresence initial={false} exitBeforeEnter>
+					{clientsArr.map((client, index) => {
+						return (
+							<StyledAnchor
+								initial="hidden"
+								animate={'visible'}
+								exit="hidden"
+								variants={variants}
+								key={index}
+								href={client.link || 'https://konceptify.com/'}
+								target="_blank"
+							>
+								<StyledImg src={client.photo} alt={client.name} />
+							</StyledAnchor>
+						)
+					})}
+				</AnimatePresence>
 			</ClientContainer>
 		</Wrapper>
 	)
