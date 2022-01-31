@@ -10,6 +10,7 @@ import sanityClient from '../client'
 import Video from '../img/animated-video.mp4'
 import { LanguageContext } from '../App'
 import { toCapitalCase } from '../utils/utils'
+import Testimonials from './Testimonials'
 
 const Wrapper = styled.section`
 	width: 100vw;
@@ -290,6 +291,7 @@ const LandingPage = ({ myRef }) => {
 	return (
 		<>
 			<Wrapper ref={myRef}>
+				<Testimonials />
 				<StyledSection direction="row" bg="#fff">
 					<StyledDiv1>
 						<StyledDivDesign>
