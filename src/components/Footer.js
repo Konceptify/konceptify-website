@@ -7,7 +7,7 @@ import { LanguageContext } from '../App'
 
 const Wrapper = styled.footer`
 	width: 100vw;
-	height: 500px;
+	min-height: 550px;
 	bottom: 0%;
 	display: flex;
 
@@ -119,6 +119,11 @@ const Footer = ({ setConceptSlide, sliderRef }) => {
 						<Link to="/pricing" onClick={() => window.scrollTo(0, 0)}>
 							{lang ? 'Prisplan' : 'Pricing'}
 						</Link>
+					</LinkLi>
+					<LinkLi>
+						<a href="https://conceptmanager.zittron.com/">
+							{lang ? 'Logga in' : 'Sign in'}
+						</a>
 					</LinkLi>
 					<Copyright>© Copyright Konceptify {year}</Copyright>
 					<StyledLi>Org. num: 559239-2368</StyledLi>
