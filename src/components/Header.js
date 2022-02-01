@@ -189,6 +189,11 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 						SV
 					</StyledLi>
 				)}
+				<StyledContact>
+					<a href="https://conceptmanager.zittron.com/">
+						{lang ? 'Logga in' : 'Sign in'}
+					</a>
+				</StyledContact>
 				<li>
 					<MenuBtn onClick={() => setOpenNav((current) => !current)}>
 						<Hamburger openNav={openNav} />
