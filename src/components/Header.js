@@ -30,27 +30,7 @@ const Wrapper = styled(motion.nav)`
 const LogoText = styled.div`
 	z-index: 100;
 	position: absolute;
-	margin: 10px 0 0 40px;
-
-	a {
-		text-decoration: none;
-		z-index: 100;
-		position: absolute;
-		color: ${(props) => props.theme.color};
-
-		@media (max-width: 768px) {
-			color: #000;
-			font-size: 1rem;
-
-			padding: 15px 0px;
-			margin: 0;
-			position: relative;
-			top: 0;
-
-			left: 0;
-			z-index: 100;
-		}
-	}
+	margin: 0px 0 0 40px;
 `
 
 const StyledUl = styled.ul`

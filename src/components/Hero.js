@@ -263,14 +263,14 @@ const Hero = () => {
 			</Wrapper>
 			<StyledDownloadDiv>
 				{lang ? (
-					<a href="https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200">
+					<a href="https://apps.apple.com/se/app/konceptify/id1549633030">
 						<StyledApple
 							src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/sv-se&amp;releaseDate=1611360000&h=03597dc481a5892f8dba29a574a3d59d"
 							alt="Download on the App Store"
 						/>
 					</a>
 				) : (
-					<a href="https://apps.apple.com/us/app/zittron/id1549633030?itsct=apps_box_badge&amp;itscg=30200">
+					<a href="https://apps.apple.com/se/app/konceptify/id1549633030">
 						<StyledApple
 							src="https://tools.applemediaservices.com/api/badges/download-on-the-app-store/black/en-us&amp;releaseDate=1611360000&h=c29f17b16336b66f6e948b5ba0444e68"
 							alt="Download on the App Store"
@@ -278,14 +278,14 @@ const Hero = () => {
 					</a>
 				)}
 				{lang ? (
-					<a href="https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+					<a href="https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US">
 						<StyledGoogle
 							alt="Ladda ned på Google Play"
 							src="https://play.google.com/intl/en_us/badges/static/images/badges/sv_badge_web_generic.png"
 						/>
 					</a>
 				) : (
-					<a href="https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
+					<a href="https://play.google.com/store/apps/details?id=com.zittron.zittronemployee&hl=sv&gl=US">
 						<StyledGoogle
 							alt="Get it on Google Play"
 							src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png"
