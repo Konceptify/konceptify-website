@@ -61,6 +61,7 @@ const App = () => {
 	const location = useLocation()
 	const history = useHistory()
 	const sliderRef = useRef()
+	const [openModal, setOpenModal] = useState(false)
 	const [conceptSlide, setConceptSlide] = useState('Compliance')
 	const [snackbarMessage, setSnackbarMessage] = useState('')
 	const [lang, setLang] = useState(
@@ -87,6 +88,8 @@ const App = () => {
 		myRef,
 		snackbarMessage,
 		setSnackbarMessage,
+		openModal,
+		setOpenModal,
 	}
 
 	useEffect(() => {

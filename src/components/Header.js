@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import Hamburger from './Hamburger'
 import { RiLinkedinFill, RiInstagramLine } from 'react-icons/ri'
+import { GrClose } from 'react-icons/gr'
 import { LanguageContext } from '../App'
+import FormModal from './FormModal'
 
 const Wrapper = styled(motion.nav)`
 	width: 100vw;
@@ -95,6 +97,43 @@ const MenuBtn = styled(motion.button)`
 	}
 `
 
+const DemoModalBackground = styled.div`
+	width: 100%;
+	height: 100vh;
+	inset: 0;
+	display: grid;
+	place-items: center;
+
+	z-index: 100000;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.6);
+	overflow: hidden;
+
+	path {
+		stroke: black;
+	}
+
+	.modal {
+		background: ${({ theme }) => theme.primary90};
+		position: absolute;
+		border-radius: 10px;
+		@media (max-width: 400px) {
+			width: 90%;
+		}
+
+		svg {
+			position: absolute;
+			top: 1rem;
+			z-index: 1000000000;
+			right: 1rem;
+			cursor: pointer;
+			path {
+				stroke: white;
+			}
+		}
+	}
+`
+
 const StyledLogoSVG = styled.img`
 	width: 200px;
 `
@@ -102,10 +141,22 @@ const StyledLogoSVG = styled.img`
 const Header = ({ setOpenNav, openNav, theme }) => {
 	const location = useLocation()
 
-	const { lang, setLang } = useContext(LanguageContext)
+	const { lang, setLang, openModal, setOpenModal } = useContext(LanguageContext)
 
 	return (
 		<Wrapper>
+			{openModal && (
+				<DemoModalBackground>
+					<div className="modal">
+						<GrClose
+							onClick={() => setOpenModal(false)}
+							fill="white"
+							size={20}
+						/>
+						<FormModal />
+					</div>
+				</DemoModalBackground>
+			)}
 			{openNav && (
 				<NavBar openNav={openNav} theme={theme} setOpenNav={setOpenNav} />
 			)}
@@ -125,7 +176,10 @@ const Header = ({ setOpenNav, openNav, theme }) => {
 			</LogoText>
 			<StyledUl>
 				<StyledContact>
-					<Link to="/contact">{lang ? 'Boka en Demo' : 'Request a Demo'}</Link>
+					<p onClick={() => setOpenModal((prev) => !prev)}>
+						{' '}
+						{lang ? 'Boka en Demo' : 'Request a Demo'}
+					</p>
 				</StyledContact>
 				<StyledLi>
 					<Link to="/pricing">{lang ? 'Prisplan' : 'Pricing'}</Link>

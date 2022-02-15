@@ -60,7 +60,7 @@ const variants = {
 }
 
 const NavBar = ({ setOpenNav, openNav }) => {
-	const { lang, setLang } = useContext(LanguageContext)
+	const { lang, setLang, setOpenModal } = useContext(LanguageContext)
 
 	return (
 		<StyledNav
@@ -86,6 +86,16 @@ const NavBar = ({ setOpenNav, openNav }) => {
 					<Link to="/contact" onClick={() => setOpenNav(false)}>
 						{lang ? 'KONTAKT' : 'CONTACT'}
 					</Link>
+				</li>
+				<li>
+					<p
+						onClick={() => {
+							setOpenModal(true)
+							setOpenNav(false)
+						}}
+					>
+						{lang ? 'BOKA EN DEMO' : 'REQUEST DEMO'}
+					</p>
 				</li>
 
 				{lang ? (

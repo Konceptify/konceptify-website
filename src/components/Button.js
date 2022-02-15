@@ -17,6 +17,10 @@ const StyledButton = styled.button`
 	font-size: 1rem;
 	box-shadow: 2px 2px 0px ${({ theme }) => theme.primary70};
 
+	:hover {
+		background-color: ${(props) => props.theme.primary80};
+	}
+
 	a {
 		text-decoration: none;
 		color: ${({ theme }) => theme.white};
