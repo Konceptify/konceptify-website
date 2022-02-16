@@ -87,7 +87,7 @@ const variantsIcon = {
 	},
 }
 
-const Footer = ({ setConceptSlide, sliderRef }) => {
+const Footer = () => {
 	const { lang, handleFooterClick } = useContext(LanguageContext)
 
 	let date = new Date()

@@ -8,6 +8,7 @@ import Chat from './useChat'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Contact from './pages/Contact'
+import RequestDemo from './pages/RequestDemo'
 import LandingPage from './components/LandingPage'
 import Pricing from './pages/Pricing'
 import Legal from './pages/Legal'
@@ -132,12 +133,16 @@ const App = () => {
 			<LanguageContext.Provider value={ContextValue}>
 				<AnimatePresence exitBeforeEnter initial={true}>
 					<ThemeProvider theme={themes.lightMode}>
-						<Chat />
+						{location.pathname === '/request-demo' ? null : <Chat />}
+
 						<Cookie />
 						<GlobalStyles />
 
 						<Wrapper>
-							<Header openNav={openNav} setOpenNav={setOpenNav} />
+							{location.pathname === '/request-demo' ? null : (
+								<Header openNav={openNav} setOpenNav={setOpenNav} />
+							)}
+
 							<Switch location={location} key={location.pathname}>
 								<Route exact path="/">
 									<Hero />
@@ -155,8 +160,11 @@ const App = () => {
 								<Route path="/cookies">
 									<Cookies />
 								</Route>
+								<Route path="/request-demo">
+									<RequestDemo />
+								</Route>
 							</Switch>
-							<Footer />
+							{location.pathname === '/request-demo' ? null : <Footer />}
 						</Wrapper>
 					</ThemeProvider>
 				</AnimatePresence>

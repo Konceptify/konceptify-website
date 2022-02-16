@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { motion } from 'framer-motion'
 import Button from './Button'
 import { LanguageContext } from '../App'
+import { Link } from 'react-router-dom'
 
 const StyledForm = styled.form`
 	display: flex;
@@ -11,6 +12,21 @@ const StyledForm = styled.form`
 	margin-top: 1rem;
 	width: fit-content;
 	max-width: 400px;
+
+	.call-to-action {
+		display: flex;
+		align-items: center;
+		margin-top: 1rem;
+		justify-content: space-between;
+		padding: 1rem;
+
+		p {
+			cursor: pointer;
+			:hover {
+				text-decoration: underline;
+			}
+		}
+	}
 
 	* {
 		color: white;
@@ -22,10 +38,6 @@ const StyledForm = styled.form`
 	p,
 	label {
 		color: white;
-	}
-
-	button {
-		margin-top: 40px;
 	}
 `
 
@@ -88,7 +100,7 @@ const Form = () => {
 	const formGuid = '016322d8-a4e2-424b-9a41-b5d79bf31d3b'
 	const [firstName, setFirstname] = useState('')
 	const [email, setEmail] = useState('')
-	const { lang } = useContext(LanguageContext)
+	const { lang, setOpenModal } = useContext(LanguageContext)
 	const [checked, setChecked] = useState(false)
 	const [sent, setSent] = useState(false)
 
@@ -142,6 +154,11 @@ const Form = () => {
 				</h1>
 			) : (
 				<>
+					<h1>
+						{lang
+							? 'Nyfiken på hur Konceptify fungerar - vi visar gärna'
+							: 'See Konceptify in action - request a demo'}
+					</h1>
 					<StyledInput
 						type="text"
 						id="firstName"
@@ -183,7 +200,18 @@ const Form = () => {
 						purpose, please tick below to say how you would like us to contact
 						you:
 					</StyledP>
-					<Button>{lang ? 'SKICKA' : 'SUBMIT'}</Button>
+					<div className="call-to-action">
+						<Button>{lang ? 'SKICKA' : 'SUBMIT'}</Button>
+						<Link
+							to="/"
+							onClick={() => {
+								setOpenModal(false)
+								window.scrollTo(0, 0)
+							}}
+						>
+							{lang ? 'Avbryt' : 'Cancel'}
+						</Link>
+					</div>
 				</>
 			)}
 		</StyledForm>
